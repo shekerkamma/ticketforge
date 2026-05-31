@@ -301,7 +301,7 @@ content-research ──→ graphify ──→ mindmap (decompose findings)
 ### Step 1 — Extract knowledge graph from code
 **Skill:** `graphify` (global)
 
-> Run graphify on the `markdown-viewer-skills-audit` repository. Extract: skill names as entities, shared dependencies (PlantUML, mxgraph stencils, Marp), skill categories, cross-references between skill SKILL.md files.
+> Run graphify on the `ticketforge` repository. Extract: skill names as entities, shared dependencies (PlantUML, mxgraph stencils, Marp), skill categories, cross-references between skill SKILL.md files.
 
 **Grade:**
 - [ ] Entities: 15 skill names extracted

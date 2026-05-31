@@ -276,7 +276,7 @@ repo-architecture/bin/run.sh psf/requests --auto
 
 ### 4b — repo-architecture refuses non-system repos
 ```bash
-repo-architecture/bin/run.sh shekerkamma/markdown-viewer-skills-audit --auto
+repo-architecture/bin/run.sh shekerkamma/ticketforge --auto
 ```
 
 **Expected:** Phase 2 refuses — this is a docs/skills repo, not a system. Should suggest `--scope architecture` or using the architecture skill directly.

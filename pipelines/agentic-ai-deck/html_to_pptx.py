@@ -9,7 +9,7 @@ from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN
 
 # ── Config ──────────────────────────────────────────────────────────────
-REPO = Path("/home/shekerk/markdown-viewer-skills-audit")
+REPO = Path("/home/shekerk/ticketforge")
 OUT_DIR = REPO / "pipelines" / "agentic-ai-deck" / "screenshots"
 CHROME = str(list(sorted(Path.home().glob(".cache/puppeteer/chrome/*/chrome-linux64/chrome")))[-1])
 SLIDE_W, SLIDE_H = Inches(13.333), Inches(7.5)  # 16:9

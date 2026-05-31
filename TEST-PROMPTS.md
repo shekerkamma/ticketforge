@@ -217,7 +217,7 @@ repo-architecture/bin/run.sh vercel/swr --auto          # TS frontend lib
 
 ### Adversarial
 ```bash
-repo-architecture/bin/run.sh shekerkamma/markdown-viewer-skills-audit --auto
+repo-architecture/bin/run.sh shekerkamma/ticketforge --auto
 ```
 
 **Good output looks like:** since this repo is itself a collection of skills (not a system), Phase 2 should refuse with a recommendation to scope to one skill (`--scope architecture`) or use the `architecture` skill from a prompt instead. If it produces a layered diagram for a docs repo, the refusal logic in `prompts/classify-modules.md` failed.

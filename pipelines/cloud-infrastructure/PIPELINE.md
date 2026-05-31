@@ -471,7 +471,7 @@ investigate ──→ cloud/network/security (diagram the fix)
 **Expected:** Pushback or correction — network skill should use `mxgraph.networks.*` or `mxgraph.cisco.*`, not AWS application stencils. Lambda is not a network device.
 
 ### 5f — CSO audit on a non-code repo
-> Run `/cso` on the `markdown-viewer-skills-audit` repo (it's documentation, not application code).
+> Run `/cso` on the `ticketforge` repo.
 
 **Expected:** The audit should adapt — no application secrets to find, no IAM policies, no running infrastructure. Should focus on what's relevant: supply chain (skill dependencies), disclosure (author metadata), and configuration files. Should not fabricate application-level findings.
 

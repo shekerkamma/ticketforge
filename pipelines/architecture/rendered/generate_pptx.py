@@ -395,7 +395,7 @@ def build():
     add_text(slide, 1, 6.2, 11, 0.3, "All slides are fully editable — modify shapes, text, and colors in PowerPoint", size=11, color=GRAY_400, align=PP_ALIGN.CENTER)
 
     # Save
-    out = "/home/shekerk/markdown-viewer-skills-audit/pipelines/architecture/rendered/architecture-pipeline-tests.pptx"
+    out = "/home/shekerk/ticketforge/pipelines/architecture/rendered/architecture-pipeline-tests.pptx"
     prs.save(out)
     print(f"Saved: {out}")
     print(f"Slides: {len(prs.slides)}")
