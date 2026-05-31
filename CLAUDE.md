@@ -31,8 +31,8 @@ cd frontend && npm install && npm run dev
 - API client: `src/lib/api.ts` — all requests go through `apiFetch()` which handles auth
 - No test framework configured yet for frontend (Jest/Vitest TBD)
 
-## Agents in this repo
-The `.agents/agents/` directory contains agents from a previous project (diagram pipeline). They are NOT TicketForge agents. TicketForge's AI pipeline agents (Content Researcher, CodeAct, Code Reviewer) are defined in `backend/app/services/` as Python services, not as agent definition files.
+## Agents
+TicketForge's AI pipeline agents (Content Researcher, CodeAct, Code Reviewer) are defined in `backend/app/services/` as Python services.
 
 ## Don't do
 - Don't modify `.env` files without asking — they contain secrets

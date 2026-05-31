@@ -33,11 +33,5 @@ frontend/next-env.d.ts
 .DS_Store
 Thumbs.db
 
-# Generated artifacts
-pipelines/agentic-ai-deck/deck.pptx
-pipelines/agentic-ai-deck/deck_editable.pptx
-pipelines/agentic-ai-deck/diagram_gallery.pptx
-pipelines/agentic-ai-deck/screenshots/
-
 # Test artifacts
 backend/test-dashboard.html

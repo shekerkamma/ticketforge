@@ -1,3 +1,0 @@
-error: refused
-reason: "cookbook repo — flat collection of independent notebooks, no architectural flow"
-recommendation: "use --scope to narrow to a sub-tree"
