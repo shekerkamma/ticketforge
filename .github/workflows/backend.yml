@@ -34,7 +34,7 @@ jobs:
     env:
       DATABASE_URL: postgresql+asyncpg://ticketforge:ticketforge@localhost:5432/ticketforge_test
       JWT_SECRET: test-secret
-      ENCRYPTION_KEY: dGVzdC1lbmNyeXB0aW9uLWtleS0zMmJ5dGVz
+      ENCRYPTION_KEY: 8v282iK1sGLaNmGaQxNrKMF-BQgERMgh3R2sVHO2Ifk=
 
     steps:
       - uses: actions/checkout@v4

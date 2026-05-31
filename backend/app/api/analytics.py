@@ -25,7 +25,7 @@ PERIOD_DAYS = {"7d": 7, "30d": 30, "90d": 90}
 @router.get("/analytics")
 async def get_analytics(
     team_id: uuid.UUID,
-    period: str = Query(default="30d", regex="^(7d|30d|90d)$"),
+    period: str = Query(default="30d", pattern="^(7d|30d|90d)$"),
     user: User = Depends(get_current_user),
     session: AsyncSession = Depends(get_session),
 ):
@@ -106,8 +106,8 @@ async def get_analytics(
 @router.get("/analytics/export")
 async def export_analytics(
     team_id: uuid.UUID,
-    period: str = Query(default="30d", regex="^(7d|30d|90d)$"),
-    format: str = Query(default="csv", regex="^(csv|json)$"),
+    period: str = Query(default="30d", pattern="^(7d|30d|90d)$"),
+    format: str = Query(default="csv", pattern="^(csv|json)$"),
     user: User = Depends(get_current_user),
     session: AsyncSession = Depends(get_session),
 ):
