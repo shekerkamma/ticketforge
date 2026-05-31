@@ -6,7 +6,7 @@ Thanks for your interest in contributing. TicketForge is an open-source multi-ag
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-org/ticketforge.git
+git clone https://github.com/shekerkamma/ticketforge.git
 cd ticketforge
 
 # Start infrastructure
