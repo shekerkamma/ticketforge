@@ -1,0 +1,43 @@
+# Environment
+.env
+backend/.env
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+
+# SQLite (local dev)
+*.db
+
+# Node
+node_modules/
+frontend/node_modules/
+
+# Next.js
+frontend/.next/
+frontend/next-env.d.ts
+
+# GStack
+.gstack/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated artifacts
+pipelines/agentic-ai-deck/deck.pptx
+pipelines/agentic-ai-deck/deck_editable.pptx
+pipelines/agentic-ai-deck/diagram_gallery.pptx
+pipelines/agentic-ai-deck/screenshots/
+
+# Test artifacts
+backend/test-dashboard.html
