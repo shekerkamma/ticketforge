@@ -1,0 +1,41 @@
+name: Feature request
+description: Capture product work in a way Codex can plan and execute.
+title: "[feature] "
+labels:
+  - feature
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: What should exist after this work is done?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Product context
+      description: Why does this matter? What user or workflow is this for?
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints
+      description: Existing patterns, systems, or rules this work must respect.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: What does done look like?
+      placeholder: |
+        - User can ...
+        - API returns ...
+        - Tests cover ...
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification
+      description: What manual path or test should confirm the feature works?

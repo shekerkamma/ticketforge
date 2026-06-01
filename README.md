@@ -29,6 +29,7 @@ Codex remote/cloud workflow: [docs/codex-remote-setup.md](/home/shekerk/ticketfo
 GitHub OAuth setup: [docs/github-oauth-setup.md](/home/shekerk/ticketforge/docs/github-oauth-setup.md)
 Production deployment setup: [docs/DEPLOYMENT.md](/home/shekerk/ticketforge/docs/DEPLOYMENT.md)
 Production checklist: [docs/production-checklist.md](/home/shekerk/ticketforge/docs/production-checklist.md)
+Reusable Codex/GitHub starter: [starter/codex-github-starter/README.md](/home/shekerk/ticketforge/starter/codex-github-starter/README.md)
 
 ### Prerequisites
 
