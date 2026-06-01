@@ -8,6 +8,7 @@ import shutil
 import sys
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Iterable
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -15,25 +16,32 @@ STAGING_ROOT = REPO_ROOT / "starter" / "claude-to-codex-skills"
 STAGING_SKILLS_DIR = STAGING_ROOT / "skills"
 
 CHAIN_TEMPLATE_SKILLS = {
+    "agent-browser",
     "ai-strategy-council",
     "ai-strategy-researcher",
     "analytics-to-comms",
     "architect",
     "architecture-to-everything",
+    "carousel-to-deck",
     "content-repurpose",
     "competitive-intel-sprint",
+    "morning-briefing",
     "obsidian-github-sync",
     "obsidian-vault-manager",
+    "printing-press",
     "presentation",
     "presales-deal-prep",
     "content-research",
     "research-to-strategy",
     "second-brain-capture",
+    "ss",
     "llm-council",
     "url-dossier",
 }
 
 SUPPORTED_SKILLS = {
+    "anti-slop",
+    "agent-browser",
     "architect",
     "architecture-to-everything",
     "ai-strategy-brief",
@@ -41,6 +49,7 @@ SUPPORTED_SKILLS = {
     "ai-strategy-researcher",
     "analytics-to-comms",
     "session-handoff",
+    "ss",
     "time-skill",
     "time-tokyo",
     "weather-fetcher",
@@ -54,8 +63,10 @@ SUPPORTED_SKILLS = {
     "competitive-intel-sprint",
     "content-repurpose",
     "llm-council",
+    "morning-briefing",
     "obsidian-github-sync",
     "obsidian-vault-manager",
+    "printing-press",
     "presentation",
     "presentation-content-writer",
     "presentation-theme",
@@ -70,6 +81,7 @@ SUPPORTED_SKILLS = {
     "vertical-scorer",
     "presales-deal-prep",
     "chart-storyteller",
+    "carousel-to-deck",
 }
 
 REWRITE_MARKERS = {
@@ -1320,6 +1332,455 @@ Help the user choose and explain charts that match the analytical question.
 
 PORT_TEMPLATES.update(
     {
+        "anti-slop": """---
+name: anti-slop
+description: Remove AI-sounding prose patterns from writing. Use when the user wants LinkedIn posts, emails, briefs, reports, blog posts, summaries, or any human-facing prose to sound direct and non-generic.
+---
+
+# Anti-Slop
+
+This skill is a writing filter, not a content generator.
+
+## Core rule
+
+Write like a competent human talking to another competent human. Cut inflated, corporate, influencer, and AI-default phrasing.
+
+## Enforce these rules
+
+- Prefer plain verbs over abstract ones.
+- Start with the point; remove throat-clearing.
+- Avoid hype, cheerleading, and fake-casual honesty markers.
+- Do not pad with synonym stacks or rhetorical question/answer patterns.
+- End when the point is finished.
+
+## Replace patterns like these
+
+- `utilize` -> `use`
+- `leverage` -> `use`
+- `facilitate` -> `help` or `enable`
+- `robust` -> `strong`, `reliable`, or be specific
+- `seamless` -> `smooth`, `simple`, or explain what is easy
+- `cutting-edge`, `innovative`, `transformative` -> describe what is actually new
+- `stakeholders` -> name the actual group
+- `it's important to note` -> delete
+- `in today's landscape` -> delete
+- `honestly`, `frankly`, `real talk` -> delete
+- `excited to share`, `thrilled to announce` -> delete unless the user explicitly wants that tone
+
+## Structural rules
+
+- Avoid "not just X, but Y" framing unless contrast is genuinely necessary.
+- Avoid rule-of-three padding if two points are enough.
+- Avoid dramatic fragments unless the content truly calls for them.
+- Prefer one sharp sentence over three vague ones.
+
+## How to use it
+
+Apply this skill as a final pass on drafts:
+
+1. remove banned words and phrases
+2. compress obvious filler
+3. replace abstractions with specifics
+4. keep the user's actual point and voice
+
+If the draft already sounds clean, make only minimal edits.
+""",
+        "agent-browser": """---
+name: agent-browser
+description: Browser automation CLI for websites, forms, login flows, screenshots, scraping, and interactive web testing. Use when the user wants to open a site, click through a flow, fill a form, take browser screenshots, or automate browser actions with the `agent-browser` CLI.
+---
+
+# Agent Browser
+
+Use the `agent-browser` CLI as the browser automation runtime.
+
+## Preflight
+
+First verify the CLI exists:
+
+```bash
+command -v agent-browser
+```
+
+If it is missing, say so directly and stop instead of inventing browser steps.
+
+## Core workflow
+
+1. Open a page:
+
+```bash
+agent-browser open <url>
+```
+
+2. Snapshot interactive elements:
+
+```bash
+agent-browser snapshot -i
+```
+
+3. Interact using refs like `@e1`, `@e2`:
+
+```bash
+agent-browser click @e1
+agent-browser fill @e2 "text"
+agent-browser select @e3 "option"
+```
+
+4. Re-snapshot after any navigation or DOM-changing action.
+
+## Common commands
+
+```bash
+agent-browser open <url>
+agent-browser close
+agent-browser snapshot -i
+agent-browser click @e1
+agent-browser fill @e2 "text"
+agent-browser type @e2 "text"
+agent-browser select @e3 "option"
+agent-browser check @e4
+agent-browser press Enter
+agent-browser wait --load networkidle
+agent-browser wait --url "**/dashboard"
+agent-browser get text @e1
+agent-browser get url
+agent-browser get title
+agent-browser screenshot
+agent-browser screenshot --full
+agent-browser pdf output.pdf
+```
+
+## Stateful flows
+
+For authenticated or repeated sessions:
+
+```bash
+agent-browser state save auth.json
+agent-browser state load auth.json
+```
+
+For parallel sessions:
+
+```bash
+agent-browser --session site1 open <url>
+agent-browser --session site2 open <url>
+agent-browser session list
+```
+
+## Rules
+
+- Re-snapshot after navigation, submissions, or dynamic DOM changes.
+- Use the CLI's own state mechanism instead of inventing cookie storage.
+- If the task depends on the user's real desktop Chrome profile, say that this skill alone is not enough.
+- If the user wants visible debugging, prefer `--headed`.
+""",
+        "carousel-to-deck": """---
+name: carousel-to-deck
+description: Turn carousel copy into a usable slide deck or presentation file plan. Use when the user has carousel text and wants it converted into slides, a deck outline, or a presentation artifact they can present or hand off.
+---
+
+# Carousel To Deck
+
+Convert social-carousel content into a real presentation structure.
+
+## Companion skills
+
+- `presentation`
+- `presentation-content-writer`
+- `presentation-speaker-notes`
+- `presentation-exporter`
+
+## Workflow
+
+1. Read the carousel source:
+   - pasted copy
+   - markdown file
+   - repurposed content file
+2. Parse each slide's:
+   - number
+   - headline
+   - body copy
+   - design direction, if present
+3. Map the slides into presentation roles:
+   - cover
+   - content slides
+   - close / CTA
+4. Build a slide outline or HTML deck through the `presentation` workflow.
+5. Put design-direction notes into speaker notes or production notes instead of audience-facing body text.
+6. If the environment supports deck export, use `presentation-exporter`; otherwise leave a clean deck source plus notes.
+
+## Rules
+
+- Keep slide headlines sharp; do not bury them in paragraph text.
+- Vary the slide rhythm; do not make every slide structurally identical.
+- Treat design-direction text as production guidance, not visible copy.
+- If the user wants an actual `.pptx`, say whether the environment has a real export path instead of pretending.
+""",
+        "morning-briefing": """---
+name: morning-briefing
+description: Produce a daily enterprise-AI briefing focused on Sheker's priorities: automotive AI, Azure, AWS Bedrock, Google Vertex AI, Anthropic, and agentic frameworks. Use when the user asks for a morning briefing, daily scan, or what matters today.
+---
+
+# Morning Briefing
+
+Generate a focused daily signal brief, not a generic news dump.
+
+## Priorities
+
+Bias the scan toward:
+
+- Anthropic and Claude updates
+- Azure OpenAI, Power Platform, Copilot Studio
+- AWS Bedrock and Bedrock Agents
+- Google Vertex AI and ADK
+- automotive AI and SAP + AI work
+- agentic framework releases with real enterprise relevance
+
+Ignore low-signal items like consumer AI apps, generic funding news, or hype with no enterprise angle.
+
+## Workflow
+
+1. Gather at least 6 targeted searches and collect at least 8 raw findings.
+2. Score each finding for:
+   - relevance to active work
+   - buzz
+   - timeliness
+   - POC applicability
+   - client impact
+   - accessibility today
+3. Discard weak items.
+4. Build the briefing:
+   - top signals
+   - quick hits
+   - one concrete recommendation for today
+
+## Output structure
+
+```markdown
+# Morning Briefing — <date>
+
+## Top 3 Signals
+
+### 1. <title>
+**Score:** <n>/22 | **Urgency:** <red/yellow/green>
+**What happened:** ...
+**POC / client angle:** ...
+**Action:** ...
+
+## Quick Hits
+- ...
+
+## Recommendation
+...
+```
+
+## Rules
+
+- Be opinionated.
+- Frame every item through enterprise POC delivery, not abstract interest.
+- If a Claude / Anthropic developer product update is materially relevant, it belongs near the top.
+- If only 2 items matter, return 2. Do not pad to 3.
+""",
+        "printing-press": {
+            "SKILL.md": """---
+name: printing-press
+description: Generate or improve a CLI for an API using the external `printing-press` binary. Use when the user wants a ship-ready CLI generated from an API name, spec file, HAR capture, or API docs URL.
+---
+
+# Printing Press
+
+This is the Codex-native wrapper for the external `printing-press` binary.
+
+Read `references/setup-checks.md` first.
+
+## What this skill is for
+
+Use it when the user wants to:
+
+- generate a CLI from an API name
+- generate from an OpenAPI or YAML spec
+- generate from a HAR capture
+- generate from a docs URL or product URL
+- run the binary in its `codex` mode when supported
+
+## Preflight
+
+First verify the binary exists:
+
+```bash
+command -v printing-press
+```
+
+If it is missing, stop and show the install command from `references/setup-checks.md`.
+
+## Main entry patterns
+
+```bash
+printing-press "<api>"
+printing-press "<api>" codex
+printing-press --spec ./openapi.yaml
+printing-press --har ./capture.har --name MyAPI
+printing-press https://postman.com/explore
+```
+
+## Workflow
+
+1. Confirm the input shape:
+   - API name
+   - local spec file
+   - HAR capture
+   - URL
+2. Read `references/spec-inputs.md` if the format or source is ambiguous.
+3. Run the `printing-press` binary with the narrowest correct input form.
+4. If the run needs temporary browser-based discovery, read `references/browser-sniff.md`.
+5. Before any archive, publish, or share step, read `references/secret-protection.md`.
+6. Before calling the result ship-ready, read `references/shipcheck.md`.
+
+## Rules
+
+- This skill wraps the binary; it does not replace it.
+- Do not claim the CLI is shippable without both structural checks and behavioral testing.
+- Browser sniffing is temporary discovery only, not permission to ship a resident browser runtime.
+- If the user asks for second-pass cleanup and there is no dedicated polish skill installed yet, say that explicitly instead of pretending the old Claude-only polish workflow exists.
+""",
+            "references/setup-checks.md": """# Setup Checks
+
+Use this before any `printing-press` run.
+
+## Binary check
+
+```bash
+command -v printing-press
+```
+
+If missing, stop and tell the user to install it:
+
+```bash
+go install github.com/mvanhorn/cli-printing-press/v4/cmd/printing-press@latest
+```
+
+Then verify:
+
+```bash
+printing-press --version
+```
+
+## Upgrade check
+
+If the binary exists, it is reasonable to inspect:
+
+```bash
+printing-press version --json
+```
+
+If the user wants to upgrade, use the same `go install ...@latest` command.
+
+## Compatibility rule
+
+If the installed binary is clearly older than the workflow expects, warn and continue only if the user accepts the risk.
+""",
+            "references/spec-inputs.md": """# Spec Inputs
+
+Accepted `printing-press` input forms:
+
+- API or product name:
+  - `printing-press Notion`
+- explicit Codex mode:
+  - `printing-press Discord codex`
+  - `printing-press --spec ./openapi.yaml codex`
+- local spec file:
+  - `printing-press --spec ./openapi.yaml`
+- HAR capture:
+  - `printing-press --har ./capture.har --name MyAPI`
+- URL:
+  - `printing-press https://postman.com/explore`
+
+## Good defaults
+
+- Prefer a local verified spec file when one exists.
+- Use HAR when the API surface is discovered from real traffic rather than formal docs.
+- Use a docs URL or product URL when discovery has to start from the public surface.
+
+## Internal YAML spec
+
+If there is no OpenAPI spec, `printing-press` can work from an internal YAML description of:
+
+- API metadata
+- auth scheme
+- resources
+- endpoints
+- params
+- response types
+
+Preserve the wire-level field names from the upstream API instead of renaming them for cosmetics.
+""",
+            "references/browser-sniff.md": """# Browser Sniff
+
+Load this only when generation requires temporary live-site discovery.
+
+## Principle
+
+Browser capture is a generation-time discovery aid. It is not a runtime transport model for the shipped CLI.
+
+## What browser sniffing is for
+
+- discovering hidden endpoints
+- learning request shapes
+- capturing persisted GraphQL queries
+- understanding auth/header construction
+- proving whether replayable HTTP or structured extraction is possible
+
+## Rules
+
+- Prefer replayable HTTP or structured extraction as the final CLI surface.
+- If only live page-context execution works, hold or reduce scope instead of pretending the CLI is normal.
+- Treat browser discovery as a temporary step and keep the artifacts out of published outputs unless sanitized.
+""",
+            "references/secret-protection.md": """# Secret Protection
+
+Read this before archiving, publishing, or sharing any `printing-press` output.
+
+## Hard rules
+
+- Never store API key values, token values, passwords, or session cookies in repo artifacts.
+- Env var names and placeholders are safe; secret values are not.
+- Strip auth-bearing headers, cookies, query params, and response bodies from HAR captures before keeping them.
+
+## Practical checks
+
+- run fixed-string scans for exact known secret values before archiving
+- redact any discovered exact-value leaks
+- remove request/response cookies and auth headers from HAR files
+- avoid publishing real workspace or customer PII in proofs or README examples
+""",
+            "references/shipcheck.md": """# Shipcheck
+
+Structural success is not enough.
+
+## Required checks
+
+- build succeeds
+- verification commands succeed
+- behavior is tested against real or realistic targets
+- headline commands and help output are plausible
+- failure paths are exercised, not assumed
+
+## Do not call it shipped if only these passed
+
+- `go build`
+- schema generation
+- static verification
+
+Those are necessary but not sufficient.
+
+## Publish standard
+
+A generated CLI is only ship-ready when it has passed both:
+
+1. structural checks
+2. behavioral testing / dogfooding
+""",
+        },
         "content-research": """---
 name: content-research
 description: Ingest URLs, videos, documents, or repositories into structured research notes, then optionally persist them into a second brain or Obsidian vault backed by GitHub. Use when the user wants content research, source notes, durable knowledge capture, or multi-source synthesis.
@@ -1507,6 +1968,60 @@ status: active
 ```
 """,
         },
+        "ss": """---
+name: ss
+description: Load the most recent screenshots from a screenshot inbox and act on them quickly. Use when the user invokes `/ss`-style screenshot workflows, wants recent screenshots explained, compared, transcribed, remixed, or used as visual context for a task.
+---
+
+# Screenshot Inbox
+
+Treat recent local screenshots as structured visual input.
+
+## Configuration
+
+Determine the screenshot folder in this order:
+
+1. `SCREENSHOT_INBOX`
+2. `~/Pictures/Screenshots`
+3. `~/Pictures/Screen Shots`
+4. `~/Desktop`
+
+If none of these exist or no screenshots are found, say so directly.
+
+## Parsing
+
+Interpret the arguments this way:
+
+- no args -> `N=1`, action=`explain`
+- first token is a positive integer -> that is `N`
+- first token is `diff` -> `N=2`, action=`compare`
+- otherwise -> `N=1`, action=`<full arg string>`
+
+## Load the images
+
+List the most recent PNG, JPG, or JPEG files:
+
+```bash
+find "<folder>" -maxdepth 1 -type f \\( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \\) -printf '%T@ %p\n' | sort -nr | head -N
+```
+
+Then inspect each returned image path with the local image-viewing tool available in the environment.
+
+## Actions
+
+- `explain`: describe the screenshot concretely and transcribe key visible text
+- `compare`: compare multiple screenshots and call out what changed
+- `transcribe`: extract visible text faithfully
+- `fix`: treat the screenshot as a bug report or UI defect and connect it to the repo when possible
+- `remix` or freeform: extract the pattern and adapt it to the user's context
+- `infographic`: synthesize multiple screenshots into one HTML artifact saved in the current working directory
+
+## Rules
+
+- Confirm which screenshots were loaded before acting on them.
+- Keep outputs tight; this workflow is for speed.
+- If the user wants non-inbox images, ask for explicit file paths instead of guessing.
+""",
         "obsidian-vault-manager": {
             "SKILL.md": """---
 name: obsidian-vault-manager
@@ -1887,6 +2402,8 @@ TemplateValue = str | dict[str, str]
 
 @dataclass
 class Skill:
+    source_root: Path
+    source_name: str
     rel_path: str
     path: Path
     name: str
@@ -1933,31 +2450,65 @@ def parse_frontmatter(raw_text: str) -> tuple[dict[str, str], str]:
     return metadata, parts[1]
 
 
-def discover_skills() -> list[Skill]:
-    if not CLAUDE_SKILLS_DIR.exists():
-        return []
+def normalize_source_name(path: Path) -> str:
+    if path == CLAUDE_SKILLS_DIR:
+        return "global"
+    return path.name or path.as_posix()
 
+
+def resolve_source_roots(extra_roots: Iterable[str] | None = None) -> list[Path]:
+    roots: list[Path] = []
+    seen: set[Path] = set()
+
+    def add_root(raw: str | Path | None) -> None:
+        if not raw:
+            return
+        path = Path(raw).expanduser().resolve()
+        if path in seen:
+            return
+        seen.add(path)
+        roots.append(path)
+
+    add_root(CLAUDE_SKILLS_DIR)
+
+    env_roots = os.environ.get("CLAUDE_SKILL_SOURCE_ROOTS", "")
+    if env_roots:
+        for entry in env_roots.split(os.pathsep):
+            add_root(entry.strip())
+
+    for entry in extra_roots or []:
+        add_root(entry)
+
+    return [root for root in roots if root.exists()]
+
+
+def discover_skills(source_roots: Iterable[Path] | None = None) -> list[Skill]:
+    roots = list(source_roots or [CLAUDE_SKILLS_DIR])
     skills: list[Skill] = []
-    for skill_path in sorted(CLAUDE_SKILLS_DIR.rglob("SKILL.md")):
-        if not skill_path.exists() or not skill_path.is_file():
-            continue
-        rel_path = skill_path.parent.relative_to(CLAUDE_SKILLS_DIR).as_posix()
-        try:
-            raw_text = skill_path.read_text(encoding="utf-8")
-        except FileNotFoundError:
-            continue
-        metadata, _ = parse_frontmatter(raw_text)
-        name = metadata.get("name", skill_path.parent.name)
-        description = metadata.get("description", "")
-        skills.append(
-            Skill(
-                rel_path=rel_path,
-                path=skill_path,
-                name=name,
-                description=description,
-                raw_text=raw_text,
+
+    for source_root in roots:
+        for skill_path in sorted(source_root.rglob("SKILL.md")):
+            if not skill_path.exists() or not skill_path.is_file():
+                continue
+            rel_path = skill_path.parent.relative_to(source_root).as_posix()
+            try:
+                raw_text = skill_path.read_text(encoding="utf-8")
+            except FileNotFoundError:
+                continue
+            metadata, _ = parse_frontmatter(raw_text)
+            name = metadata.get("name", skill_path.parent.name)
+            description = metadata.get("description", "")
+            skills.append(
+                Skill(
+                    source_root=source_root,
+                    source_name=normalize_source_name(source_root),
+                    rel_path=rel_path,
+                    path=skill_path,
+                    name=name,
+                    description=description,
+                    raw_text=raw_text,
+                )
             )
-        )
     return skills
 
 
@@ -2003,17 +2554,25 @@ def classify_skill(skill: Skill) -> tuple[str, list[str]]:
     return "direct_port", ["plain instruction skill with no obvious Claude coupling"]
 
 
-def inventory() -> int:
-    skills = discover_skills()
+def display_path(skill: Skill) -> str:
+    if skill.source_root == CLAUDE_SKILLS_DIR:
+        return skill.rel_path
+    return f"{skill.source_name}::{skill.rel_path}"
+
+
+def inventory(extra_roots: Iterable[str] | None = None) -> int:
+    roots = resolve_source_roots(extra_roots)
+    skills = discover_skills(roots)
     if not skills:
-        print(f"No Claude skills found under {CLAUDE_SKILLS_DIR}", file=sys.stderr)
+        joined = ", ".join(str(root) for root in roots) or str(CLAUDE_SKILLS_DIR)
+        print(f"No Claude skills found under {joined}", file=sys.stderr)
         return 1
 
     print("classification\tskill\tpath\treasons")
     for skill in skills:
         classification, reasons = classify_skill(skill)
         joined = "; ".join(reasons)
-        print(f"{classification}\t{skill.name}\t{skill.rel_path}\t{joined}")
+        print(f"{classification}\t{skill.name}\t{display_path(skill)}\t{joined}")
     return 0
 
 
@@ -2028,6 +2587,7 @@ def build_skill_index(skills: list[Skill]) -> dict[str, Skill]:
 
     for skill in skills:
         skill_index[skill.rel_path] = skill
+        skill_index[display_path(skill)] = skill
         if skill.name in names_seen:
             duplicate_names.add(skill.name)
         else:
@@ -2042,7 +2602,7 @@ def build_skill_index(skills: list[Skill]) -> dict[str, Skill]:
 
 def generic_adaptation(skill: Skill) -> str:
     _, body = parse_frontmatter(skill.raw_text)
-    description = skill.description or f"Migrated from Claude skill: {skill.rel_path}"
+    description = skill.description or f"Migrated from Claude skill: {display_path(skill)}"
     content = body.strip()
 
     replacements = (
@@ -2140,9 +2700,10 @@ def write_template_bundle(skill_name: str, skill_dir: Path, rendered: TemplateVa
         patch_watch_bundle(skill_dir)
 
 
-def stage_skills(selected_names: list[str]) -> int:
+def stage_skills(selected_names: list[str], extra_roots: Iterable[str] | None = None) -> int:
     clean_staging_dir()
-    skills = discover_skills()
+    roots = resolve_source_roots(extra_roots)
+    skills = discover_skills(roots)
     skill_index = build_skill_index(skills)
 
     status = 0
@@ -2180,6 +2741,13 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     subparsers.add_parser("inventory", help="List Claude skills and migration classes.")
+    inventory_parser = subparsers.choices["inventory"]
+    inventory_parser.add_argument(
+        "--source-root",
+        action="append",
+        default=[],
+        help="Additional skill source root to scan, e.g. a Claude Cowork workspace.",
+    )
 
     stage_parser = subparsers.add_parser(
         "stage", help="Write staged Codex skill adaptations into the repo."
@@ -2189,6 +2757,12 @@ def build_parser() -> argparse.ArgumentParser:
         default=",".join(sorted(SUPPORTED_SKILLS)),
         help="Comma-separated skill names to stage. Default: the supported starter set.",
     )
+    stage_parser.add_argument(
+        "--source-root",
+        action="append",
+        default=[],
+        help="Additional skill source root to scan when resolving Claude skills.",
+    )
     return parser
 
 
@@ -2197,11 +2771,11 @@ def main() -> int:
     args = parser.parse_args()
 
     if args.command == "inventory":
-        return inventory()
+        return inventory(args.source_root)
 
     if args.command == "stage":
         selected_names = [name.strip() for name in args.skills.split(",") if name.strip()]
-        return stage_skills(selected_names)
+        return stage_skills(selected_names, args.source_root)
 
     parser.error(f"Unknown command: {args.command}")
     return 2

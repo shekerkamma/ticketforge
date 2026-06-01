@@ -6,13 +6,17 @@ This repo now includes a staged migration path for adapting global Claude skills
 
 These skills are staged and ready to install into `~/.codex/skills`:
 
+- `anti-slop`
+- `agent-browser`
 - `architect`
 - `architecture-to-everything`
 - `ai-strategy-brief`
 - `ai-strategy-council`
 - `ai-strategy-researcher`
 - `analytics-to-comms`
+- `carousel-to-deck`
 - `session-handoff`
+- `ss`
 - `time-skill`
 - `time-tokyo`
 - `weather-fetcher`
@@ -25,8 +29,10 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `difficult-conversation-prep`
 - `explainer-graphic`
 - `llm-council`
+- `morning-briefing`
 - `obsidian-github-sync`
 - `obsidian-vault-manager`
+- `printing-press`
 - `presentation`
 - `presentation-accessibility`
 - `presentation-content-writer`
@@ -51,6 +57,7 @@ The staged copies live under:
 
 These skills are not blind copies of the Claude originals. They were rewritten as Codex-native chain skills:
 
+- `agent-browser`
 - `presentation`
 - `architect`
 - `architecture-to-everything`
@@ -60,6 +67,7 @@ These skills are not blind copies of the Claude originals. They were rewritten a
 - `llm-council`
 - `obsidian-github-sync`
 - `obsidian-vault-manager`
+- `printing-press`
 - `competitive-intel-sprint`
 - `analytics-to-comms`
 - `ai-strategy-researcher`
@@ -67,6 +75,7 @@ These skills are not blind copies of the Claude originals. They were rewritten a
 - `presales-deal-prep`
 - `content-repurpose`
 - `second-brain-capture`
+- `ss`
 
 The Codex pattern is:
 
@@ -102,6 +111,26 @@ Recommended chain:
 4. `obsidian-github-sync` if the vault should use GitHub as the source of truth
 5. `graphify` if the user wants relationship or concept mapping on top
 
+The browser / desktop-adjacent wave is narrower:
+
+- `agent-browser` is worth keeping as a direct Codex skill because it wraps a real browser CLI
+- `ss` is worth keeping as a fast screenshot-ingest workflow
+- `open-gstack-browser` and `setup-browser-cookies` are not worth porting directly; they are mostly gstack runtime glue and consent/preamble machinery
+
+The first `Claude Cowork` wave is intentionally selective:
+
+- `anti-slop` as a durable prose-quality filter
+- `carousel-to-deck` as a bridge from content assets into presentation work
+- `morning-briefing` as a daily enterprise-AI scanning workflow
+
+These are good fits because they transfer cleanly without dragging in the whole old Claude runtime model.
+
+The `printing-press` migration is intentionally lean:
+
+- keep a Codex wrapper around the real `printing-press` binary
+- preserve only the high-value references: setup checks, spec inputs, browser sniffing, secret protection, and shipcheck
+- do not copy the full Claude-only orchestration prompt 1:1
+
 For diagrams, the existing installed pack is already the recommended layer:
 
 - `workflow-visualizer`
@@ -123,6 +152,27 @@ Still not ported from the strategy side:
 
 - Slack/Notion/browser-posting style wrappers that assume external integrations are already installed
 - the old Obsidian plugin wrapper under `gstack/obsidian-command-center`, which is still too Claude/gstack-specific to copy 1:1
+- the old `printing-press-polish` follow-on workflow, which should be rebuilt separately if needed
+
+## Tracked External Corpora
+
+The main external Claude corpus currently tracked is:
+
+- Windows path: `D:\AppliedAICourse\Claude Cowork`
+- WSL path: `/mnt/d/AppliedAICourse/Claude Cowork`
+
+This corpus currently contains:
+
+- `22` real `SKILL.md` files
+- `11` under `ClaudeOS/skills`
+- `5` under `Sales Agents`
+- `6` `.skill` wrappers
+
+The highest-value clusters there are:
+
+- `ClaudeOS/skills/*`
+- `Sales Agents/*`
+- standalone skills such as `anti-slop`, `carousel-to-deck`, `llm-council`, `log-performance`, `review-draft`, and `tune-voice`
 
 ## Inventory your Claude skills
 
@@ -130,6 +180,19 @@ Run:
 
 ```bash
 python3 scripts/migrate_claude_skills.py inventory
+```
+
+To include an additional workspace-specific Claude corpus, such as a Claude Cowork or ClaudeOS folder:
+
+```bash
+python3 scripts/migrate_claude_skills.py inventory \
+  --source-root "/mnt/d/AppliedAICourse/Claude Cowork"
+```
+
+You can also set extra roots through:
+
+```bash
+CLAUDE_SKILL_SOURCE_ROOTS="/mnt/d/AppliedAICourse/Claude Cowork"
 ```
 
 Output columns:
@@ -167,6 +230,14 @@ If the skill name is ambiguous, use the Claude relative path instead:
 
 ```bash
 python3 scripts/migrate_claude_skills.py stage --skills ai-analyst/analysis-design-spec
+```
+
+If the skill lives in an additional source root, use the displayed namespaced path:
+
+```bash
+python3 scripts/migrate_claude_skills.py stage \
+  --source-root "/mnt/d/AppliedAICourse/Claude Cowork" \
+  --skills "Claude Cowork::ClaudeOS/skills/morning-briefing"
 ```
 
 The migrator will refuse `rewrite` skills instead of copying them blindly.
