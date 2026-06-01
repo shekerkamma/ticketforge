@@ -40,6 +40,7 @@ Look for issues labeled `good first issue` in the GitHub Issues tracker. These a
 
 1. Fork the repo and create a feature branch from `main`
 2. Make your changes with tests
+3. Start with a plan before writing code. If you use Codex, use `.codex/prompts/master-session.md` for the main session and `.codex/prompts/task-session.md` for scoped side sessions.
 3. Run the checks:
    ```bash
    cd backend
@@ -48,6 +49,27 @@ Look for issues labeled `good first issue` in the GitHub Issues tracker. These a
    pytest -q             # tests
    ```
 4. Open a PR against `main` with a clear description
+
+## GitHub-first setup
+
+This repo follows a GitHub-first workflow rather than a laptop-first workflow.
+
+- Use GitHub branches and PRs as the source of truth
+- Keep one Codex master session for direction and merge decisions
+- Use small, scoped branches for task work
+- Prefer issue-driven work with explicit acceptance criteria
+
+Run:
+
+```bash
+make github-check
+```
+
+If you are authenticated with GitHub CLI, you can also apply the default repo labels:
+
+```bash
+make github-bootstrap
+```
 
 ## Code Style
 

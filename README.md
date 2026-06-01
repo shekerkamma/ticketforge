@@ -25,6 +25,7 @@ Frontend (Next.js 14)  →  Backend (FastAPI)  →  AI Pipeline
 ## Quick start (local dev)
 
 Codex-specific repo workflow: [docs/codex-workflow.md](/home/shekerk/ticketforge/docs/codex-workflow.md)
+Codex remote/cloud workflow: [docs/codex-remote-setup.md](/home/shekerk/ticketforge/docs/codex-remote-setup.md)
 GitHub OAuth setup: [docs/github-oauth-setup.md](/home/shekerk/ticketforge/docs/github-oauth-setup.md)
 Production deployment setup: [docs/DEPLOYMENT.md](/home/shekerk/ticketforge/docs/DEPLOYMENT.md)
 Production checklist: [docs/production-checklist.md](/home/shekerk/ticketforge/docs/production-checklist.md)
@@ -60,6 +61,22 @@ Local URLs:
 ```bash
 make smoke-test
 ```
+
+### GitHub foundation check
+
+```bash
+make github-check
+```
+
+This checks the GitHub-first setup this repo expects: git repo, origin remote, git identity, `gh`, `codex`, SSH keys, and remote container support.
+
+### GitHub repo bootstrap
+
+```bash
+make github-bootstrap
+```
+
+This uses `gh` to apply the default label set used by the Codex workflow. It requires `gh auth login`.
 
 ### Local GitHub identity
 

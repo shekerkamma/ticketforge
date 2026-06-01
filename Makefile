@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-.PHONY: bootstrap backend-install frontend-install dev backend frontend smoke-test
+.PHONY: bootstrap backend-install frontend-install dev backend frontend smoke-test github-check github-bootstrap
 
 bootstrap:
 	./scripts/bootstrap.sh
@@ -22,3 +22,9 @@ frontend:
 
 smoke-test:
 	./scripts/smoke_test.sh
+
+github-check:
+	./scripts/check_github_foundation.sh
+
+github-bootstrap:
+	./scripts/bootstrap_github_repo.sh

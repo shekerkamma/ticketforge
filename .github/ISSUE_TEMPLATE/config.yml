@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Codex remote setup
+    url: https://github.com/shekerkamma/ticketforge/blob/main/docs/codex-remote-setup.md
+    about: Use this if you need the cloud/container workflow for Codex.
+  - name: GitHub OAuth setup
+    url: https://github.com/shekerkamma/ticketforge/blob/main/docs/github-oauth-setup.md
+    about: Use this for local or production GitHub OAuth setup.
