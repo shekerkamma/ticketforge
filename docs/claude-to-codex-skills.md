@@ -37,6 +37,7 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `content-repurpose`
 - `difficult-conversation-prep`
 - `explainer-graphic`
+- `export-results`
 - `install-marp`
 - `llm-council`
 - `log-performance`
@@ -60,6 +61,7 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `research-to-strategy`
 - `second-brain-capture`
 - `slide-deck-builder`
+- `stakeholder-comms`
 - `tune-voice`
 - `url-dossier`
 - `video-to-deck`
@@ -111,6 +113,7 @@ These skills are not blind copies of the Claude originals. They were rewritten a
 - `content-repurpose`
 - `second-brain-capture`
 - `slide-deck-builder`
+- `stakeholder-comms`
 - `ss`
 - `tune-voice`
 - `video-to-deck`
@@ -215,9 +218,11 @@ Recommended chain:
 
 1. `video-to-deck` if the source material is a video
 2. `slide-deck-builder` for general presentation work
-3. `marp-deck-builder` when the user wants markdown-native slide source
-4. `marp-exporter` for lint + HTML/PDF output
-5. `markdown-preview` for quick local review of markdown or deck source
+3. `stakeholder-comms` when the same findings need different audience framing
+4. `export-results` when the output needs to become email, Slack, brief, or slides
+5. `marp-deck-builder` when the user wants markdown-native slide source
+6. `marp-exporter` for lint + HTML/PDF output
+7. `markdown-preview` for quick local review of markdown or deck source
 
 The `printing-press` migration is intentionally lean:
 

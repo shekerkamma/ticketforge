@@ -34,6 +34,7 @@ CHAIN_TEMPLATE_SKILLS = {
     "content-weekly-report",
     "competitive-intel-sprint",
     "crm-hygiene-enforcer",
+    "export-results",
     "install-marp",
     "markdown-preview",
     "marp-deck-builder",
@@ -53,6 +54,7 @@ CHAIN_TEMPLATE_SKILLS = {
     "second-brain-capture",
     "slide-deck-builder",
     "ss",
+    "stakeholder-comms",
     "tune-voice",
     "video-to-deck",
     "llm-council",
@@ -91,6 +93,7 @@ SUPPORTED_SKILLS = {
     "explainer-graphic",
     "competitive-intel-sprint",
     "content-repurpose",
+    "export-results",
     "install-marp",
     "llm-council",
     "log-performance",
@@ -119,6 +122,7 @@ SUPPORTED_SKILLS = {
     "vertical-scorer",
     "presales-deal-prep",
     "slide-deck-builder",
+    "stakeholder-comms",
     "tune-voice",
     "video-to-deck",
     "chart-storyteller",
@@ -2911,6 +2915,101 @@ This is a Codex-native chain skill for going from video to presentation artifact
 - Keep the deck anchored to what the video actually argues or demonstrates.
 - Separate source-backed facts from your own synthesis.
 - If the user wants a narrow section only, scope the deck to that segment instead of summarizing the full video.
+""",
+        "stakeholder-comms": """---
+name: stakeholder-comms
+description: Adapt the same finding, memo, or analysis to different audiences such as executives, product teams, engineering, or data stakeholders. Use when the user asks to reframe a message for a specific audience, tailor a deck or write-up, or change the level of detail without changing the underlying insight.
+---
+
+# Stakeholder Comms
+
+This skill is the audience-adaptation layer for analytical, strategic, or product communication.
+
+## Workflow
+
+1. Identify the target audience:
+   - executive
+   - product team
+   - engineering
+   - data / analytics
+   - mixed audience
+2. Start from the existing source material:
+   - analysis summary
+   - memo
+   - deck
+   - recommendation note
+3. Adapt:
+   - lead sentence
+   - detail level
+   - recommendation framing
+   - metrics language
+   - caveat placement
+4. Preserve the underlying finding; only change the framing and depth.
+
+## Output structure
+
+At the top, label:
+
+```markdown
+**Audience:** <...>
+**Detail level:** <...>
+```
+
+Then deliver the adapted output.
+
+## Rules
+
+- Executives get impact and decision first.
+- Product gets implications and next actions.
+- Engineering gets root cause and scope.
+- Data gets methodology and caveats.
+- For mixed audiences, use layered sections instead of flattening everything to one level.
+""",
+        "export-results": """---
+name: export-results
+description: Turn completed analysis, strategy notes, or deck-ready material into audience-specific outputs such as slides, email summaries, Slack updates, briefs, or data exports. Use when the user asks to export, share, package, or send results in a specific format.
+---
+
+# Export Results
+
+This is the packaging and delivery skill for completed work.
+
+## Inputs
+
+Best inputs:
+
+- an existing analysis summary
+- a recommendation memo
+- a deck source
+- data tables or charts
+- target format and audience
+
+## Supported output modes
+
+- slides
+- email summary
+- Slack update
+- decision brief
+- data export
+- all
+
+## Workflow
+
+1. Find the best available source artifact.
+2. Identify the requested format.
+3. If an audience is specified, adapt through `stakeholder-comms` first.
+4. Generate the export:
+   - slides -> `presentation`, `slide-deck-builder`, or `marp-deck-builder`
+   - email / Slack / brief -> markdown output with the right tone and compression
+   - data -> clean CSV or table exports when the data exists
+5. List the generated artifacts clearly.
+
+## Rules
+
+- Do not fabricate findings or numbers.
+- Match detail level to the delivery format.
+- If the source analysis is partial, note that explicitly in the export.
+- Treat the source analysis or deck as the system of record; exports are derived artifacts.
 """,
         "printing-press": {
             "SKILL.md": """---
