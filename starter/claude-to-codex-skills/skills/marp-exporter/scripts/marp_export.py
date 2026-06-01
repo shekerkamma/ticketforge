@@ -9,8 +9,9 @@ All functions resolve theme name to the correct CSS file path and check
 for npx @marp-team/marp-cli availability before running.
 """
 
-import subprocess
 import shutil
+import os
+import subprocess
 from pathlib import Path
 
 
@@ -89,6 +90,18 @@ def _check_marp_cli():
         return False
 
 
+def _marp_env():
+    """Build an environment for Marp CLI with an explicit browser path when available."""
+    env = dict(os.environ)
+    if "CHROME_PATH" not in env:
+        for candidate in ("chrome", "chromium"):
+            browser = shutil.which(candidate)
+            if browser:
+                env["CHROME_PATH"] = browser
+                break
+    return env
+
+
 def _run_marp(deck_path, theme, output_format):
     """Run Marp CLI to export a deck.
 
@@ -131,6 +144,7 @@ def _run_marp(deck_path, theme, output_format):
             text=True,
             timeout=120,
             cwd=str(deck_path.parent),
+            env=_marp_env(),
         )
     except subprocess.TimeoutExpired:
         raise RuntimeError(

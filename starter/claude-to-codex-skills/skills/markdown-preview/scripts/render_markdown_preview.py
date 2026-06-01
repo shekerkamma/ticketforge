@@ -5,11 +5,23 @@ import argparse
 import html
 import http.server
 import os
+import shutil
 import socketserver
 import subprocess
 import sys
 import threading
 from pathlib import Path
+
+
+def marp_env() -> dict[str, str]:
+    env = dict(os.environ)
+    if "CHROME_PATH" not in env:
+        for candidate in ("chrome", "chromium"):
+            browser = shutil.which(candidate)
+            if browser:
+                env["CHROME_PATH"] = browser
+                break
+    return env
 
 
 def render_markdown(text: str) -> str:
@@ -70,7 +82,13 @@ def maybe_render_marp(input_path: Path, output_path: Path) -> bool:
         str(output_path),
         str(input_path),
     ]
-    result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+    result = subprocess.run(
+        cmd,
+        capture_output=True,
+        text=True,
+        timeout=120,
+        env=marp_env(),
+    )
     return result.returncode == 0 and output_path.exists()
 
 
