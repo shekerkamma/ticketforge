@@ -8,6 +8,9 @@ These skills are staged and ready to install into `~/.codex/skills`:
 
 - `architect`
 - `architecture-to-everything`
+- `ai-strategy-brief`
+- `ai-strategy-researcher`
+- `analytics-to-comms`
 - `session-handoff`
 - `time-skill`
 - `time-tokyo`
@@ -16,8 +19,10 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `code-review-specialist`
 - `contract-reviewer`
 - `content-research`
+- `competitive-intel-sprint`
 - `difficult-conversation-prep`
 - `explainer-graphic`
+- `llm-council`
 - `presentation`
 - `presentation-accessibility`
 - `presentation-content-writer`
@@ -26,6 +31,7 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `presentation-theme`
 - `research-to-strategy`
 - `url-dossier`
+- `vertical-scorer`
 - `watch`
 - `workflow-visualizer`
 - `graphify`
@@ -44,6 +50,10 @@ These skills are not blind copies of the Claude originals. They were rewritten a
 - `content-research`
 - `research-to-strategy`
 - `url-dossier`
+- `llm-council`
+- `competitive-intel-sprint`
+- `analytics-to-comms`
+- `ai-strategy-researcher`
 
 The Codex pattern is:
 
@@ -51,6 +61,12 @@ The Codex pattern is:
 - bundle long supporting knowledge in `references/`
 - use companion skills where they exist
 - avoid Claude-only routing, slash commands, or `AskUserQuestion` dependencies
+
+The strategy/communications wave follows the same rule:
+
+- keep reusable scoring or memo skills as standalone helpers
+- rewrite multi-step orchestrators as chain skills
+- prefer markdown-first outputs, with optional richer export only when the environment supports it
 
 ## What still needs redesign
 
@@ -61,6 +77,11 @@ These categories are not safe to copy 1:1 and should be rewritten before install
 - skills that depend on `AskUserQuestion`
 - skills that depend on `~/.claude/skills/gstack/*`
 - skills that hard-code `~/.claude` session state or slash commands as part of the workflow
+
+Still not ported from the strategy side:
+
+- `ai-strategy-council`
+- Slack/Notion/browser-posting style wrappers that assume external integrations are already installed
 
 ## Inventory your Claude skills
 

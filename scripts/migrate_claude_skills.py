@@ -15,17 +15,24 @@ STAGING_ROOT = REPO_ROOT / "starter" / "claude-to-codex-skills"
 STAGING_SKILLS_DIR = STAGING_ROOT / "skills"
 
 CHAIN_TEMPLATE_SKILLS = {
+    "ai-strategy-researcher",
+    "analytics-to-comms",
     "architect",
     "architecture-to-everything",
+    "competitive-intel-sprint",
     "presentation",
     "content-research",
     "research-to-strategy",
+    "llm-council",
     "url-dossier",
 }
 
 SUPPORTED_SKILLS = {
     "architect",
     "architecture-to-everything",
+    "ai-strategy-brief",
+    "ai-strategy-researcher",
+    "analytics-to-comms",
     "session-handoff",
     "time-skill",
     "time-tokyo",
@@ -37,6 +44,8 @@ SUPPORTED_SKILLS = {
     "workflow-visualizer",
     "graphify",
     "explainer-graphic",
+    "competitive-intel-sprint",
+    "llm-council",
     "presentation",
     "presentation-content-writer",
     "presentation-theme",
@@ -47,6 +56,7 @@ SUPPORTED_SKILLS = {
     "research-to-strategy",
     "watch",
     "url-dossier",
+    "vertical-scorer",
 }
 
 REWRITE_MARKERS = {
@@ -747,6 +757,345 @@ This is a Codex-native chain skill for "analyze this link" requests.
 - Keep raw evidence separate from your interpretation.
 - If the source is a video, rely on frame and transcript evidence instead of title-only summaries.
 - If the source is GitHub, capture repo metadata and key files, not just the README headline.
+""",
+    }
+)
+
+PORT_TEMPLATES.update(
+    {
+        "llm-council": """---
+name: llm-council
+description: Pressure-test a real decision or tradeoff through multiple advisor perspectives, peer review, and synthesis. Use when the user wants multiple viewpoints on a consequential choice, asks to run a council, or needs a decision stress-tested instead of answered once.
+---
+
+# LLM Council
+
+This is the Codex-native version of the council pattern.
+
+## When to use it
+
+Use this for decisions with stakes, competing options, or unclear tradeoffs.
+
+Do not use it for:
+
+- simple factual lookups
+- straightforward writing tasks
+- trivial yes/no questions with no meaningful downside
+
+## Workflow
+
+1. Frame the decision clearly.
+2. Pull in the minimum relevant context from the workspace or linked material.
+3. Run five viewpoints:
+   - The Killer
+   - The Rebuilder
+   - The Maximizer
+   - The Stranger
+   - The Operator
+4. Anonymize the five responses as A-E.
+5. Run a peer review pass over those responses.
+6. Synthesize a chairman verdict.
+7. Save the results if the user wants a durable artifact.
+
+## Required output structure
+
+```markdown
+## Where the Council Agrees
+
+## Where the Council Clashes
+
+## Blind Spots the Council Caught
+
+## The Recommendation
+
+## The One Thing to Do First
+```
+
+## Optional output files
+
+- `council-output/<slug>-report.md`
+- `council-output/<slug>-report.html`
+
+## Rules
+
+- If the question is too vague, ask at most one clarifying question.
+- The final recommendation must pick a side.
+- If subagent fan-out is available, use it. If not, simulate the same five-advisor structure sequentially in one session without collapsing the viewpoints into one voice.
+- Keep advisor responses distinct. Do not smooth out disagreement too early.
+""",
+        "vertical-scorer": """---
+name: vertical-scorer
+description: Score one or more AI verticals or business opportunities against a structured investment-style framework. Use when the user wants to compare opportunities, prioritize a market, or evaluate whether a vertical is structurally attractive for AI.
+---
+
+# Vertical Scorer
+
+Score a vertical using a structured matrix rather than gut feel.
+
+## The seven dimensions
+
+1. Intelligence Ratio
+2. Outsourcing Readiness
+3. TAM Accessibility
+4. Data Moat Potential
+5. Regulatory Friction
+6. Incumbent Vulnerability
+7. Mirage PMF Risk
+
+Score each from `1` to `5` with evidence.
+
+## Research protocol
+
+For each vertical, gather signals on:
+
+- market size and accessibility
+- outsourcing or labor structure
+- regulation and compliance
+- incumbents and fragmentation
+- proof points and failures
+
+## Output format
+
+Produce a scannable scorecard:
+
+```markdown
+VERTICAL SCORECARD: <name>
+
+Dimension | Score | Signal
+--- | --- | ---
+...
+
+COMPOSITE SCORE: XX/35
+VERDICT: GO / CONDITIONAL / WAIT / PASS
+KEY RISK:
+COPILOT TO AUTOPILOT PATH:
+SOURCES:
+```
+
+For multiple verticals, also produce a comparison matrix and a recommendation.
+
+## Rules
+
+- Scores must be backed by evidence, not vibes.
+- Include at least one failure or cautionary signal.
+- If evidence is thin, lower confidence and say so explicitly.
+""",
+        "ai-strategy-brief": """---
+name: ai-strategy-brief
+description: Produce a concise executive decision memo for an AI strategy topic, market, or vertical. Use when the user wants a quick strategic brief, not a full long-form report.
+---
+
+# AI Strategy Brief
+
+Generate a short decision memo a stakeholder can read quickly.
+
+## Workflow
+
+1. Gather focused market, competition, thesis, and risk signals.
+2. Distill them into:
+   - The Signal
+   - The Opportunity
+   - Who Is Winning
+   - The Risk
+   - Framework Fit
+3. End with a verdict and rationale.
+
+## Default output
+
+Write markdown first:
+
+- `strategy-briefs/<slug>-brief.md`
+
+Optional:
+
+- export to `.docx` if the environment has `python-docx` and the user asked for it
+
+## Structure
+
+```markdown
+# Executive Brief: <topic>
+
+## The Signal
+
+## The Opportunity
+
+## Who Is Winning
+
+## The Risk
+
+## Framework Fit
+
+## Verdict
+
+## References
+```
+
+## Rules
+
+- Keep the core memo under roughly 500 words.
+- Lead with the most concrete number or event.
+- Prefer signal over completeness.
+""",
+        "ai-strategy-researcher": """---
+name: ai-strategy-researcher
+description: Research a market, vertical, or AI strategy topic deeply and produce a structured strategy report. Use when the user wants market intelligence, a strategy document, or a researched view of how an AI opportunity should be evaluated.
+---
+
+# AI Strategy Researcher
+
+This is the Codex-native strategy research workflow.
+
+## Research passes
+
+1. Market signals
+2. Competitive proof points
+3. Failure analysis
+4. Unit economics and GTM patterns
+5. Framework application
+
+## Frameworks to apply
+
+- Copilot vs Autopilot
+- Intelligence vs Judgment
+- Mirage PMF risk
+- North Star Metric
+
+## Default outputs
+
+- `strategy-research/<slug>-strategy.md`
+- `strategy-research/<slug>-sources.md`
+
+Optional:
+
+- `.docx` export if requested and the environment supports it
+
+## Report structure
+
+```markdown
+# Strategy Research: <topic>
+
+## Executive Summary
+
+## Market Signal Analysis
+
+## Macro Thesis
+
+## Market Sizing and Vertical Analysis
+
+## Proof Points
+
+## Operational Playbook
+
+## Unit Economics
+
+## Competitive Moats
+
+## Risk Analysis
+
+## Strategic Framework
+
+## Competitive Landscape
+
+## References
+```
+
+## Rules
+
+- Prefer primary and operator-grade sources.
+- Separate evidence from your interpretation.
+- Convert relative dates into absolute dates.
+- If you cannot support a section with evidence, say so instead of padding it.
+""",
+        "competitive-intel-sprint": """---
+name: competitive-intel-sprint
+description: Build a structured competitive intelligence package from a competitor name, video, site, or source bundle. Use when the user wants competitive analysis, a threat assessment, or an executive brief on what a competitor is doing.
+---
+
+# Competitive Intel Sprint
+
+This is a Codex-native chain skill for competitive analysis.
+
+## Companion skills
+
+- `watch`
+- `content-research`
+- `ai-strategy-researcher`
+- `vertical-scorer`
+- `ai-strategy-brief`
+- `presentation`
+
+## Workflow
+
+1. Capture the competitor name, source material, and the comparison lens.
+2. If there is a demo or presentation video, run `watch`.
+3. Build structured source notes with `content-research`.
+4. Add broader market context with `ai-strategy-researcher`.
+5. Score the opportunity or threat with `vertical-scorer`.
+6. Turn the result into an executive brief with `ai-strategy-brief`.
+7. If requested, package the findings into slides through `presentation`.
+
+## Outputs
+
+- `competitive-intel/<slug>-research.md`
+- `competitive-intel/<slug>-market-context.md`
+- `competitive-intel/<slug>-scorecard.md`
+- `competitive-intel/<slug>-brief.md`
+- optional deck outline or slide files
+
+## Deliverable requirements
+
+Always include:
+
+- threat level
+- 3 actionable takeaways
+- win/loss matrix
+- recommended next move
+
+## Rules
+
+- Distinguish between observed product facts, inferred GTM strategy, and speculation.
+- Quote exact claims when they come from videos or marketing material.
+- Treat absence of evidence as uncertainty, not a negative signal.
+""",
+        "analytics-to-comms": """---
+name: analytics-to-comms
+description: Turn a data question and its analysis into a stakeholder-ready communication package. Use when the user wants data analyzed and then translated into an infographic, slide outline, memo, or shareable summary.
+---
+
+# Analytics To Comms
+
+This is a Codex-native chain skill for going from analysis to communication.
+
+## Companion skills
+
+- `explainer-graphic`
+- `presentation`
+
+## Workflow
+
+1. Clarify the data question, audience, and data source.
+2. Run the analysis using the normal repo or environment tools available for the dataset.
+3. Distill:
+   - the headline finding
+   - the key metric
+   - the most important supporting evidence
+4. Build one visual explanation with `explainer-graphic`.
+5. Package the result with `presentation` when a deck is needed.
+6. If no downstream publishing tool exists, write a shareable draft instead of pretending to post anywhere.
+
+## Outputs
+
+- `analytics-comms/<slug>-analysis.md`
+- `analytics-comms/<slug>-key-visual.md` or infographic brief
+- `analytics-comms/<slug>-deck.md` or slide files
+- `analytics-comms/<slug>-share-draft.md`
+
+## Rules
+
+- Never hide the methodology behind the recommendation.
+- Keep the communication layer faithful to the underlying numbers.
+- If confidence is weak, say so in the share draft as well as the analysis.
+- Prefer draft artifacts over fake integrations to Slack or Notion.
 """,
     }
 )
