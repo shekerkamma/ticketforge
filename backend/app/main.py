@@ -58,7 +58,8 @@ async def rate_limit_handler(_request: Request, exc: RateLimitExceeded) -> JSONR
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.app_url],
+    allow_origins=settings.allowed_app_origins(),
+    allow_origin_regex=settings.app_url_regex or None,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

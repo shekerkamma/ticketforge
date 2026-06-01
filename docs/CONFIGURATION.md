@@ -29,6 +29,8 @@ All configuration is via environment variables.
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `APP_URL` | `http://localhost:3000` | Frontend URL (used for CORS and Stripe redirects) |
+| `APP_URLS` | _(empty)_ | Additional allowed frontend origins, comma-separated |
+| `APP_URL_REGEX` | _(empty)_ | Regex for allowed frontend origins, useful for Vercel preview URLs |
 | `API_URL` | `http://localhost:8000` | Backend URL (used for webhook registration) |
 | `REDIS_URL` | `redis://localhost:6379` | Redis connection for ARQ task queue |
 | `JWT_EXPIRY_HOURS` | `24` | JWT token lifetime in hours |
@@ -46,6 +48,8 @@ All configuration is via environment variables.
 These values must stay consistent:
 
 - `APP_URL` is the frontend origin users land on after auth
+- `APP_URLS` can list extra fixed frontend origins that should be allowed
+- `APP_URL_REGEX` can allow dynamic preview origins such as Vercel branch URLs
 - `API_URL` is the backend public origin
 - GitHub OAuth callback URL must be:
   `{API_URL}/api/auth/github/callback`
@@ -55,6 +59,8 @@ Example production set:
 
 ```env
 APP_URL=https://ticketforge.example.com
+APP_URLS=
+APP_URL_REGEX=^https://ticketforge.*\.vercel\.app$
 API_URL=https://api.ticketforge.example.com
 NEXT_PUBLIC_API_URL=https://api.ticketforge.example.com
 ```

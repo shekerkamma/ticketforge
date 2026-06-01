@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+import { AuthButtons } from "@/components/marketing/AuthButtons";
 
 const FEATURES = [
   {
@@ -37,20 +37,7 @@ export default function LandingPage() {
           TicketForge turns GitHub issues into merged pull requests using a
           multi-agent AI pipeline. Label a bug, get a PR.
         </p>
-        <a
-          href={`${API_URL}/api/auth/github`}
-          className="mt-8 inline-flex h-11 items-center rounded-md bg-primary px-6 text-sm font-medium text-white transition-colors hover:bg-primary-hover"
-        >
-          Sign in with GitHub
-        </a>
-        {!process.env.NEXT_PUBLIC_API_URL && (
-          <a
-            href={`${API_URL}/api/auth/dev-login`}
-            className="mt-3 inline-flex h-9 items-center rounded-md border border-border bg-surface-raised px-4 text-xs font-medium text-on-surface-muted transition-colors hover:bg-surface"
-          >
-            Dev Login (skip OAuth)
-          </a>
-        )}
+        <AuthButtons />
         <p className="mt-3 text-xs text-on-surface-muted">
           Free tier: 20 tickets/month. No credit card required.
         </p>

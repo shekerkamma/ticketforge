@@ -1,12 +1,13 @@
 from datetime import datetime, timedelta, timezone
+from urllib.parse import urlencode
 
 import httpx
 from fastapi import APIRouter, HTTPException, Query
 from fastapi.responses import RedirectResponse
-from jose import jwt
+from jose import JWTError, jwt
 from sqlalchemy import select
 
-from app.config import settings
+from app.config import normalize_origin, settings
 from app.db import async_session_factory
 from app.models.team import Team, TeamMember
 from app.models.user import User
@@ -25,6 +26,41 @@ def create_jwt(user_id: str, github_login: str) -> str:
         "exp": datetime.now(timezone.utc) + timedelta(hours=settings.jwt_expiry_hours),
     }
     return jwt.encode(payload, settings.jwt_secret, algorithm="HS256")
+
+
+def create_oauth_state(return_to: str) -> str:
+    payload = {
+        "return_to": return_to,
+        "exp": datetime.now(timezone.utc) + timedelta(minutes=10),
+    }
+    return jwt.encode(payload, settings.jwt_secret, algorithm="HS256")
+
+
+def resolve_return_to_origin(return_to: str | None) -> str:
+    if return_to is None:
+        return settings.app_url
+
+    normalized = normalize_origin(return_to)
+    if normalized is None or not settings.is_allowed_app_origin(normalized):
+        raise HTTPException(400, detail="Invalid return_to origin")
+
+    return normalized
+
+
+def resolve_post_auth_origin(state: str | None) -> str:
+    if state is None:
+        return settings.app_url
+
+    try:
+        payload = jwt.decode(state, settings.jwt_secret, algorithms=["HS256"])
+    except JWTError as exc:
+        raise HTTPException(400, detail="Invalid OAuth state") from exc
+
+    return_to = payload.get("return_to")
+    if not isinstance(return_to, str):
+        raise HTTPException(400, detail="Invalid OAuth state")
+
+    return resolve_return_to_origin(return_to)
 
 
 async def ensure_local_dev_user(session) -> User:
@@ -58,18 +94,24 @@ async def ensure_local_dev_user(session) -> User:
 
 
 @router.get("/github")
-async def github_login():
+async def github_login(return_to: str | None = Query(default=None)):
+    redirect_origin = resolve_return_to_origin(return_to)
     params = {
         "client_id": settings.github_client_id,
         "redirect_uri": f"{settings.api_url}/api/auth/github/callback",
         "scope": "repo read:user",
+        "state": create_oauth_state(redirect_origin),
     }
-    query = "&".join(f"{k}={v}" for k, v in params.items())
-    return RedirectResponse(url=f"{GITHUB_AUTHORIZE_URL}?{query}")
+    return RedirectResponse(url=f"{GITHUB_AUTHORIZE_URL}?{urlencode(params)}")
 
 
 @router.get("/github/callback")
-async def github_callback(code: str = Query(...)):
+async def github_callback(
+    code: str = Query(...),
+    state: str | None = Query(default=None),
+):
+    redirect_origin = resolve_post_auth_origin(state)
+
     async with httpx.AsyncClient() as client:
         # Exchange code for access token
         token_response = await client.post(
@@ -122,17 +164,18 @@ async def github_callback(code: str = Query(...)):
 
         token = create_jwt(str(user.id), user.github_login)
 
-    return RedirectResponse(url=f"{settings.app_url}/auth/callback?token={token}")
+    return RedirectResponse(url=f"{redirect_origin}/auth/callback?token={token}")
 
 
 @router.get("/dev-login")
-async def dev_login():
+async def dev_login(return_to: str | None = Query(default=None)):
     """Local dev only — bypass GitHub OAuth with a minimal local user/team bootstrap."""
+    redirect_origin = resolve_return_to_origin(return_to)
     async with async_session_factory() as session:
         user = await ensure_local_dev_user(session)
 
     token = create_jwt(str(user.id), user.github_login)
-    return RedirectResponse(url=f"{settings.app_url}/auth/callback?token={token}")
+    return RedirectResponse(url=f"{redirect_origin}/auth/callback?token={token}")
 
 
 @router.post("/refresh")

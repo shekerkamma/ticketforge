@@ -1,4 +1,16 @@
+import re
+from urllib.parse import urlparse
+
 from pydantic_settings import BaseSettings
+
+
+def normalize_origin(origin: str) -> str | None:
+    parsed = urlparse(origin.strip())
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+        return None
+    if parsed.path not in {"", "/"} or parsed.params or parsed.query or parsed.fragment:
+        return None
+    return f"{parsed.scheme}://{parsed.netloc}"
 
 
 class Settings(BaseSettings):
@@ -22,6 +34,8 @@ class Settings(BaseSettings):
 
     # App
     app_url: str = "http://localhost:3000"
+    app_urls: str = ""
+    app_url_regex: str = ""
     api_url: str = "http://localhost:8000"
     jwt_secret: str = "change-me-in-production"
     jwt_expiry_hours: int = 24
@@ -38,6 +52,29 @@ class Settings(BaseSettings):
 
     # Encryption
     encryption_key: str = ""
+
+    def allowed_app_origins(self) -> list[str]:
+        origins: list[str] = []
+        raw_origins = [self.app_url]
+        if self.app_urls:
+            raw_origins.extend(part.strip() for part in self.app_urls.split(","))
+
+        for origin in raw_origins:
+            normalized = normalize_origin(origin)
+            if normalized and normalized not in origins:
+                origins.append(normalized)
+
+        return origins
+
+    def is_allowed_app_origin(self, candidate: str) -> bool:
+        normalized = normalize_origin(candidate)
+        if normalized is None:
+            return False
+        if normalized in self.allowed_app_origins():
+            return True
+        if self.app_url_regex:
+            return re.fullmatch(self.app_url_regex, normalized) is not None
+        return False
 
 
 settings = Settings()

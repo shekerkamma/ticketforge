@@ -62,7 +62,7 @@
 
 ## Vercel Frontend Deployment
 
-1. Connect the `frontend/` directory to Vercel
+1. Connect the repo to Vercel and set the project Root Directory to `frontend`
 2. Set environment variables:
    - `NEXT_PUBLIC_API_URL` = `https://api.ticketforge.example.com`
    - `NEXT_PUBLIC_SENTRY_DSN` = your Sentry DSN
@@ -73,6 +73,9 @@ Important:
 - `NEXT_PUBLIC_API_URL` must match the backend public origin
 - That same backend public origin should also be used as `API_URL` on the backend
 - If these drift, GitHub OAuth callbacks and browser API requests will break
+- If you want Vercel preview deployments to support login too, configure backend `APP_URL_REGEX` or `APP_URLS`
+
+For a concrete no-paid-Vercel setup, see [docs/vercel-hobby-setup.md](/home/shekerk/ticketforge/docs/vercel-hobby-setup.md).
 
 ## GitHub OAuth App
 
