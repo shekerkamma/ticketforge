@@ -8,7 +8,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_user
-from app.db import get_session
+from app.db import async_session_factory, get_session
 from app.models.event import Event
 from app.models.pipeline_run import PipelineRun
 from app.models.repository import Repository
@@ -49,7 +49,7 @@ async def event_stream(
                 if last_event_id:
                     query = query.where(Event.id > last_event_id)
 
-                async with get_session().__anext__() as poll_session:
+                async with async_session_factory() as poll_session:
                     result = await poll_session.execute(query)
                     events = list(result.scalars().all())
 
