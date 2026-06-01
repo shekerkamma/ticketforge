@@ -22,10 +22,13 @@ CHAIN_TEMPLATE_SKILLS = {
     "architecture-to-everything",
     "content-repurpose",
     "competitive-intel-sprint",
+    "obsidian-github-sync",
+    "obsidian-vault-manager",
     "presentation",
     "presales-deal-prep",
     "content-research",
     "research-to-strategy",
+    "second-brain-capture",
     "llm-council",
     "url-dossier",
 }
@@ -51,6 +54,8 @@ SUPPORTED_SKILLS = {
     "competitive-intel-sprint",
     "content-repurpose",
     "llm-council",
+    "obsidian-github-sync",
+    "obsidian-vault-manager",
     "presentation",
     "presentation-content-writer",
     "presentation-theme",
@@ -59,6 +64,7 @@ SUPPORTED_SKILLS = {
     "presentation-accessibility",
     "content-research",
     "research-to-strategy",
+    "second-brain-capture",
     "watch",
     "url-dossier",
     "vertical-scorer",
@@ -1309,6 +1315,570 @@ Help the user choose and explain charts that match the analytical question.
 - Prefer simpler charts when they communicate the same point.
 - If the data does not support a chart confidently, say what is missing.
 """,
+    }
+)
+
+PORT_TEMPLATES.update(
+    {
+        "content-research": """---
+name: content-research
+description: Ingest URLs, videos, documents, or repositories into structured research notes, then optionally persist them into a second brain or Obsidian vault backed by GitHub. Use when the user wants content research, source notes, durable knowledge capture, or multi-source synthesis.
+---
+
+# Content Research
+
+This is the Codex-native research ingestion chain.
+
+## Companion skills
+
+- `watch` for video URLs or local video files
+- `url-dossier` for one-off link analysis
+- `second-brain-capture` when the notes should become durable knowledge assets
+- `obsidian-vault-manager` when the user wants the research stored in an Obsidian vault
+- `obsidian-github-sync` when the vault or notes should live in GitHub
+- `graphify` for relationship mapping
+
+## Workflow
+
+1. Parse the sources and classify them:
+   - video
+   - GitHub repo or file
+   - web page or article
+   - local document
+2. Ingest each source with the most reliable available method:
+   - `watch` for video
+   - `gh` plus file inspection for GitHub
+   - web access or `curl` for web pages
+   - direct file reads for local documents
+3. Write one structured markdown note per source.
+4. Produce a cross-source synthesis.
+5. If the user wants durable storage:
+   - use `second-brain-capture` to convert source notes into long-lived notes
+   - use `obsidian-vault-manager` if an Obsidian vault is needed or missing
+   - use `obsidian-github-sync` if the vault or note set should sync through GitHub
+6. If the user wants relationships or graph output, run `graphify` on the note directory.
+
+## Outputs
+
+- `research-notes/<slug>.md` per source
+- `research-notes/INDEX.md`
+- `research-synthesis.md`
+- optional second-brain or vault note paths when the chain continues
+
+## Rules
+
+- Keep raw excerpts separate from synthesis.
+- Preserve source URLs and source types in frontmatter.
+- If the user asks for a second brain, prefer durable markdown notes over chat-only summaries.
+- If the user asks for Obsidian storage, use wikilinks and note-friendly frontmatter.
+- If the user asks for GitHub-backed storage, keep the note set plain-text and repo-friendly.
+""",
+        "second-brain-capture": {
+            "SKILL.md": """---
+name: second-brain-capture
+description: Capture research, meeting notes, findings, or source material into durable markdown notes for a second brain or Obsidian vault. Use when the user asks to save knowledge, create evergreen notes, turn sources into reusable notes, or persist findings beyond the chat.
+---
+
+# Second Brain Capture
+
+Turn raw material into durable notes that can survive across sessions, repos, and tools.
+
+Read `references/note-types.md` before choosing the note structure.
+
+## Workflow
+
+1. Choose the storage root.
+   - Prefer an explicit path from the user.
+   - Otherwise prefer, in order: `second-brain/`, `vault/`, `notes/`, `knowledge/`.
+   - If none exists and the user wants a full vault, use `obsidian-vault-manager`.
+2. Pick the note type:
+   - source note
+   - evergreen note
+   - project note
+   - meeting note
+   - daily note
+3. Create a slugged markdown file in the appropriate subdirectory.
+4. Add frontmatter with at least:
+   - `title`
+   - `created`
+   - `updated`
+   - `tags`
+   - `source` when applicable
+   - `source_type` when applicable
+5. Write the note with clear separation between:
+   - facts or excerpts
+   - synthesis
+   - open questions
+   - next actions
+6. Add wikilinks to related notes when an Obsidian-style vault is in use.
+7. Update one lightweight index or MOC so the note is discoverable.
+8. If the user wants graph-style retrieval, run `graphify` on the note root.
+
+## Default outputs
+
+- `second-brain/sources/<slug>.md`
+- `second-brain/evergreen/<slug>.md`
+- `second-brain/projects/<slug>.md`
+- `second-brain/meetings/<slug>.md`
+- `second-brain/daily/YYYY-MM-DD.md`
+
+Adjust the root when the repo already uses `vault/`, `notes/`, or another explicit notes directory.
+
+## Rules
+
+- Do not hide the original source; keep links and attribution.
+- Prefer small, reusable notes over giant transcript dumps.
+- Use markdown and frontmatter rather than app-specific formats.
+- If the notes are meant for Obsidian, prefer wikilinks over standard relative markdown links.
+- If the note should become presentation, strategy, or research input later, make the takeaway section explicit.
+""",
+            "references/note-types.md": """# Note Types
+
+Use this reference when `second-brain-capture` is active.
+
+## Folder mapping
+
+- `sources/` — direct captures from URLs, videos, repos, or articles
+- `evergreen/` — distilled ideas that should stay useful over time
+- `projects/` — notes tied to one product, client, repo, or initiative
+- `meetings/` — meeting summaries and decisions
+- `daily/` — daily logs and inbox-style captures
+
+## Frontmatter baseline
+
+```yaml
+---
+title: <human title>
+created: <YYYY-MM-DD>
+updated: <YYYY-MM-DD>
+tags: [tag-one, tag-two]
+source: <url-or-path-when-relevant>
+source_type: <video|github|web|meeting|internal>
+status: active
+---
+```
+
+## Source note structure
+
+```markdown
+# <Title>
+
+## TL;DR
+
+## Key claims or facts
+
+## Evidence or excerpts
+
+## Why it matters
+
+## Related notes
+
+## Open questions
+```
+
+## Evergreen note structure
+
+```markdown
+# <Idea>
+
+## Claim
+
+## Why it matters
+
+## Supporting evidence
+
+## Counterpoints or limits
+
+## Related notes
+```
+
+## Meeting note structure
+
+```markdown
+# <Meeting title>
+
+## Context
+
+## Decisions
+
+## Action items
+
+## Risks or blockers
+```
+""",
+        },
+        "obsidian-vault-manager": {
+            "SKILL.md": """---
+name: obsidian-vault-manager
+description: Set up or maintain an Obsidian vault for repo-backed notes, templates, MOCs, and second-brain workflows. Use when the user asks to create an Obsidian vault, organize vault folders, add templates, or make a note system Obsidian-friendly.
+---
+
+# Obsidian Vault Manager
+
+Create or normalize a Git-friendly Obsidian vault.
+
+Read `references/vault-layout.md` before changing the vault structure.
+
+## Workflow
+
+1. Detect the target vault path.
+   - Prefer an explicit path.
+   - Otherwise detect an existing `.obsidian/` directory.
+   - If none exists, choose a repo-local folder such as `vault/`.
+2. If the vault does not exist, bootstrap it with:
+
+```bash
+bash "$CODEX_HOME/skills/obsidian-vault-manager/scripts/bootstrap_vault.sh" "<vault-path>"
+```
+
+3. Ensure the core layout exists:
+   - `_index/`
+   - `_templates/`
+   - `daily/`
+   - `projects/`
+   - `research/`
+   - `sources/`
+   - `evergreen/`
+   - `attachments/`
+   - `archive/`
+4. Ensure starter files exist:
+   - `README.md`
+   - `_index/Second Brain MOC.md`
+   - `_templates/source-note.md`
+   - `_templates/evergreen-note.md`
+   - `_templates/meeting-note.md`
+5. Normalize `.gitignore` so local-only Obsidian state stays out of git.
+6. If the user wants GitHub-backed storage, continue with `obsidian-github-sync`.
+
+## Rules
+
+- Keep the vault plain markdown first; Obsidian is a reader, not the storage format.
+- Do not commit transient Obsidian workspace files unless the user explicitly wants them tracked.
+- Prefer a small, predictable folder structure over plugin-heavy conventions.
+- Preserve existing vault content; add structure without flattening the user's notes.
+""",
+            "references/vault-layout.md": """# Recommended Vault Layout
+
+Use this reference when `obsidian-vault-manager` is active.
+
+## Directory structure
+
+```text
+vault/
+├── .obsidian/
+├── _index/
+├── _templates/
+├── attachments/
+├── archive/
+├── daily/
+├── evergreen/
+├── projects/
+├── research/
+└── sources/
+```
+
+## What each directory is for
+
+- `_index/` — maps of content, indexes, and entry points
+- `_templates/` — note templates
+- `attachments/` — images and binary assets
+- `archive/` — old material that should stay searchable
+- `daily/` — daily capture notes
+- `evergreen/` — distilled reusable ideas
+- `projects/` — project-specific work
+- `research/` — synthesis docs and briefs
+- `sources/` — raw source notes
+
+## Git-safe defaults
+
+Track:
+- markdown notes
+- templates
+- index files
+- minimal `.obsidian/` config only when useful
+
+Ignore:
+- `.obsidian/workspace.json`
+- `.obsidian/workspaces.json`
+- plugin-local state such as `data.json`
+- trash or cache folders
+""",
+            "scripts/bootstrap_vault.sh": """#!/usr/bin/env bash
+set -euo pipefail
+
+VAULT_PATH="${1:-vault}"
+VAULT_PATH="${VAULT_PATH/#\\~/$HOME}"
+
+mkdir -p "$VAULT_PATH/.obsidian/plugins"
+
+for dir in _index _templates attachments archive daily evergreen projects research sources; do
+  mkdir -p "$VAULT_PATH/$dir"
+done
+
+touch "$VAULT_PATH/.obsidian/app.json"
+touch "$VAULT_PATH/.obsidian/appearance.json"
+touch "$VAULT_PATH/.obsidian/community-plugins.json"
+
+GITIGNORE="$VAULT_PATH/.gitignore"
+touch "$GITIGNORE"
+for line in \
+  ".obsidian/cache/" \
+  ".obsidian/workspace.json" \
+  ".obsidian/workspaces.json" \
+  ".obsidian/plugins/*/data.json" \
+  ".trash/" \
+  ".DS_Store"
+do
+  grep -qxF "$line" "$GITIGNORE" || echo "$line" >> "$GITIGNORE"
+done
+
+if [ ! -f "$VAULT_PATH/README.md" ]; then
+  cat > "$VAULT_PATH/README.md" <<'EOF'
+# Obsidian Vault
+
+This vault is structured for Git-friendly, markdown-first knowledge work.
+
+## Entry points
+
+- `_index/Second Brain MOC.md`
+- `projects/`
+- `research/`
+- `sources/`
+EOF
+fi
+
+if [ ! -f "$VAULT_PATH/_index/Second Brain MOC.md" ]; then
+  cat > "$VAULT_PATH/_index/Second Brain MOC.md" <<'EOF'
+# Second Brain MOC
+
+## Recent source notes
+
+## Evergreen notes
+
+## Active projects
+
+## Research themes
+EOF
+fi
+
+if [ ! -f "$VAULT_PATH/_templates/source-note.md" ]; then
+  cat > "$VAULT_PATH/_templates/source-note.md" <<'EOF'
+---
+title:
+created:
+updated:
+tags: []
+source:
+source_type:
+---
+
+# {{title}}
+
+## TL;DR
+
+## Key claims
+
+## Evidence
+
+## Why it matters
+
+## Related notes
+EOF
+fi
+
+if [ ! -f "$VAULT_PATH/_templates/evergreen-note.md" ]; then
+  cat > "$VAULT_PATH/_templates/evergreen-note.md" <<'EOF'
+---
+title:
+created:
+updated:
+tags: []
+---
+
+# {{title}}
+
+## Claim
+
+## Why it matters
+
+## Supporting evidence
+
+## Related notes
+EOF
+fi
+
+if [ ! -f "$VAULT_PATH/_templates/meeting-note.md" ]; then
+  cat > "$VAULT_PATH/_templates/meeting-note.md" <<'EOF'
+---
+title:
+created:
+updated:
+tags: [meeting]
+---
+
+# {{title}}
+
+## Context
+
+## Decisions
+
+## Action items
+
+## Risks
+EOF
+fi
+
+echo "bootstrapped vault at $VAULT_PATH"
+""",
+        },
+        "obsidian-github-sync": {
+            "SKILL.md": """---
+name: obsidian-github-sync
+description: Use GitHub as durable storage for an Obsidian vault or markdown-based second brain. Use when the user asks to sync Obsidian with GitHub, keep notes in a repo, or treat GitHub as the storage layer for their vault.
+---
+
+# Obsidian GitHub Sync
+
+Use Git and GitHub as the storage and sync layer for a vault or second-brain directory.
+
+Read `references/sync-rules.md` before configuring the repo.
+
+## Workflow
+
+1. Identify the vault or notes root.
+2. If the target is not already a git repo, initialize it with:
+
+```bash
+bash "$CODEX_HOME/skills/obsidian-github-sync/scripts/setup_repo_sync.sh" "<vault-path>" "<optional-remote-url>"
+```
+
+3. Verify:
+   - current branch
+   - remote configuration
+   - `.gitignore` safety rules
+4. If the user wants a GitHub repo created and `gh` is available, create or connect the remote.
+5. Use the sync helper when the user wants a snapshot commit:
+
+```bash
+bash "$CODEX_HOME/skills/obsidian-github-sync/scripts/sync_vault.sh" "<vault-path>" "vault snapshot"
+```
+
+## Recommended operating model
+
+- one main branch unless the user needs more complex collaboration
+- pull before editing on a different machine
+- commit after meaningful note changes, not every keystroke
+- push frequently enough that GitHub stays the source of truth
+
+## Rules
+
+- Never store secrets, tokens, or transient browser state in the vault repo.
+- Keep note storage text-first; use Git LFS only if the user knowingly wants large binaries.
+- Ignore Obsidian workspace and plugin-local state by default.
+- If a user wants fully automatic sync, explain the tradeoff before wiring a scheduled commit/push flow.
+""",
+            "references/sync-rules.md": """# Sync Rules
+
+Use this reference when `obsidian-github-sync` is active.
+
+## Safe defaults to track
+
+- `*.md`
+- template files
+- `_index/` MOCs and indexes
+- selected `.obsidian/` config files when they help share the vault structure
+
+## Defaults to ignore
+
+- `.obsidian/workspace.json`
+- `.obsidian/workspaces.json`
+- `.obsidian/cache/`
+- `.obsidian/plugins/*/data.json`
+- OS trash or editor swap files
+
+## GitHub storage guidance
+
+- Prefer one repo per vault or one repo per major knowledge domain.
+- Use SSH remotes when available.
+- Keep commit messages descriptive enough to make note history useful.
+- For private notes, prefer private GitHub repos.
+- If the vault contains large attachments, separate them intentionally or use Git LFS.
+""",
+            "scripts/setup_repo_sync.sh": """#!/usr/bin/env bash
+set -euo pipefail
+
+VAULT_PATH="${1:-.}"
+REMOTE_URL="${2:-}"
+VAULT_PATH="${VAULT_PATH/#\\~/$HOME}"
+
+mkdir -p "$VAULT_PATH"
+cd "$VAULT_PATH"
+
+if [ ! -d .git ]; then
+  git init -b main >/dev/null 2>&1 || git init >/dev/null 2>&1
+fi
+
+current_branch=$(git branch --show-current 2>/dev/null || true)
+if [ "$current_branch" = "master" ]; then
+  git branch -M main >/dev/null 2>&1 || true
+elif [ -z "$current_branch" ]; then
+  git checkout -b main >/dev/null 2>&1 || git switch -c main >/dev/null 2>&1 || true
+fi
+
+GITIGNORE=".gitignore"
+touch "$GITIGNORE"
+for line in \
+  ".obsidian/cache/" \
+  ".obsidian/workspace.json" \
+  ".obsidian/workspaces.json" \
+  ".obsidian/plugins/*/data.json" \
+  ".trash/" \
+  ".DS_Store"
+do
+  grep -qxF "$line" "$GITIGNORE" || echo "$line" >> "$GITIGNORE"
+done
+
+if [ -n "$REMOTE_URL" ]; then
+  if git remote get-url origin >/dev/null 2>&1; then
+    git remote set-url origin "$REMOTE_URL"
+  else
+    git remote add origin "$REMOTE_URL"
+  fi
+fi
+
+echo "repo ready at $VAULT_PATH"
+git status --short
+if git remote get-url origin >/dev/null 2>&1; then
+  echo "origin=$(git remote get-url origin)"
+else
+  echo "origin=unset"
+fi
+""",
+            "scripts/sync_vault.sh": """#!/usr/bin/env bash
+set -euo pipefail
+
+VAULT_PATH="${1:-.}"
+MESSAGE="${2:-vault snapshot}"
+VAULT_PATH="${VAULT_PATH/#\\~/$HOME}"
+
+cd "$VAULT_PATH"
+
+git add -A
+if git diff --cached --quiet; then
+  echo "nothing to commit"
+  exit 0
+fi
+
+git commit -m "$MESSAGE"
+
+if git remote get-url origin >/dev/null 2>&1; then
+  branch=$(git branch --show-current)
+  git push -u origin "$branch"
+else
+  echo "committed locally; origin is not configured"
+fi
+""",
+        },
     }
 )
 

@@ -25,6 +25,8 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `difficult-conversation-prep`
 - `explainer-graphic`
 - `llm-council`
+- `obsidian-github-sync`
+- `obsidian-vault-manager`
 - `presentation`
 - `presentation-accessibility`
 - `presentation-content-writer`
@@ -32,6 +34,7 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `presentation-speaker-notes`
 - `presentation-theme`
 - `research-to-strategy`
+- `second-brain-capture`
 - `url-dossier`
 - `vertical-scorer`
 - `watch`
@@ -55,12 +58,15 @@ These skills are not blind copies of the Claude originals. They were rewritten a
 - `research-to-strategy`
 - `url-dossier`
 - `llm-council`
+- `obsidian-github-sync`
+- `obsidian-vault-manager`
 - `competitive-intel-sprint`
 - `analytics-to-comms`
 - `ai-strategy-researcher`
 - `ai-strategy-council`
 - `presales-deal-prep`
 - `content-repurpose`
+- `second-brain-capture`
 
 The Codex pattern is:
 
@@ -80,6 +86,21 @@ The presales/content/chart wave extends that pattern:
 - presales uses research + positioning + objection handling as one chain
 - content repurposing keeps one source-of-truth note before generating variants
 - chart work is treated as a narrative/encoding problem, not just a graphic choice
+
+The second-brain / Obsidian wave follows the same rule:
+
+- `content-research` can now hand off durable notes into a second brain instead of stopping at temporary research files
+- `second-brain-capture` turns raw findings into reusable markdown notes with frontmatter and note-type conventions
+- `obsidian-vault-manager` bootstraps or normalizes a Git-friendly vault structure
+- `obsidian-github-sync` treats GitHub as the storage layer for the vault instead of relying on app-only sync
+
+Recommended chain:
+
+1. `content-research` to ingest URLs, videos, repos, or documents
+2. `second-brain-capture` to turn the outputs into durable notes
+3. `obsidian-vault-manager` if the notes should live in a proper vault
+4. `obsidian-github-sync` if the vault should use GitHub as the source of truth
+5. `graphify` if the user wants relationship or concept mapping on top
 
 For diagrams, the existing installed pack is already the recommended layer:
 
@@ -101,6 +122,7 @@ These categories are not safe to copy 1:1 and should be rewritten before install
 Still not ported from the strategy side:
 
 - Slack/Notion/browser-posting style wrappers that assume external integrations are already installed
+- the old Obsidian plugin wrapper under `gstack/obsidian-command-center`, which is still too Claude/gstack-specific to copy 1:1
 
 ## Inventory your Claude skills
 
