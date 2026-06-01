@@ -9,6 +9,7 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `architect`
 - `architecture-to-everything`
 - `ai-strategy-brief`
+- `ai-strategy-council`
 - `ai-strategy-researcher`
 - `analytics-to-comms`
 - `session-handoff`
@@ -20,6 +21,7 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `contract-reviewer`
 - `content-research`
 - `competitive-intel-sprint`
+- `content-repurpose`
 - `difficult-conversation-prep`
 - `explainer-graphic`
 - `llm-council`
@@ -34,6 +36,8 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `vertical-scorer`
 - `watch`
 - `workflow-visualizer`
+- `presales-deal-prep`
+- `chart-storyteller`
 - `graphify`
 
 The staged copies live under:
@@ -54,6 +58,9 @@ These skills are not blind copies of the Claude originals. They were rewritten a
 - `competitive-intel-sprint`
 - `analytics-to-comms`
 - `ai-strategy-researcher`
+- `ai-strategy-council`
+- `presales-deal-prep`
+- `content-repurpose`
 
 The Codex pattern is:
 
@@ -68,6 +75,19 @@ The strategy/communications wave follows the same rule:
 - rewrite multi-step orchestrators as chain skills
 - prefer markdown-first outputs, with optional richer export only when the environment supports it
 
+The presales/content/chart wave extends that pattern:
+
+- presales uses research + positioning + objection handling as one chain
+- content repurposing keeps one source-of-truth note before generating variants
+- chart work is treated as a narrative/encoding problem, not just a graphic choice
+
+For diagrams, the existing installed pack is already the recommended layer:
+
+- `workflow-visualizer`
+- `explainer-graphic`
+- `graphify`
+- `architecture-to-everything`
+
 ## What still needs redesign
 
 These categories are not safe to copy 1:1 and should be rewritten before installation:
@@ -80,7 +100,6 @@ These categories are not safe to copy 1:1 and should be rewritten before install
 
 Still not ported from the strategy side:
 
-- `ai-strategy-council`
 - Slack/Notion/browser-posting style wrappers that assume external integrations are already installed
 
 ## Inventory your Claude skills

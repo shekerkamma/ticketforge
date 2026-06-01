@@ -15,12 +15,15 @@ STAGING_ROOT = REPO_ROOT / "starter" / "claude-to-codex-skills"
 STAGING_SKILLS_DIR = STAGING_ROOT / "skills"
 
 CHAIN_TEMPLATE_SKILLS = {
+    "ai-strategy-council",
     "ai-strategy-researcher",
     "analytics-to-comms",
     "architect",
     "architecture-to-everything",
+    "content-repurpose",
     "competitive-intel-sprint",
     "presentation",
+    "presales-deal-prep",
     "content-research",
     "research-to-strategy",
     "llm-council",
@@ -31,6 +34,7 @@ SUPPORTED_SKILLS = {
     "architect",
     "architecture-to-everything",
     "ai-strategy-brief",
+    "ai-strategy-council",
     "ai-strategy-researcher",
     "analytics-to-comms",
     "session-handoff",
@@ -45,6 +49,7 @@ SUPPORTED_SKILLS = {
     "graphify",
     "explainer-graphic",
     "competitive-intel-sprint",
+    "content-repurpose",
     "llm-council",
     "presentation",
     "presentation-content-writer",
@@ -57,6 +62,8 @@ SUPPORTED_SKILLS = {
     "watch",
     "url-dossier",
     "vertical-scorer",
+    "presales-deal-prep",
+    "chart-storyteller",
 }
 
 REWRITE_MARKERS = {
@@ -1096,6 +1103,211 @@ This is a Codex-native chain skill for going from analysis to communication.
 - Keep the communication layer faithful to the underlying numbers.
 - If confidence is weak, say so in the share draft as well as the analysis.
 - Prefer draft artifacts over fake integrations to Slack or Notion.
+""",
+    }
+)
+
+PORT_TEMPLATES.update(
+    {
+        "ai-strategy-council": """---
+name: ai-strategy-council
+description: Combine real market research with a structured council verdict. Use when the user wants evidence-backed strategic judgment rather than generic brainstorming or research alone.
+---
+
+# AI Strategy Council
+
+This is the Codex-native synthesis of `ai-strategy-researcher` and `llm-council`.
+
+## Companion skills
+
+- `ai-strategy-researcher`
+- `llm-council`
+
+## Workflow
+
+1. Clarify the decision question.
+2. Run a rapid market evidence pass using the `ai-strategy-researcher` workflow.
+3. Extract the few evidence points that should constrain the decision.
+4. Run `llm-council` on the evidence-backed question, not the raw vague prompt.
+5. If the council surfaces major blind spots, do a short follow-up research pass.
+6. Produce a final decision package.
+
+## Outputs
+
+- `strategy-council/<slug>-evidence.md`
+- `strategy-council/<slug>-verdict.md`
+- optional `strategy-council/<slug>-report.html`
+
+## Required sections
+
+```markdown
+## The Evidence Says
+
+## Where the Council Agrees
+
+## Where the Council Clashes
+
+## Blind Spots Filled
+
+## The Verdict
+
+## Decision Framework
+
+## The Next Three Moves
+```
+
+## Rules
+
+- Research narrows the decision space first; the council should not operate on generic framing.
+- The verdict must cite specific evidence, not only advisor opinion.
+- If confidence remains low after follow-up research, say exactly why.
+""",
+        "presales-deal-prep": """---
+name: presales-deal-prep
+description: Prepare for a prospect or client meeting with research, positioning, contract risk review, and objection handling. Use when the user wants presales prep, meeting prep, pitch prep, or deal prep for a prospect.
+---
+
+# Presales Deal Prep
+
+This is a Codex-native chain skill for enterprise deal preparation.
+
+## Companion skills
+
+- `content-research`
+- `ai-strategy-brief`
+- `contract-reviewer`
+- `difficult-conversation-prep`
+- `presentation`
+
+## Workflow
+
+1. Capture the prospect, meeting context, and your offering.
+2. Build an account brief with `content-research`.
+3. Turn that into a vertical-aware positioning memo with `ai-strategy-brief`.
+4. If a contract or terms document exists, run `contract-reviewer`.
+5. Build objection handling and conversation scripts with `difficult-conversation-prep`.
+6. If needed, package the pitch angle into slides through `presentation`.
+
+## Outputs
+
+- `presales/<slug>-account-brief.md`
+- `presales/<slug>-positioning-brief.md`
+- `presales/<slug>-contract-review.md` when relevant
+- `presales/<slug>-meeting-prep.md`
+- optional slide outline or deck draft
+
+## Required cheat sheet
+
+Always produce a compact one-page summary with:
+
+- 3 key facts about the prospect
+- your positioning angle
+- top 3 objections and responses
+- recommended opening line
+
+## Rules
+
+- Prefer concrete company signals over generic vertical boilerplate.
+- Keep legal review separate from sales positioning.
+- If no contract exists, say that explicitly instead of implying it was checked.
+""",
+        "content-repurpose": """---
+name: content-repurpose
+description: Turn one source asset into multiple platform-specific content outputs. Use when the user wants a video, article, transcript, notes, or source document repurposed into hooks, posts, captions, outlines, or a content calendar.
+---
+
+# Content Repurpose
+
+This is a Codex-native content repurposing chain skill.
+
+## Companion skills
+
+- `watch` for video sources
+- `content-research` for URL or document ingestion
+- `presentation` when the source should become a talk or deck
+
+## Workflow
+
+1. Capture the source asset and target platforms.
+2. Ingest the source:
+   - video -> `watch`
+   - article, URL, doc -> `content-research`
+3. Extract:
+   - core thesis
+   - 3-7 atomic ideas
+   - strongest quotes or hooks
+   - reusable proof points
+4. Generate platform-specific outputs such as:
+   - short hooks
+   - LinkedIn posts
+   - X threads
+   - email outline
+   - captions
+   - content calendar
+5. Keep one source-of-truth note that shows which outputs came from which idea.
+
+## Outputs
+
+- `content-repurpose/<slug>-source.md`
+- `content-repurpose/<slug>-idea-map.md`
+- `content-repurpose/<slug>-outputs.md`
+
+## Rules
+
+- Do not invent claims that are not in the source.
+- Keep platform variations faithful to the same core idea set.
+- Separate extraction from rewriting so the lineage is visible.
+""",
+        "chart-storyteller": """---
+name: chart-storyteller
+description: Turn data findings into clear chart recommendations and narrative annotations. Use when the user wants to decide what chart to use, how to explain a chart, or how to present quantitative findings clearly.
+---
+
+# Chart Storyteller
+
+Help the user choose and explain charts that match the analytical question.
+
+## Workflow
+
+1. Identify the analytical task:
+   - comparison
+   - trend
+   - composition
+   - distribution
+   - relationship
+   - ranking
+2. Recommend the most appropriate chart type and explain why.
+3. Provide:
+   - title
+   - takeaway sentence
+   - axis or encoding guidance
+   - annotation ideas
+   - common failure modes
+4. If the user already has a chart, critique it and propose a stronger version.
+
+## Output structure
+
+```markdown
+# Chart Recommendation
+
+## Best Chart Type
+
+## Why This Fits
+
+## Narrative Takeaway
+
+## Encoding Guidance
+
+## Annotation Plan
+
+## Common Mistakes To Avoid
+```
+
+## Rules
+
+- Match the chart to the question, not to aesthetic preference.
+- Prefer simpler charts when they communicate the same point.
+- If the data does not support a chart confidently, say what is missing.
 """,
     }
 )
