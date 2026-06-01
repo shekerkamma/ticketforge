@@ -37,8 +37,12 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `content-repurpose`
 - `difficult-conversation-prep`
 - `explainer-graphic`
+- `install-marp`
 - `llm-council`
 - `log-performance`
+- `markdown-preview`
+- `marp-deck-builder`
+- `marp-exporter`
 - `morning-briefing`
 - `obsidian-github-sync`
 - `obsidian-vault-manager`
@@ -58,6 +62,7 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `slide-deck-builder`
 - `tune-voice`
 - `url-dossier`
+- `video-to-deck`
 - `vertical-scorer`
 - `watch`
 - `workflow-visualizer`
@@ -93,6 +98,8 @@ These skills are not blind copies of the Claude originals. They were rewritten a
 - `obsidian-github-sync`
 - `obsidian-vault-manager`
 - `outreach-architect`
+- `marp-deck-builder`
+- `marp-exporter`
 - `printing-press`
 - `precall-briefer`
 - `competitive-intel-sprint`
@@ -106,6 +113,7 @@ These skills are not blind copies of the Claude originals. They were rewritten a
 - `slide-deck-builder`
 - `ss`
 - `tune-voice`
+- `video-to-deck`
 
 The Codex pattern is:
 
@@ -193,6 +201,23 @@ Recommended chain:
 8. `tune-voice` once enough entries exist
 9. `content-weekly-report` at the end of the week
 10. `slide-deck-builder` when the same material needs presentation form
+
+The slide / Marp / preview wave is now covered too:
+
+- `slide-deck-builder` remains the general visual-deck path
+- `marp-deck-builder` is the markdown-slide path when the user wants `.marp.md`
+- `marp-exporter` lints and renders Marp decks with vendored helpers and bundled themes
+- `install-marp` handles environment setup for real Marp exports
+- `markdown-preview` gives a quick local HTML preview for ordinary markdown and `.marp.md`
+- `video-to-deck` chains `watch` + research + deck generation for video-driven presentation workflows
+
+Recommended chain:
+
+1. `video-to-deck` if the source material is a video
+2. `slide-deck-builder` for general presentation work
+3. `marp-deck-builder` when the user wants markdown-native slide source
+4. `marp-exporter` for lint + HTML/PDF output
+5. `markdown-preview` for quick local review of markdown or deck source
 
 The `printing-press` migration is intentionally lean:
 

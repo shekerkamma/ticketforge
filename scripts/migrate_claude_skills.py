@@ -34,6 +34,10 @@ CHAIN_TEMPLATE_SKILLS = {
     "content-weekly-report",
     "competitive-intel-sprint",
     "crm-hygiene-enforcer",
+    "install-marp",
+    "markdown-preview",
+    "marp-deck-builder",
+    "marp-exporter",
     "morning-briefing",
     "obsidian-github-sync",
     "obsidian-vault-manager",
@@ -50,6 +54,7 @@ CHAIN_TEMPLATE_SKILLS = {
     "slide-deck-builder",
     "ss",
     "tune-voice",
+    "video-to-deck",
     "llm-council",
     "url-dossier",
 }
@@ -86,8 +91,12 @@ SUPPORTED_SKILLS = {
     "explainer-graphic",
     "competitive-intel-sprint",
     "content-repurpose",
+    "install-marp",
     "llm-council",
     "log-performance",
+    "markdown-preview",
+    "marp-deck-builder",
+    "marp-exporter",
     "morning-briefing",
     "obsidian-github-sync",
     "obsidian-vault-manager",
@@ -111,6 +120,7 @@ SUPPORTED_SKILLS = {
     "presales-deal-prep",
     "slide-deck-builder",
     "tune-voice",
+    "video-to-deck",
     "chart-storyteller",
     "carousel-to-deck",
 }
@@ -2519,6 +2529,389 @@ This is a Codex-native chain skill for turning a topic or document into a deck s
 - Keep speaker-support copy tight; do not write essays on slides.
 - If you cannot generate a real `.pptx`, say so and provide the best deck source available.
 """,
+        "install-marp": """---
+name: install-marp
+description: Check for Node/npm and install or verify Marp CLI so markdown slide decks can be rendered to HTML, PDF, or PPTX. Use when the user asks to install Marp, set up markdown slide generation, or enable Marp exports.
+---
+
+# Install Marp
+
+Use this skill when the user explicitly wants Marp available in the environment.
+
+## Workflow
+
+1. Check prerequisites:
+
+```bash
+which npm
+npm --version
+```
+
+2. Check whether Marp is already available:
+
+```bash
+npx @marp-team/marp-cli --version
+```
+
+3. If missing, install it:
+
+```bash
+npm install -g @marp-team/marp-cli
+```
+
+4. Verify:
+
+```bash
+marp --version
+```
+
+## Rules
+
+- Do not install Marp unless the user wants it or the workflow genuinely depends on it.
+- Prefer user-scoped installs over root installs.
+- If npm is missing, say that Node.js/npm must be installed first.
+- Always verify the installed version after setup.
+""",
+        "marp-deck-builder": """---
+name: marp-deck-builder
+description: Create or update a `.marp.md` presentation deck from a memo, research pack, topic outline, or existing deck notes. Use when the user asks for a Marp deck, markdown slide deck, or wants slides in Marp format instead of HTML-only presentation output.
+---
+
+# Marp Deck Builder
+
+This is the Marp-specific deck-authoring skill.
+
+Read these references before writing the deck:
+
+- `references/deck_skeleton.marp.md`
+- `references/marp_components.md`
+
+## Workflow
+
+1. Confirm the source material:
+   - topic only
+   - memo
+   - research pack
+   - proposal or architecture brief
+2. Build the deck as `.marp.md`, not plain markdown.
+3. Use the skeleton and component guidance to ensure:
+   - valid Marp frontmatter
+   - explicit slide boundaries
+   - one job per slide
+   - HTML component usage where it improves the deck
+4. If the content needs narrative shaping first, use `presentation` or `presentation-content-writer`, then convert the result into Marp.
+5. If the user wants rendered outputs, hand the finished deck to `marp-exporter`.
+
+## Rules
+
+- Keep the output in `.marp.md` form.
+- Do not mix generic markdown notes with a deck source file.
+- If the deck is data-heavy, prefer componentized slides and explicit takeaway slides.
+- If the environment cannot render Marp yet, still produce a valid `.marp.md` source.
+""",
+        "marp-exporter": """---
+name: marp-exporter
+description: Lint and export a `.marp.md` deck to HTML or PDF using the vendored Marp helper scripts and bundled themes. Use when the user wants to preview, share, print, or validate a Marp deck after authoring it.
+---
+
+# Marp Exporter
+
+Use this skill after a `.marp.md` deck already exists.
+
+## Bundled tools
+
+- `scripts/marp_linter.py`
+- `scripts/marp_export.py`
+- bundled theme CSS under `assets/themes/`
+
+## Workflow
+
+1. Lint the deck first:
+
+```bash
+python3 "$CODEX_HOME/skills/marp-exporter/scripts/marp_linter.py" <deck.marp.md>
+```
+
+2. If Marp CLI is unavailable, stop and use `install-marp`.
+3. Export to HTML and/or PDF:
+
+```bash
+python3 "$CODEX_HOME/skills/marp-exporter/scripts/marp_export.py" <deck.marp.md> analytics both
+```
+
+4. If the user needs PPTX and Marp CLI is installed, use direct Marp CLI:
+
+```bash
+marp <deck.marp.md> -o <deck.pptx>
+```
+
+## Rules
+
+- Lint before export whenever the deck changed materially.
+- Treat the `.marp.md` file as the source of truth; exports are generated artifacts.
+- If export fails, surface the exact Marp or theme error instead of guessing.
+- Use the bundled themes unless the deck already ships with its own `themes/` directory.
+""",
+        "markdown-preview": {
+            "SKILL.md": """---
+name: markdown-preview
+description: Render a markdown file to a quick local HTML preview, with Marp-aware handling for `.marp.md` decks when possible. Use when the user wants to preview markdown, inspect a README or note in the browser, or quickly render markdown without a full publishing flow.
+---
+
+# Markdown Preview
+
+Use this skill for quick local previews of markdown files.
+
+## Workflow
+
+1. Identify the target markdown file.
+2. If the file is a `.marp.md` deck and Marp is available, prefer a Marp HTML render.
+3. Otherwise render a lightweight HTML preview with the bundled script:
+
+```bash
+python3 "$CODEX_HOME/skills/markdown-preview/scripts/render_markdown_preview.py" <input.md>
+```
+
+4. The script prints the output HTML path. If the user wants a live local server, rerun with:
+
+```bash
+python3 "$CODEX_HOME/skills/markdown-preview/scripts/render_markdown_preview.py" <input.md> --serve
+```
+
+## Rules
+
+- Prefer preview generation over editing the original markdown.
+- If markdown parser libraries are missing, the script falls back to a plain-text HTML wrapper instead of failing.
+- For Marp decks, keep `.marp.md` as the source and treat preview HTML as disposable output.
+""",
+            "scripts/render_markdown_preview.py": """#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import html
+import http.server
+import os
+import socketserver
+import subprocess
+import sys
+import threading
+from pathlib import Path
+
+
+def render_markdown(text: str) -> str:
+    try:
+        import markdown  # type: ignore
+
+        return markdown.markdown(
+            text,
+            extensions=["fenced_code", "tables", "toc"],
+        )
+    except Exception:
+        pass
+
+    try:
+        from cmarkgfm import github_flavored_markdown_to_html  # type: ignore
+
+        return github_flavored_markdown_to_html(text)
+    except Exception:
+        pass
+
+    try:
+        import commonmark  # type: ignore
+
+        return commonmark.commonmark(text)
+    except Exception:
+        pass
+
+    return "<pre>{}</pre>".format(html.escape(text))
+
+
+def maybe_render_marp(input_path: Path, output_path: Path) -> bool:
+    if input_path.suffixes[-2:] != [".marp", ".md"]:
+        return False
+
+    marp = None
+    for candidate in (["marp"], ["npx", "@marp-team/marp-cli"]):
+        try:
+            result = subprocess.run(
+                [*candidate, "--version"],
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+            if result.returncode == 0:
+                marp = candidate
+                break
+        except Exception:
+            continue
+
+    if marp is None:
+        return False
+
+    cmd = [
+        *marp,
+        "--html",
+        "--allow-local-files",
+        "--output",
+        str(output_path),
+        str(input_path),
+    ]
+    result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+    return result.returncode == 0 and output_path.exists()
+
+
+def build_html(title: str, body: str) -> str:
+    return f\"\"\"<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{html.escape(title)}</title>
+  <style>
+    body {{
+      margin: 40px auto;
+      max-width: 860px;
+      padding: 0 24px 64px;
+      font: 18px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #1f2937;
+      background: #f8fafc;
+    }}
+    main {{
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }}
+    pre {{
+      overflow-x: auto;
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 12px;
+    }}
+    code {{
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }}
+    table {{
+      border-collapse: collapse;
+      width: 100%;
+    }}
+    td, th {{
+      border: 1px solid #cbd5e1;
+      padding: 8px 10px;
+      text-align: left;
+    }}
+    blockquote {{
+      border-left: 4px solid #94a3b8;
+      margin-left: 0;
+      padding-left: 16px;
+      color: #475569;
+    }}
+    img {{
+      max-width: 100%;
+      height: auto;
+    }}
+  </style>
+</head>
+<body>
+  <main>
+    {body}
+  </main>
+</body>
+</html>
+\"\"\"
+
+
+def serve_directory(directory: Path, port: int) -> None:
+    os.chdir(directory)
+    handler = http.server.SimpleHTTPRequestHandler
+    with socketserver.TCPServer(("127.0.0.1", port), handler) as httpd:
+        print(f"serving http://127.0.0.1:{port}/")
+        httpd.serve_forever()
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Render a markdown file to HTML preview.")
+    parser.add_argument("input", help="Input markdown file")
+    parser.add_argument("--output", help="Output HTML path")
+    parser.add_argument("--serve", action="store_true", help="Serve the output directory locally")
+    parser.add_argument("--port", type=int, default=8765, help="Port for --serve")
+    args = parser.parse_args()
+
+    input_path = Path(args.input).resolve()
+    if not input_path.exists():
+        print(f"missing input: {input_path}", file=sys.stderr)
+        return 1
+
+    if args.output:
+        output_path = Path(args.output).resolve()
+    else:
+        suffix = ".html"
+        output_path = input_path.with_suffix(suffix)
+        if input_path.name.endswith(".marp.md"):
+            output_path = input_path.with_name(input_path.name[:-3] + ".html")
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    if not maybe_render_marp(input_path, output_path):
+        text = input_path.read_text(encoding="utf-8")
+        body = render_markdown(text)
+        output_path.write_text(build_html(input_path.name, body), encoding="utf-8")
+
+    print(output_path)
+
+    if args.serve:
+        server_dir = output_path.parent
+        thread = threading.Thread(
+            target=serve_directory,
+            args=(server_dir, args.port),
+            daemon=False,
+        )
+        thread.start()
+        thread.join()
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+""",
+        },
+        "video-to-deck": """---
+name: video-to-deck
+description: Turn a video URL or local video file into a research-backed presentation package. Use when the user wants to convert a video into slides, a deck outline, a Marp deck, or a richer explainer package instead of just a transcript.
+---
+
+# Video To Deck
+
+This is a Codex-native chain skill for going from video to presentation artifacts.
+
+## Workflow
+
+1. Run `watch` on the video to extract transcript, frames, and structure.
+2. Use `content-research` or `url-dossier` to enrich the topic with supporting sources.
+3. If the concept benefits from a visual analogy, use `explainer-graphic`.
+4. Build the slide artifact:
+   - `slide-deck-builder` for HTML or presentation-source output
+   - `marp-deck-builder` if the user wants markdown slides
+5. If the user needs rendered Marp outputs, finish with `marp-exporter`.
+
+## Output options
+
+- transcript summary
+- research note
+- explainer graphic
+- slide outline
+- `.marp.md` deck
+- rendered HTML or PDF deck
+
+## Rules
+
+- Stop if the video extraction failed; do not fake the downstream deck.
+- Keep the deck anchored to what the video actually argues or demonstrates.
+- Separate source-backed facts from your own synthesis.
+- If the user wants a narrow section only, scope the deck to that segment instead of summarizing the full video.
+""",
         "printing-press": {
             "SKILL.md": """---
 name: printing-press
@@ -3358,16 +3751,25 @@ def resolve_user_home() -> Path:
 
 USER_HOME = resolve_user_home()
 CLAUDE_SKILLS_DIR = USER_HOME / ".claude" / "skills"
-WATCH_SOURCE_ROOT = CLAUDE_SKILLS_DIR / "watch"
 SOURCE_BUNDLES: dict[str, dict[str, str]] = {
     "watch": {
-        "scripts/download.py": "scripts/download.py",
-        "scripts/frames.py": "scripts/frames.py",
-        "scripts/setup.py": "scripts/setup.py",
-        "scripts/transcribe.py": "scripts/transcribe.py",
-        "scripts/watch.py": "scripts/watch.py",
-        "scripts/whisper.py": "scripts/whisper.py",
-    }
+        "watch/scripts/download.py": "scripts/download.py",
+        "watch/scripts/frames.py": "scripts/frames.py",
+        "watch/scripts/setup.py": "scripts/setup.py",
+        "watch/scripts/transcribe.py": "scripts/transcribe.py",
+        "watch/scripts/watch.py": "scripts/watch.py",
+        "watch/scripts/whisper.py": "scripts/whisper.py",
+    },
+    "marp-deck-builder": {
+        "ai-analyst/templates/deck_skeleton.marp.md": "references/deck_skeleton.marp.md",
+        "ai-analyst/templates/marp_components.md": "references/marp_components.md",
+    },
+    "marp-exporter": {
+        "ai-analyst/helpers/marp_export.py": "scripts/marp_export.py",
+        "ai-analyst/helpers/marp_linter.py": "scripts/marp_linter.py",
+        "ai-analyst/themes/analytics-light.css": "assets/themes/analytics-light.css",
+        "ai-analyst/themes/analytics-dark.css": "assets/themes/analytics-dark.css",
+    },
 }
 
 
@@ -3573,7 +3975,7 @@ def copy_source_bundle(skill_name: str, skill_dir: Path) -> None:
         return
 
     for source_rel, dest_rel in bundle.items():
-        source_path = WATCH_SOURCE_ROOT / source_rel
+        source_path = CLAUDE_SKILLS_DIR / source_rel
         if not source_path.exists():
             raise FileNotFoundError(f"Missing source bundle file: {source_path}")
         target = skill_dir / dest_rel
@@ -3624,6 +4026,31 @@ def patch_watch_bundle(skill_dir: Path) -> None:
     whisper_path.write_text(whisper_text, encoding="utf-8")
 
 
+def patch_marp_bundle(skill_dir: Path) -> None:
+    export_path = skill_dir / "scripts" / "marp_export.py"
+    export_text = export_path.read_text(encoding="utf-8")
+    export_text = export_text.replace(
+        "    deck_dir = Path(deck_path).resolve().parent\n"
+        "    # Search up to 3 levels up\n"
+        "    for parent in [deck_dir] + list(deck_dir.parents)[:3]:\n"
+        '        themes_dir = parent / "themes"\n'
+        "        if themes_dir.is_dir():\n"
+        "            return themes_dir\n"
+        "    return None\n",
+        "    deck_dir = Path(deck_path).resolve().parent\n"
+        '    bundled_themes = Path(__file__).resolve().parents[1] / "assets" / "themes"\n'
+        "    if bundled_themes.is_dir():\n"
+        "        return bundled_themes\n\n"
+        "    # Search up to 3 levels up\n"
+        "    for parent in [deck_dir] + list(deck_dir.parents)[:3]:\n"
+        '        themes_dir = parent / "themes"\n'
+        "        if themes_dir.is_dir():\n"
+        "            return themes_dir\n"
+        "    return None\n",
+    )
+    export_path.write_text(export_text, encoding="utf-8")
+
+
 def write_template_bundle(skill_name: str, skill_dir: Path, rendered: TemplateValue) -> None:
     if isinstance(rendered, str):
         (skill_dir / "SKILL.md").write_text(rendered, encoding="utf-8")
@@ -3636,6 +4063,8 @@ def write_template_bundle(skill_name: str, skill_dir: Path, rendered: TemplateVa
     copy_source_bundle(skill_name, skill_dir)
     if skill_name == "watch":
         patch_watch_bundle(skill_dir)
+    if skill_name == "marp-exporter":
+        patch_marp_bundle(skill_dir)
 
 
 def stage_skills(selected_names: list[str], extra_roots: Iterable[str] | None = None) -> int:
