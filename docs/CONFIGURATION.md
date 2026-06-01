@@ -2,7 +2,12 @@
 
 ## Environment Variables
 
-All configuration is via environment variables. Copy `.env.example` to `.env` and fill in values.
+All configuration is via environment variables.
+
+- Production backend/worker variables: copy [/.env.example](/home/shekerk/ticketforge/.env.example) to `.env`
+- Local backend variables: copy [backend/.env.example](/home/shekerk/ticketforge/backend/.env.example) to `backend/.env`
+- Frontend local variables: copy [frontend/.env.example](/home/shekerk/ticketforge/frontend/.env.example) if needed
+- Frontend Vercel reference: [frontend/.env.vercel.example](/home/shekerk/ticketforge/frontend/.env.vercel.example)
 
 ### Required
 
@@ -15,6 +20,9 @@ All configuration is via environment variables. Copy `.env.example` to `.env` an
 | `ANTHROPIC_API_KEY` | Anthropic API key for Claude |
 | `JWT_SECRET` | Secret key for JWT token signing (use a strong random value) |
 | `ENCRYPTION_KEY` | Fernet-compatible key for encrypting GitHub tokens at rest |
+| `POSTGRES_USER` | PostgreSQL username for `docker-compose.prod.yml` |
+| `POSTGRES_PASSWORD` | PostgreSQL password for `docker-compose.prod.yml` |
+| `POSTGRES_DB` | PostgreSQL database name for `docker-compose.prod.yml` |
 
 ### Optional
 
@@ -29,6 +37,27 @@ All configuration is via environment variables. Copy `.env.example` to `.env` an
 | `STRIPE_PRICE_ID_TEAM` | _(empty)_ | Stripe Price ID for the Team plan |
 | `SENTRY_DSN` | _(empty)_ | Sentry DSN for backend error tracking |
 | `NEXT_PUBLIC_SENTRY_DSN` | _(empty)_ | Sentry DSN for frontend error tracking |
+| `LOCAL_DEV_GITHUB_LOGIN` | `local-dev` | Local identity used by `/api/auth/dev-login` when bootstrapping a fresh DB |
+| `LOCAL_DEV_EMAIL` | `local-dev@example.com` | Local dev email used for `/api/auth/dev-login` |
+| `LOCAL_DEV_TEAM_NAME` | `Local Dev Team` | Local team name created by `/api/auth/dev-login` |
+
+## Production URL Rules
+
+These values must stay consistent:
+
+- `APP_URL` is the frontend origin users land on after auth
+- `API_URL` is the backend public origin
+- GitHub OAuth callback URL must be:
+  `{API_URL}/api/auth/github/callback`
+- Frontend `NEXT_PUBLIC_API_URL` must point at the same backend origin as `API_URL`
+
+Example production set:
+
+```env
+APP_URL=https://ticketforge.example.com
+API_URL=https://api.ticketforge.example.com
+NEXT_PUBLIC_API_URL=https://api.ticketforge.example.com
+```
 
 ## Repository Configuration
 

@@ -17,7 +17,7 @@ class DockerService:
         self._image_pulled = False
 
     def ensure_image(self) -> None:
-        if self._image_pulled:
+        if getattr(self, "_image_pulled", False):
             return
         try:
             self.client.images.get(self.IMAGE_NAME)

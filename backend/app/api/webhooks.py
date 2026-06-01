@@ -51,10 +51,10 @@ async def github_webhook(
         merged = pr.get("merged", False)
 
         async with async_session_factory() as session:
-            result = await session.execute(
+            pipeline_run_result = await session.execute(
                 select(PipelineRun).where(PipelineRun.pr_number == pr_number)
             )
-            pipeline_run = result.scalar_one_or_none()
+            pipeline_run = pipeline_run_result.scalar_one_or_none()
             if pipeline_run:
                 pipeline_run.pr_status = "merged" if merged else "rejected"
                 await session.commit()
@@ -77,13 +77,13 @@ async def github_webhook(
 
     async with async_session_factory() as session:
         # Find the repository
-        result = await session.execute(
+        repository_result = await session.execute(
             select(Repository).where(
                 Repository.github_repo_id == github_repo_id,
                 Repository.is_active.is_(True),
             )
         )
-        repo = result.scalar_one_or_none()
+        repo = repository_result.scalar_one_or_none()
 
         if not repo:
             return {"received": True, "action": "ignored", "reason": "repo not registered"}

@@ -1,4 +1,5 @@
 import uuid
+from typing import cast
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field, field_validator
@@ -154,11 +155,11 @@ async def update_repo(
         raise HTTPException(404, detail="Repository not found")
 
     if body.trigger_labels is not None:
-        repo.trigger_labels = body.trigger_labels
+        repo.trigger_labels = cast(dict, body.trigger_labels)
     if body.is_active is not None:
         repo.is_active = body.is_active
     if body.config is not None:
-        repo.config = body.config
+        repo.config = cast(dict, body.config)
 
     await session.commit()
     await session.refresh(repo)

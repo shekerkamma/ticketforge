@@ -1,10 +1,11 @@
 import uuid
 
+from arq import create_pool
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.api.deps import get_current_user, require_team_admin
+from app.api.deps import get_current_user
 from app.db import get_session
 from app.models.pipeline_run import PipelineRun
 from app.models.ticket import Ticket
@@ -23,28 +24,31 @@ async def retry_pipeline(
     # Check admin access
     from app.models.team import TeamMember
 
-    result = await session.execute(
+    membership_result = await session.execute(
         select(TeamMember).where(
             TeamMember.team_id == team_id,
             TeamMember.user_id == user.id,
         )
     )
-    member = result.scalar_one_or_none()
+    member = membership_result.scalar_one_or_none()
     if not member or member.role not in ("owner", "admin"):
         raise HTTPException(403, detail="Admin access required")
 
     # Load ticket
-    result = await session.execute(
+    ticket_result = await session.execute(
         select(Ticket).where(Ticket.id == ticket_id)
     )
-    ticket = result.scalar_one_or_none()
+    ticket = ticket_result.scalar_one_or_none()
     if not ticket:
         raise HTTPException(404, detail="Ticket not found")
 
     if ticket.status not in ("escalated", "failed"):
         raise HTTPException(
             400,
-            detail=f"Cannot retry ticket with status '{ticket.status}'. Only 'escalated' or 'failed' tickets can be retried.",
+            detail=(
+                f"Cannot retry ticket with status '{ticket.status}'. "
+                "Only 'escalated' or 'failed' tickets can be retried."
+            ),
         )
 
     # Create new pipeline run
@@ -59,7 +63,6 @@ async def retry_pipeline(
 
     # Enqueue pipeline task
     try:
-        from arq import create_pool
         from app.worker import WorkerSettings
 
         redis = await create_pool(WorkerSettings.redis_settings)

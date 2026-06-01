@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_user, require_team_admin
 from app.db import get_session
+from app.models.repository import Repository
 from app.models.team import Team, TeamMember
 from app.models.user import User
 
@@ -27,19 +28,21 @@ async def list_teams(
         .join(TeamMember, TeamMember.team_id == Team.id)
         .where(TeamMember.user_id == user.id)
     )
-    teams = []
+    teams: list[dict[str, str | int | None]] = []
     for team, role in result.all():
         count_result = await session.execute(
             select(func.count()).select_from(TeamMember).where(TeamMember.team_id == team.id)
         )
-        member_count = count_result.scalar()
-        teams.append({
-            "id": str(team.id),
-            "name": team.name,
-            "plan": team.plan,
-            "role": role,
-            "member_count": member_count,
-        })
+        member_count = count_result.scalar() or 0
+        teams.append(
+            {
+                "id": str(team.id),
+                "name": team.name,
+                "plan": team.plan,
+                "role": role,
+                "member_count": member_count,
+            }
+        )
     return {"teams": teams}
 
 
@@ -58,7 +61,12 @@ async def create_team(
     await session.commit()
     await session.refresh(team)
 
-    return {"id": str(team.id), "name": team.name, "plan": team.plan, "owner_id": str(team.owner_id)}
+    return {
+        "id": str(team.id),
+        "name": team.name,
+        "plan": team.plan,
+        "owner_id": str(team.owner_id),
+    }
 
 
 @router.get("/{team_id}")
@@ -68,14 +76,14 @@ async def get_team(
     session: AsyncSession = Depends(get_session),
 ):
     # Verify membership
-    result = await session.execute(
+    membership_result = await session.execute(
         select(TeamMember).where(TeamMember.team_id == team_id, TeamMember.user_id == user.id)
     )
-    if not result.scalar_one_or_none():
+    if not membership_result.scalar_one_or_none():
         raise HTTPException(403, detail="Not a member of this team")
 
-    result = await session.execute(select(Team).where(Team.id == team_id))
-    team = result.scalar_one_or_none()
+    team_result = await session.execute(select(Team).where(Team.id == team_id))
+    team = team_result.scalar_one_or_none()
     if not team:
         raise HTTPException(404, detail="Team not found")
 
@@ -90,10 +98,7 @@ async def get_team(
         for login, avatar, role in result.all()
     ]
 
-    # Get repos
-    from app.models.repository import Repository
-
-    result = await session.execute(
+    repository_result = await session.execute(
         select(Repository).where(Repository.team_id == team_id)
     )
     repos = [
@@ -103,7 +108,7 @@ async def get_team(
             "is_active": r.is_active,
             "trigger_labels": r.trigger_labels,
         }
-        for r in result.scalars().all()
+        for r in repository_result.scalars().all()
     ]
 
     return {

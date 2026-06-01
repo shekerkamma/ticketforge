@@ -24,20 +24,61 @@ Frontend (Next.js 14)  →  Backend (FastAPI)  →  AI Pipeline
 
 ## Quick start (local dev)
 
+Codex-specific repo workflow: [docs/codex-workflow.md](/home/shekerk/ticketforge/docs/codex-workflow.md)
+GitHub OAuth setup: [docs/github-oauth-setup.md](/home/shekerk/ticketforge/docs/github-oauth-setup.md)
+Production deployment setup: [docs/DEPLOYMENT.md](/home/shekerk/ticketforge/docs/DEPLOYMENT.md)
+Production checklist: [docs/production-checklist.md](/home/shekerk/ticketforge/docs/production-checklist.md)
+
 ### Prerequisites
 
 - Python 3.12+
 - Node.js 18+
-- pip
+- `npm`
+
+### One-command setup
+
+```bash
+make bootstrap
+```
+
+This installs backend dependencies, backend dev tools, and frontend dependencies.
+
+### One-command run
+
+```bash
+make dev
+```
+
+Local URLs:
+
+- Frontend: `http://localhost:3000`
+- Backend: `http://localhost:8000`
+- API docs: `http://localhost:8000/docs`
+
+### Smoke test
+
+```bash
+make smoke-test
+```
+
+### Local GitHub identity
+
+Local dev login uses the public GitHub identity `shekerkamma` by default via `backend/.env`:
+
+```bash
+LOCAL_DEV_GITHUB_LOGIN=shekerkamma
+LOCAL_DEV_EMAIL=shekerkamma@users.noreply.github.com
+```
+
+This is only for `/api/auth/dev-login`. Real GitHub OAuth still requires your own `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`.
 
 ### Backend
 
 ```bash
 cd backend
-pip install -e . --break-system-packages
-pip install aiosqlite --break-system-packages
+python3 -m pip install -e .[dev] --break-system-packages
 cp .env.example .env  # or use the existing .env
-uvicorn app.main:app --host 0.0.0.0 --port 8000
+python3 -m uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
 ### Frontend
@@ -53,6 +94,8 @@ npm run dev
 1. Open http://localhost:3000
 2. Click **"Dev Login (skip OAuth)"** to bypass GitHub auth
 3. Explore: Dashboard, Tickets, Analytics, Settings
+
+On a fresh database, `Dev Login` now bootstraps a local user and owner team automatically.
 
 API docs: http://localhost:8000/docs
 

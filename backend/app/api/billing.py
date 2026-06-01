@@ -1,5 +1,5 @@
 import uuid
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import stripe
 from fastapi import APIRouter, Depends, HTTPException, Request
@@ -52,6 +52,8 @@ async def create_checkout_session(
 
     # Create or reuse Stripe customer
     if not team.stripe_customer_id:
+        if not user.email:
+            raise HTTPException(400, detail="User email is required for billing")
         customer = stripe.Customer.create(
             email=user.email,
             metadata={"team_id": str(team_id), "github_login": user.github_login},
@@ -137,7 +139,7 @@ async def get_billing_info(
         raise HTTPException(404, detail="Team not found")
 
     # Get current month usage
-    month_start = datetime.now(timezone.utc).replace(
+    month_start = datetime.now(UTC).replace(
         day=1, hour=0, minute=0, second=0, microsecond=0
     )
     repo_result = await session.execute(

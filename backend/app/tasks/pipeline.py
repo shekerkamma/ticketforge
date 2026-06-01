@@ -1,62 +1,82 @@
 import logging
 import uuid
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime
 
 from sqlalchemy import func, select
 
+from app.agents.code_act_agent import CodeActAgent
+from app.agents.code_reviewer import CodeReviewerAgent
+from app.agents.content_researcher import ContentResearcherAgent
+from app.agents.escalation import EscalationHandler
+from app.agents.pr_creator import PRCreatorAgent
 from app.api.billing import PLAN_LIMITS
 from app.db import async_session_factory
 from app.models.pipeline_run import PipelineRun
 from app.models.repository import Repository
+from app.models.team import Team
 from app.models.ticket import Ticket
 from app.models.user import User
-from app.models.team import Team
-from app.agents.content_researcher import ContentResearcherAgent
-from app.agents.code_act_agent import CodeActAgent
-from app.agents.code_reviewer import CodeReviewerAgent
-from app.agents.escalation import EscalationHandler
-from app.agents.pr_creator import PRCreatorAgent
-from app.services.github_service import GitHubService
 from app.services.claude_service import ClaudeService
 from app.services.docker_service import DockerService
 from app.services.event_logger import EventLogger
+from app.services.github_service import GitHubService
 
 logger = logging.getLogger(__name__)
 
 
-async def run_pipeline(ctx: dict, ticket_id: str) -> str:
+async def run_pipeline(_ctx: dict, ticket_id: str) -> str:
     logger.info("Pipeline started for ticket %s", ticket_id)
 
     async with async_session_factory() as session:
         # Load ticket
-        result = await session.execute(
+        ticket_result = await session.execute(
             select(Ticket).where(Ticket.id == uuid.UUID(ticket_id))
         )
-        ticket = result.scalar_one_or_none()
+        ticket = ticket_result.scalar_one_or_none()
         if not ticket:
             logger.error("Ticket %s not found", ticket_id)
             return f"Ticket {ticket_id} not found"
 
         # Load repository
-        result = await session.execute(
+        repository_result = await session.execute(
             select(Repository).where(Repository.id == ticket.repository_id)
         )
-        repo = result.scalar_one_or_none()
+        repo = repository_result.scalar_one_or_none()
+        if not repo:
+            logger.error(
+                "Repository %s not found for ticket %s",
+                ticket.repository_id,
+                ticket_id,
+            )
+            ticket.status = "failed"
+            await session.commit()
+            return f"Ticket {ticket_id} failed: repository not found"
 
         # Load team and owner for GitHub token
-        result = await session.execute(
+        team_result = await session.execute(
             select(Team).where(Team.id == repo.team_id)
         )
-        team = result.scalar_one_or_none()
+        team = team_result.scalar_one_or_none()
+        if not team:
+            logger.error("Team %s not found for repository %s", repo.team_id, repo.id)
+            ticket.status = "failed"
+            await session.commit()
+            return f"Ticket {ticket_id} failed: team not found"
 
-        result = await session.execute(
+        owner_result = await session.execute(
             select(User).where(User.id == team.owner_id)
         )
-        owner = result.scalar_one_or_none()
+        owner = owner_result.scalar_one_or_none()
         github_token = owner.github_access_token if owner else ""
 
         # Check ticket limit for current billing period
-        month_start = datetime.now(timezone.utc).replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+        month_start = datetime.now(UTC).replace(
+            day=1,
+            hour=0,
+            minute=0,
+            second=0,
+            microsecond=0,
+        )
         usage_result = await session.execute(
             select(func.count())
             .select_from(Ticket)
@@ -75,9 +95,15 @@ async def run_pipeline(ctx: dict, ticket_id: str) -> str:
             await session.commit()
             logger.warning(
                 "Ticket %s rejected: team %s at %d/%d monthly limit",
-                ticket_id, team.id, monthly_count, plan_limit,
+                ticket_id,
+                team.id,
+                monthly_count,
+                plan_limit,
             )
-            return f"Ticket {ticket_id} rejected: monthly ticket limit reached ({monthly_count}/{plan_limit})"
+            return (
+                f"Ticket {ticket_id} rejected: monthly ticket limit reached "
+                f"({monthly_count}/{plan_limit})"
+            )
 
         # Create pipeline run
         pipeline_run = PipelineRun(
@@ -106,16 +132,21 @@ async def run_pipeline(ctx: dict, ticket_id: str) -> str:
             "issue_number": ticket.github_issue_number,
         })
 
-        pipeline_run.analysis = analysis_result.output if isinstance(analysis_result.output, dict) else {}
+        pipeline_run.analysis = (
+            analysis_result.output if isinstance(analysis_result.output, dict) else {}
+        )
         pipeline_run.tokens_used = analysis_result.tokens_used
 
         if analysis_result.error and "APIConnectionError" in str(analysis_result.error):
             ticket.status = "pending"
             pipeline_run.status = "failed"
             pipeline_run.escalation_reason = "Claude API unavailable — ticket will be retried"
-            pipeline_run.completed_at = datetime.now(timezone.utc)
+            pipeline_run.completed_at = datetime.now(UTC)
             await session.commit()
-            logger.warning("Claude API down for ticket %s — leaving as pending for retry", ticket_id)
+            logger.warning(
+                "Claude API down for ticket %s — leaving as pending for retry",
+                ticket_id,
+            )
             return f"Ticket {ticket_id} queued for retry: Claude API unavailable"
 
         if not analysis_result.success:
@@ -123,7 +154,7 @@ async def run_pipeline(ctx: dict, ticket_id: str) -> str:
             ticket.status = "escalated"
             pipeline_run.status = "escalated"
             pipeline_run.escalation_reason = analysis_result.error
-            pipeline_run.completed_at = datetime.now(timezone.utc)
+            pipeline_run.completed_at = datetime.now(UTC)
             await session.commit()
 
             await escalation.escalate(
@@ -156,7 +187,7 @@ async def run_pipeline(ctx: dict, ticket_id: str) -> str:
             ticket.status = "escalated"
             pipeline_run.status = "escalated"
             pipeline_run.escalation_reason = fix_result.error
-            pipeline_run.completed_at = datetime.now(timezone.utc)
+            pipeline_run.completed_at = datetime.now(UTC)
             await session.commit()
 
             await escalation.escalate(
@@ -186,14 +217,16 @@ async def run_pipeline(ctx: dict, ticket_id: str) -> str:
             "repo_config": repo.config or {},
         })
 
-        pipeline_run.review_result = review_result.output if isinstance(review_result.output, dict) else {}
+        pipeline_run.review_result = (
+            review_result.output if isinstance(review_result.output, dict) else {}
+        )
         pipeline_run.tokens_used = review_result.tokens_used
 
         if not review_result.success:
             ticket.status = "escalated"
             pipeline_run.status = "escalated"
             pipeline_run.escalation_reason = review_result.error
-            pipeline_run.completed_at = datetime.now(timezone.utc)
+            pipeline_run.completed_at = datetime.now(UTC)
             await session.commit()
 
             await escalation.escalate(
@@ -227,7 +260,7 @@ async def run_pipeline(ctx: dict, ticket_id: str) -> str:
             ticket.status = "escalated"
             pipeline_run.status = "escalated"
             pipeline_run.escalation_reason = pr_result.error
-            pipeline_run.completed_at = datetime.now(timezone.utc)
+            pipeline_run.completed_at = datetime.now(UTC)
             await session.commit()
 
             await escalation.escalate(
@@ -249,7 +282,7 @@ async def run_pipeline(ctx: dict, ticket_id: str) -> str:
 
         ticket.status = "pr_created"
         pipeline_run.status = "completed"
-        pipeline_run.completed_at = datetime.now(timezone.utc)
+        pipeline_run.completed_at = datetime.now(UTC)
         if pipeline_run.started_at:
             delta = pipeline_run.completed_at - pipeline_run.started_at
             pipeline_run.duration_seconds = int(delta.total_seconds())

@@ -1,7 +1,7 @@
 import uuid
 
 from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy import func, select
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_user
@@ -17,10 +17,10 @@ router = APIRouter(prefix="/api/v1/teams/{team_id}/tickets", tags=["tickets"])
 
 
 async def _require_member(team_id: uuid.UUID, user: User, session: AsyncSession):
-    result = await session.execute(
+    membership_result = await session.execute(
         select(TeamMember).where(TeamMember.team_id == team_id, TeamMember.user_id == user.id)
     )
-    if not result.scalar_one_or_none():
+    if not membership_result.scalar_one_or_none():
         raise HTTPException(403, detail="Not a member of this team")
 
 
@@ -105,13 +105,13 @@ async def get_ticket(
 ):
     await _require_member(team_id, user, session)
 
-    result = await session.execute(select(Ticket).where(Ticket.id == ticket_id))
-    ticket = result.scalar_one_or_none()
+    ticket_result = await session.execute(select(Ticket).where(Ticket.id == ticket_id))
+    ticket = ticket_result.scalar_one_or_none()
     if not ticket:
         raise HTTPException(404, detail="Ticket not found")
 
     # Get pipeline runs
-    result = await session.execute(
+    run_result = await session.execute(
         select(PipelineRun)
         .where(PipelineRun.ticket_id == ticket_id)
         .order_by(PipelineRun.started_at.desc())
@@ -126,7 +126,7 @@ async def get_ticket(
             "pr_number": run.pr_number,
             "escalation_reason": run.escalation_reason,
         }
-        for run in result.scalars().all()
+        for run in run_result.scalars().all()
     ]
 
     return {

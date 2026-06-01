@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
+
 import { apiFetch } from "@/lib/api";
 
 interface Member {
@@ -96,9 +98,11 @@ export default function TeamTab({
           >
             <div className="flex items-center gap-3">
               {member.avatar_url && (
-                <img
+                <Image
                   src={member.avatar_url}
                   alt={member.github_login}
+                  width={32}
+                  height={32}
                   className="h-8 w-8 rounded-full"
                 />
               )}

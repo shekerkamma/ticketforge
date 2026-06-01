@@ -25,6 +25,10 @@ class Settings(BaseSettings):
     api_url: str = "http://localhost:8000"
     jwt_secret: str = "change-me-in-production"
     jwt_expiry_hours: int = 24
+    local_dev_github_id: int = 0
+    local_dev_github_login: str = "local-dev"
+    local_dev_email: str = "local-dev@example.com"
+    local_dev_team_name: str = "Local Dev Team"
 
     # Redis
     redis_url: str = "redis://localhost:6379"
