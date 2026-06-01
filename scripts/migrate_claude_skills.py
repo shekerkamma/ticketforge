@@ -17,6 +17,7 @@ STAGING_SKILLS_DIR = STAGING_ROOT / "skills"
 
 CHAIN_TEMPLATE_SKILLS = {
     "agent-browser",
+    "account-intelligence-analyst",
     "ai-strategy-council",
     "ai-strategy-researcher",
     "analytics-to-comms",
@@ -25,11 +26,15 @@ CHAIN_TEMPLATE_SKILLS = {
     "carousel-to-deck",
     "content-repurpose",
     "competitive-intel-sprint",
+    "crm-hygiene-enforcer",
     "morning-briefing",
     "obsidian-github-sync",
     "obsidian-vault-manager",
+    "outreach-architect",
     "printing-press",
+    "precall-briefer",
     "presentation",
+    "proposal-generator",
     "presales-deal-prep",
     "content-research",
     "research-to-strategy",
@@ -40,6 +45,7 @@ CHAIN_TEMPLATE_SKILLS = {
 }
 
 SUPPORTED_SKILLS = {
+    "account-intelligence-analyst",
     "anti-slop",
     "agent-browser",
     "architect",
@@ -48,6 +54,7 @@ SUPPORTED_SKILLS = {
     "ai-strategy-council",
     "ai-strategy-researcher",
     "analytics-to-comms",
+    "crm-hygiene-enforcer",
     "session-handoff",
     "ss",
     "time-skill",
@@ -66,13 +73,16 @@ SUPPORTED_SKILLS = {
     "morning-briefing",
     "obsidian-github-sync",
     "obsidian-vault-manager",
+    "outreach-architect",
     "printing-press",
+    "precall-briefer",
     "presentation",
     "presentation-content-writer",
     "presentation-theme",
     "presentation-exporter",
     "presentation-speaker-notes",
     "presentation-accessibility",
+    "proposal-generator",
     "content-research",
     "research-to-strategy",
     "second-brain-capture",
@@ -1580,6 +1590,347 @@ Ignore low-signal items like consumer AI apps, generic funding news, or hype wit
 - Frame every item through enterprise POC delivery, not abstract interest.
 - If a Claude / Anthropic developer product update is materially relevant, it belongs near the top.
 - If only 2 items matter, return 2. Do not pad to 3.
+""",
+        "account-intelligence-analyst": """---
+name: account-intelligence-analyst
+description: Build a concise B2B account and prospect intelligence brief from public sources, CRM notes, and company materials. Use when the user asks to research a prospect, build an account profile, prep for first outreach, or identify buying signals and risk flags before engaging.
+---
+
+# Account Intelligence Analyst
+
+This is a Codex-native chain skill for turning scattered account context into a usable sales brief.
+
+## When to use it
+
+Use this skill when the user needs:
+
+- a prospect intelligence profile
+- account research before outreach
+- buying signals and risk flags
+- conversation hooks grounded in real company context
+
+## Workflow
+
+1. Gather the minimum useful inputs:
+   - prospect name or profile URL
+   - company name or domain
+   - any CRM notes, prior emails, or deal context if available
+2. Use `content-research` or `url-dossier` if the inputs include public URLs or source documents.
+3. Extract only decision-relevant facts:
+   - title, tenure, influence, likely mandate
+   - company priorities, recent launches, funding, hiring, leadership changes
+   - existing relationship history or stale-record signals
+4. Synthesize into a single brief with:
+   - company overview
+   - prospect profile
+   - buying signals
+   - risk flags
+   - conversation starters
+   - open questions
+5. If the user maintains durable research notes, hand the result to `second-brain-capture`.
+
+## Output structure
+
+```markdown
+# <Prospect Name> — <Company> Intelligence Brief
+
+## Company Overview
+- ...
+
+## Prospect Profile
+- ...
+
+## Buying Signals
+- ...
+
+## Risk Flags
+- ...
+
+## Conversation Starters
+- ...
+
+## Open Questions
+- ...
+```
+
+## Rules
+
+- Timestamp and source any non-obvious factual claims.
+- Prioritize signal over completeness; a short accurate brief beats a noisy dossier.
+- Separate observed facts from inferences.
+- If CRM access is unavailable, say so and proceed with public-source research only.
+""",
+        "outreach-architect": """---
+name: outreach-architect
+description: Design a personalized multi-step B2B outreach sequence using account context, relationship stage, and a clear call to action. Use when the user asks for cold outreach, warm outreach, follow-up sequencing, or tailored email and LinkedIn copy for a specific prospect.
+---
+
+# Outreach Architect
+
+This is a Codex-native chain skill for turning account intelligence into a usable outreach plan.
+
+## Inputs
+
+Best inputs:
+
+- an account intelligence brief
+- prospect name, role, and company
+- relationship type: cold, warm, previous contact, or active deal
+- any deal stage, timing, or close-date pressure
+
+## Workflow
+
+1. Read the account context first. If it does not exist yet, ask for the minimum facts or suggest running `account-intelligence-analyst`.
+2. Classify the motion:
+   - cold outreach
+   - warm referral or inbound
+   - re-engagement
+   - active opportunity follow-up
+3. Build a sequence with:
+   - one primary email
+   - one alternate channel touch if useful
+   - follow-up steps with timing
+   - no-reply handling
+4. Personalize every message to one or two real signals from the account brief.
+5. Run the copy through `anti-slop` before finalizing.
+
+## Output structure
+
+```markdown
+# Outreach Plan — <Prospect> @ <Company>
+
+## Sequence Strategy
+...
+
+## Touch 1
+**Channel:** Email
+**Timing:** ...
+**Goal:** ...
+**Copy:** ...
+
+## Touch 2
+...
+
+## Touch 3
+...
+
+## No-Reply Handling
+- ...
+```
+
+## Rules
+
+- Keep each message short and single-purpose.
+- One CTA per touch.
+- Do not use generic openers that could fit any company.
+- If the account context is weak, say so and lower the personalization claims.
+""",
+        "precall-briefer": """---
+name: precall-briefer
+description: Produce a one-page pre-call brief for a sales, success, or deal call using CRM history, recent account activity, and company changes. Use when the user asks for call prep, meeting prep, or a last-minute summary before talking to a prospect or customer.
+---
+
+# Precall Briefer
+
+This is a Codex-native chain skill for compressing deal context into a 60-second read.
+
+## Workflow
+
+1. Gather:
+   - meeting date and objective
+   - prospect or customer participants
+   - prior notes, emails, CRM history, or account brief
+2. If the account context is thin, use `account-intelligence-analyst` first.
+3. Extract:
+   - last meaningful interaction
+   - what changed since then
+   - likely stakeholders and roles
+   - active risks, blockers, or competing pressures
+4. Produce a brief that optimizes for action during the call, not for archival completeness.
+
+## Output structure
+
+```markdown
+# Pre-Call Brief — <Date> — <Company>
+
+## Call Context
+- ...
+
+## Last Conversation
+- ...
+
+## What Changed Since Last Contact
+- ...
+
+## Decision-Maker Map
+- ...
+
+## Talk Track Priorities
+- ...
+
+## Risks And Blockers
+- ...
+```
+
+## Rules
+
+- Keep it to roughly one page.
+- Every section should help the caller decide what to say, ask, or avoid.
+- Flag missing context explicitly instead of smoothing over it.
+- Separate confirmed facts from likely inferences.
+""",
+        "crm-hygiene-enforcer": """---
+name: crm-hygiene-enforcer
+description: Audit CRM exports or pipeline snapshots for stale deals, missing fields, duplicates, stage mismatches, and reporting risk. Use when the user asks to clean CRM data, audit pipeline quality, review imports, or produce a prioritized data hygiene queue.
+---
+
+# CRM Hygiene Enforcer
+
+This is a Codex-native chain skill for turning messy CRM exports into an action queue.
+
+## When to use it
+
+Use this skill for:
+
+- weekly CRM hygiene reviews
+- post-import audits
+- forecast cleanup
+- duplicate and stale-deal detection
+
+## Inputs
+
+Typical inputs:
+
+- CSV exports from CRM
+- spreadsheets
+- snapshots of account, contact, and opportunity tables
+- funnel rules or stage definitions
+
+## Workflow
+
+1. Confirm the scope:
+   - contacts
+   - accounts
+   - opportunities
+   - activities
+2. Identify the rules that matter:
+   - stale thresholds
+   - required fields
+   - valid stage transitions
+   - duplicate tolerance
+3. Audit the data for:
+   - stale records
+   - missing owners or critical fields
+   - impossible close dates or amounts
+   - stage mismatches
+   - likely duplicates
+4. Separate:
+   - safe auto-fix suggestions
+   - items requiring human review
+5. Produce a ranked hygiene report with explicit owners and recommended actions.
+
+## Output structure
+
+```markdown
+# CRM Hygiene Audit — <date>
+
+## Summary
+- ...
+
+## Critical Issues
+- ...
+
+## Stale Deals
+- ...
+
+## Missing Data
+- ...
+
+## Duplicate Candidates
+- ...
+
+## Manual Action Queue
+- ...
+```
+
+## Rules
+
+- Be conservative about auto-corrections; prefer recommendations over silent edits.
+- Explain the rule behind each flagged issue.
+- Treat the output as an operations queue, not a generic report.
+- If the user only provides narrative descriptions instead of data exports, offer the audit logic and required columns.
+""",
+        "proposal-generator": """---
+name: proposal-generator
+description: Generate a tailored B2B proposal, quote, or statement of work from deal context, discovery notes, and pricing inputs. Use when the user asks for a proposal, quote, SOW, commercial document, or deal-ready summary for a qualified opportunity.
+---
+
+# Proposal Generator
+
+This is a Codex-native chain skill for going from deal context to a sendable proposal draft.
+
+## Inputs
+
+Gather as many of these as exist:
+
+- prospect and company name
+- deal stage and target timeline
+- discovery notes or call transcripts
+- pricing or rate-card inputs
+- requested scope, deliverables, or commercial constraints
+
+## Workflow
+
+1. Read the deal context and extract:
+   - desired outcomes
+   - pain points in the prospect's own language
+   - scope and assumptions
+   - pricing constraints or discount approvals
+2. Structure the draft in this order:
+   - executive summary
+   - current situation and challenge
+   - proposed solution
+   - scope of work
+   - investment
+   - commercial terms
+   - next steps
+3. Keep the narrative specific to the deal; do not produce brochure copy.
+4. If terms need extra scrutiny, route the draft through `contract-reviewer`.
+5. If the user needs a slide version, route the core proposal story into `presentation`.
+
+## Output structure
+
+```markdown
+# Proposal — <Company>
+
+## Executive Summary
+...
+
+## Situation And Challenge
+...
+
+## Proposed Solution
+...
+
+## Scope Of Work
+...
+
+## Investment
+...
+
+## Terms
+...
+
+## Next Steps
+...
+```
+
+## Rules
+
+- Document assumptions clearly.
+- Keep scope boundaries explicit to prevent scope creep.
+- Separate base scope from optional add-ons.
+- If the environment cannot export PDF or branded documents, say so and produce the clean source draft.
 """,
         "printing-press": {
             "SKILL.md": """---

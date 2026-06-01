@@ -6,6 +6,7 @@ This repo now includes a staged migration path for adapting global Claude skills
 
 These skills are staged and ready to install into `~/.codex/skills`:
 
+- `account-intelligence-analyst`
 - `anti-slop`
 - `agent-browser`
 - `architect`
@@ -15,6 +16,7 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `ai-strategy-researcher`
 - `analytics-to-comms`
 - `carousel-to-deck`
+- `crm-hygiene-enforcer`
 - `session-handoff`
 - `ss`
 - `time-skill`
@@ -32,13 +34,16 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `morning-briefing`
 - `obsidian-github-sync`
 - `obsidian-vault-manager`
+- `outreach-architect`
 - `printing-press`
+- `precall-briefer`
 - `presentation`
 - `presentation-accessibility`
 - `presentation-content-writer`
 - `presentation-exporter`
 - `presentation-speaker-notes`
 - `presentation-theme`
+- `proposal-generator`
 - `research-to-strategy`
 - `second-brain-capture`
 - `url-dossier`
@@ -58,21 +63,26 @@ The staged copies live under:
 These skills are not blind copies of the Claude originals. They were rewritten as Codex-native chain skills:
 
 - `agent-browser`
+- `account-intelligence-analyst`
 - `presentation`
 - `architect`
 - `architecture-to-everything`
 - `content-research`
+- `crm-hygiene-enforcer`
 - `research-to-strategy`
 - `url-dossier`
 - `llm-council`
 - `obsidian-github-sync`
 - `obsidian-vault-manager`
+- `outreach-architect`
 - `printing-press`
+- `precall-briefer`
 - `competitive-intel-sprint`
 - `analytics-to-comms`
 - `ai-strategy-researcher`
 - `ai-strategy-council`
 - `presales-deal-prep`
+- `proposal-generator`
 - `content-repurpose`
 - `second-brain-capture`
 - `ss`
@@ -124,6 +134,21 @@ The first `Claude Cowork` wave is intentionally selective:
 - `morning-briefing` as a daily enterprise-AI scanning workflow
 
 These are good fits because they transfer cleanly without dragging in the whole old Claude runtime model.
+
+The `Sales Agents` wave follows the same pattern:
+
+- `account-intelligence-analyst` for prospect and company research
+- `outreach-architect` for turning that research into contact sequences
+- `precall-briefer` for one-page meeting prep
+- `crm-hygiene-enforcer` for pipeline and record cleanup against exported data
+- `proposal-generator` for turning qualified-opportunity context into a sendable commercial draft
+
+Recommended chain:
+
+1. `account-intelligence-analyst`
+2. `outreach-architect` or `precall-briefer`, depending on whether the next motion is outreach or a live meeting
+3. `proposal-generator` once the opportunity is qualified
+4. `crm-hygiene-enforcer` on a weekly cadence to keep the underlying system trustworthy
 
 The `printing-press` migration is intentionally lean:
 
