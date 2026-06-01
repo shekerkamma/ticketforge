@@ -42,6 +42,38 @@ def test_dev_login_bootstraps_local_user_and_team(client, monkeypatch):
     assert memberships[0].team_id == teams[0].id
 
 
+def test_ensure_user_has_team_bootstraps_owner_membership():
+    async def verify_state():
+        async with TestSessionLocal() as session:
+            user = User(
+                github_id=99999,
+                github_login="oauth-user",
+                github_access_token="oauth-token",
+                email="oauth@example.com",
+            )
+            session.add(user)
+            await session.flush()
+
+            ensured_user = await auth_api.ensure_user_has_team(session, user)
+
+            users = (await session.execute(select(User))).scalars().all()
+            teams = (await session.execute(select(Team))).scalars().all()
+            memberships = (await session.execute(select(TeamMember))).scalars().all()
+            return ensured_user, users, teams, memberships
+
+    ensured_user, users, teams, memberships = asyncio.run(verify_state())
+
+    assert len(users) == 1
+    assert ensured_user.id == users[0].id
+    assert len(teams) == 1
+    assert teams[0].owner_id == ensured_user.id
+    assert teams[0].name == "oauth-user's Team"
+    assert len(memberships) == 1
+    assert memberships[0].role == "owner"
+    assert memberships[0].user_id == ensured_user.id
+    assert memberships[0].team_id == teams[0].id
+
+
 def test_github_login_signs_allowed_preview_origin(client, monkeypatch):
     preview_origin = "https://ticketforge-git-main-shekerkamma-projects.vercel.app"
     monkeypatch.setattr(settings, "app_url", "https://ticketforge.example.com")

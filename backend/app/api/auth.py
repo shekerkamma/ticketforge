@@ -93,6 +93,28 @@ async def ensure_local_dev_user(session) -> User:
     return user
 
 
+async def ensure_user_has_team(
+    session,
+    user: User,
+    team_name: str | None = None,
+) -> User:
+    membership_result = await session.execute(
+        select(TeamMember).where(TeamMember.user_id == user.id).limit(1)
+    )
+    membership = membership_result.scalar_one_or_none()
+
+    if membership is None:
+        fallback_name = f"{user.github_login}'s Team"
+        team = Team(name=team_name or fallback_name, owner_id=user.id)
+        session.add(team)
+        await session.flush()
+        session.add(TeamMember(team_id=team.id, user_id=user.id, role="owner"))
+
+    await session.commit()
+    await session.refresh(user)
+    return user
+
+
 @router.get("/github")
 async def github_login(return_to: str | None = Query(default=None)):
     redirect_origin = resolve_return_to_origin(return_to)
@@ -159,8 +181,8 @@ async def github_callback(
             )
             session.add(user)
 
-        await session.commit()
-        await session.refresh(user)
+        await session.flush()
+        user = await ensure_user_has_team(session, user)
 
         token = create_jwt(str(user.id), user.github_login)
 
