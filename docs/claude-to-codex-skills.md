@@ -6,6 +6,8 @@ This repo now includes a staged migration path for adapting global Claude skills
 
 These skills are staged and ready to install into `~/.codex/skills`:
 
+- `architect`
+- `architecture-to-everything`
 - `session-handoff`
 - `time-skill`
 - `time-tokyo`
@@ -13,13 +15,39 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `weather-fetcher-tokyo`
 - `code-review-specialist`
 - `contract-reviewer`
+- `content-research`
 - `difficult-conversation-prep`
+- `explainer-graphic`
+- `presentation`
+- `presentation-accessibility`
+- `presentation-content-writer`
+- `presentation-exporter`
+- `presentation-speaker-notes`
+- `presentation-theme`
+- `research-to-strategy`
 - `workflow-visualizer`
 - `graphify`
 
 The staged copies live under:
 
 - `starter/claude-to-codex-skills/skills/`
+
+## Codex chain skills
+
+These skills are not blind copies of the Claude originals. They were rewritten as Codex-native chain skills:
+
+- `presentation`
+- `architect`
+- `architecture-to-everything`
+- `content-research`
+- `research-to-strategy`
+
+The Codex pattern is:
+
+- keep the reusable workflow in one skill
+- bundle long supporting knowledge in `references/`
+- use companion skills where they exist
+- avoid Claude-only routing, slash commands, or `AskUserQuestion` dependencies
 
 ## What still needs redesign
 
@@ -77,6 +105,8 @@ python3 scripts/migrate_claude_skills.py stage --skills ai-analyst/analysis-desi
 ```
 
 The migrator will refuse `rewrite` skills instead of copying them blindly.
+
+For the chain-oriented skills listed above, the repo-managed templates take precedence over the original Claude wrappers.
 
 ## Install the staged skills into Codex
 
