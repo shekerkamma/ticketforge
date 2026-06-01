@@ -25,6 +25,8 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `presentation-speaker-notes`
 - `presentation-theme`
 - `research-to-strategy`
+- `url-dossier`
+- `watch`
 - `workflow-visualizer`
 - `graphify`
 
@@ -41,6 +43,7 @@ These skills are not blind copies of the Claude originals. They were rewritten a
 - `architecture-to-everything`
 - `content-research`
 - `research-to-strategy`
+- `url-dossier`
 
 The Codex pattern is:
 
@@ -107,6 +110,33 @@ python3 scripts/migrate_claude_skills.py stage --skills ai-analyst/analysis-desi
 The migrator will refuse `rewrite` skills instead of copying them blindly.
 
 For the chain-oriented skills listed above, the repo-managed templates take precedence over the original Claude wrappers.
+
+## Video and URL skills
+
+Two additions are especially useful for link-heavy workflows:
+
+- `watch`: adapted from the open-source `bradautomates/claude-video` project, with the Python scripts vendored into the staged skill and patched for Codex home-path behavior
+- `url-dossier`: a Codex-native "analyze this link" chain skill that routes video URLs to `watch`, GitHub URLs to `gh` plus file inspection, and generic URLs to web access or `curl`
+
+`watch` still depends on local binaries:
+
+- `ffmpeg`
+- `ffprobe`
+- `yt-dlp`
+
+The vendored `setup.py` preflight checks these and uses:
+
+```bash
+python3 "$WATCH_SKILL_DIR/scripts/setup.py" --check
+```
+
+Its config now resolves to:
+
+```text
+~/.config/watch/.env
+```
+
+instead of the Snap-local home path.
 
 ## Install the staged skills into Codex
 

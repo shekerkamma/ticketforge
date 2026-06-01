@@ -20,6 +20,7 @@ CHAIN_TEMPLATE_SKILLS = {
     "presentation",
     "content-research",
     "research-to-strategy",
+    "url-dossier",
 }
 
 SUPPORTED_SKILLS = {
@@ -44,6 +45,8 @@ SUPPORTED_SKILLS = {
     "presentation-accessibility",
     "content-research",
     "research-to-strategy",
+    "watch",
+    "url-dossier",
 }
 
 REWRITE_MARKERS = {
@@ -613,6 +616,138 @@ This is a Codex-native chain skill for creating a full architecture package.
 - If assumptions differ across artifacts, call that out explicitly.
 - Report which parts are complete and which still need design polish or export.
 """,
+        "watch": """---
+name: watch
+description: Watch a video from YouTube, Vimeo, TikTok, X, or a local file by extracting frames and transcript evidence. Use when the user asks to analyze a video, summarize a YouTube link, inspect a screen recording, or answer questions about what happens in a video.
+---
+
+# Watch
+
+This is a Codex-adapted version of the open-source `watch` skill. It vendors the working Python scripts from the original project and removes the Claude-only setup flow.
+
+## Skill directory
+
+Use:
+
+```bash
+WATCH_SKILL_DIR="${CODEX_HOME:-$HOME/.codex}/skills/watch"
+```
+
+In this environment, `CODEX_HOME` should already point to the active Codex skill home.
+
+## Workflow
+
+1. Run silent preflight:
+
+```bash
+python3 "$WATCH_SKILL_DIR/scripts/setup.py" --check
+```
+
+2. If preflight fails, run:
+
+```bash
+python3 "$WATCH_SKILL_DIR/scripts/setup.py"
+```
+
+3. If Whisper API keys are still missing after setup, continue with `--no-whisper` unless the user explicitly wants full fallback transcription.
+4. Run the watcher:
+
+```bash
+python3 "$WATCH_SKILL_DIR/scripts/watch.py" "<video-url-or-path>"
+```
+
+5. Read every frame path the report prints.
+6. Use the transcript and frames together to answer the user.
+
+## Good use cases
+
+- summarize a YouTube video
+- inspect a screen recording or bug repro video
+- analyze the opening hook of a creator video
+- answer timestamp-specific questions about a video
+
+## Focus mode
+
+When the user asks about a specific moment or range, pass `--start` and `--end` to get denser frame coverage:
+
+```bash
+python3 "$WATCH_SKILL_DIR/scripts/watch.py" "<video-url-or-path>" --start 2:15 --end 2:45
+```
+
+## Constraints
+
+- Best results are on videos under about 10 minutes unless you focus on a specific section.
+- Token cost is dominated by frames; use focus ranges for long videos.
+- Native captions are preferred. Whisper fallback requires a key in the watch config.
+- `agent-browser` is not required for this skill.
+
+## Provenance
+
+Based on the MIT-licensed `bradautomates/claude-video` project, adapted for Codex use.
+""",
+        "url-dossier": """---
+name: url-dossier
+description: Turn any URL into a structured dossier. Use when the user wants a link analyzed, summarized, turned into notes, or classified by source type. Supports web pages, GitHub URLs, and video URLs by chaining to the right workflow.
+---
+
+# URL Dossier
+
+This is a Codex-native chain skill for "analyze this link" requests.
+
+## Companion skills
+
+- `watch` for video URLs or local video files
+- `content-research` for multi-source research
+- `graphify` when the user wants relationship mapping
+
+## Workflow
+
+1. Parse the URL or list of URLs.
+2. Classify each source:
+   - video URL or local video file
+   - GitHub repo or file URL
+   - generic web page
+   - document URL
+3. Route by type:
+   - video: use `watch`
+   - GitHub: use `gh` plus direct file reads when useful
+   - web/document: use web access or `curl`
+4. Produce a structured dossier for each source.
+5. If there are multiple sources, add a cross-source synthesis.
+
+## Suggested dossier format
+
+```markdown
+# URL Dossier — <title>
+
+## Source
+- URL:
+- Type:
+- Captured:
+
+## TL;DR
+
+## Key claims or contents
+
+## Evidence
+
+## Risks, gaps, or uncertainty
+
+## Why it matters
+```
+
+## Output paths
+
+- `url-dossiers/<slug>.md`
+- optional `url-dossiers/INDEX.md`
+
+## Rules
+
+- Prefer the narrowest tool that fits the source.
+- Keep raw evidence separate from your interpretation.
+- If the source is a video, rely on frame and transcript evidence instead of title-only summaries.
+- If the source is GitHub, capture repo metadata and key files, not just the README headline.
+""",
     }
 )
 
@@ -637,6 +772,17 @@ def resolve_user_home() -> Path:
 
 USER_HOME = resolve_user_home()
 CLAUDE_SKILLS_DIR = USER_HOME / ".claude" / "skills"
+WATCH_SOURCE_ROOT = CLAUDE_SKILLS_DIR / "watch"
+SOURCE_BUNDLES: dict[str, dict[str, str]] = {
+    "watch": {
+        "scripts/download.py": "scripts/download.py",
+        "scripts/frames.py": "scripts/frames.py",
+        "scripts/setup.py": "scripts/setup.py",
+        "scripts/transcribe.py": "scripts/transcribe.py",
+        "scripts/watch.py": "scripts/watch.py",
+        "scripts/whisper.py": "scripts/whisper.py",
+    }
+}
 
 
 def parse_frontmatter(raw_text: str) -> tuple[dict[str, str], str]:
@@ -702,6 +848,7 @@ def classify_skill(skill: Skill) -> tuple[str, list[str]]:
             "presentation-exporter",
             "presentation-speaker-notes",
             "presentation-accessibility",
+            "watch",
         }:
             reasons.append("needs small wording changes for Codex tools")
             return "light_edit", reasons
@@ -791,15 +938,75 @@ def generic_adaptation(skill: Skill) -> str:
     )
 
 
-def write_template_bundle(skill_dir: Path, rendered: TemplateValue) -> None:
-    if isinstance(rendered, str):
-        (skill_dir / "SKILL.md").write_text(rendered, encoding="utf-8")
+def copy_source_bundle(skill_name: str, skill_dir: Path) -> None:
+    bundle = SOURCE_BUNDLES.get(skill_name)
+    if bundle is None:
         return
 
-    for relative_path, content in rendered.items():
-        target = skill_dir / relative_path
+    for source_rel, dest_rel in bundle.items():
+        source_path = WATCH_SOURCE_ROOT / source_rel
+        if not source_path.exists():
+            raise FileNotFoundError(f"Missing source bundle file: {source_path}")
+        target = skill_dir / dest_rel
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(content, encoding="utf-8")
+        shutil.copy2(source_path, target)
+
+
+def patch_watch_bundle(skill_dir: Path) -> None:
+    setup_path = skill_dir / "scripts" / "setup.py"
+    whisper_path = skill_dir / "scripts" / "whisper.py"
+
+    setup_text = setup_path.read_text(encoding="utf-8")
+    setup_text = setup_text.replace(
+        "import platform\n",
+        "import platform\nimport pwd\n",
+    )
+    setup_text = setup_text.replace(
+        'CONFIG_DIR = Path.home() / ".config" / "watch"\nCONFIG_FILE = CONFIG_DIR / ".env"\n',
+        'def _real_home() -> Path:\n'
+        '    try:\n'
+        '        return Path(pwd.getpwuid(os.getuid()).pw_dir)\n'
+        '    except KeyError:\n'
+        '        return Path.home()\n\n'
+        'CONFIG_DIR = _real_home() / ".config" / "watch"\n'
+        'CONFIG_FILE = CONFIG_DIR / ".env"\n',
+    )
+    setup_path.write_text(setup_text, encoding="utf-8")
+
+    whisper_text = whisper_path.read_text(encoding="utf-8")
+    whisper_text = whisper_text.replace(
+        "import uuid\nfrom pathlib import Path\n",
+        "import uuid\nimport pwd\nfrom pathlib import Path\n",
+    )
+    whisper_text = whisper_text.replace(
+        '    dotenv_paths = [\n'
+        '        Path.home() / ".config" / "watch" / ".env",\n'
+        '        Path.cwd() / ".env",\n'
+        '    ]\n',
+        "    try:\n"
+        "        real_home = Path(pwd.getpwuid(os.getuid()).pw_dir)\n"
+        "    except KeyError:\n"
+        "        real_home = Path.home()\n\n"
+        "    dotenv_paths = [\n"
+        '        real_home / ".config" / "watch" / ".env",\n'
+        '        Path.cwd() / ".env",\n'
+        "    ]\n",
+    )
+    whisper_path.write_text(whisper_text, encoding="utf-8")
+
+
+def write_template_bundle(skill_name: str, skill_dir: Path, rendered: TemplateValue) -> None:
+    if isinstance(rendered, str):
+        (skill_dir / "SKILL.md").write_text(rendered, encoding="utf-8")
+    else:
+        for relative_path, content in rendered.items():
+            target = skill_dir / relative_path
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(content, encoding="utf-8")
+
+    copy_source_bundle(skill_name, skill_dir)
+    if skill_name == "watch":
+        patch_watch_bundle(skill_dir)
 
 
 def stage_skills(selected_names: list[str]) -> int:
@@ -830,7 +1037,7 @@ def stage_skills(selected_names: list[str]) -> int:
         if skill_dir.exists():
             shutil.rmtree(skill_dir)
         skill_dir.mkdir(parents=True, exist_ok=True)
-        write_template_bundle(skill_dir, rendered)
+        write_template_bundle(name, skill_dir, rendered)
         print(f"staged\t{name}\t{skill_dir}")
     return status
 
