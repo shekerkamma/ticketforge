@@ -19,6 +19,7 @@ That container installs:
 - Python 3.12
 - Node 20
 - frontend and backend dependencies via `scripts/bootstrap.sh`
+- Codex CLI via `npm install -g @openai/codex`
 
 ## 2. Start Codex inside the remote workspace
 

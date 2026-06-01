@@ -43,6 +43,7 @@ make bootstrap
 ```
 
 This installs backend dependencies, backend dev tools, and frontend dependencies.
+In a Codespace or devcontainer workflow, it also installs the Codex CLI.
 
 ### One-command run
 

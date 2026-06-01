@@ -21,4 +21,9 @@ cd "$ROOT_DIR/frontend"
 echo "Installing frontend dependencies..."
 npm install
 
+if ! command -v codex >/dev/null 2>&1; then
+  echo "Installing Codex CLI..."
+  npm install -g @openai/codex
+fi
+
 echo "Bootstrap complete."
