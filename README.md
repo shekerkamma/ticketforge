@@ -31,6 +31,7 @@ Production deployment setup: [docs/DEPLOYMENT.md](/home/shekerk/ticketforge/docs
 Free Vercel frontend setup: [docs/vercel-hobby-setup.md](/home/shekerk/ticketforge/docs/vercel-hobby-setup.md)
 Production checklist: [docs/production-checklist.md](/home/shekerk/ticketforge/docs/production-checklist.md)
 Reusable Codex/GitHub starter: [starter/codex-github-starter/README.md](/home/shekerk/ticketforge/starter/codex-github-starter/README.md)
+Claude-to-Codex skill migration: [docs/claude-to-codex-skills.md](/home/shekerk/ticketforge/docs/claude-to-codex-skills.md)
 
 ### Prerequisites
 
