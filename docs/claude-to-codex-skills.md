@@ -25,7 +25,10 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `weather-fetcher-tokyo`
 - `code-review-specialist`
 - `content-marketing-team`
+- `content-draft-writer`
 - `content-outlier-research`
+- `content-performance-tracker`
+- `content-publish-helper`
 - `content-topic-queue`
 - `content-weekly-report`
 - `contract-reviewer`
@@ -35,6 +38,7 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `difficult-conversation-prep`
 - `explainer-graphic`
 - `llm-council`
+- `log-performance`
 - `morning-briefing`
 - `obsidian-github-sync`
 - `obsidian-vault-manager`
@@ -48,9 +52,11 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `presentation-speaker-notes`
 - `presentation-theme`
 - `proposal-generator`
+- `review-draft`
 - `research-to-strategy`
 - `second-brain-capture`
 - `slide-deck-builder`
+- `tune-voice`
 - `url-dossier`
 - `vertical-scorer`
 - `watch`
@@ -72,8 +78,11 @@ These skills are not blind copies of the Claude originals. They were rewritten a
 - `presentation`
 - `architect`
 - `architecture-to-everything`
+- `content-draft-writer`
 - `content-marketing-team`
 - `content-outlier-research`
+- `content-performance-tracker`
+- `content-publish-helper`
 - `content-research`
 - `content-topic-queue`
 - `content-weekly-report`
@@ -96,6 +105,7 @@ These skills are not blind copies of the Claude originals. They were rewritten a
 - `second-brain-capture`
 - `slide-deck-builder`
 - `ss`
+- `tune-voice`
 
 The Codex pattern is:
 
@@ -165,6 +175,9 @@ The `Claude Cowork` content pipeline wave is now covered too:
 - `content-outlier-research` for pattern mining across current high-performing content
 - `content-topic-queue` for turning those patterns into a ranked backlog
 - `content-marketing-team` as the parent orchestrator
+- `content-draft-writer` for converting one topic into a review-ready draft
+- `content-publish-helper` for the human-gated publishing handoff
+- `content-performance-tracker` for refreshing metrics and routing them into the log
 - `content-weekly-report` for the Friday operator digest
 - `slide-deck-builder` for enterprise-style visual deck generation from topics, memos, or research packs
 
@@ -172,10 +185,14 @@ Recommended chain:
 
 1. `content-outlier-research`
 2. `content-topic-queue`
-3. `content-marketing-team` to decide whether to research, queue, draft, or report next
-4. `content-repurpose` or direct drafting plus `anti-slop` once a topic is ready
-5. `content-weekly-report` at the end of the week
-6. `slide-deck-builder` when the same material needs presentation form
+3. `content-marketing-team` to decide whether to research, queue, draft, publish, track, or report next
+4. `content-draft-writer`
+5. `review-draft` and `anti-slop` for voice and cleanup
+6. `content-publish-helper`
+7. `content-performance-tracker` -> `log-performance`
+8. `tune-voice` once enough entries exist
+9. `content-weekly-report` at the end of the week
+10. `slide-deck-builder` when the same material needs presentation form
 
 The `printing-press` migration is intentionally lean:
 

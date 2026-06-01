@@ -24,8 +24,11 @@ CHAIN_TEMPLATE_SKILLS = {
     "architect",
     "architecture-to-everything",
     "carousel-to-deck",
+    "content-draft-writer",
     "content-marketing-team",
     "content-outlier-research",
+    "content-performance-tracker",
+    "content-publish-helper",
     "content-repurpose",
     "content-topic-queue",
     "content-weekly-report",
@@ -40,11 +43,13 @@ CHAIN_TEMPLATE_SKILLS = {
     "presentation",
     "proposal-generator",
     "presales-deal-prep",
+    "review-draft",
     "content-research",
     "research-to-strategy",
     "second-brain-capture",
     "slide-deck-builder",
     "ss",
+    "tune-voice",
     "llm-council",
     "url-dossier",
 }
@@ -68,8 +73,11 @@ SUPPORTED_SKILLS = {
     "weather-fetcher-tokyo",
     "code-review-specialist",
     "contract-reviewer",
+    "content-draft-writer",
     "content-marketing-team",
     "content-outlier-research",
+    "content-performance-tracker",
+    "content-publish-helper",
     "content-topic-queue",
     "content-weekly-report",
     "difficult-conversation-prep",
@@ -79,6 +87,7 @@ SUPPORTED_SKILLS = {
     "competitive-intel-sprint",
     "content-repurpose",
     "llm-council",
+    "log-performance",
     "morning-briefing",
     "obsidian-github-sync",
     "obsidian-vault-manager",
@@ -92,6 +101,7 @@ SUPPORTED_SKILLS = {
     "presentation-speaker-notes",
     "presentation-accessibility",
     "proposal-generator",
+    "review-draft",
     "content-research",
     "research-to-strategy",
     "second-brain-capture",
@@ -100,6 +110,7 @@ SUPPORTED_SKILLS = {
     "vertical-scorer",
     "presales-deal-prep",
     "slide-deck-builder",
+    "tune-voice",
     "chart-storyteller",
     "carousel-to-deck",
 }
@@ -2056,6 +2067,152 @@ Best inputs:
 - Make the channel recommendation explicit.
 - Kill weak ideas instead of padding the queue.
 """,
+        "content-draft-writer": """---
+name: content-draft-writer
+description: Draft a single LinkedIn post, essay, or channel-specific content piece from a selected topic while applying voice and anti-slop checks before handoff. Use when the user asks to draft the next post, write from a queued topic, or turn a ranked content idea into a review-ready draft.
+---
+
+# Content Draft Writer
+
+This is a Codex-native chain skill for taking one topic from queue to review-ready draft.
+
+## Inputs
+
+Best inputs:
+
+- a specific topic
+- channel target such as LinkedIn or Substack
+- source outlier patterns or notes
+- any voice or style constraints already in use
+
+## Workflow
+
+1. Select one topic only.
+2. Pull the minimum useful context:
+   - topic title and angle
+   - source inspiration or research notes
+   - channel constraints
+3. Draft for the selected channel.
+4. Run the result through:
+   - `anti-slop` for generic-AI cleanup
+   - `review-draft` for voice alignment and rewrite if needed
+5. Return a clean draft plus any unresolved review flags.
+
+## Output structure
+
+```markdown
+# Draft Package — <topic>
+
+## Channel
+...
+
+## Draft
+...
+
+## Review Notes
+- ...
+```
+
+## Rules
+
+- Draft one asset per invocation.
+- Keep the draft specific to the topic's real angle, not to a generic niche.
+- If channel constraints are missing, call that out instead of guessing silently.
+- If the piece still fails voice review after one rewrite pass, surface the remaining issues explicitly.
+""",
+        "content-publish-helper": """---
+name: content-publish-helper
+description: Prepare an approved content draft for manual publishing, including final checklist, formatting cleanup, and status handoff. Use when the user wants to ship the next approved post, prep a draft for publishing, or bridge the last step between review and manual post.
+---
+
+# Content Publish Helper
+
+This is a Codex-native chain skill for the human-gated publishing step.
+
+## Workflow
+
+1. Confirm the asset is approved and channel-ready.
+2. Run a final preflight:
+   - title or opening line
+   - body formatting
+   - link placement
+   - CTA
+   - obvious copy errors
+3. Produce a publish packet:
+   - final copy
+   - channel-specific checklist
+   - any manual actions still required
+4. Stop at the handoff. Do not pretend to auto-publish unless the environment actually includes a real posting path and the user explicitly wants it.
+
+## Output structure
+
+```markdown
+# Publish Packet — <title>
+
+## Final Copy
+...
+
+## Channel Checklist
+- ...
+
+## Manual Handoff
+- ...
+```
+
+## Rules
+
+- Treat publishing as a human-controlled step by default.
+- If the workflow depends on browser or platform login state, say so directly.
+- Never mark something as published unless the user confirms it actually shipped.
+""",
+        "content-performance-tracker": """---
+name: content-performance-tracker
+description: Refresh and summarize performance metrics for published content, then route the result into the performance log so future voice tuning has real data. Use when the user asks to update content metrics, check how posts are doing, or run a recurring performance refresh.
+---
+
+# Content Performance Tracker
+
+This is a Codex-native chain skill for closing the loop between publishing and learning.
+
+## Workflow
+
+1. Gather the content items to refresh:
+   - one URL
+   - a recent published batch
+   - a spreadsheet or note export
+2. Normalize the available metrics by channel.
+3. Summarize:
+   - current top performer
+   - biggest recent change
+   - obvious missing data
+4. Append clean entries through `log-performance`.
+5. If enough data exists, suggest `tune-voice`.
+
+## Output structure
+
+```markdown
+# Performance Refresh — <date>
+
+## Updated Items
+- ...
+
+## Top Performer
+- ...
+
+## Biggest Delta
+- ...
+
+## Missing Or Failed Reads
+- ...
+```
+
+## Rules
+
+- Trends matter more than false precision.
+- If metrics are partial, say exactly what is missing.
+- Do not fabricate engagement numbers from weak signals.
+- Keep the result structured so it can feed `log-performance`.
+""",
         "content-weekly-report": """---
 name: content-weekly-report
 description: Produce a weekly content digest that summarizes what shipped, what is blocked, what performed best, and what should be turned into content next week. Use when the user asks for a weekly content report, Friday digest, or content retrospective.
@@ -2133,11 +2290,14 @@ Default to `full`.
    - recent outlier research
    - current topic queue
    - drafts in progress
+   - approved drafts awaiting publish
    - published work this week
 2. Route work by need:
    - low research coverage -> `content-outlier-research`
    - weak backlog -> `content-topic-queue`
-   - strong topic ready to write -> direct drafting plus `anti-slop`
+   - strong topic ready to write -> `content-draft-writer`
+   - approved asset ready to ship -> `content-publish-helper`
+   - recent published work needs metrics -> `content-performance-tracker`
    - existing source asset that needs channel variants -> `content-repurpose`
    - end-of-week review -> `content-weekly-report`
 3. Return a concise operating summary:
@@ -2170,6 +2330,149 @@ Default to `full`.
 - Prefer steady throughput over idea-hoarding.
 - Be explicit about the mode and what was skipped because of it.
 - If the user lacks any system of record, work from provided notes and say so directly.
+""",
+        "log-performance": """---
+name: log-performance
+description: Record structured performance data for published content so future review and voice-tuning decisions are based on actual outcomes. Use when the user shares engagement metrics, wants to log a post's performance, or needs a consistent performance history for later analysis.
+---
+
+# Log Performance
+
+This skill is the structured data-entry layer for content performance.
+
+## Workflow
+
+1. Capture the minimum useful fields:
+   - content title or identifier
+   - platform
+   - publish date
+   - primary metric and value
+2. Capture optional but useful context:
+   - format
+   - hook style
+   - topic
+   - secondary metrics
+   - notes
+3. Append the entry in a consistent markdown structure.
+4. If the user has enough entries for pattern analysis, recommend `tune-voice`.
+
+## Output structure
+
+Use a stable append-only format:
+
+```markdown
+---
+**<DATE> | <PLATFORM> | <FORMAT>**
+
+**Content:** ...
+**Hook style:** ...
+**Topic:** ...
+
+**Metrics:**
+- ...
+
+**Hit expectations:** ...
+**Notes:** ...
+---
+```
+
+## Rules
+
+- Consistency matters more than verbosity.
+- If a field is unknown, use `—` instead of inventing it.
+- Treat failed content as equally important data.
+""",
+        "review-draft": """---
+name: review-draft
+description: Review a draft against an established brand voice or recent writing patterns, score the fit, identify what is off, and provide a corrected version when needed. Use when the user asks whether a draft sounds like them, wants a voice review, or needs cleanup before publishing.
+---
+
+# Review Draft
+
+This is the voice-editor layer for generated content.
+
+## Workflow
+
+1. Load the best available voice reference:
+   - existing voice profile
+   - recent strong examples
+   - user-supplied sample posts
+2. Review the draft for:
+   - banned or overused words
+   - generic AI structures
+   - weak hooks
+   - tone mismatch
+   - format mismatch for the channel
+3. Return:
+   - a blunt score
+   - what is off
+   - a clean rewrite if the draft needs one
+4. If recurring voice patterns show up across multiple reviews, suggest `tune-voice`.
+
+## Output structure
+
+- `Voice Score: X/5`
+- short honest assessment
+- grouped issues with fixes
+- full clean version when needed
+
+## Rules
+
+- Prioritize voice fidelity over superficial polish.
+- Do not soften clear problems.
+- Preserve the core argument while fixing the delivery.
+- Skip the rewrite only if the draft is already strong enough to publish.
+""",
+        "tune-voice": """---
+name: tune-voice
+description: Analyze accumulated content performance and propose concrete updates to the content strategy or voice profile based on what is actually working. Use when the user asks what is performing, how to improve the voice, or what patterns to post more of after enough performance data has been logged.
+---
+
+# Tune Voice
+
+This is a Codex-native chain skill for turning performance history into strategy changes.
+
+## Workflow
+
+1. Read the performance log first.
+2. If available, also read the current voice profile or recent review patterns.
+3. Analyze by:
+   - platform
+   - format
+   - hook style
+   - topic
+   - expectation hits vs misses
+4. Produce:
+   - what is working
+   - what is not
+   - the highest-leverage next bet
+   - suggested voice-profile updates
+5. Offer concrete updates before rewriting any standing voice profile.
+
+## Output structure
+
+```markdown
+# Performance Insights
+
+## What's Working
+...
+
+## What's Not
+...
+
+## Highest-Leverage Bet
+...
+
+## Suggested Voice Updates
+...
+```
+
+## Rules
+
+- Prefer non-obvious, actionable patterns over shallow summaries.
+- If the data set is small, say so explicitly and lower confidence.
+- Do not force a confident recommendation if the evidence is mixed.
+- Separate analysis from profile edits; show proposed changes before applying them.
 """,
         "slide-deck-builder": """---
 name: slide-deck-builder

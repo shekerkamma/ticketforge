@@ -23,11 +23,14 @@ Default to `full`.
    - recent outlier research
    - current topic queue
    - drafts in progress
+   - approved drafts awaiting publish
    - published work this week
 2. Route work by need:
    - low research coverage -> `content-outlier-research`
    - weak backlog -> `content-topic-queue`
-   - strong topic ready to write -> direct drafting plus `anti-slop`
+   - strong topic ready to write -> `content-draft-writer`
+   - approved asset ready to ship -> `content-publish-helper`
+   - recent published work needs metrics -> `content-performance-tracker`
    - existing source asset that needs channel variants -> `content-repurpose`
    - end-of-week review -> `content-weekly-report`
 3. Return a concise operating summary:
