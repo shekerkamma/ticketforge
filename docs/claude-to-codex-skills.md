@@ -24,6 +24,10 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `weather-fetcher`
 - `weather-fetcher-tokyo`
 - `code-review-specialist`
+- `content-marketing-team`
+- `content-outlier-research`
+- `content-topic-queue`
+- `content-weekly-report`
 - `contract-reviewer`
 - `content-research`
 - `competitive-intel-sprint`
@@ -46,6 +50,7 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `proposal-generator`
 - `research-to-strategy`
 - `second-brain-capture`
+- `slide-deck-builder`
 - `url-dossier`
 - `vertical-scorer`
 - `watch`
@@ -67,7 +72,11 @@ These skills are not blind copies of the Claude originals. They were rewritten a
 - `presentation`
 - `architect`
 - `architecture-to-everything`
+- `content-marketing-team`
+- `content-outlier-research`
 - `content-research`
+- `content-topic-queue`
+- `content-weekly-report`
 - `crm-hygiene-enforcer`
 - `research-to-strategy`
 - `url-dossier`
@@ -85,6 +94,7 @@ These skills are not blind copies of the Claude originals. They were rewritten a
 - `proposal-generator`
 - `content-repurpose`
 - `second-brain-capture`
+- `slide-deck-builder`
 - `ss`
 
 The Codex pattern is:
@@ -149,6 +159,23 @@ Recommended chain:
 2. `outreach-architect` or `precall-briefer`, depending on whether the next motion is outreach or a live meeting
 3. `proposal-generator` once the opportunity is qualified
 4. `crm-hygiene-enforcer` on a weekly cadence to keep the underlying system trustworthy
+
+The `Claude Cowork` content pipeline wave is now covered too:
+
+- `content-outlier-research` for pattern mining across current high-performing content
+- `content-topic-queue` for turning those patterns into a ranked backlog
+- `content-marketing-team` as the parent orchestrator
+- `content-weekly-report` for the Friday operator digest
+- `slide-deck-builder` for enterprise-style visual deck generation from topics, memos, or research packs
+
+Recommended chain:
+
+1. `content-outlier-research`
+2. `content-topic-queue`
+3. `content-marketing-team` to decide whether to research, queue, draft, or report next
+4. `content-repurpose` or direct drafting plus `anti-slop` once a topic is ready
+5. `content-weekly-report` at the end of the week
+6. `slide-deck-builder` when the same material needs presentation form
 
 The `printing-press` migration is intentionally lean:
 

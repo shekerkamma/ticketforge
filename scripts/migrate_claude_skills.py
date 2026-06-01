@@ -24,7 +24,11 @@ CHAIN_TEMPLATE_SKILLS = {
     "architect",
     "architecture-to-everything",
     "carousel-to-deck",
+    "content-marketing-team",
+    "content-outlier-research",
     "content-repurpose",
+    "content-topic-queue",
+    "content-weekly-report",
     "competitive-intel-sprint",
     "crm-hygiene-enforcer",
     "morning-briefing",
@@ -39,6 +43,7 @@ CHAIN_TEMPLATE_SKILLS = {
     "content-research",
     "research-to-strategy",
     "second-brain-capture",
+    "slide-deck-builder",
     "ss",
     "llm-council",
     "url-dossier",
@@ -63,6 +68,10 @@ SUPPORTED_SKILLS = {
     "weather-fetcher-tokyo",
     "code-review-specialist",
     "contract-reviewer",
+    "content-marketing-team",
+    "content-outlier-research",
+    "content-topic-queue",
+    "content-weekly-report",
     "difficult-conversation-prep",
     "workflow-visualizer",
     "graphify",
@@ -90,6 +99,7 @@ SUPPORTED_SKILLS = {
     "url-dossier",
     "vertical-scorer",
     "presales-deal-prep",
+    "slide-deck-builder",
     "chart-storyteller",
     "carousel-to-deck",
 }
@@ -1931,6 +1941,280 @@ Gather as many of these as exist:
 - Keep scope boundaries explicit to prevent scope creep.
 - Separate base scope from optional add-ons.
 - If the environment cannot export PDF or branded documents, say so and produce the clean source draft.
+""",
+        "content-outlier-research": """---
+name: content-outlier-research
+description: Research high-performing posts, essays, videos, and discussions in a target niche, then extract the hook, structure, angle, and likely reason each one worked. Use when the user asks what is working now, wants outlier content research, or needs pattern mining before creating new content.
+---
+
+# Content Outlier Research
+
+This is a Codex-native chain skill for turning raw content examples into reusable pattern notes.
+
+## Workflow
+
+1. Confirm the niche, window, and source mix.
+   Default to recent enterprise-AI, automotive-AI, and agentic-systems content if the user does not specify.
+2. Gather candidates with `content-research`, `watch`, and `url-dossier` as needed.
+3. Rank candidates by practical outlier value:
+   - visible engagement or reach
+   - freshness
+   - relevance to the user's actual work
+   - clarity of the pattern
+4. For the top items, extract:
+   - hook
+   - structure
+   - angle
+   - likely reason it worked
+   - what is reusable vs. what is unique to that creator
+5. If the user keeps durable research notes, save the result through `second-brain-capture`.
+
+## Output structure
+
+```markdown
+# Content Outlier Research — <topic> — <date>
+
+## Top Outliers
+
+### 1. <title>
+- Source: ...
+- URL: ...
+- Why it matters: ...
+- Hook: ...
+- Structure: ...
+- Angle: ...
+- Reusable pattern: ...
+
+## Pattern Summary
+- ...
+
+## Best Next Moves
+- ...
+```
+
+## Rules
+
+- Favor actionable patterns over vanity metrics.
+- Separate observed facts from your hypothesis about why something worked.
+- Avoid generic advice like "be authentic" or "tell stories."
+- If engagement data is partial or inferred, say so.
+""",
+        "content-topic-queue": """---
+name: content-topic-queue
+description: Generate a ranked queue of concrete content topics by combining fresh outlier patterns with the user's active workstreams and point of view. Use when the user asks what to write next, wants a topic backlog, or needs ideas separated by channel such as LinkedIn, Substack, or deck format.
+---
+
+# Content Topic Queue
+
+This is a Codex-native chain skill for turning research and expertise into a writeable backlog.
+
+## Inputs
+
+Best inputs:
+
+- a recent outlier research pack
+- the user's active workstreams
+- preferred channels such as LinkedIn, Substack, or deck
+
+## Workflow
+
+1. Read the latest outlier patterns first. If none exist, suggest running `content-outlier-research`.
+2. Read the user's active themes, current projects, and strong opinions.
+3. Cross the two:
+   - what is working externally
+   - what the user can credibly say from lived work
+4. Generate candidate topics with:
+   - title
+   - angle
+   - suggested channel
+   - why now
+   - source inspiration
+5. Rank the queue by usefulness, specificity, and freshness.
+6. If the user wants drafts immediately, pass the top topics into `content-repurpose` or a direct drafting step and run `anti-slop` on the result.
+
+## Output structure
+
+```markdown
+# Content Topic Queue — <date>
+
+## Top Topics
+
+### 1. <title>
+- Channel: ...
+- Angle: ...
+- Why now: ...
+- Inspired by: ...
+
+## Reserve Topics
+- ...
+```
+
+## Rules
+
+- Every topic should tie back to a real workstream, operator insight, or concrete case.
+- Do not produce interchangeable "AI trends" topics.
+- Make the channel recommendation explicit.
+- Kill weak ideas instead of padding the queue.
+""",
+        "content-weekly-report": """---
+name: content-weekly-report
+description: Produce a weekly content digest that summarizes what shipped, what is blocked, what performed best, and what should be turned into content next week. Use when the user asks for a weekly content report, Friday digest, or content retrospective.
+---
+
+# Content Weekly Report
+
+This is a Codex-native chain skill for converting raw content activity into a decision-oriented weekly digest.
+
+## Workflow
+
+1. Gather the week's source data:
+   - published posts, essays, decks, or videos
+   - drafts in progress or stuck in review
+   - recent outlier research
+   - queue candidates for next week
+2. If the data lives in spreadsheets, markdown notes, or screenshots, normalize it first.
+3. Build the report around four questions:
+   - what shipped
+   - what worked
+   - what is stuck
+   - what should happen next week
+4. If the environment supports delivery into notes, email, or a vault, save it there after generating the markdown.
+
+## Output structure
+
+```markdown
+# Content Week — <date range>
+
+## What Shipped
+...
+
+## What Worked
+...
+
+## What Is Stuck
+...
+
+## Cadence Check
+...
+
+## Next Week
+...
+```
+
+## Rules
+
+- Do not invent wins if nothing shipped.
+- Treat this as an operator report, not a morale memo.
+- Keep the lead metric simple and defensible.
+- If the underlying data is thin, say what is missing.
+""",
+        "content-marketing-team": """---
+name: content-marketing-team
+description: Coordinate a text-first content workflow across research, topic generation, drafting, review, and weekly reporting. Use when the user asks to run a content cycle, decide what to publish next, or orchestrate a repeatable content pipeline instead of a one-off post.
+---
+
+# Content Marketing Team
+
+This is the Codex-native parent chain for the content workflow.
+
+## Modes
+
+- `full`
+- `research-only`
+- `topic-only`
+- `draft-only`
+- `report-only`
+
+Default to `full`.
+
+## Workflow
+
+1. Read the current state:
+   - recent outlier research
+   - current topic queue
+   - drafts in progress
+   - published work this week
+2. Route work by need:
+   - low research coverage -> `content-outlier-research`
+   - weak backlog -> `content-topic-queue`
+   - strong topic ready to write -> direct drafting plus `anti-slop`
+   - existing source asset that needs channel variants -> `content-repurpose`
+   - end-of-week review -> `content-weekly-report`
+3. Return a concise operating summary:
+   - what ran
+   - what is queued
+   - what is blocked on human review
+   - what the next best content action is
+
+## Output structure
+
+```markdown
+# Content Team Cycle — <date>
+
+## Ran
+- ...
+
+## Queue Health
+- ...
+
+## Blockers
+- ...
+
+## Next Best Action
+- ...
+```
+
+## Rules
+
+- Do not pile up more drafts if the review queue is already backed up.
+- Prefer steady throughput over idea-hoarding.
+- Be explicit about the mode and what was skipped because of it.
+- If the user lacks any system of record, work from provided notes and say so directly.
+""",
+        "slide-deck-builder": """---
+name: slide-deck-builder
+description: Build a presentation or self-contained HTML slide deck using Sheker's enterprise style: dark navy, teal accents, widescreen layout, and visual-first slides. Use when the user asks for a slide deck, presentation, HTML deck, or visual narrative from a topic, memo, or research pack.
+---
+
+# Slide Deck Builder
+
+This is a Codex-native chain skill for turning a topic or document into a deck source.
+
+## Brand defaults
+
+- widescreen layout
+- dark navy base
+- teal accent system
+- enterprise tone
+- visual-first slides, not bullet dumps
+
+## Workflow
+
+1. Identify the input shape:
+   - topic only
+   - memo or proposal
+   - research pack
+   - existing carousel or notes
+2. Choose the supporting path:
+   - `presentation` for core deck structure
+   - `presentation-theme` for consistent visual direction
+   - `chart-storyteller` for metric slides
+   - `architecture-to-everything` for system or workflow slides
+   - `carousel-to-deck` if the source is already in carousel form
+3. Build the deck with:
+   - title / setup
+   - core content
+   - evidence
+   - takeaway / next steps
+4. If the environment supports export, use the appropriate exporter. Otherwise produce the clean HTML or markdown-backed deck source.
+
+## Rules
+
+- One idea per slide.
+- Every slide needs a visual treatment or strong structural reason not to have one.
+- Prefer 5 to 12 slides unless the user explicitly wants a larger deck.
+- Keep speaker-support copy tight; do not write essays on slides.
+- If you cannot generate a real `.pptx`, say so and provide the best deck source available.
 """,
         "printing-press": {
             "SKILL.md": """---
