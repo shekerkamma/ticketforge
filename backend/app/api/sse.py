@@ -10,7 +10,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.api.deps import get_current_user
 from app.db import get_session
 from app.models.event import Event
+from app.models.pipeline_run import PipelineRun
+from app.models.repository import Repository
 from app.models.team import TeamMember
+from app.models.ticket import Ticket
 from app.models.user import User
 
 router = APIRouter(prefix="/api/v1/teams/{team_id}", tags=["sse"])
@@ -36,6 +39,10 @@ async def event_stream(
                 # Poll for new events
                 query = (
                     select(Event)
+                    .join(PipelineRun, PipelineRun.id == Event.pipeline_run_id)
+                    .join(Ticket, Ticket.id == PipelineRun.ticket_id)
+                    .join(Repository, Repository.id == Ticket.repository_id)
+                    .where(Repository.team_id == team_id)
                     .order_by(Event.timestamp.desc())
                     .limit(10)
                 )

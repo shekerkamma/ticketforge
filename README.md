@@ -65,6 +65,14 @@ Local URLs:
 make smoke-test
 ```
 
+### Seed demo data
+
+```bash
+make demo-data
+```
+
+This populates the local SQLite database with sample repositories, tickets, pipeline runs, and events for the default local demo user.
+
 ### GitHub foundation check
 
 ```bash

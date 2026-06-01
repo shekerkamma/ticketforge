@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { apiFetch } from "@/lib/api";
+import { createEventStream, type SSEEvent } from "@/lib/sse";
 import StatusCards from "@/components/features/StatusCards";
 import ActivityFeed from "@/components/features/ActivityFeed";
 
@@ -10,18 +11,10 @@ interface TicketSummary {
   status: string;
 }
 
-interface ActivityEvent {
-  id: string;
-  agent_name: string;
-  event_type: string;
-  payload: Record<string, unknown>;
-  timestamp: string;
-}
-
 export default function DashboardPage() {
   const router = useRouter();
   const [counts, setCounts] = useState<Record<string, number>>({});
-  const [events, setEvents] = useState<ActivityEvent[]>([]);
+  const [events, setEvents] = useState<SSEEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [teamId, setTeamId] = useState<string | null>(null);
@@ -34,6 +27,8 @@ export default function DashboardPage() {
       const teams = teamsData.teams || [];
 
       if (teams.length === 0) {
+        setTeamId(null);
+        setEvents([]);
         setLoading(false);
         return;
       }
@@ -67,6 +62,16 @@ export default function DashboardPage() {
     const interval = setInterval(fetchData, 10000);
     return () => clearInterval(interval);
   }, [fetchData]);
+
+  useEffect(() => {
+    if (!teamId) return;
+    return createEventStream(teamId, (event) => {
+      setEvents((prev) => {
+        const next = [event, ...prev.filter((entry) => entry.id !== event.id)];
+        return next.slice(0, 10);
+      });
+    });
+  }, [teamId]);
 
   if (loading) {
     return (
