@@ -190,6 +190,13 @@ The bundled helpers live at:
 - `starter/claude-to-codex-skills/skills/research-analysis-deck/scripts/scaffold_chain.py`
 - `starter/claude-to-codex-skills/skills/research-analysis-deck/scripts/validate_chain.py`
 
+There is also a minimal saved `L5` example showing `ai-analyst -> research-analysis-deck`
+handoffs in practice:
+
+- `research-notes/ai-analyst-l5-scenario/source-notes.json`
+- `analytics-comms/ai-analyst-l5-scenario/analysis-pack.json`
+- `analytics-comms/ai-analyst-l5-scenario/deck-plan.json`
+
 The first `Claude Cowork` wave is intentionally selective:
 
 - `anti-slop` as a durable prose-quality filter

@@ -1,0 +1,61 @@
+{
+  "report_slug": "ai-analyst-l5-scenario",
+  "created_at": "2026-06-02T09:10:16Z",
+  "audience": "executive",
+  "deck_goal": "Produce a churn investigation deck with recommendations.",
+  "theme_reference": "Use the current branded reference deck or client template.",
+  "story_arc": [
+    "Problem",
+    "Evidence",
+    "Implication",
+    "Action"
+  ],
+  "slides": [
+    {
+      "slide_id": "s1",
+      "section": "Opening",
+      "slide_type": "title",
+      "title": "Churn Risk by Acquisition Channel",
+      "objective": "Frame the question and recommendation.",
+      "audience": "executive",
+      "layout": "hero",
+      "content_blocks": [
+        {
+          "kind": "summary",
+          "label": "Headline",
+          "body": "Paid search is the first channel to investigate for churn risk."
+        }
+      ],
+      "source_ids": [
+        "src-paid-search"
+      ]
+    },
+    {
+      "slide_id": "s2",
+      "section": "Analysis",
+      "slide_type": "evidence",
+      "title": "Why paid search stands out",
+      "objective": "Explain the leading finding and business implication.",
+      "audience": "executive",
+      "layout": "two-column",
+      "content_blocks": [
+        {
+          "kind": "finding",
+          "label": "Finding",
+          "body": "Paid search carries the clearest churn and revenue-at-risk pattern in the sample."
+        },
+        {
+          "kind": "action",
+          "label": "Action",
+          "body": "Review paid-search cohorts before increasing spend or scaling campaigns."
+        }
+      ],
+      "source_ids": [
+        "src-paid-search"
+      ]
+    }
+  ],
+  "export_targets": [
+    "pptx"
+  ]
+}

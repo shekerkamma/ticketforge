@@ -1,0 +1,69 @@
+{
+  "report_slug": "ai-analyst-l5-scenario",
+  "created_at": "2026-06-02T09:10:16Z",
+  "decision_question": "Which acquisition channel has the highest churn and what should we do about it?",
+  "audience": "executive",
+  "headline": "Paid search is the highest-risk acquisition channel in the sample and should be triaged first.",
+  "source_ids": [
+    "src-paid-search"
+  ],
+  "findings": [
+    {
+      "finding_id": "f1",
+      "title": "Paid search has the highest churn risk",
+      "statement": "The synthetic sample points to paid search as the channel with the most concentrated churn and revenue exposure.",
+      "implication": "Retention and acquisition teams should review paid-search cohorts before scaling spend.",
+      "confidence": "medium",
+      "metric": "churn_rate",
+      "source_ids": [
+        "src-paid-search"
+      ]
+    }
+  ],
+  "use_case_clusters": [
+    {
+      "cluster_id": "uc1",
+      "name": "Channel churn triage",
+      "buyer": "Growth lead",
+      "workflow_owner": "Lifecycle marketing manager",
+      "business_job": "Identify which acquisition sources create the most downstream churn.",
+      "value_prop": "Stops inefficient spend and improves retention prioritization.",
+      "why_now": "Acquisition costs rise quickly when poor-fit channels are not corrected.",
+      "recommendation": "Run a deeper cohort analysis on paid search before increasing budget.",
+      "evidence_companies": [
+        {
+          "name": "Synthetic sample",
+          "proof_line": "Paid search shows the biggest revenue-at-risk pattern in the sample.",
+          "source_id": "src-paid-search"
+        }
+      ]
+    }
+  ],
+  "risks": [
+    "Synthetic sample is tiny and not production-grade evidence."
+  ],
+  "recommendations": [
+    {
+      "title": "Audit paid-search cohort quality",
+      "why": "It is the clearest churn risk in the sample.",
+      "priority": "high"
+    }
+  ],
+  "chart_briefs": [
+    {
+      "title": "Churn by acquisition channel",
+      "best_chart_type": "bar",
+      "why_this_fits": "The question is a direct categorical comparison.",
+      "narrative_takeaway": "Paid search should be the first channel investigated.",
+      "encoding_guidance": "Gray all bars except paid search in a highlight color.",
+      "annotation_plan": "Call out the paid-search bar with a one-line implication."
+    }
+  ],
+  "methodology": {
+    "approach": "Synthetic CSV inspection with a structured churn framing workflow.",
+    "limitations": [
+      "No real cohort size or time-series depth.",
+      "Only a sample dataset was used."
+    ]
+  }
+}
