@@ -1,0 +1,2585 @@
+{
+  "generated_at_utc": "2026-06-02T02:04:26.292757+00:00",
+  "source": "https://www.ycombinator.com/companies",
+  "current_batch": "Spring 2026",
+  "cohort_summary": {
+    "batch": "Spring 2025",
+    "company_count": 27,
+    "median_team_size": 3,
+    "teams_1_2": 13,
+    "team_sizes": [
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3,
+      3,
+      4,
+      5,
+      5,
+      6,
+      6,
+      7,
+      7,
+      7,
+      8,
+      8
+    ],
+    "max_team_size": 10
+  },
+  "companies": [
+    {
+      "name": "Alpha Research",
+      "batch": "Spring 2025",
+      "team_size": 1,
+      "website": "https://alpharesearch.nyc/",
+      "subindustry": "B2B -> Engineering, Product and Design",
+      "what_they_do": "Open source, agentic knowledge bases for all of humanity's knowledge.",
+      "use_case_focus": [
+        "analytics and reporting",
+        "developer tools and testing",
+        "sales and customer ops"
+      ],
+      "proof_line": "Open source knowledge bases for all humanity."
+    },
+    {
+      "name": "Golf",
+      "batch": "Spring 2025",
+      "team_size": 1,
+      "website": "https://golf.dev/",
+      "subindustry": "B2B -> Security",
+      "what_they_do": "Agentic AI Security and Governance",
+      "use_case_focus": [
+        "security and governance",
+        "developer tools and testing",
+        "data and agent infrastructure"
+      ],
+      "proof_line": "Your agents connect to your data & you can\u2019t see it"
+    },
+    {
+      "name": "Anana",
+      "batch": "Spring 2025",
+      "team_size": 2,
+      "website": "https://getanana.com",
+      "subindustry": "B2B",
+      "what_they_do": "The agentic system of action for hotel groups and management companies",
+      "use_case_focus": [
+        "workflow automation",
+        "sales and customer ops"
+      ],
+      "proof_line": "One place for Revenue, Sales, and Operations to work together with AI \u2014 investigating pickup, triaging RFPs, and acting in the tools your team already uses."
+    },
+    {
+      "name": "BitBoard",
+      "batch": "Spring 2025",
+      "team_size": 2,
+      "website": "https://bitboard.work",
+      "subindustry": "B2B -> Analytics",
+      "what_they_do": "Let your agent build dashboards and reporting.",
+      "use_case_focus": [
+        "analytics and reporting"
+      ],
+      "proof_line": "Connect your data, build with your agent, share with your team."
+    },
+    {
+      "name": "Capacitive",
+      "batch": "Spring 2025",
+      "team_size": 2,
+      "website": "https://capacitive.ai/",
+      "subindustry": "B2B -> Engineering, Product and Design",
+      "what_they_do": "The data gateway for agents.",
+      "use_case_focus": [
+        "security and governance",
+        "developer tools and testing",
+        "data and agent infrastructure"
+      ],
+      "proof_line": "As of January 2026, Capacitive has ceased all operations and discontinued support for its Commons platform."
+    },
+    {
+      "name": "Cohesive",
+      "batch": "Spring 2025",
+      "team_size": 2,
+      "website": "https://getcohesiveai.com",
+      "subindustry": "B2B",
+      "what_they_do": "The agentic CRM for blue-collar services",
+      "use_case_focus": [
+        "sales and customer ops"
+      ],
+      "proof_line": "The agentic CRM for blue-collar services"
+    },
+    {
+      "name": "Docket",
+      "batch": "Spring 2025",
+      "team_size": 2,
+      "website": "https://docketqa.com",
+      "subindustry": "B2B -> Engineering, Product and Design",
+      "what_they_do": "AI agents for web testing",
+      "use_case_focus": [
+        "developer tools and testing"
+      ],
+      "proof_line": "AI agents for web testing"
+    },
+    {
+      "name": "Galen AI",
+      "batch": "Spring 2025",
+      "team_size": 2,
+      "website": "https://www.galenai.com/",
+      "subindustry": "Healthcare -> Consumer Health and Wellness",
+      "what_they_do": "Personal AI healthcare agent, powered by clinical and wearable data.",
+      "use_case_focus": [
+        "healthcare operations",
+        "developer tools and testing",
+        "sales and customer ops"
+      ],
+      "proof_line": "Personal AI healthcare agent, powered by clinical and wearable data."
+    },
+    {
+      "name": "nao Labs",
+      "batch": "Spring 2025",
+      "team_size": 2,
+      "website": "https://getnao.io/",
+      "subindustry": "B2B -> Analytics",
+      "what_they_do": "Open Source Analytics Agent",
+      "use_case_focus": [
+        "analytics and reporting"
+      ],
+      "proof_line": "Open Source Analytics Agent"
+    },
+    {
+      "name": "Plexe",
+      "batch": "Spring 2025",
+      "team_size": 2,
+      "website": "https://plexe.ai",
+      "subindustry": "B2B -> Engineering, Product and Design",
+      "what_they_do": "Open-source agents to build predictive ML models from a prompt",
+      "use_case_focus": [
+        "general AI applications"
+      ],
+      "proof_line": "Open-source agents to build predictive ML models from a prompt"
+    },
+    {
+      "name": "Propolis",
+      "batch": "Spring 2025",
+      "team_size": 2,
+      "website": "https://propolis.tech/",
+      "subindustry": "B2B",
+      "what_they_do": "Hands off QA via intelligent browser agents. ",
+      "use_case_focus": [
+        "developer tools and testing"
+      ],
+      "proof_line": "Hands off QA via intelligent browser agents. "
+    },
+    {
+      "name": "stratify",
+      "batch": "Spring 2025",
+      "team_size": 2,
+      "website": "https://www.trystratify.com",
+      "subindustry": "B2B",
+      "what_they_do": "AI agents that help you understand your customers' needs",
+      "use_case_focus": [
+        "workflow automation",
+        "sales and customer ops"
+      ],
+      "proof_line": "Automate your user research with AI-powered insights. Get deeper customer understanding without the manual work."
+    },
+    {
+      "name": "Vesence",
+      "batch": "Spring 2025",
+      "team_size": 2,
+      "website": "https://vesence.com",
+      "subindustry": "B2B -> Legal",
+      "what_they_do": "Cursor for Lawyers. Agentic AI in MS Office.",
+      "use_case_focus": [
+        "legal and compliance workflows"
+      ],
+      "proof_line": "Cursor for Lawyers. Agentic AI in MS Office."
+    },
+    {
+      "name": "Aegis",
+      "batch": "Spring 2025",
+      "team_size": 3,
+      "website": "https://aegishealth.us/",
+      "subindustry": "Healthcare -> Healthcare IT",
+      "what_they_do": "AI Agents to win denied health insurance claims.",
+      "use_case_focus": [
+        "healthcare operations",
+        "finance and trading"
+      ],
+      "proof_line": "AI Agents to win denied health insurance claims."
+    },
+    {
+      "name": "Cua",
+      "batch": "Spring 2025",
+      "team_size": 3,
+      "website": "https://cua.ai",
+      "subindustry": "B2B -> Engineering, Product and Design",
+      "what_they_do": "Give every agent a cloud desktop",
+      "use_case_focus": [
+        "general AI applications"
+      ],
+      "proof_line": "Give every agent a cloud desktop"
+    },
+    {
+      "name": "Klavis AI",
+      "batch": "Spring 2025",
+      "team_size": 3,
+      "website": "https://www.klavis.ai/",
+      "subindustry": "B2B",
+      "what_they_do": "Live Environments for Training AI Agents",
+      "use_case_focus": [
+        "general AI applications"
+      ],
+      "proof_line": "Live Environments for Training AI Agents"
+    },
+    {
+      "name": "Scalar Field",
+      "batch": "Spring 2025",
+      "team_size": 3,
+      "website": "https://www.scalarfield.io/",
+      "subindustry": "Fintech",
+      "what_they_do": "Your Agentic Trading Desk \u2014 Building the next era of agentic\u2026",
+      "use_case_focus": [
+        "analytics and reporting",
+        "workflow automation",
+        "data and agent infrastructure"
+      ],
+      "proof_line": "Your Agentic Trading Desk \u2014 Building the next era of agentic\u2026"
+    },
+    {
+      "name": "Cotool",
+      "batch": "Spring 2025",
+      "team_size": 4,
+      "website": "https://cotool.ai",
+      "subindustry": "B2B -> Security",
+      "what_they_do": "AI Agents for Security Operations Teams",
+      "use_case_focus": [
+        "security and governance",
+        "analytics and reporting",
+        "workflow automation"
+      ],
+      "proof_line": "AI Agents for Security Operations Teams"
+    },
+    {
+      "name": "MindFort",
+      "batch": "Spring 2025",
+      "team_size": 5,
+      "website": "https://www.mindfort.ai",
+      "subindustry": "B2B -> Security",
+      "what_they_do": "Autonomous Security Agents",
+      "use_case_focus": [
+        "security and governance",
+        "workflow automation"
+      ],
+      "proof_line": "Autonomous Security Agents"
+    },
+    {
+      "name": "Pelica",
+      "batch": "Spring 2025",
+      "team_size": 5,
+      "website": "https://www.pelica.com/",
+      "subindustry": "Healthcare -> Healthcare IT",
+      "what_they_do": "Transforming healthcare operations with AI agents",
+      "use_case_focus": [
+        "healthcare operations",
+        "workflow automation",
+        "finance and trading"
+      ],
+      "proof_line": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes."
+    },
+    {
+      "name": "Parsewise",
+      "batch": "Spring 2025",
+      "team_size": 6,
+      "website": "https://parsewise.ai",
+      "subindustry": "B2B",
+      "what_they_do": "Multi-document processing for your risk teams, AI agents, pipelines",
+      "use_case_focus": [
+        "sales and customer ops",
+        "finance and trading"
+      ],
+      "proof_line": "Multi-document processing for your risk teams, AI agents, pipelines"
+    },
+    {
+      "name": "Sim",
+      "batch": "Spring 2025",
+      "team_size": 6,
+      "website": "https://sim.ai",
+      "subindustry": "B2B",
+      "what_they_do": "Open source platform to build AI agent workflows",
+      "use_case_focus": [
+        "workflow automation"
+      ],
+      "proof_line": "Open source platform to build AI agent workflows"
+    },
+    {
+      "name": "Airweave",
+      "batch": "Spring 2025",
+      "team_size": 7,
+      "website": "https://airweave.ai",
+      "subindustry": "B2B -> Infrastructure",
+      "what_they_do": "The open-source context retrieval layer for agents",
+      "use_case_focus": [
+        "analytics and reporting",
+        "data and agent infrastructure"
+      ],
+      "proof_line": "The open-source context retrieval layer for agents"
+    },
+    {
+      "name": "Avallon AI",
+      "batch": "Spring 2025",
+      "team_size": 7,
+      "website": "https://www.avallon.ai/",
+      "subindustry": "Fintech -> Insurance",
+      "what_they_do": "AI agents for insurance claims operations",
+      "use_case_focus": [
+        "finance and trading"
+      ],
+      "proof_line": "AI agents for insurance claims operations"
+    },
+    {
+      "name": "Bluejay",
+      "batch": "Spring 2025",
+      "team_size": 7,
+      "website": "https://getbluejay.ai/",
+      "subindustry": "B2B",
+      "what_they_do": "Test, monitor, and improve your voice and chat AI agents",
+      "use_case_focus": [
+        "sales and customer ops"
+      ],
+      "proof_line": "Test, monitor, and improve your voice and chat AI agents"
+    },
+    {
+      "name": "Kaelio",
+      "batch": "Spring 2025",
+      "team_size": 8,
+      "website": "https://kaelio.com/",
+      "subindustry": "B2B",
+      "what_they_do": "The open-source context layer for data agents",
+      "use_case_focus": [
+        "data and agent infrastructure"
+      ],
+      "proof_line": "The open-source context layer for data agents"
+    },
+    {
+      "name": "Third Chair",
+      "batch": "Spring 2025",
+      "team_size": 8,
+      "website": "https://usethirdchair.com",
+      "subindustry": "B2B -> Legal",
+      "what_they_do": "AI-Native IP Enforcement Agent",
+      "use_case_focus": [
+        "workflow automation",
+        "legal and compliance workflows"
+      ],
+      "proof_line": "AI-Native IP Enforcement Agent"
+    }
+  ],
+  "use_case_clusters": [
+    {
+      "name": "workflow automation",
+      "count": 8,
+      "buyer": "COO, operations leader, or workflow owner",
+      "workflow_owner": "ops managers running repetitive multi-step work",
+      "business_job": "Turn high-volume, rules-heavy operational queues into agent-run systems of action.",
+      "value_prop": "Throughput, faster cycle times, and lower labor cost without requiring users to learn a new interface.",
+      "why_now": "LLMs plus tool use make it possible to automate the whole queue, not just summarize it.",
+      "recommendation": "Best starting point when a team already exists and the handoffs are obvious.",
+      "companies": [
+        {
+          "name": "Anana",
+          "batch": "Spring 2025",
+          "team_size": 2,
+          "website": "https://getanana.com",
+          "subindustry": "B2B",
+          "what_they_do": "The agentic system of action for hotel groups and management companies",
+          "use_case_focus": [
+            "workflow automation",
+            "sales and customer ops"
+          ],
+          "proof_line": "One place for Revenue, Sales, and Operations to work together with AI \u2014 investigating pickup, triaging RFPs, and acting in the tools your team already uses."
+        },
+        {
+          "name": "stratify",
+          "batch": "Spring 2025",
+          "team_size": 2,
+          "website": "https://www.trystratify.com",
+          "subindustry": "B2B",
+          "what_they_do": "AI agents that help you understand your customers' needs",
+          "use_case_focus": [
+            "workflow automation",
+            "sales and customer ops"
+          ],
+          "proof_line": "Automate your user research with AI-powered insights. Get deeper customer understanding without the manual work."
+        },
+        {
+          "name": "Scalar Field",
+          "batch": "Spring 2025",
+          "team_size": 3,
+          "website": "https://www.scalarfield.io/",
+          "subindustry": "Fintech",
+          "what_they_do": "Your Agentic Trading Desk \u2014 Building the next era of agentic\u2026",
+          "use_case_focus": [
+            "analytics and reporting",
+            "workflow automation",
+            "data and agent infrastructure"
+          ],
+          "proof_line": "Your Agentic Trading Desk \u2014 Building the next era of agentic\u2026"
+        },
+        {
+          "name": "Cotool",
+          "batch": "Spring 2025",
+          "team_size": 4,
+          "website": "https://cotool.ai",
+          "subindustry": "B2B -> Security",
+          "what_they_do": "AI Agents for Security Operations Teams",
+          "use_case_focus": [
+            "security and governance",
+            "analytics and reporting",
+            "workflow automation"
+          ],
+          "proof_line": "AI Agents for Security Operations Teams"
+        },
+        {
+          "name": "MindFort",
+          "batch": "Spring 2025",
+          "team_size": 5,
+          "website": "https://www.mindfort.ai",
+          "subindustry": "B2B -> Security",
+          "what_they_do": "Autonomous Security Agents",
+          "use_case_focus": [
+            "security and governance",
+            "workflow automation"
+          ],
+          "proof_line": "Autonomous Security Agents"
+        },
+        {
+          "name": "Pelica",
+          "batch": "Spring 2025",
+          "team_size": 5,
+          "website": "https://www.pelica.com/",
+          "subindustry": "Healthcare -> Healthcare IT",
+          "what_they_do": "Transforming healthcare operations with AI agents",
+          "use_case_focus": [
+            "healthcare operations",
+            "workflow automation",
+            "finance and trading"
+          ],
+          "proof_line": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes."
+        },
+        {
+          "name": "Sim",
+          "batch": "Spring 2025",
+          "team_size": 6,
+          "website": "https://sim.ai",
+          "subindustry": "B2B",
+          "what_they_do": "Open source platform to build AI agent workflows",
+          "use_case_focus": [
+            "workflow automation"
+          ],
+          "proof_line": "Open source platform to build AI agent workflows"
+        },
+        {
+          "name": "Third Chair",
+          "batch": "Spring 2025",
+          "team_size": 8,
+          "website": "https://usethirdchair.com",
+          "subindustry": "B2B -> Legal",
+          "what_they_do": "AI-Native IP Enforcement Agent",
+          "use_case_focus": [
+            "workflow automation",
+            "legal and compliance workflows"
+          ],
+          "proof_line": "AI-Native IP Enforcement Agent"
+        }
+      ],
+      "examples": [
+        "Anana",
+        "stratify",
+        "Scalar Field",
+        "Cotool",
+        "MindFort"
+      ]
+    },
+    {
+      "name": "sales and customer ops",
+      "count": 7,
+      "buyer": "sales leaders, revenue ops, customer success, or service managers",
+      "workflow_owner": "frontline teams handling customer-facing repetitive work",
+      "business_job": "Use agents to qualify, route, support, and operationalize customer interaction workflows.",
+      "value_prop": "Improves responsiveness and rep leverage while keeping the workflow anchored in revenue teams.",
+      "why_now": "Customer conversations already create structured data and clear SLAs, which agents can exploit.",
+      "recommendation": "Strong wedge when the product can own a narrow workflow like intake, triage, or follow-up.",
+      "companies": [
+        {
+          "name": "Alpha Research",
+          "batch": "Spring 2025",
+          "team_size": 1,
+          "website": "https://alpharesearch.nyc/",
+          "subindustry": "B2B -> Engineering, Product and Design",
+          "what_they_do": "Open source, agentic knowledge bases for all of humanity's knowledge.",
+          "use_case_focus": [
+            "analytics and reporting",
+            "developer tools and testing",
+            "sales and customer ops"
+          ],
+          "proof_line": "Open source knowledge bases for all humanity."
+        },
+        {
+          "name": "Anana",
+          "batch": "Spring 2025",
+          "team_size": 2,
+          "website": "https://getanana.com",
+          "subindustry": "B2B",
+          "what_they_do": "The agentic system of action for hotel groups and management companies",
+          "use_case_focus": [
+            "workflow automation",
+            "sales and customer ops"
+          ],
+          "proof_line": "One place for Revenue, Sales, and Operations to work together with AI \u2014 investigating pickup, triaging RFPs, and acting in the tools your team already uses."
+        },
+        {
+          "name": "Cohesive",
+          "batch": "Spring 2025",
+          "team_size": 2,
+          "website": "https://getcohesiveai.com",
+          "subindustry": "B2B",
+          "what_they_do": "The agentic CRM for blue-collar services",
+          "use_case_focus": [
+            "sales and customer ops"
+          ],
+          "proof_line": "The agentic CRM for blue-collar services"
+        },
+        {
+          "name": "Galen AI",
+          "batch": "Spring 2025",
+          "team_size": 2,
+          "website": "https://www.galenai.com/",
+          "subindustry": "Healthcare -> Consumer Health and Wellness",
+          "what_they_do": "Personal AI healthcare agent, powered by clinical and wearable data.",
+          "use_case_focus": [
+            "healthcare operations",
+            "developer tools and testing",
+            "sales and customer ops"
+          ],
+          "proof_line": "Personal AI healthcare agent, powered by clinical and wearable data."
+        },
+        {
+          "name": "stratify",
+          "batch": "Spring 2025",
+          "team_size": 2,
+          "website": "https://www.trystratify.com",
+          "subindustry": "B2B",
+          "what_they_do": "AI agents that help you understand your customers' needs",
+          "use_case_focus": [
+            "workflow automation",
+            "sales and customer ops"
+          ],
+          "proof_line": "Automate your user research with AI-powered insights. Get deeper customer understanding without the manual work."
+        },
+        {
+          "name": "Parsewise",
+          "batch": "Spring 2025",
+          "team_size": 6,
+          "website": "https://parsewise.ai",
+          "subindustry": "B2B",
+          "what_they_do": "Multi-document processing for your risk teams, AI agents, pipelines",
+          "use_case_focus": [
+            "sales and customer ops",
+            "finance and trading"
+          ],
+          "proof_line": "Multi-document processing for your risk teams, AI agents, pipelines"
+        },
+        {
+          "name": "Bluejay",
+          "batch": "Spring 2025",
+          "team_size": 7,
+          "website": "https://getbluejay.ai/",
+          "subindustry": "B2B",
+          "what_they_do": "Test, monitor, and improve your voice and chat AI agents",
+          "use_case_focus": [
+            "sales and customer ops"
+          ],
+          "proof_line": "Test, monitor, and improve your voice and chat AI agents"
+        }
+      ],
+      "examples": [
+        "Alpha Research",
+        "Anana",
+        "Cohesive",
+        "Galen AI",
+        "stratify"
+      ]
+    },
+    {
+      "name": "analytics and reporting",
+      "count": 6,
+      "buyer": "heads of analytics, operations leaders, and knowledge-work teams",
+      "workflow_owner": "analysts and operators who summarize, monitor, and report",
+      "business_job": "Turn raw data or context into dashboards, summaries, and decision-ready reporting.",
+      "value_prop": "Makes information work faster and cheaper while reducing manual synthesis.",
+      "why_now": "Reporting is repetitive, high-frequency, and already evaluated on output quality and speed.",
+      "recommendation": "Works best when paired with trusted data access and a narrow reporting loop.",
+      "companies": [
+        {
+          "name": "Alpha Research",
+          "batch": "Spring 2025",
+          "team_size": 1,
+          "website": "https://alpharesearch.nyc/",
+          "subindustry": "B2B -> Engineering, Product and Design",
+          "what_they_do": "Open source, agentic knowledge bases for all of humanity's knowledge.",
+          "use_case_focus": [
+            "analytics and reporting",
+            "developer tools and testing",
+            "sales and customer ops"
+          ],
+          "proof_line": "Open source knowledge bases for all humanity."
+        },
+        {
+          "name": "BitBoard",
+          "batch": "Spring 2025",
+          "team_size": 2,
+          "website": "https://bitboard.work",
+          "subindustry": "B2B -> Analytics",
+          "what_they_do": "Let your agent build dashboards and reporting.",
+          "use_case_focus": [
+            "analytics and reporting"
+          ],
+          "proof_line": "Connect your data, build with your agent, share with your team."
+        },
+        {
+          "name": "nao Labs",
+          "batch": "Spring 2025",
+          "team_size": 2,
+          "website": "https://getnao.io/",
+          "subindustry": "B2B -> Analytics",
+          "what_they_do": "Open Source Analytics Agent",
+          "use_case_focus": [
+            "analytics and reporting"
+          ],
+          "proof_line": "Open Source Analytics Agent"
+        },
+        {
+          "name": "Scalar Field",
+          "batch": "Spring 2025",
+          "team_size": 3,
+          "website": "https://www.scalarfield.io/",
+          "subindustry": "Fintech",
+          "what_they_do": "Your Agentic Trading Desk \u2014 Building the next era of agentic\u2026",
+          "use_case_focus": [
+            "analytics and reporting",
+            "workflow automation",
+            "data and agent infrastructure"
+          ],
+          "proof_line": "Your Agentic Trading Desk \u2014 Building the next era of agentic\u2026"
+        },
+        {
+          "name": "Cotool",
+          "batch": "Spring 2025",
+          "team_size": 4,
+          "website": "https://cotool.ai",
+          "subindustry": "B2B -> Security",
+          "what_they_do": "AI Agents for Security Operations Teams",
+          "use_case_focus": [
+            "security and governance",
+            "analytics and reporting",
+            "workflow automation"
+          ],
+          "proof_line": "AI Agents for Security Operations Teams"
+        },
+        {
+          "name": "Airweave",
+          "batch": "Spring 2025",
+          "team_size": 7,
+          "website": "https://airweave.ai",
+          "subindustry": "B2B -> Infrastructure",
+          "what_they_do": "The open-source context retrieval layer for agents",
+          "use_case_focus": [
+            "analytics and reporting",
+            "data and agent infrastructure"
+          ],
+          "proof_line": "The open-source context retrieval layer for agents"
+        }
+      ],
+      "examples": [
+        "Alpha Research",
+        "BitBoard",
+        "nao Labs",
+        "Scalar Field",
+        "Cotool"
+      ]
+    },
+    {
+      "name": "developer tools and testing",
+      "count": 6,
+      "buyer": "engineering leaders, product teams, QA, and platform teams",
+      "workflow_owner": "teams responsible for software quality and release safety",
+      "business_job": "Use agents to test, monitor, and validate software and model-driven systems.",
+      "value_prop": "Catches regressions and scales QA capacity without linearly scaling headcount.",
+      "why_now": "Agentic products create new failure modes, so testing and observability have become first-order needs.",
+      "recommendation": "Durable if the product becomes part of the default release process.",
+      "companies": [
+        {
+          "name": "Alpha Research",
+          "batch": "Spring 2025",
+          "team_size": 1,
+          "website": "https://alpharesearch.nyc/",
+          "subindustry": "B2B -> Engineering, Product and Design",
+          "what_they_do": "Open source, agentic knowledge bases for all of humanity's knowledge.",
+          "use_case_focus": [
+            "analytics and reporting",
+            "developer tools and testing",
+            "sales and customer ops"
+          ],
+          "proof_line": "Open source knowledge bases for all humanity."
+        },
+        {
+          "name": "Golf",
+          "batch": "Spring 2025",
+          "team_size": 1,
+          "website": "https://golf.dev/",
+          "subindustry": "B2B -> Security",
+          "what_they_do": "Agentic AI Security and Governance",
+          "use_case_focus": [
+            "security and governance",
+            "developer tools and testing",
+            "data and agent infrastructure"
+          ],
+          "proof_line": "Your agents connect to your data & you can\u2019t see it"
+        },
+        {
+          "name": "Capacitive",
+          "batch": "Spring 2025",
+          "team_size": 2,
+          "website": "https://capacitive.ai/",
+          "subindustry": "B2B -> Engineering, Product and Design",
+          "what_they_do": "The data gateway for agents.",
+          "use_case_focus": [
+            "security and governance",
+            "developer tools and testing",
+            "data and agent infrastructure"
+          ],
+          "proof_line": "As of January 2026, Capacitive has ceased all operations and discontinued support for its Commons platform."
+        },
+        {
+          "name": "Docket",
+          "batch": "Spring 2025",
+          "team_size": 2,
+          "website": "https://docketqa.com",
+          "subindustry": "B2B -> Engineering, Product and Design",
+          "what_they_do": "AI agents for web testing",
+          "use_case_focus": [
+            "developer tools and testing"
+          ],
+          "proof_line": "AI agents for web testing"
+        },
+        {
+          "name": "Galen AI",
+          "batch": "Spring 2025",
+          "team_size": 2,
+          "website": "https://www.galenai.com/",
+          "subindustry": "Healthcare -> Consumer Health and Wellness",
+          "what_they_do": "Personal AI healthcare agent, powered by clinical and wearable data.",
+          "use_case_focus": [
+            "healthcare operations",
+            "developer tools and testing",
+            "sales and customer ops"
+          ],
+          "proof_line": "Personal AI healthcare agent, powered by clinical and wearable data."
+        },
+        {
+          "name": "Propolis",
+          "batch": "Spring 2025",
+          "team_size": 2,
+          "website": "https://propolis.tech/",
+          "subindustry": "B2B",
+          "what_they_do": "Hands off QA via intelligent browser agents. ",
+          "use_case_focus": [
+            "developer tools and testing"
+          ],
+          "proof_line": "Hands off QA via intelligent browser agents. "
+        }
+      ],
+      "examples": [
+        "Alpha Research",
+        "Golf",
+        "Capacitive",
+        "Docket",
+        "Galen AI"
+      ]
+    },
+    {
+      "name": "data and agent infrastructure",
+      "count": 5,
+      "buyer": "platform engineering, CTO staff, and teams building agent products",
+      "workflow_owner": "teams responsible for context, retrieval, and safe system access",
+      "business_job": "Provide the data, context, and permissioning layer that agent products depend on.",
+      "value_prop": "Becomes infrastructure rather than a single workflow app, increasing platform stickiness.",
+      "why_now": "Agents fail without trustworthy context and controlled system access.",
+      "recommendation": "Attractive when the team wants a horizontal wedge instead of a workflow application.",
+      "companies": [
+        {
+          "name": "Golf",
+          "batch": "Spring 2025",
+          "team_size": 1,
+          "website": "https://golf.dev/",
+          "subindustry": "B2B -> Security",
+          "what_they_do": "Agentic AI Security and Governance",
+          "use_case_focus": [
+            "security and governance",
+            "developer tools and testing",
+            "data and agent infrastructure"
+          ],
+          "proof_line": "Your agents connect to your data & you can\u2019t see it"
+        },
+        {
+          "name": "Capacitive",
+          "batch": "Spring 2025",
+          "team_size": 2,
+          "website": "https://capacitive.ai/",
+          "subindustry": "B2B -> Engineering, Product and Design",
+          "what_they_do": "The data gateway for agents.",
+          "use_case_focus": [
+            "security and governance",
+            "developer tools and testing",
+            "data and agent infrastructure"
+          ],
+          "proof_line": "As of January 2026, Capacitive has ceased all operations and discontinued support for its Commons platform."
+        },
+        {
+          "name": "Scalar Field",
+          "batch": "Spring 2025",
+          "team_size": 3,
+          "website": "https://www.scalarfield.io/",
+          "subindustry": "Fintech",
+          "what_they_do": "Your Agentic Trading Desk \u2014 Building the next era of agentic\u2026",
+          "use_case_focus": [
+            "analytics and reporting",
+            "workflow automation",
+            "data and agent infrastructure"
+          ],
+          "proof_line": "Your Agentic Trading Desk \u2014 Building the next era of agentic\u2026"
+        },
+        {
+          "name": "Airweave",
+          "batch": "Spring 2025",
+          "team_size": 7,
+          "website": "https://airweave.ai",
+          "subindustry": "B2B -> Infrastructure",
+          "what_they_do": "The open-source context retrieval layer for agents",
+          "use_case_focus": [
+            "analytics and reporting",
+            "data and agent infrastructure"
+          ],
+          "proof_line": "The open-source context retrieval layer for agents"
+        },
+        {
+          "name": "Kaelio",
+          "batch": "Spring 2025",
+          "team_size": 8,
+          "website": "https://kaelio.com/",
+          "subindustry": "B2B",
+          "what_they_do": "The open-source context layer for data agents",
+          "use_case_focus": [
+            "data and agent infrastructure"
+          ],
+          "proof_line": "The open-source context layer for data agents"
+        }
+      ],
+      "examples": [
+        "Golf",
+        "Capacitive",
+        "Scalar Field",
+        "Airweave",
+        "Kaelio"
+      ]
+    },
+    {
+      "name": "finance and trading",
+      "count": 4,
+      "buyer": "finance operators, claims leaders, and risk teams",
+      "workflow_owner": "teams handling claims, trading, and financially sensitive repetitive workflows",
+      "business_job": "Apply agents to high-value workflows with direct financial consequences.",
+      "value_prop": "Easier to justify because cycle time and error rates map to money quickly.",
+      "why_now": "Structured rules and measurable impact make finance-adjacent workflows attractive for automation.",
+      "recommendation": "Works best when the team has domain expertise and clear data/control boundaries.",
+      "companies": [
+        {
+          "name": "Aegis",
+          "batch": "Spring 2025",
+          "team_size": 3,
+          "website": "https://aegishealth.us/",
+          "subindustry": "Healthcare -> Healthcare IT",
+          "what_they_do": "AI Agents to win denied health insurance claims.",
+          "use_case_focus": [
+            "healthcare operations",
+            "finance and trading"
+          ],
+          "proof_line": "AI Agents to win denied health insurance claims."
+        },
+        {
+          "name": "Pelica",
+          "batch": "Spring 2025",
+          "team_size": 5,
+          "website": "https://www.pelica.com/",
+          "subindustry": "Healthcare -> Healthcare IT",
+          "what_they_do": "Transforming healthcare operations with AI agents",
+          "use_case_focus": [
+            "healthcare operations",
+            "workflow automation",
+            "finance and trading"
+          ],
+          "proof_line": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes."
+        },
+        {
+          "name": "Parsewise",
+          "batch": "Spring 2025",
+          "team_size": 6,
+          "website": "https://parsewise.ai",
+          "subindustry": "B2B",
+          "what_they_do": "Multi-document processing for your risk teams, AI agents, pipelines",
+          "use_case_focus": [
+            "sales and customer ops",
+            "finance and trading"
+          ],
+          "proof_line": "Multi-document processing for your risk teams, AI agents, pipelines"
+        },
+        {
+          "name": "Avallon AI",
+          "batch": "Spring 2025",
+          "team_size": 7,
+          "website": "https://www.avallon.ai/",
+          "subindustry": "Fintech -> Insurance",
+          "what_they_do": "AI agents for insurance claims operations",
+          "use_case_focus": [
+            "finance and trading"
+          ],
+          "proof_line": "AI agents for insurance claims operations"
+        }
+      ],
+      "examples": [
+        "Aegis",
+        "Pelica",
+        "Parsewise",
+        "Avallon AI"
+      ]
+    },
+    {
+      "name": "security and governance",
+      "count": 4,
+      "buyer": "CISO orgs, security engineering, and compliance leaders",
+      "workflow_owner": "security teams managing alerts, access, and policy enforcement",
+      "business_job": "Automate security workflows and govern how agents interact with systems and data.",
+      "value_prop": "Security pain is urgent, measurable, and hard to outsource to generic tools.",
+      "why_now": "Every new agent deployment introduces additional governance and control needs.",
+      "recommendation": "Strong if the product can sit in a real enforcement or response loop.",
+      "companies": [
+        {
+          "name": "Golf",
+          "batch": "Spring 2025",
+          "team_size": 1,
+          "website": "https://golf.dev/",
+          "subindustry": "B2B -> Security",
+          "what_they_do": "Agentic AI Security and Governance",
+          "use_case_focus": [
+            "security and governance",
+            "developer tools and testing",
+            "data and agent infrastructure"
+          ],
+          "proof_line": "Your agents connect to your data & you can\u2019t see it"
+        },
+        {
+          "name": "Capacitive",
+          "batch": "Spring 2025",
+          "team_size": 2,
+          "website": "https://capacitive.ai/",
+          "subindustry": "B2B -> Engineering, Product and Design",
+          "what_they_do": "The data gateway for agents.",
+          "use_case_focus": [
+            "security and governance",
+            "developer tools and testing",
+            "data and agent infrastructure"
+          ],
+          "proof_line": "As of January 2026, Capacitive has ceased all operations and discontinued support for its Commons platform."
+        },
+        {
+          "name": "Cotool",
+          "batch": "Spring 2025",
+          "team_size": 4,
+          "website": "https://cotool.ai",
+          "subindustry": "B2B -> Security",
+          "what_they_do": "AI Agents for Security Operations Teams",
+          "use_case_focus": [
+            "security and governance",
+            "analytics and reporting",
+            "workflow automation"
+          ],
+          "proof_line": "AI Agents for Security Operations Teams"
+        },
+        {
+          "name": "MindFort",
+          "batch": "Spring 2025",
+          "team_size": 5,
+          "website": "https://www.mindfort.ai",
+          "subindustry": "B2B -> Security",
+          "what_they_do": "Autonomous Security Agents",
+          "use_case_focus": [
+            "security and governance",
+            "workflow automation"
+          ],
+          "proof_line": "Autonomous Security Agents"
+        }
+      ],
+      "examples": [
+        "Golf",
+        "Capacitive",
+        "Cotool",
+        "MindFort"
+      ]
+    },
+    {
+      "name": "general AI applications",
+      "count": 3,
+      "buyer": "Cross-functional operator",
+      "workflow_owner": "Team running the underlying workflow",
+      "business_job": "Own a narrow operational workflow with agents.",
+      "value_prop": "Reduce cycle time and manual coordination.",
+      "why_now": "Agents can now execute more of the workflow directly.",
+      "recommendation": "Viable when the workflow is clear and expensive.",
+      "companies": [
+        {
+          "name": "Plexe",
+          "batch": "Spring 2025",
+          "team_size": 2,
+          "website": "https://plexe.ai",
+          "subindustry": "B2B -> Engineering, Product and Design",
+          "what_they_do": "Open-source agents to build predictive ML models from a prompt",
+          "use_case_focus": [
+            "general AI applications"
+          ],
+          "proof_line": "Open-source agents to build predictive ML models from a prompt"
+        },
+        {
+          "name": "Cua",
+          "batch": "Spring 2025",
+          "team_size": 3,
+          "website": "https://cua.ai",
+          "subindustry": "B2B -> Engineering, Product and Design",
+          "what_they_do": "Give every agent a cloud desktop",
+          "use_case_focus": [
+            "general AI applications"
+          ],
+          "proof_line": "Give every agent a cloud desktop"
+        },
+        {
+          "name": "Klavis AI",
+          "batch": "Spring 2025",
+          "team_size": 3,
+          "website": "https://www.klavis.ai/",
+          "subindustry": "B2B",
+          "what_they_do": "Live Environments for Training AI Agents",
+          "use_case_focus": [
+            "general AI applications"
+          ],
+          "proof_line": "Live Environments for Training AI Agents"
+        }
+      ],
+      "examples": [
+        "Plexe",
+        "Cua",
+        "Klavis AI"
+      ]
+    },
+    {
+      "name": "healthcare operations",
+      "count": 3,
+      "buyer": "clinic operators, provider groups, revenue cycle leaders, and healthcare IT buyers",
+      "workflow_owner": "front desk, billing, claims, scheduling, and patient-ops teams",
+      "business_job": "Reduce repetitive administrative work in patient and provider operations.",
+      "value_prop": "High-friction workflows, high willingness to pay, and measurable ROI in staffing and collections.",
+      "why_now": "Healthcare workflows are still overloaded with manual coordination and structured repetitive work.",
+      "recommendation": "One of the clearest vertical lanes if the product owns a painful workflow end to end.",
+      "companies": [
+        {
+          "name": "Galen AI",
+          "batch": "Spring 2025",
+          "team_size": 2,
+          "website": "https://www.galenai.com/",
+          "subindustry": "Healthcare -> Consumer Health and Wellness",
+          "what_they_do": "Personal AI healthcare agent, powered by clinical and wearable data.",
+          "use_case_focus": [
+            "healthcare operations",
+            "developer tools and testing",
+            "sales and customer ops"
+          ],
+          "proof_line": "Personal AI healthcare agent, powered by clinical and wearable data."
+        },
+        {
+          "name": "Aegis",
+          "batch": "Spring 2025",
+          "team_size": 3,
+          "website": "https://aegishealth.us/",
+          "subindustry": "Healthcare -> Healthcare IT",
+          "what_they_do": "AI Agents to win denied health insurance claims.",
+          "use_case_focus": [
+            "healthcare operations",
+            "finance and trading"
+          ],
+          "proof_line": "AI Agents to win denied health insurance claims."
+        },
+        {
+          "name": "Pelica",
+          "batch": "Spring 2025",
+          "team_size": 5,
+          "website": "https://www.pelica.com/",
+          "subindustry": "Healthcare -> Healthcare IT",
+          "what_they_do": "Transforming healthcare operations with AI agents",
+          "use_case_focus": [
+            "healthcare operations",
+            "workflow automation",
+            "finance and trading"
+          ],
+          "proof_line": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes."
+        }
+      ],
+      "examples": [
+        "Galen AI",
+        "Aegis",
+        "Pelica"
+      ]
+    },
+    {
+      "name": "legal and compliance workflows",
+      "count": 2,
+      "buyer": "legal ops, compliance teams, and specialized knowledge teams",
+      "workflow_owner": "professionals doing high-cost document and rule-based review work",
+      "business_job": "Embed agents inside document-heavy or policy-heavy professional workflows.",
+      "value_prop": "Saves expert time where labor is expensive and throughput matters.",
+      "why_now": "Language-heavy professional work is now tractable enough for narrow workflow products.",
+      "recommendation": "Promising if the product can specialize around a precise workflow, not generic legal AI.",
+      "companies": [
+        {
+          "name": "Vesence",
+          "batch": "Spring 2025",
+          "team_size": 2,
+          "website": "https://vesence.com",
+          "subindustry": "B2B -> Legal",
+          "what_they_do": "Cursor for Lawyers. Agentic AI in MS Office.",
+          "use_case_focus": [
+            "legal and compliance workflows"
+          ],
+          "proof_line": "Cursor for Lawyers. Agentic AI in MS Office."
+        },
+        {
+          "name": "Third Chair",
+          "batch": "Spring 2025",
+          "team_size": 8,
+          "website": "https://usethirdchair.com",
+          "subindustry": "B2B -> Legal",
+          "what_they_do": "AI-Native IP Enforcement Agent",
+          "use_case_focus": [
+            "workflow automation",
+            "legal and compliance workflows"
+          ],
+          "proof_line": "AI-Native IP Enforcement Agent"
+        }
+      ],
+      "examples": [
+        "Vesence",
+        "Third Chair"
+      ]
+    }
+  ],
+  "cluster_counts": {
+    "analytics and reporting": 6,
+    "developer tools and testing": 6,
+    "sales and customer ops": 7,
+    "security and governance": 4,
+    "data and agent infrastructure": 5,
+    "workflow automation": 8,
+    "healthcare operations": 3,
+    "general AI applications": 3,
+    "legal and compliance workflows": 2,
+    "finance and trading": 4
+  },
+  "adjacency": {
+    "sync2_matches": [
+      {
+        "name": "Pelica",
+        "batch": "Spring 2025",
+        "team_size": 5,
+        "one_liner": "Transforming healthcare operations with AI agents",
+        "subindustry": "Healthcare -> Healthcare IT",
+        "matched": [
+          "healthcare operations agents"
+        ],
+        "proof_line": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes."
+      },
+      {
+        "name": "Simbie AI",
+        "batch": "Summer 2023",
+        "team_size": 5,
+        "one_liner": "We get patients to their next appointment",
+        "subindustry": "Healthcare",
+        "matched": [
+          "clinic operations AI"
+        ],
+        "proof_line": "Simbie AI\u2019s clinically-trained voice agents act as your 24/7 AI medical receptionist\u2014handling scheduling, refills & intake with 60% cost savings. Loved by doctors & patients."
+      },
+      {
+        "name": "Prosper",
+        "batch": "Summer 2023",
+        "team_size": 9,
+        "one_liner": "AI Phone Agents for Healthcare Operations",
+        "subindustry": "B2B",
+        "matched": [
+          "patient scheduling AI"
+        ],
+        "proof_line": "AI Voice Agents \u200d for Patient Access and RCM"
+      },
+      {
+        "name": "Toothy AI",
+        "batch": "Winter 2025",
+        "team_size": 15,
+        "one_liner": "AI for insurance verification & billing at dental clinics",
+        "subindustry": "Healthcare -> Healthcare IT",
+        "matched": [
+          "clinic operations AI"
+        ],
+        "proof_line": "Toothy takes insurance off your team"
+      },
+      {
+        "name": "Sully.ai",
+        "batch": "Summer 2021",
+        "team_size": 49,
+        "one_liner": "Autonomous team of AI agents that runs the entire hospital operations",
+        "subindustry": "B2B -> Productivity",
+        "matched": [
+          "medical receptionist AI"
+        ],
+        "proof_line": "Autonomous team of AI agents that runs the entire hospital operations"
+      }
+    ],
+    "reprisesai_matches": [
+      {
+        "name": "Contour",
+        "batch": "Summer 2023",
+        "team_size": 2,
+        "one_liner": "AI voice agents for healthcare operational calls",
+        "subindustry": "B2B",
+        "matched": [
+          "workflow automation enterprise AI"
+        ],
+        "proof_line": "AI voice agents for healthcare operational calls"
+      },
+      {
+        "name": "flowscope",
+        "batch": "Spring 2026",
+        "team_size": 2,
+        "one_liner": "AI-native consulting to map and automate business processes",
+        "subindustry": "B2B",
+        "matched": [
+          "AI consulting automation"
+        ],
+        "proof_line": "Agents that learn how your business actually runs, then redesign and automate the work on top of existing systems. The AI team for businesses that don't have one."
+      },
+      {
+        "name": "Unisson",
+        "batch": "Winter 2026",
+        "team_size": 2,
+        "one_liner": "AI agents that automate B2B software implementation",
+        "subindustry": "B2B -> Productivity",
+        "matched": [
+          "software implementation AI agents"
+        ],
+        "proof_line": "AI agents that learn to use your product and run directly inside it to execute any task your customers need, accelerating their time to value."
+      },
+      {
+        "name": "Lua Global Inc",
+        "batch": "Fall 2025",
+        "team_size": 5,
+        "one_liner": "The mid-market agent platform",
+        "subindustry": "B2B",
+        "matched": [
+          "mid-market agent platform"
+        ],
+        "proof_line": "Build, deploy, and scale enterprise-grade AI agents. Ship your first agent without touching infrastructure."
+      }
+    ]
+  },
+  "source_summary": {
+    "Anana": {
+      "name": "Anana",
+      "website": "https://getanana.com",
+      "batch": "Spring 2025",
+      "one_liner": "The agentic system of action for hotel groups and management companies",
+      "proof_line": "One place for Revenue, Sales, and Operations to work together with AI \u2014 investigating pickup, triaging RFPs, and acting in the tools your team already uses.",
+      "title": "Anana \u2014 AI Workspace for Hospitality Commercial Teams",
+      "meta_description": "One place for Revenue, Sales, and Operations to work together with AI \u2014 investigating pickup, triaging RFPs, and acting in the tools your team already uses.",
+      "h1": "The workspace for hospitality commercial teams.",
+      "h2": "Where the commercial function works together .",
+      "error": null
+    },
+    "stratify": {
+      "name": "stratify",
+      "website": "https://www.trystratify.com",
+      "batch": "Spring 2025",
+      "one_liner": "AI agents that help you understand your customers' needs",
+      "proof_line": "Automate your user research with AI-powered insights. Get deeper customer understanding without the manual work.",
+      "title": "Stratify AI | The AI-Powered User Research Platform",
+      "meta_description": "Automate your user research with AI-powered insights. Get deeper customer understanding without the manual work.",
+      "h1": "AI-powered user research on autopilot",
+      "h2": "Everything you need for user research",
+      "error": null
+    },
+    "Alpha Research": {
+      "name": "Alpha Research",
+      "website": "https://alpharesearch.nyc/",
+      "batch": "Spring 2025",
+      "one_liner": "Open source, agentic knowledge bases for all of humanity's knowledge.",
+      "proof_line": "Open source knowledge bases for all humanity.",
+      "title": "Alpha Research: Open source knowledge bases for all humanity",
+      "meta_description": "Open source knowledge bases for all humanity.",
+      "h1": "",
+      "h2": "",
+      "error": null
+    },
+    "BitBoard": {
+      "name": "BitBoard",
+      "website": "https://bitboard.work",
+      "batch": "Spring 2025",
+      "one_liner": "Let your agent build dashboards and reporting.",
+      "proof_line": "Connect your data, build with your agent, share with your team.",
+      "title": "Build dashboards and reports with AI",
+      "meta_description": "Connect your data, build with your agent, share with your team.",
+      "h1": "",
+      "h2": "Build dashboards and reports with your favorite AI tools.",
+      "error": null
+    },
+    "Golf": {
+      "name": "Golf",
+      "website": "https://golf.dev/",
+      "batch": "Spring 2025",
+      "one_liner": "Agentic AI Security and Governance",
+      "proof_line": "Your agents connect to your data & you can\u2019t see it",
+      "title": "Golf",
+      "meta_description": "",
+      "h1": "Your agents connect to your data & you can\u2019t see it",
+      "h2": "This is already happening inside your organization",
+      "error": null
+    },
+    "Capacitive": {
+      "name": "Capacitive",
+      "website": "https://capacitive.ai/",
+      "batch": "Spring 2025",
+      "one_liner": "The data gateway for agents.",
+      "proof_line": "As of January 2026, Capacitive has ceased all operations and discontinued support for its Commons platform.",
+      "title": "Capacitive, Corp.",
+      "meta_description": "As of January 2026, Capacitive has ceased all operations and discontinued support for its Commons platform.",
+      "h1": "",
+      "h2": "",
+      "error": null
+    },
+    "Pelica": {
+      "name": "Pelica",
+      "website": "https://www.pelica.com/",
+      "batch": "Spring 2025",
+      "one_liner": "Transforming healthcare operations with AI agents",
+      "proof_line": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes.",
+      "title": "Pelica Health \u00b7 AI copilots for value-based care",
+      "meta_description": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes.",
+      "h1": "The operating system for value-based care.",
+      "h2": "One canonical record. Every workflow. Real-time.",
+      "error": null
+    },
+    "Simbie AI": {
+      "name": "Simbie AI",
+      "website": "http://www.simbie.ai",
+      "batch": "Summer 2023",
+      "one_liner": "We get patients to their next appointment",
+      "proof_line": "Simbie AI\u2019s clinically-trained voice agents act as your 24/7 AI medical receptionist\u2014handling scheduling, refills & intake with 60% cost savings. Loved by doctors & patients.",
+      "title": "AI Medical Staff | 24/7 Patient Support & Cost Savings | Simbie AI",
+      "meta_description": "Simbie AI\u2019s clinically-trained voice agents act as your 24/7 AI medical receptionist\u2014handling scheduling, refills & intake with 60% cost savings. Loved by doctors & patients.",
+      "h1": "with AI staff",
+      "h2": "AI AGENT",
+      "error": null
+    },
+    "Prosper": {
+      "name": "Prosper",
+      "website": "https://www.getprosper.ai?utm_source=yc&utm_medium=directory&utm_campaign=yc_directory",
+      "batch": "Summer 2023",
+      "one_liner": "AI Phone Agents for Healthcare Operations",
+      "proof_line": "AI Voice Agents \u200d for Patient Access and RCM",
+      "title": "Prosper AI: Voice Agents for Patient Access & Prior Auth Automation",
+      "meta_description": "",
+      "h1": "AI Voice Agents \u200d for Patient Access and RCM",
+      "h2": "See Prosper Agents in Action",
+      "error": null
+    },
+    "Toothy AI": {
+      "name": "Toothy AI",
+      "website": "https://www.toothy.ai/",
+      "batch": "Winter 2025",
+      "one_liner": "AI for insurance verification & billing at dental clinics",
+      "proof_line": "Toothy takes insurance off your team",
+      "title": "Toothy AI - AI-Powered Dental Insurance Verification & Billing",
+      "meta_description": "Toothy takes insurance off your team",
+      "h1": "",
+      "h2": "",
+      "error": null
+    },
+    "Contour": {
+      "name": "Contour",
+      "website": "",
+      "batch": "Summer 2023",
+      "one_liner": "AI voice agents for healthcare operational calls",
+      "proof_line": "AI voice agents for healthcare operational calls",
+      "title": "",
+      "meta_description": "",
+      "h1": "",
+      "h2": "",
+      "error": null
+    },
+    "flowscope": {
+      "name": "flowscope",
+      "website": "https://flowscope.com",
+      "batch": "Spring 2026",
+      "one_liner": "AI-native consulting to map and automate business processes",
+      "proof_line": "Agents that learn how your business actually runs, then redesign and automate the work on top of existing systems. The AI team for businesses that don't have one.",
+      "title": "flowscope \u00b7 AI, delivered.",
+      "meta_description": "Agents that learn how your business actually runs, then redesign and automate the work on top of existing systems. The AI team for businesses that don't have one.",
+      "h1": "Our agents learn your business. Then automate it.",
+      "h2": "",
+      "error": null
+    },
+    "Unisson": {
+      "name": "Unisson",
+      "website": "https://www.unisson.ai",
+      "batch": "Winter 2026",
+      "one_liner": "AI agents that automate B2B software implementation",
+      "proof_line": "AI agents that learn to use your product and run directly inside it to execute any task your customers need, accelerating their time to value.",
+      "title": "Unisson | AI agents for your customer-facing teams",
+      "meta_description": "AI agents that learn to use your product and run directly inside it to execute any task your customers need, accelerating their time to value.",
+      "h1": "Our agents run directly in your product executing tasks for your customers. Save your customer-facing teams thousands of hours.",
+      "h2": "The AI product specialist for your",
+      "error": null
+    },
+    "Lua Global Inc": {
+      "name": "Lua Global Inc",
+      "website": "https://heylua.ai/",
+      "batch": "Fall 2025",
+      "one_liner": "The mid-market agent platform",
+      "proof_line": "Build, deploy, and scale enterprise-grade AI agents. Ship your first agent without touching infrastructure.",
+      "title": "Lua AI - The Agent OS",
+      "meta_description": "Build, deploy, and scale enterprise-grade AI agents. Ship your first agent without touching infrastructure.",
+      "h1": "Build AI agents that solve real problems",
+      "h2": "Everything you need to build production-ready agents",
+      "error": null
+    }
+  },
+  "recommendations": [
+    {
+      "title": "Choose workflow-heavy use cases first",
+      "why": "8 companies cluster around operational systems of action, making this the clearest YC pattern."
+    },
+    {
+      "title": "Own context, governance, or workflow position",
+      "why": "The more durable clusters pair agents with data access, infrastructure, or embedded workflow ownership."
+    },
+    {
+      "title": "Treat healthcare operations as a real wedge",
+      "why": "The count is smaller than horizontal ops, but the workflow pain and willingness to pay are strong."
+    },
+    {
+      "title": "Avoid generic agent-platform messaging",
+      "why": "The cohort repeatedly rewards products with explicit jobs and operators, not broad agent claims."
+    }
+  ],
+  "chart_recommendations": [
+    {
+      "title": "Use-case density by cluster",
+      "best_chart_type": "Horizontal bar chart",
+      "why_this_fits": "The question is ranking and comparison across use-case clusters.",
+      "narrative_takeaway": "Workflow automation and customer-facing ops dominate the cohort.",
+      "encoding_guidance": "Sort clusters descending by company count and label each bar directly.",
+      "annotation_plan": "Call out the top two clusters and note that healthcare is smaller but strategically important."
+    },
+    {
+      "title": "Team-size distribution",
+      "best_chart_type": "Histogram or binned bar chart",
+      "why_this_fits": "The question is distribution, not ranking.",
+      "narrative_takeaway": "The cohort is extremely early, with a strong concentration at 1-2 person teams.",
+      "encoding_guidance": "Use bins for 1-2, 3-4, 5-6, 7-8, 9-10 based on sizes [1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 5, 5, 6, 6, 7, 7, 7, 8, 8].",
+      "annotation_plan": "Highlight the median team size and the share of teams with 1-2 people."
+    },
+    {
+      "title": "Use-case map by business shape",
+      "best_chart_type": "2x2 matrix",
+      "why_this_fits": "The question is strategic positioning, not exact counts.",
+      "narrative_takeaway": "The strongest names cluster where workflow ownership and willingness to pay are both high.",
+      "encoding_guidance": "Axes: horizontal = horizontal tooling to vertical workflow ownership; vertical = weak to strong willingness to pay.",
+      "annotation_plan": "Place healthcare ops high/right, tooling/infra left/high, generic agent apps lower/left."
+    }
+  ],
+  "deck_plan": [
+    {
+      "type": "title",
+      "title": "Y Combinator Agent Companies",
+      "subtitle": "What Spring 2025 YC's small-team agent startups are actually building",
+      "strapline": "Structured business use cases, density map, and implications for Sync2 and ReprisesAI"
+    },
+    {
+      "type": "agenda",
+      "title": "What You'll See",
+      "sections": [
+        {
+          "number": "01",
+          "title": "What the cohort actually says",
+          "detail": "Headline findings, size, and density map"
+        },
+        {
+          "number": "02",
+          "title": "Business use cases",
+          "detail": "Structured jobs, buyers, and evidence clusters"
+        },
+        {
+          "number": "03",
+          "title": "Strategic implications",
+          "detail": "Sync2, ReprisesAI, and what to do next"
+        }
+      ]
+    },
+    {
+      "type": "section_divider",
+      "section": "SECTION 01",
+      "title": "What The Cohort Actually Says",
+      "subtitle": "The data is more operational and workflow-shaped than the generic agent narrative suggests."
+    },
+    {
+      "type": "summary_cards",
+      "title": "Three Conclusions Matter Most",
+      "cards": [
+        {
+          "number": "01",
+          "title": "Workflow automation leads",
+          "body": "The strongest YC signal is not generic assistants. It is agents wrapped around concrete operational jobs."
+        },
+        {
+          "number": "02",
+          "title": "Ops and tooling dominate",
+          "body": "Customer ops, analytics, QA, testing, context, and infra appear more often than broad platform narratives."
+        },
+        {
+          "number": "03",
+          "title": "Healthcare is a real vertical wedge",
+          "body": "Administrative healthcare workflows show enough density and pain to warrant focused product bets."
+        }
+      ]
+    },
+    {
+      "type": "kpi_grid",
+      "title": "This Cohort Is Tiny But Focused",
+      "subtitle": "The cohort is young, but the use-case pattern is already visible",
+      "kpis": [
+        {
+          "value": "27",
+          "label": "companies",
+          "note": "filtered Spring 2025 cohort"
+        },
+        {
+          "value": "3",
+          "label": "median team size",
+          "note": "very early-stage cohort"
+        },
+        {
+          "value": "13",
+          "label": "teams with 1-2 people",
+          "note": "nearly half the cohort"
+        },
+        {
+          "value": "8",
+          "label": "workflow automation",
+          "note": "largest cluster"
+        }
+      ],
+      "takeaway": "Likely winners will be defined by workflow choice and ownership, not by model novelty."
+    },
+    {
+      "type": "bar_chart",
+      "title": "Use-Case Density Favors Real Jobs",
+      "subtitle": "The highest-density clusters are operational software categories",
+      "series": [
+        {
+          "label": "workflow automation",
+          "value": 8
+        },
+        {
+          "label": "sales and customer ops",
+          "value": 7
+        },
+        {
+          "label": "analytics and reporting",
+          "value": 6
+        },
+        {
+          "label": "developer tools and testing",
+          "value": 6
+        },
+        {
+          "label": "data and agent infrastructure",
+          "value": 5
+        },
+        {
+          "label": "finance and trading",
+          "value": 4
+        },
+        {
+          "label": "security and governance",
+          "value": 4
+        }
+      ],
+      "takeaway": "The center of gravity is workflow automation, customer ops, analytics, testing, and infrastructure."
+    },
+    {
+      "type": "comparison",
+      "title": "What People Expect vs. What The Cohort Shows",
+      "left_title": "Expected narrative",
+      "right_title": "Observed YC pattern",
+      "left_points": [
+        "General-purpose agent assistants",
+        "Broad agent platform positioning",
+        "Abstract AI capability claims",
+        "Model novelty as the main story"
+      ],
+      "right_points": [
+        "Workflow-bound systems of action",
+        "Buyer-owned operational categories",
+        "Testing, context, claims, reporting, and ops ownership",
+        "Clear job boundaries and measurable business outcomes"
+      ]
+    },
+    {
+      "type": "structured_table",
+      "title": "Top Use Cases, Structured As Business Jobs",
+      "subtitle": "These are the highest-signal business shapes in the cohort",
+      "clusters": [
+        {
+          "name": "workflow automation",
+          "count": 8,
+          "buyer": "COO, operations leader, or workflow owner",
+          "workflow_owner": "ops managers running repetitive multi-step work",
+          "business_job": "Turn high-volume, rules-heavy operational queues into agent-run systems of action.",
+          "value_prop": "Throughput, faster cycle times, and lower labor cost without requiring users to learn a new interface.",
+          "why_now": "LLMs plus tool use make it possible to automate the whole queue, not just summarize it.",
+          "recommendation": "Best starting point when a team already exists and the handoffs are obvious.",
+          "companies": [
+            {
+              "name": "Anana",
+              "batch": "Spring 2025",
+              "team_size": 2,
+              "website": "https://getanana.com",
+              "subindustry": "B2B",
+              "what_they_do": "The agentic system of action for hotel groups and management companies",
+              "use_case_focus": [
+                "workflow automation",
+                "sales and customer ops"
+              ],
+              "proof_line": "One place for Revenue, Sales, and Operations to work together with AI \u2014 investigating pickup, triaging RFPs, and acting in the tools your team already uses."
+            },
+            {
+              "name": "stratify",
+              "batch": "Spring 2025",
+              "team_size": 2,
+              "website": "https://www.trystratify.com",
+              "subindustry": "B2B",
+              "what_they_do": "AI agents that help you understand your customers' needs",
+              "use_case_focus": [
+                "workflow automation",
+                "sales and customer ops"
+              ],
+              "proof_line": "Automate your user research with AI-powered insights. Get deeper customer understanding without the manual work."
+            },
+            {
+              "name": "Scalar Field",
+              "batch": "Spring 2025",
+              "team_size": 3,
+              "website": "https://www.scalarfield.io/",
+              "subindustry": "Fintech",
+              "what_they_do": "Your Agentic Trading Desk \u2014 Building the next era of agentic\u2026",
+              "use_case_focus": [
+                "analytics and reporting",
+                "workflow automation",
+                "data and agent infrastructure"
+              ],
+              "proof_line": "Your Agentic Trading Desk \u2014 Building the next era of agentic\u2026"
+            },
+            {
+              "name": "Cotool",
+              "batch": "Spring 2025",
+              "team_size": 4,
+              "website": "https://cotool.ai",
+              "subindustry": "B2B -> Security",
+              "what_they_do": "AI Agents for Security Operations Teams",
+              "use_case_focus": [
+                "security and governance",
+                "analytics and reporting",
+                "workflow automation"
+              ],
+              "proof_line": "AI Agents for Security Operations Teams"
+            },
+            {
+              "name": "MindFort",
+              "batch": "Spring 2025",
+              "team_size": 5,
+              "website": "https://www.mindfort.ai",
+              "subindustry": "B2B -> Security",
+              "what_they_do": "Autonomous Security Agents",
+              "use_case_focus": [
+                "security and governance",
+                "workflow automation"
+              ],
+              "proof_line": "Autonomous Security Agents"
+            },
+            {
+              "name": "Pelica",
+              "batch": "Spring 2025",
+              "team_size": 5,
+              "website": "https://www.pelica.com/",
+              "subindustry": "Healthcare -> Healthcare IT",
+              "what_they_do": "Transforming healthcare operations with AI agents",
+              "use_case_focus": [
+                "healthcare operations",
+                "workflow automation",
+                "finance and trading"
+              ],
+              "proof_line": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes."
+            },
+            {
+              "name": "Sim",
+              "batch": "Spring 2025",
+              "team_size": 6,
+              "website": "https://sim.ai",
+              "subindustry": "B2B",
+              "what_they_do": "Open source platform to build AI agent workflows",
+              "use_case_focus": [
+                "workflow automation"
+              ],
+              "proof_line": "Open source platform to build AI agent workflows"
+            },
+            {
+              "name": "Third Chair",
+              "batch": "Spring 2025",
+              "team_size": 8,
+              "website": "https://usethirdchair.com",
+              "subindustry": "B2B -> Legal",
+              "what_they_do": "AI-Native IP Enforcement Agent",
+              "use_case_focus": [
+                "workflow automation",
+                "legal and compliance workflows"
+              ],
+              "proof_line": "AI-Native IP Enforcement Agent"
+            }
+          ],
+          "examples": [
+            "Anana",
+            "stratify",
+            "Scalar Field",
+            "Cotool",
+            "MindFort"
+          ]
+        },
+        {
+          "name": "sales and customer ops",
+          "count": 7,
+          "buyer": "sales leaders, revenue ops, customer success, or service managers",
+          "workflow_owner": "frontline teams handling customer-facing repetitive work",
+          "business_job": "Use agents to qualify, route, support, and operationalize customer interaction workflows.",
+          "value_prop": "Improves responsiveness and rep leverage while keeping the workflow anchored in revenue teams.",
+          "why_now": "Customer conversations already create structured data and clear SLAs, which agents can exploit.",
+          "recommendation": "Strong wedge when the product can own a narrow workflow like intake, triage, or follow-up.",
+          "companies": [
+            {
+              "name": "Alpha Research",
+              "batch": "Spring 2025",
+              "team_size": 1,
+              "website": "https://alpharesearch.nyc/",
+              "subindustry": "B2B -> Engineering, Product and Design",
+              "what_they_do": "Open source, agentic knowledge bases for all of humanity's knowledge.",
+              "use_case_focus": [
+                "analytics and reporting",
+                "developer tools and testing",
+                "sales and customer ops"
+              ],
+              "proof_line": "Open source knowledge bases for all humanity."
+            },
+            {
+              "name": "Anana",
+              "batch": "Spring 2025",
+              "team_size": 2,
+              "website": "https://getanana.com",
+              "subindustry": "B2B",
+              "what_they_do": "The agentic system of action for hotel groups and management companies",
+              "use_case_focus": [
+                "workflow automation",
+                "sales and customer ops"
+              ],
+              "proof_line": "One place for Revenue, Sales, and Operations to work together with AI \u2014 investigating pickup, triaging RFPs, and acting in the tools your team already uses."
+            },
+            {
+              "name": "Cohesive",
+              "batch": "Spring 2025",
+              "team_size": 2,
+              "website": "https://getcohesiveai.com",
+              "subindustry": "B2B",
+              "what_they_do": "The agentic CRM for blue-collar services",
+              "use_case_focus": [
+                "sales and customer ops"
+              ],
+              "proof_line": "The agentic CRM for blue-collar services"
+            },
+            {
+              "name": "Galen AI",
+              "batch": "Spring 2025",
+              "team_size": 2,
+              "website": "https://www.galenai.com/",
+              "subindustry": "Healthcare -> Consumer Health and Wellness",
+              "what_they_do": "Personal AI healthcare agent, powered by clinical and wearable data.",
+              "use_case_focus": [
+                "healthcare operations",
+                "developer tools and testing",
+                "sales and customer ops"
+              ],
+              "proof_line": "Personal AI healthcare agent, powered by clinical and wearable data."
+            },
+            {
+              "name": "stratify",
+              "batch": "Spring 2025",
+              "team_size": 2,
+              "website": "https://www.trystratify.com",
+              "subindustry": "B2B",
+              "what_they_do": "AI agents that help you understand your customers' needs",
+              "use_case_focus": [
+                "workflow automation",
+                "sales and customer ops"
+              ],
+              "proof_line": "Automate your user research with AI-powered insights. Get deeper customer understanding without the manual work."
+            },
+            {
+              "name": "Parsewise",
+              "batch": "Spring 2025",
+              "team_size": 6,
+              "website": "https://parsewise.ai",
+              "subindustry": "B2B",
+              "what_they_do": "Multi-document processing for your risk teams, AI agents, pipelines",
+              "use_case_focus": [
+                "sales and customer ops",
+                "finance and trading"
+              ],
+              "proof_line": "Multi-document processing for your risk teams, AI agents, pipelines"
+            },
+            {
+              "name": "Bluejay",
+              "batch": "Spring 2025",
+              "team_size": 7,
+              "website": "https://getbluejay.ai/",
+              "subindustry": "B2B",
+              "what_they_do": "Test, monitor, and improve your voice and chat AI agents",
+              "use_case_focus": [
+                "sales and customer ops"
+              ],
+              "proof_line": "Test, monitor, and improve your voice and chat AI agents"
+            }
+          ],
+          "examples": [
+            "Alpha Research",
+            "Anana",
+            "Cohesive",
+            "Galen AI",
+            "stratify"
+          ]
+        },
+        {
+          "name": "analytics and reporting",
+          "count": 6,
+          "buyer": "heads of analytics, operations leaders, and knowledge-work teams",
+          "workflow_owner": "analysts and operators who summarize, monitor, and report",
+          "business_job": "Turn raw data or context into dashboards, summaries, and decision-ready reporting.",
+          "value_prop": "Makes information work faster and cheaper while reducing manual synthesis.",
+          "why_now": "Reporting is repetitive, high-frequency, and already evaluated on output quality and speed.",
+          "recommendation": "Works best when paired with trusted data access and a narrow reporting loop.",
+          "companies": [
+            {
+              "name": "Alpha Research",
+              "batch": "Spring 2025",
+              "team_size": 1,
+              "website": "https://alpharesearch.nyc/",
+              "subindustry": "B2B -> Engineering, Product and Design",
+              "what_they_do": "Open source, agentic knowledge bases for all of humanity's knowledge.",
+              "use_case_focus": [
+                "analytics and reporting",
+                "developer tools and testing",
+                "sales and customer ops"
+              ],
+              "proof_line": "Open source knowledge bases for all humanity."
+            },
+            {
+              "name": "BitBoard",
+              "batch": "Spring 2025",
+              "team_size": 2,
+              "website": "https://bitboard.work",
+              "subindustry": "B2B -> Analytics",
+              "what_they_do": "Let your agent build dashboards and reporting.",
+              "use_case_focus": [
+                "analytics and reporting"
+              ],
+              "proof_line": "Connect your data, build with your agent, share with your team."
+            },
+            {
+              "name": "nao Labs",
+              "batch": "Spring 2025",
+              "team_size": 2,
+              "website": "https://getnao.io/",
+              "subindustry": "B2B -> Analytics",
+              "what_they_do": "Open Source Analytics Agent",
+              "use_case_focus": [
+                "analytics and reporting"
+              ],
+              "proof_line": "Open Source Analytics Agent"
+            },
+            {
+              "name": "Scalar Field",
+              "batch": "Spring 2025",
+              "team_size": 3,
+              "website": "https://www.scalarfield.io/",
+              "subindustry": "Fintech",
+              "what_they_do": "Your Agentic Trading Desk \u2014 Building the next era of agentic\u2026",
+              "use_case_focus": [
+                "analytics and reporting",
+                "workflow automation",
+                "data and agent infrastructure"
+              ],
+              "proof_line": "Your Agentic Trading Desk \u2014 Building the next era of agentic\u2026"
+            },
+            {
+              "name": "Cotool",
+              "batch": "Spring 2025",
+              "team_size": 4,
+              "website": "https://cotool.ai",
+              "subindustry": "B2B -> Security",
+              "what_they_do": "AI Agents for Security Operations Teams",
+              "use_case_focus": [
+                "security and governance",
+                "analytics and reporting",
+                "workflow automation"
+              ],
+              "proof_line": "AI Agents for Security Operations Teams"
+            },
+            {
+              "name": "Airweave",
+              "batch": "Spring 2025",
+              "team_size": 7,
+              "website": "https://airweave.ai",
+              "subindustry": "B2B -> Infrastructure",
+              "what_they_do": "The open-source context retrieval layer for agents",
+              "use_case_focus": [
+                "analytics and reporting",
+                "data and agent infrastructure"
+              ],
+              "proof_line": "The open-source context retrieval layer for agents"
+            }
+          ],
+          "examples": [
+            "Alpha Research",
+            "BitBoard",
+            "nao Labs",
+            "Scalar Field",
+            "Cotool"
+          ]
+        },
+        {
+          "name": "developer tools and testing",
+          "count": 6,
+          "buyer": "engineering leaders, product teams, QA, and platform teams",
+          "workflow_owner": "teams responsible for software quality and release safety",
+          "business_job": "Use agents to test, monitor, and validate software and model-driven systems.",
+          "value_prop": "Catches regressions and scales QA capacity without linearly scaling headcount.",
+          "why_now": "Agentic products create new failure modes, so testing and observability have become first-order needs.",
+          "recommendation": "Durable if the product becomes part of the default release process.",
+          "companies": [
+            {
+              "name": "Alpha Research",
+              "batch": "Spring 2025",
+              "team_size": 1,
+              "website": "https://alpharesearch.nyc/",
+              "subindustry": "B2B -> Engineering, Product and Design",
+              "what_they_do": "Open source, agentic knowledge bases for all of humanity's knowledge.",
+              "use_case_focus": [
+                "analytics and reporting",
+                "developer tools and testing",
+                "sales and customer ops"
+              ],
+              "proof_line": "Open source knowledge bases for all humanity."
+            },
+            {
+              "name": "Golf",
+              "batch": "Spring 2025",
+              "team_size": 1,
+              "website": "https://golf.dev/",
+              "subindustry": "B2B -> Security",
+              "what_they_do": "Agentic AI Security and Governance",
+              "use_case_focus": [
+                "security and governance",
+                "developer tools and testing",
+                "data and agent infrastructure"
+              ],
+              "proof_line": "Your agents connect to your data & you can\u2019t see it"
+            },
+            {
+              "name": "Capacitive",
+              "batch": "Spring 2025",
+              "team_size": 2,
+              "website": "https://capacitive.ai/",
+              "subindustry": "B2B -> Engineering, Product and Design",
+              "what_they_do": "The data gateway for agents.",
+              "use_case_focus": [
+                "security and governance",
+                "developer tools and testing",
+                "data and agent infrastructure"
+              ],
+              "proof_line": "As of January 2026, Capacitive has ceased all operations and discontinued support for its Commons platform."
+            },
+            {
+              "name": "Docket",
+              "batch": "Spring 2025",
+              "team_size": 2,
+              "website": "https://docketqa.com",
+              "subindustry": "B2B -> Engineering, Product and Design",
+              "what_they_do": "AI agents for web testing",
+              "use_case_focus": [
+                "developer tools and testing"
+              ],
+              "proof_line": "AI agents for web testing"
+            },
+            {
+              "name": "Galen AI",
+              "batch": "Spring 2025",
+              "team_size": 2,
+              "website": "https://www.galenai.com/",
+              "subindustry": "Healthcare -> Consumer Health and Wellness",
+              "what_they_do": "Personal AI healthcare agent, powered by clinical and wearable data.",
+              "use_case_focus": [
+                "healthcare operations",
+                "developer tools and testing",
+                "sales and customer ops"
+              ],
+              "proof_line": "Personal AI healthcare agent, powered by clinical and wearable data."
+            },
+            {
+              "name": "Propolis",
+              "batch": "Spring 2025",
+              "team_size": 2,
+              "website": "https://propolis.tech/",
+              "subindustry": "B2B",
+              "what_they_do": "Hands off QA via intelligent browser agents. ",
+              "use_case_focus": [
+                "developer tools and testing"
+              ],
+              "proof_line": "Hands off QA via intelligent browser agents. "
+            }
+          ],
+          "examples": [
+            "Alpha Research",
+            "Golf",
+            "Capacitive",
+            "Docket",
+            "Galen AI"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "vertical_table",
+      "title": "Vertical And Specialist Lanes Matter Too",
+      "subtitle": "Smaller clusters can still be strategically attractive when pain and willingness to pay are high",
+      "clusters": [
+        {
+          "name": "finance and trading",
+          "count": 4,
+          "buyer": "finance operators, claims leaders, and risk teams",
+          "workflow_owner": "teams handling claims, trading, and financially sensitive repetitive workflows",
+          "business_job": "Apply agents to high-value workflows with direct financial consequences.",
+          "value_prop": "Easier to justify because cycle time and error rates map to money quickly.",
+          "why_now": "Structured rules and measurable impact make finance-adjacent workflows attractive for automation.",
+          "recommendation": "Works best when the team has domain expertise and clear data/control boundaries.",
+          "companies": [
+            {
+              "name": "Aegis",
+              "batch": "Spring 2025",
+              "team_size": 3,
+              "website": "https://aegishealth.us/",
+              "subindustry": "Healthcare -> Healthcare IT",
+              "what_they_do": "AI Agents to win denied health insurance claims.",
+              "use_case_focus": [
+                "healthcare operations",
+                "finance and trading"
+              ],
+              "proof_line": "AI Agents to win denied health insurance claims."
+            },
+            {
+              "name": "Pelica",
+              "batch": "Spring 2025",
+              "team_size": 5,
+              "website": "https://www.pelica.com/",
+              "subindustry": "Healthcare -> Healthcare IT",
+              "what_they_do": "Transforming healthcare operations with AI agents",
+              "use_case_focus": [
+                "healthcare operations",
+                "workflow automation",
+                "finance and trading"
+              ],
+              "proof_line": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes."
+            },
+            {
+              "name": "Parsewise",
+              "batch": "Spring 2025",
+              "team_size": 6,
+              "website": "https://parsewise.ai",
+              "subindustry": "B2B",
+              "what_they_do": "Multi-document processing for your risk teams, AI agents, pipelines",
+              "use_case_focus": [
+                "sales and customer ops",
+                "finance and trading"
+              ],
+              "proof_line": "Multi-document processing for your risk teams, AI agents, pipelines"
+            },
+            {
+              "name": "Avallon AI",
+              "batch": "Spring 2025",
+              "team_size": 7,
+              "website": "https://www.avallon.ai/",
+              "subindustry": "Fintech -> Insurance",
+              "what_they_do": "AI agents for insurance claims operations",
+              "use_case_focus": [
+                "finance and trading"
+              ],
+              "proof_line": "AI agents for insurance claims operations"
+            }
+          ],
+          "examples": [
+            "Aegis",
+            "Pelica",
+            "Parsewise",
+            "Avallon AI"
+          ]
+        },
+        {
+          "name": "security and governance",
+          "count": 4,
+          "buyer": "CISO orgs, security engineering, and compliance leaders",
+          "workflow_owner": "security teams managing alerts, access, and policy enforcement",
+          "business_job": "Automate security workflows and govern how agents interact with systems and data.",
+          "value_prop": "Security pain is urgent, measurable, and hard to outsource to generic tools.",
+          "why_now": "Every new agent deployment introduces additional governance and control needs.",
+          "recommendation": "Strong if the product can sit in a real enforcement or response loop.",
+          "companies": [
+            {
+              "name": "Golf",
+              "batch": "Spring 2025",
+              "team_size": 1,
+              "website": "https://golf.dev/",
+              "subindustry": "B2B -> Security",
+              "what_they_do": "Agentic AI Security and Governance",
+              "use_case_focus": [
+                "security and governance",
+                "developer tools and testing",
+                "data and agent infrastructure"
+              ],
+              "proof_line": "Your agents connect to your data & you can\u2019t see it"
+            },
+            {
+              "name": "Capacitive",
+              "batch": "Spring 2025",
+              "team_size": 2,
+              "website": "https://capacitive.ai/",
+              "subindustry": "B2B -> Engineering, Product and Design",
+              "what_they_do": "The data gateway for agents.",
+              "use_case_focus": [
+                "security and governance",
+                "developer tools and testing",
+                "data and agent infrastructure"
+              ],
+              "proof_line": "As of January 2026, Capacitive has ceased all operations and discontinued support for its Commons platform."
+            },
+            {
+              "name": "Cotool",
+              "batch": "Spring 2025",
+              "team_size": 4,
+              "website": "https://cotool.ai",
+              "subindustry": "B2B -> Security",
+              "what_they_do": "AI Agents for Security Operations Teams",
+              "use_case_focus": [
+                "security and governance",
+                "analytics and reporting",
+                "workflow automation"
+              ],
+              "proof_line": "AI Agents for Security Operations Teams"
+            },
+            {
+              "name": "MindFort",
+              "batch": "Spring 2025",
+              "team_size": 5,
+              "website": "https://www.mindfort.ai",
+              "subindustry": "B2B -> Security",
+              "what_they_do": "Autonomous Security Agents",
+              "use_case_focus": [
+                "security and governance",
+                "workflow automation"
+              ],
+              "proof_line": "Autonomous Security Agents"
+            }
+          ],
+          "examples": [
+            "Golf",
+            "Capacitive",
+            "Cotool",
+            "MindFort"
+          ]
+        },
+        {
+          "name": "healthcare operations",
+          "count": 3,
+          "buyer": "clinic operators, provider groups, revenue cycle leaders, and healthcare IT buyers",
+          "workflow_owner": "front desk, billing, claims, scheduling, and patient-ops teams",
+          "business_job": "Reduce repetitive administrative work in patient and provider operations.",
+          "value_prop": "High-friction workflows, high willingness to pay, and measurable ROI in staffing and collections.",
+          "why_now": "Healthcare workflows are still overloaded with manual coordination and structured repetitive work.",
+          "recommendation": "One of the clearest vertical lanes if the product owns a painful workflow end to end.",
+          "companies": [
+            {
+              "name": "Galen AI",
+              "batch": "Spring 2025",
+              "team_size": 2,
+              "website": "https://www.galenai.com/",
+              "subindustry": "Healthcare -> Consumer Health and Wellness",
+              "what_they_do": "Personal AI healthcare agent, powered by clinical and wearable data.",
+              "use_case_focus": [
+                "healthcare operations",
+                "developer tools and testing",
+                "sales and customer ops"
+              ],
+              "proof_line": "Personal AI healthcare agent, powered by clinical and wearable data."
+            },
+            {
+              "name": "Aegis",
+              "batch": "Spring 2025",
+              "team_size": 3,
+              "website": "https://aegishealth.us/",
+              "subindustry": "Healthcare -> Healthcare IT",
+              "what_they_do": "AI Agents to win denied health insurance claims.",
+              "use_case_focus": [
+                "healthcare operations",
+                "finance and trading"
+              ],
+              "proof_line": "AI Agents to win denied health insurance claims."
+            },
+            {
+              "name": "Pelica",
+              "batch": "Spring 2025",
+              "team_size": 5,
+              "website": "https://www.pelica.com/",
+              "subindustry": "Healthcare -> Healthcare IT",
+              "what_they_do": "Transforming healthcare operations with AI agents",
+              "use_case_focus": [
+                "healthcare operations",
+                "workflow automation",
+                "finance and trading"
+              ],
+              "proof_line": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes."
+            }
+          ],
+          "examples": [
+            "Galen AI",
+            "Aegis",
+            "Pelica"
+          ]
+        },
+        {
+          "name": "legal and compliance workflows",
+          "count": 2,
+          "buyer": "legal ops, compliance teams, and specialized knowledge teams",
+          "workflow_owner": "professionals doing high-cost document and rule-based review work",
+          "business_job": "Embed agents inside document-heavy or policy-heavy professional workflows.",
+          "value_prop": "Saves expert time where labor is expensive and throughput matters.",
+          "why_now": "Language-heavy professional work is now tractable enough for narrow workflow products.",
+          "recommendation": "Promising if the product can specialize around a precise workflow, not generic legal AI.",
+          "companies": [
+            {
+              "name": "Vesence",
+              "batch": "Spring 2025",
+              "team_size": 2,
+              "website": "https://vesence.com",
+              "subindustry": "B2B -> Legal",
+              "what_they_do": "Cursor for Lawyers. Agentic AI in MS Office.",
+              "use_case_focus": [
+                "legal and compliance workflows"
+              ],
+              "proof_line": "Cursor for Lawyers. Agentic AI in MS Office."
+            },
+            {
+              "name": "Third Chair",
+              "batch": "Spring 2025",
+              "team_size": 8,
+              "website": "https://usethirdchair.com",
+              "subindustry": "B2B -> Legal",
+              "what_they_do": "AI-Native IP Enforcement Agent",
+              "use_case_focus": [
+                "workflow automation",
+                "legal and compliance workflows"
+              ],
+              "proof_line": "AI-Native IP Enforcement Agent"
+            }
+          ],
+          "examples": [
+            "Vesence",
+            "Third Chair"
+          ]
+        }
+      ],
+      "companies": [
+        {
+          "name": "Anana",
+          "cluster": "workflow automation",
+          "what_they_do": "One place for Revenue, Sales, and Operations to work together with AI \u2014 investigating pickup, triaging RFPs, and acting in the tools your team already uses."
+        },
+        {
+          "name": "stratify",
+          "cluster": "workflow automation",
+          "what_they_do": "Automate your user research with AI-powered insights. Get deeper customer understanding without the manual work."
+        },
+        {
+          "name": "Alpha Research",
+          "cluster": "sales and customer ops",
+          "what_they_do": "Open source knowledge bases for all humanity."
+        },
+        {
+          "name": "Anana",
+          "cluster": "sales and customer ops",
+          "what_they_do": "One place for Revenue, Sales, and Operations to work together with AI \u2014 investigating pickup, triaging RFPs, and acting in the tools your team already uses."
+        },
+        {
+          "name": "Alpha Research",
+          "cluster": "analytics and reporting",
+          "what_they_do": "Open source knowledge bases for all humanity."
+        },
+        {
+          "name": "BitBoard",
+          "cluster": "analytics and reporting",
+          "what_they_do": "Connect your data, build with your agent, share with your team."
+        }
+      ]
+    },
+    {
+      "type": "section_divider",
+      "section": "SECTION 02",
+      "title": "Strategic Implications",
+      "subtitle": "Where the YC pattern supports Sync2, where it pressures ReprisesAI, and what the next build direction should be."
+    },
+    {
+      "type": "case_study",
+      "title": "Sync2 Has Real YC Adjacency",
+      "match_title": "Closest YC matches",
+      "matches": [
+        {
+          "name": "Pelica",
+          "batch": "Spring 2025",
+          "team_size": 5,
+          "one_liner": "Transforming healthcare operations with AI agents",
+          "subindustry": "Healthcare -> Healthcare IT",
+          "matched": [
+            "healthcare operations agents"
+          ],
+          "proof_line": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes."
+        },
+        {
+          "name": "Simbie AI",
+          "batch": "Summer 2023",
+          "team_size": 5,
+          "one_liner": "We get patients to their next appointment",
+          "subindustry": "Healthcare",
+          "matched": [
+            "clinic operations AI"
+          ],
+          "proof_line": "Simbie AI\u2019s clinically-trained voice agents act as your 24/7 AI medical receptionist\u2014handling scheduling, refills & intake with 60% cost savings. Loved by doctors & patients."
+        },
+        {
+          "name": "Prosper",
+          "batch": "Summer 2023",
+          "team_size": 9,
+          "one_liner": "AI Phone Agents for Healthcare Operations",
+          "subindustry": "B2B",
+          "matched": [
+            "patient scheduling AI"
+          ],
+          "proof_line": "AI Voice Agents \u200d for Patient Access and RCM"
+        },
+        {
+          "name": "Toothy AI",
+          "batch": "Winter 2025",
+          "team_size": 15,
+          "one_liner": "AI for insurance verification & billing at dental clinics",
+          "subindustry": "Healthcare -> Healthcare IT",
+          "matched": [
+            "clinic operations AI"
+          ],
+          "proof_line": "Toothy takes insurance off your team"
+        },
+        {
+          "name": "Sully.ai",
+          "batch": "Summer 2021",
+          "team_size": 49,
+          "one_liner": "Autonomous team of AI agents that runs the entire hospital operations",
+          "subindustry": "B2B -> Productivity",
+          "matched": [
+            "medical receptionist AI"
+          ],
+          "proof_line": "Autonomous team of AI agents that runs the entire hospital operations"
+        }
+      ],
+      "implication_title": "What this means",
+      "implications": [
+        "The lane is real, but the stronger names own deeper workflow than a thin front-desk wrapper.",
+        "Scheduling, claims, billing, intake, and patient communication are stronger system-of-action wedges.",
+        "The winning product is likely the one that captures more of the actual clinic workflow."
+      ],
+      "kpis": [
+        {
+          "value": "5",
+          "label": "strong adjacency matches"
+        },
+        {
+          "value": "Ops",
+          "label": "workflow depth wins"
+        },
+        {
+          "value": "$",
+          "label": "high-friction buyer pain"
+        }
+      ]
+    },
+    {
+      "type": "case_study",
+      "title": "ReprisesAI Faces Productization Risk",
+      "match_title": "Closest YC matches",
+      "matches": [
+        {
+          "name": "Contour",
+          "batch": "Summer 2023",
+          "team_size": 2,
+          "one_liner": "AI voice agents for healthcare operational calls",
+          "subindustry": "B2B",
+          "matched": [
+            "workflow automation enterprise AI"
+          ],
+          "proof_line": "AI voice agents for healthcare operational calls"
+        },
+        {
+          "name": "flowscope",
+          "batch": "Spring 2026",
+          "team_size": 2,
+          "one_liner": "AI-native consulting to map and automate business processes",
+          "subindustry": "B2B",
+          "matched": [
+            "AI consulting automation"
+          ],
+          "proof_line": "Agents that learn how your business actually runs, then redesign and automate the work on top of existing systems. The AI team for businesses that don't have one."
+        },
+        {
+          "name": "Unisson",
+          "batch": "Winter 2026",
+          "team_size": 2,
+          "one_liner": "AI agents that automate B2B software implementation",
+          "subindustry": "B2B -> Productivity",
+          "matched": [
+            "software implementation AI agents"
+          ],
+          "proof_line": "AI agents that learn to use your product and run directly inside it to execute any task your customers need, accelerating their time to value."
+        },
+        {
+          "name": "Lua Global Inc",
+          "batch": "Fall 2025",
+          "team_size": 5,
+          "one_liner": "The mid-market agent platform",
+          "subindustry": "B2B",
+          "matched": [
+            "mid-market agent platform"
+          ],
+          "proof_line": "Build, deploy, and scale enterprise-grade AI agents. Ship your first agent without touching infrastructure."
+        }
+      ],
+      "implication_title": "What this means",
+      "implications": [
+        "There are fewer direct AI-agency clones than expected.",
+        "The bigger risk is productized implementation software absorbing repeatable service work.",
+        "The safer posture is a specialized wedge, not generic AI delivery."
+      ],
+      "kpis": [
+        {
+          "value": "4",
+          "label": "clear comparables"
+        },
+        {
+          "value": "Risk",
+          "label": "services get productized"
+        },
+        {
+          "value": "Focus",
+          "label": "specialize the wedge"
+        }
+      ]
+    },
+    {
+      "type": "recommendation_grid",
+      "title": "What I Would Do Next",
+      "subtitle": "The recommendations follow directly from the cohort structure",
+      "recommendations": [
+        {
+          "title": "Choose workflow-heavy use cases first",
+          "why": "8 companies cluster around operational systems of action, making this the clearest YC pattern."
+        },
+        {
+          "title": "Own context, governance, or workflow position",
+          "why": "The more durable clusters pair agents with data access, infrastructure, or embedded workflow ownership."
+        },
+        {
+          "title": "Treat healthcare operations as a real wedge",
+          "why": "The count is smaller than horizontal ops, but the workflow pain and willingness to pay are strong."
+        },
+        {
+          "title": "Avoid generic agent-platform messaging",
+          "why": "The cohort repeatedly rewards products with explicit jobs and operators, not broad agent claims."
+        }
+      ]
+    },
+    {
+      "type": "methodology",
+      "title": "Method And Reproducibility",
+      "bullets": [
+        "Website tested: https://www.ycombinator.com/companies",
+        "yc-companies discovers the live YC backend from the public page each run",
+        "Primary filter: Spring 2025, agent / agentic pattern, team size <= 10",
+        "Structured cluster counts derived from 27 filtered companies",
+        "Use-case labels are inferred from company text, not official YC categories"
+      ]
+    }
+  ]
+}

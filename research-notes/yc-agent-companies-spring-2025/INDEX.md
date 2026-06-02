@@ -1,0 +1,16 @@
+# YC Agent Companies Source Notes
+
+- [Alpha Research](alpha-research.md)
+- [Anana](anana.md)
+- [BitBoard](bitboard.md)
+- [Capacitive](capacitive.md)
+- [Contour](contour.md)
+- [Golf](golf.md)
+- [Lua Global Inc](lua-global-inc.md)
+- [Pelica](pelica.md)
+- [Prosper](prosper.md)
+- [Simbie AI](simbie-ai.md)
+- [Toothy AI](toothy-ai.md)
+- [Unisson](unisson.md)
+- [flowscope](flowscope.md)
+- [stratify](stratify.md)
