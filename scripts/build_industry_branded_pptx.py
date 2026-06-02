@@ -36,10 +36,23 @@ SKILL_ASSETS_DIR = (
     / "claude-to-codex-skills"
     / "skills"
     / "industry-research-analysis-branded-deck"
-    / "assets"
 )
-REFERENCE_TEMPLATE_PPTX = SKILL_ASSETS_DIR / "Prasad_Agentic_AI_Use_Cases_Across_Industries.pptx"
-REFERENCE_TEMPLATE_PDF = SKILL_ASSETS_DIR / "slide deck-reference.pdf"
+SKILL_REFERENCES_DIR = SKILL_ASSETS_DIR / "references"
+SKILL_ASSETS_DIR = SKILL_ASSETS_DIR / "assets"
+TEMPLATE_MANIFEST_PATH = SKILL_REFERENCES_DIR / "template-manifest.json"
+
+
+def load_template_manifest() -> dict:
+    return json.loads(TEMPLATE_MANIFEST_PATH.read_text(encoding="utf-8"))
+
+
+TEMPLATE_MANIFEST = load_template_manifest()
+REFERENCE_ASSETS = TEMPLATE_MANIFEST["reference_assets"]
+PREFERRED_USE_CASE_LAYOUT = TEMPLATE_MANIFEST.get("preferred_use_case_layout", "canva-card-strip")
+CANONICAL_SLIDE_FAMILIES = set(TEMPLATE_MANIFEST.get("canonical_slide_families", []))
+
+REFERENCE_TEMPLATE_PPTX = SKILL_ASSETS_DIR / REFERENCE_ASSETS["pptx"]
+REFERENCE_TEMPLATE_PDF = SKILL_ASSETS_DIR / REFERENCE_ASSETS["pdf"]
 
 
 def nice_title(slug: str) -> str:
@@ -47,7 +60,7 @@ def nice_title(slug: str) -> str:
 
 
 def ensure_reference_assets() -> None:
-    missing = [path for path in (REFERENCE_TEMPLATE_PPTX, REFERENCE_TEMPLATE_PDF) if not path.exists()]
+    missing = [path for path in (REFERENCE_TEMPLATE_PPTX, REFERENCE_TEMPLATE_PDF, TEMPLATE_MANIFEST_PATH) if not path.exists()]
     if missing:
         missing_str = ", ".join(str(path) for path in missing)
         raise FileNotFoundError(f"Missing packaged presentation template assets: {missing_str}")
@@ -346,6 +359,22 @@ def build_case_study(d: Deck, slide: dict, total: int, page: int) -> None:
     d.footer(s, page, total)
 
 
+def build_use_case_card_grid(d: Deck, slide: dict, total: int, page: int) -> None:
+    build_use_case_table(d, slide, total, page)
+
+
+def build_use_case_deep_dive(d: Deck, slide: dict, total: int, page: int) -> None:
+    build_case_study(d, slide, total, page)
+
+
+def build_customer_fit(d: Deck, slide: dict, total: int, page: int) -> None:
+    build_comparison(d, slide, total, page)
+
+
+def build_executive_action(d: Deck, slide: dict, total: int, page: int) -> None:
+    build_roadmap(d, slide, total, page)
+
+
 def build_roadmap(d: Deck, slide: dict, total: int, page: int) -> None:
     s = d.slide(fill=d.b.WHITE)
     d.header(s, slide["title"])
@@ -383,7 +412,11 @@ BUILDERS = {
     "bar-chart": build_bar_chart,
     "comparison": build_comparison,
     "use-case-table": build_use_case_table,
+    "use-case-card-grid": build_use_case_card_grid,
     "case-study": build_case_study,
+    "use-case-deep-dive": build_use_case_deep_dive,
+    "customer-fit": build_customer_fit,
+    "executive-action": build_executive_action,
     "roadmap": build_roadmap,
     "bullets": build_bullets,
 }
@@ -406,7 +439,13 @@ def main() -> int:
     slides = deck_plan["slides"]
     total = len(slides)
     for page, slide in enumerate(slides, start=1):
-        builder = BUILDERS.get(slide.get("slide_type"), build_bullets)
+        if slide.get("slide_type") in {"use-case-table", "case-study"} and PREFERRED_USE_CASE_LAYOUT == "canva-card-strip":
+            slide_type = "use-case-card-grid" if slide.get("slide_type") == "use-case-table" else "use-case-deep-dive"
+        else:
+            slide_type = slide.get("slide_type")
+        if slide_type and CANONICAL_SLIDE_FAMILIES and slide_type not in CANONICAL_SLIDE_FAMILIES:
+            slide_type = slide.get("slide_type")
+        builder = BUILDERS.get(slide_type, build_bullets)
         builder(d, slide, total, page)
 
     out = ROOT / "docs" / "reports" / f"{slug}-branded.pptx"

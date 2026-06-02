@@ -33,12 +33,14 @@ This skill assumes the chain artifacts already exist for a slug:
 - `analytics-comms/<slug>/analysis-pack.json`
 - `analytics-comms/<slug>/deck-plan.json`
 
-Optional but recommended executive-framing artifacts:
+Optional but recommended executive-framing contracts:
 
-- `analytics-comms/<slug>/strategy-brief.md`
-- `analytics-comms/<slug>/executive-angle.md`
-- `analytics-comms/<slug>/customer-brief.md`
-- `analytics-comms/<slug>/use-case-priorities.md`
+- `analytics-comms/<slug>/strategy-brief.json`
+- `analytics-comms/<slug>/executive-angle.json`
+- `analytics-comms/<slug>/customer-brief.json`
+- `analytics-comms/<slug>/use-case-priorities.json`
+
+If legacy markdown notes also exist, treat them as human-readable companions, not as the primary machine-readable handoff.
 
 ## Use the bundled script
 
@@ -49,7 +51,8 @@ That script:
 1. validates the contract files
 2. uses a custom industry builder if one exists
 3. otherwise uses the generic branded deck builder
-4. can optionally copy the deck to Windows Downloads
+4. runs PPTX visual QA previews and writes a QA summary
+5. can optionally copy the deck to Windows Downloads
 
 ## Template system
 
@@ -79,6 +82,11 @@ For use-case-heavy sections, prefer the Canva-adapted use-case layout from `buil
 7. Run `ai-strategy-council` if the decision needs a pressure-tested strategic verdict rather than a single narrative.
 8. Run `analytics-to-comms` and `chart-storyteller` to create the analysis pack.
 9. Use `stakeholder-comms`, `precall-briefer`, or `presales-deal-prep` when the deck is meant for customer-facing executives or an account-specific meeting.
+10. Fill the optional JSON contracts when the deck is customer-aware or executive-heavy:
+   - `customer-brief.json`
+   - `strategy-brief.json`
+   - `use-case-priorities.json`
+   - `executive-angle.json`
 10. Expand the deck plan until the story is complete:
    - minimum target is usually `25+` slides for a serious executive deck
    - slide count should follow content density, not an arbitrary fixed number
@@ -89,6 +97,7 @@ For use-case-heavy sections, prefer the Canva-adapted use-case layout from `buil
    - Canva-style use-case cards for workflow-heavy sections
    - case-study slides for named-customer or named-use-case deep dives
 12. Render through this skill only after the deck plan is structurally sound and the slide family choice matches the content.
+13. Review the generated QA preview bundle before calling the deck finished.
 
 ## Rules
 
@@ -100,6 +109,7 @@ For use-case-heavy sections, prefer the Canva-adapted use-case layout from `buil
 - Use the user's Canva-style reference template as the visual system of record.
 - Use the Canva-adapted use-case layout for use-case sections unless the content clearly demands a different slide family.
 - Do not fall back to plain use-case tables when the slide should communicate prioritization, realization, or executive action.
+- Prefer JSON contracts over ad hoc markdown for customer, strategy, prioritization, and executive-angle handoffs.
 - Use real evidence, real strategic recommendations, and explicit slide-type variation.
 - Every strong deck should answer all four:
   - `what is happening in the industry or market?`
@@ -110,6 +120,7 @@ For use-case-heavy sections, prefer the Canva-adapted use-case layout from `buil
 ## Output
 
 - Repo deck: `docs/reports/<slug>-branded.pptx`
+- QA bundle: `docs/reports/_preview/<slug>/`
 - Optional Windows copy if requested
 
 ## Reference frame

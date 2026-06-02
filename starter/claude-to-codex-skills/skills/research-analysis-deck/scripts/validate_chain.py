@@ -77,6 +77,14 @@ def main() -> int:
     parser.add_argument("--source-notes", type=Path, required=True)
     parser.add_argument("--analysis-pack", type=Path, required=True)
     parser.add_argument("--deck-plan", type=Path, required=True)
+    parser.add_argument(
+        "--optional-json",
+        nargs=3,
+        action="append",
+        default=[],
+        metavar=("LABEL", "SCHEMA_PATH", "PAYLOAD_PATH"),
+        help="Validate an optional JSON artifact against a schema.",
+    )
     args = parser.parse_args()
 
     targets = [
@@ -86,6 +94,14 @@ def main() -> int:
     ]
 
     for label, schema_path, payload_path in targets:
+        schema = load_json(schema_path)
+        payload = load_json(payload_path)
+        validate(schema, payload, label)
+        print(f"valid: {payload_path}")
+
+    for label, schema_path_str, payload_path_str in args.optional_json:
+        schema_path = Path(schema_path_str)
+        payload_path = Path(payload_path_str)
         schema = load_json(schema_path)
         payload = load_json(payload_path)
         validate(schema, payload, label)

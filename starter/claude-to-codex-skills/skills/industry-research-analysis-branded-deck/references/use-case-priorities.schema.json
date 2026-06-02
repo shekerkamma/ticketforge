@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Use Case Priorities",
+  "type": "object",
+  "required": [
+    "report_slug",
+    "created_at",
+    "prioritization_basis",
+    "tiers",
+    "rationale"
+  ],
+  "properties": {
+    "report_slug": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "prioritization_basis": {
+      "type": "string"
+    },
+    "tiers": {
+      "type": "object",
+      "required": [
+        "tier_1",
+        "tier_2",
+        "tier_3"
+      ],
+      "properties": {
+        "tier_1": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tier_2": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tier_3": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "rationale": {
+      "type": "string"
+    }
+  }
+}

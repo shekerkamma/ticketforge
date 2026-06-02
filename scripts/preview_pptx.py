@@ -4,6 +4,8 @@
 Reads real shape geometry, fills, and text from the file and draws them with
 matplotlib. Useful to catch text-overflow / overlap without PowerPoint.
 """
+import argparse
+import json
 import sys
 import textwrap
 from pathlib import Path
@@ -46,6 +48,8 @@ def render(pptx_path: Path, out_dir: Path):
     H = prs.slide_height / EMU
     out_dir.mkdir(parents=True, exist_ok=True)
     paths = []
+    overflow_shapes = 0
+    overflow_slides = []
     for idx, slide in enumerate(prs.slides, 1):
         fig, ax = plt.subplots(figsize=(W, H), dpi=110)
         ax.set_xlim(0, W)
@@ -117,6 +121,8 @@ def render(pptx_path: Path, out_dir: Path):
                                 fontsize=size * 0.92, color=col, fontweight="bold" if bold else "normal")
                         y += lh
                 if overflow:
+                    overflow_shapes += 1
+                    overflow_slides.append(idx)
                     ax.add_patch(Rectangle((left, top), w, h, facecolor="none",
                                            edgecolor="red", linewidth=1.5, linestyle="--"))
         out = out_dir / f"slide_{idx:02d}.png"
@@ -138,9 +144,22 @@ def render(pptx_path: Path, out_dir: Path):
         fig.savefig(sheet, dpi=90, bbox_inches="tight")
         plt.close(fig)
         print("wrote", sheet)
+    summary = {
+        "pptx": str(pptx_path),
+        "out_dir": str(out_dir),
+        "slide_count": len(paths),
+        "overflow_shape_count": overflow_shapes,
+        "overflow_slides": sorted(set(overflow_slides)),
+    }
+    (out_dir / "qa-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     print(f"Rendered {len(paths)} slides to {out_dir}")
+    print(json.dumps(summary))
+    return summary
 
 
 if __name__ == "__main__":
-    src = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("docs/reports/yc-agent-companies-spring-2025-v2.pptx")
-    render(src, Path("docs/reports/_preview"))
+    parser = argparse.ArgumentParser(description="Render PPTX previews and emit a QA summary.")
+    parser.add_argument("pptx", nargs="?", default="docs/reports/yc-agent-companies-spring-2025-v2.pptx")
+    parser.add_argument("--out-dir", default="docs/reports/_preview")
+    args = parser.parse_args()
+    render(Path(args.pptx), Path(args.out_dir))

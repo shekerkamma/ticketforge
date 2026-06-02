@@ -1,0 +1,5 @@
+{
+  "custom_builders": {
+    "healthcare-provider-ops-ai-usecases": "scripts/build_healthcare_provider_ops_branded_pptx.py"
+  }
+}

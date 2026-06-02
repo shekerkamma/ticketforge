@@ -1,0 +1,31 @@
+{
+  "brand": {
+    "palette": {
+      "navy": "#0A1628",
+      "teal": "#00C9A7",
+      "accent": "#009B82",
+      "gold": "#FFB800"
+    },
+    "font_family": "Calibri"
+  },
+  "reference_assets": {
+    "pptx": "Prasad_Agentic_AI_Use_Cases_Across_Industries.pptx",
+    "pdf": "slide deck-reference.pdf"
+  },
+  "preferred_use_case_layout": "canva-card-strip",
+  "canonical_slide_families": [
+    "hero",
+    "agenda",
+    "section-divider",
+    "summary-cards",
+    "kpi-grid",
+    "bar-chart",
+    "comparison",
+    "use-case-card-grid",
+    "use-case-deep-dive",
+    "customer-fit",
+    "executive-action",
+    "roadmap",
+    "bullets"
+  ]
+}

@@ -64,6 +64,17 @@ Capture:
 - governance concerns
 - KPI / decision metric
 
+## Optional machine-readable sidecars
+
+When this wrapper is active, prefer structured JSON sidecars for the executive layer:
+
+- `customer-brief.json`
+- `strategy-brief.json`
+- `use-case-priorities.json`
+- `executive-angle.json`
+
+These should tighten the handoff between research, strategy, prioritization, and deck rendering.
+
 ## Minimum deck standard
 
 Every strong deck should make these four questions obvious:

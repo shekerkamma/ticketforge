@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Customer Brief",
+  "type": "object",
+  "required": [
+    "report_slug",
+    "created_at",
+    "customer_scope",
+    "customer_label",
+    "why_this_customer_matters",
+    "public_signals",
+    "executive_priorities",
+    "best_entry_points",
+    "best_use_case_angles"
+  ],
+  "properties": {
+    "report_slug": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "customer_scope": {
+      "type": "string",
+      "enum": [
+        "named-customer",
+        "buyer-segment",
+        "icp",
+        "industry-only"
+      ]
+    },
+    "customer_label": {
+      "type": "string"
+    },
+    "why_this_customer_matters": {
+      "type": "string"
+    },
+    "public_signals": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "executive_priorities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "workflow_owners": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "best_entry_points": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "best_use_case_angles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

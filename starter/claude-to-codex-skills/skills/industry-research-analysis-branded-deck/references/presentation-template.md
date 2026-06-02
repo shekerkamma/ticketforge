@@ -27,6 +27,10 @@ These binaries are checked into the repo as part of the skill so the template sy
   - `scripts/build_industry_branded_pptx.py`
 - Healthcare custom builder:
   - `scripts/build_healthcare_provider_ops_branded_pptx.py`
+- Template manifest:
+  - `references/template-manifest.json`
+- Builder registry:
+  - `references/builder-registry.json`
 
 ## Brand system
 
@@ -89,3 +93,4 @@ That means:
 - the deck should visibly resemble the reference system
 - use-case slides should use the Canva-style layout language
 - layout choice should vary with content, not repeat one generic structure
+- render should produce a QA preview bundle so overflow and density issues are visible before handoff

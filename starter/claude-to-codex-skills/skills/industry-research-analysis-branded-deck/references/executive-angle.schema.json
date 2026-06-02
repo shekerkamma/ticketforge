@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Executive Angle",
+  "type": "object",
+  "required": [
+    "report_slug",
+    "created_at",
+    "primary_audience",
+    "lead_with",
+    "avoid_leading_with",
+    "decision_frame"
+  ],
+  "properties": {
+    "report_slug": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "primary_audience": {
+      "type": "string"
+    },
+    "lead_with": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "avoid_leading_with": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "decision_frame": {
+      "type": "string"
+    }
+  }
+}

@@ -230,6 +230,8 @@ It is:
 - use the user's Canva-style reference deck as the visual system
 - use the Canva-adapted use-case layout for use-case-heavy slides
 - vary slide family by content instead of forcing one generic layout
+- validate the optional executive/customer JSON sidecars when they exist
+- generate a PPTX QA preview bundle after render
 
 Worked example in this repo:
 
