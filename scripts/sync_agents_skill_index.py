@@ -20,6 +20,45 @@ CATEGORY_ORDER = [
     "Utilities and Personal Workflow",
 ]
 
+AI_ANALYST_NAMES = {
+    "ai-analyst",
+    "ask-question",
+    "analysis-design-spec",
+    "archaeology",
+    "archive-analysis",
+    "business-context",
+    "close-the-loop",
+    "compare-datasets",
+    "connect-data",
+    "data-quality-check",
+    "deep-profile",
+    "define-metric",
+    "design-experiment",
+    "explore-data",
+    "feedback-capture",
+    "first-run-welcome",
+    "forecast",
+    "guardrails",
+    "knowledge-bootstrap",
+    "log-correction",
+    "manage-runs",
+    "patterns",
+    "presentation-themes",
+    "question-framing",
+    "question-router",
+    "resume-analysis",
+    "run-analysis",
+    "semantic-validation",
+    "setup",
+    "size-opportunity",
+    "switch-dataset",
+    "tracking-gaps",
+    "triangulation",
+    "view-history",
+    "view-metrics",
+    "visualization-patterns",
+}
+
 
 def parse_frontmatter(skill_path: Path) -> tuple[str, str]:
     text = (skill_path / "SKILL.md").read_text(encoding="utf-8")
@@ -39,6 +78,7 @@ def parse_frontmatter(skill_path: Path) -> tuple[str, str]:
 def categorize(name: str) -> str:
     if (
         name.startswith("ai-strategy")
+        or name in AI_ANALYST_NAMES
         or name in {
             "analytics-to-comms",
             "architect",

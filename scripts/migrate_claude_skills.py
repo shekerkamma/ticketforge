@@ -8,6 +8,7 @@ import shutil
 import sys
 from dataclasses import dataclass
 from pathlib import Path
+from textwrap import dedent
 from typing import Iterable
 
 
@@ -18,12 +19,16 @@ STAGING_SKILLS_DIR = STAGING_ROOT / "skills"
 CHAIN_TEMPLATE_SKILLS = {
     "agent-browser",
     "account-intelligence-analyst",
+    "ai-analyst",
     "ai-strategy-council",
     "ai-strategy-researcher",
+    "ask-question",
     "analytics-to-comms",
+    "compare-datasets",
     "architect",
     "architecture-to-everything",
     "carousel-to-deck",
+    "connect-data",
     "content-draft-writer",
     "content-marketing-team",
     "content-outlier-research",
@@ -34,8 +39,13 @@ CHAIN_TEMPLATE_SKILLS = {
     "content-weekly-report",
     "competitive-intel-sprint",
     "crm-hygiene-enforcer",
+    "define-metric",
+    "design-experiment",
+    "explore-data",
     "export-results",
+    "forecast",
     "install-marp",
+    "manage-runs",
     "markdown-preview",
     "marp-deck-builder",
     "marp-exporter",
@@ -48,8 +58,11 @@ CHAIN_TEMPLATE_SKILLS = {
     "presentation",
     "proposal-generator",
     "presales-deal-prep",
+    "run-analysis",
     "research-analysis-deck",
     "review-draft",
+    "setup",
+    "size-opportunity",
     "content-research",
     "research-to-strategy",
     "second-brain-capture",
@@ -63,15 +76,24 @@ CHAIN_TEMPLATE_SKILLS = {
 }
 
 SUPPORTED_SKILLS = {
+    "ai-analyst",
+    "ask-question",
+    "analysis-design-spec",
     "account-intelligence-analyst",
     "anti-slop",
     "agent-browser",
     "architect",
+    "archaeology",
+    "archive-analysis",
     "architecture-to-everything",
     "ai-strategy-brief",
     "ai-strategy-council",
     "ai-strategy-researcher",
     "analytics-to-comms",
+    "business-context",
+    "close-the-loop",
+    "compare-datasets",
+    "connect-data",
     "crm-hygiene-enforcer",
     "session-handoff",
     "ss",
@@ -88,16 +110,28 @@ SUPPORTED_SKILLS = {
     "content-publish-helper",
     "content-topic-queue",
     "content-weekly-report",
+    "data-quality-check",
+    "deep-profile",
+    "define-metric",
+    "design-experiment",
     "difficult-conversation-prep",
+    "explore-data",
     "workflow-visualizer",
+    "feedback-capture",
+    "first-run-welcome",
+    "forecast",
+    "guardrails",
     "graphify",
     "explainer-graphic",
     "competitive-intel-sprint",
     "content-repurpose",
     "export-results",
     "install-marp",
+    "knowledge-bootstrap",
     "llm-council",
+    "log-correction",
     "log-performance",
+    "manage-runs",
     "markdown-preview",
     "marp-deck-builder",
     "marp-exporter",
@@ -114,15 +148,29 @@ SUPPORTED_SKILLS = {
     "presentation-speaker-notes",
     "presentation-accessibility",
     "proposal-generator",
+    "question-framing",
+    "question-router",
     "research-analysis-deck",
     "review-draft",
+    "resume-analysis",
+    "run-analysis",
     "content-research",
     "research-to-strategy",
+    "semantic-validation",
     "second-brain-capture",
+    "setup",
+    "size-opportunity",
+    "switch-dataset",
+    "tracking-gaps",
+    "triangulation",
+    "view-history",
+    "view-metrics",
+    "visualization-patterns",
     "watch",
     "url-dossier",
     "vertical-scorer",
     "presales-deal-prep",
+    "presentation-themes",
     "slide-deck-builder",
     "stakeholder-comms",
     "tune-voice",
@@ -3853,6 +3901,19 @@ def resolve_user_home() -> Path:
 USER_HOME = resolve_user_home()
 CLAUDE_SKILLS_DIR = USER_HOME / ".claude" / "skills"
 SOURCE_BUNDLES: dict[str, dict[str, str]] = {
+    "ai-analyst": {
+        "ai-analyst/helpers/analytics_chart_style.mplstyle": "assets/analytics_chart_style.mplstyle",
+        "ai-analyst/themes/analytics-light.css": "assets/themes/analytics-light.css",
+        "ai-analyst/themes/analytics-dark.css": "assets/themes/analytics-dark.css",
+        "ai-analyst/templates/deck_skeleton.marp.md": "references/deck_skeleton.marp.md",
+        "ai-analyst/templates/marp_components.md": "references/marp_components.md",
+    },
+    "connect-data": {
+        "ai-analyst/connection_templates/bigquery.yaml.example": "references/connection-templates/bigquery.yaml.example",
+        "ai-analyst/connection_templates/duckdb.yaml.example": "references/connection-templates/duckdb.yaml.example",
+        "ai-analyst/connection_templates/postgres.yaml.example": "references/connection-templates/postgres.yaml.example",
+        "ai-analyst/connection_templates/snowflake.yaml.example": "references/connection-templates/snowflake.yaml.example",
+    },
     "watch": {
         "watch/scripts/download.py": "scripts/download.py",
         "watch/scripts/frames.py": "scripts/frames.py",
@@ -3872,6 +3933,876 @@ SOURCE_BUNDLES: dict[str, dict[str, str]] = {
         "ai-analyst/themes/analytics-dark.css": "assets/themes/analytics-dark.css",
     },
 }
+
+
+def skill_template(name: str, description: str, body: str) -> str:
+    return (
+        f"---\nname: {name}\ndescription: {description}\n---\n\n"
+        f"{dedent(body).strip()}\n"
+    )
+
+
+def embedded_alias_template(
+    name: str,
+    description: str,
+    target: str,
+    reason: str,
+) -> str:
+    return skill_template(
+        name,
+        description,
+        f"""
+        # {name}
+
+        This compatibility skill exists because the original Claude tree exposed `{name}` as a
+        separate entrypoint. In the Codex pack, that behavior is folded into `{target}`.
+
+        ## Use
+
+        - Route the task to `{target}` instead of running a parallel workflow.
+        - Preserve the original user intent when you hand off.
+        - Mention that `{reason}` when that context matters.
+
+        ## Handoff
+
+        When `{name}` is invoked, continue with `{target}` and carry over:
+        - the business question
+        - active dataset or source context
+        - any requested output such as metrics, charts, or a deck
+        """,
+    )
+
+
+def build_ai_analyst_templates() -> dict[str, TemplateValue]:
+    templates: dict[str, TemplateValue] = {}
+
+    templates["ai-analyst"] = {
+        "SKILL.md": skill_template(
+            "ai-analyst",
+            "Codex-native analytics entrypoint for business questions, metrics, trends, forecasting, and stakeholder-ready analysis. Use when the user asks a quantitative question or wants data explored, validated, and turned into findings or a deck.",
+            """
+            # AI Analyst
+
+            This is the Codex-native entrypoint for analytics work. Use it when a request is
+            fundamentally about data, metrics, trends, comparisons, forecasting, or business
+            opportunity sizing.
+
+            Read these references first:
+            - `references/workspace-layout.md`
+            - `references/analysis-levels.md`
+
+            Companion skills:
+            - `ask-question` for first-pass routing
+            - `setup` and `connect-data` for onboarding
+            - `run-analysis` for a full pipeline
+            - `analytics-to-comms`, `chart-storyteller`, and `research-analysis-deck` for
+              packaging findings
+
+            ## Workflow
+
+            1. Treat the user question as a business decision question, not just a query request.
+            2. Confirm or infer the active dataset, source files, or data connection.
+            3. Route to the lightest sufficient path:
+               - direct metric answer
+               - exploratory analysis
+               - validated investigation
+               - full deck-producing pipeline
+            4. Keep a durable run trail under the workspace when the analysis is non-trivial.
+            5. End with findings, caveats, and specific next actions.
+
+            ## Rules
+
+            - Prefer `ask-question` as the first analytical step for ambiguous requests.
+            - Use `run-analysis` when the user wants a multi-step investigation, charts, or a deck.
+            - Use `research-analysis-deck` when the work needs explicit JSON handoffs into a
+              presentation workflow.
+            - Never present a number without its timeframe, grain, and caveats.
+            """,
+        ),
+        "references/workspace-layout.md": dedent(
+            """
+            # AI Analyst Workspace Layout
+
+            Use this layout when bootstrapping or repairing an analytics workspace.
+
+            ```text
+            <workspace>/
+            ├── .knowledge/
+            │   ├── user/
+            │   ├── datasets/
+            │   ├── analyses/
+            │   ├── corrections/
+            │   ├── setup-state.yaml
+            │   └── active.yaml
+            ├── data/
+            ├── outputs/
+            └── working/
+                └── runs/
+            ```
+
+            Recommended durable artifacts:
+            - `.knowledge/user/profile.md`
+            - `.knowledge/user/business-context.md`
+            - `.knowledge/datasets/<dataset-id>/manifest.yaml`
+            - `.knowledge/datasets/<dataset-id>/schema.md`
+            - `.knowledge/datasets/<dataset-id>/metrics/index.yaml`
+            - `.knowledge/analyses/index.yaml`
+            - `.knowledge/corrections/index.yaml`
+            - `working/runs/<timestamp>_<slug>/`
+            """,
+        ).strip()
+        + "\n",
+        "references/analysis-levels.md": dedent(
+            """
+            # Analysis Levels
+
+            Use these levels to scope the analytical path.
+
+            - `L1` direct metric: one number or one simple time slice
+            - `L2` descriptive comparison: one cut or chart with light commentary
+            - `L3` analytical explanation: multiple cuts and validation
+            - `L4` investigation: root cause, tradeoffs, or opportunity sizing
+            - `L5` executive package: validated analysis plus charts, deck, or stakeholder memo
+
+            Upgrade to `L5` when the user asks for:
+            - a deck
+            - a polished readout
+            - a comprehensive analysis package
+            - board, exec, or stakeholder-ready outputs
+            """,
+        ).strip()
+        + "\n",
+    }
+
+    templates["ask-question"] = skill_template(
+        "ask-question",
+        "Mandatory analytics entrypoint for a data question, metric request, trend readout, breakdown, or chart request. Use to classify the question, load the active data context, and route to the right analytical path.",
+        """
+        # Ask Question
+
+        Read `../ai-analyst/references/workspace-layout.md` and
+        `../ai-analyst/references/analysis-levels.md` first.
+
+        ## Workflow
+
+        1. Load the active workspace and dataset context if it exists.
+        2. Parse the user question into:
+           - metric or outcome
+           - entities or segments
+           - time range
+           - required output
+        3. Classify the request as `L1` through `L5`.
+        4. Route to the lightest sufficient next skill:
+           - `define-metric`
+           - `explore-data`
+           - `compare-datasets`
+           - `forecast`
+           - `size-opportunity`
+           - `run-analysis`
+        5. Write a short question brief before doing expensive work.
+
+        ## Question brief
+
+        Save the brief under `working/runs/<timestamp>_<slug>/question-brief.md` with:
+        - the user question
+        - normalized analytical question
+        - chosen level
+        - metrics involved
+        - candidate dimensions
+        - known caveats
+        - recommended next skill
+
+        ## Rules
+
+        - For `L1-L2`, proceed directly once the brief is clear.
+        - For `L3+`, explain the plan briefly before continuing.
+        - If the workspace does not exist yet, route to `setup` or `connect-data`.
+        - If the question is presentation-oriented, route to `run-analysis`.
+        """,
+    )
+
+    templates["setup"] = skill_template(
+        "setup",
+        "Set up or repair an AI Analyst workspace with user profile, business context, data pointers, and output preferences. Use when the user wants to onboard, configure, or reset the analytics environment.",
+        """
+        # Setup
+
+        Read `../ai-analyst/references/workspace-layout.md` first.
+
+        ## Workflow
+
+        1. Create the workspace layout if it does not exist.
+        2. Capture:
+           - role and technical level
+           - domain and team context
+           - preferred output style
+           - default metrics or KPIs
+        3. Write:
+           - `.knowledge/user/profile.md`
+           - `.knowledge/user/business-context.md`
+           - `.knowledge/setup-state.yaml`
+        4. If no data is connected, route to `connect-data`.
+        5. End with suggested first analytical questions.
+
+        ## Rules
+
+        - Ask only the minimum questions needed to make the environment usable.
+        - Keep secrets out of repo-tracked files.
+        - If the user already has a workspace, update it instead of recreating it.
+        """,
+    )
+
+    templates["connect-data"] = {
+        "SKILL.md": skill_template(
+            "connect-data",
+            "Connect CSV, DuckDB, Postgres, BigQuery, or Snowflake data into the AI Analyst workspace and create a durable dataset manifest plus schema notes. Use when the user wants to add, list, or switch data sources.",
+            """
+            # Connect Data
+
+            Read `../ai-analyst/references/workspace-layout.md` first.
+
+            Use the example manifests in `references/connection-templates/` as starting points.
+
+            ## Workflow
+
+            1. Identify the connection type:
+               - local files
+               - DuckDB
+               - Postgres
+               - BigQuery
+               - Snowflake
+            2. Gather only non-secret connection metadata.
+            3. Write or update:
+               - `.knowledge/datasets/<dataset-id>/manifest.yaml`
+               - `.knowledge/datasets/<dataset-id>/schema.md`
+               - `.knowledge/active.yaml` when switching or activating
+            4. Record how credentials are supplied, but never inline secrets.
+            5. Produce a short readiness summary: tables, files, time range, and obvious risks.
+
+            ## Rules
+
+            - Prefer environment variables for credentials.
+            - If the user only has CSVs or Parquet files, still create a dataset manifest.
+            - If the schema is large, summarize top-priority tables first.
+            """,
+        ),
+        "references/connection-guide.md": dedent(
+            """
+            # Connection Guide
+
+            ## Local files
+            - Store file paths relative to the workspace when possible.
+            - Capture file format, row estimate, and date coverage.
+
+            ## DuckDB
+            - Record the `.duckdb` file path.
+            - Note the logical schema or key tables if known.
+
+            ## Postgres / BigQuery / Snowflake
+            - Record host, database, schema, and role metadata only.
+            - Reference env vars for secrets.
+            - Avoid writing passwords, tokens, or private keys into manifests.
+            """,
+        ).strip()
+        + "\n",
+    }
+
+    templates["question-framing"] = skill_template(
+        "question-framing",
+        "Turn a vague business question into a measurable analytical problem with scope, metrics, segments, and timeframe. Use when the user asks an ambiguous or broad analytics question.",
+        """
+        # Question Framing
+
+        ## Workflow
+
+        1. Rewrite the user question in measurable terms.
+        2. Identify:
+           - primary metric
+           - denominator if relevant
+           - comparison or baseline
+           - dimensions worth segmenting by
+           - expected business decision
+        3. Produce a framing note with:
+           - analytical question
+           - assumptions
+           - exclusions
+           - must-have data inputs
+        4. Route to `define-metric`, `explore-data`, or `run-analysis`.
+
+        ## Rule
+
+        If the question cannot be measured as written, say what needs to be clarified instead of pretending it is precise.
+        """,
+    )
+
+    templates["business-context"] = skill_template(
+        "business-context",
+        "Capture or refresh the business context behind an analysis: product, market, KPIs, goals, and decision stakes. Use when the analytics work needs domain framing before interpreting the numbers.",
+        """
+        # Business Context
+
+        ## Workflow
+
+        1. Summarize what the company or product does.
+        2. List the business goals or operating constraints relevant to the question.
+        3. Record which stakeholders care about the answer.
+        4. Write or update `.knowledge/user/business-context.md`.
+        5. Highlight how this context changes interpretation of the metrics.
+        """,
+    )
+
+    templates["explore-data"] = skill_template(
+        "explore-data",
+        "Explore the active dataset to understand tables, fields, date coverage, grain, and obvious analytical starting points. Use before deeper analysis when the data shape is not yet clear.",
+        """
+        # Explore Data
+
+        ## Workflow
+
+        1. Inventory the available files or tables.
+        2. Summarize:
+           - likely fact tables
+           - likely dimensions
+           - event timestamps
+           - join keys
+           - grain and freshness
+        3. Create a compact exploration note in the current run directory.
+        4. Surface obvious blockers such as missing dates, no user keys, or sparse metrics.
+        5. Recommend the next skill:
+           - `deep-profile`
+           - `define-metric`
+           - `data-quality-check`
+           - `run-analysis`
+        """,
+    )
+
+    templates["deep-profile"] = skill_template(
+        "deep-profile",
+        "Run a deeper profile of selected tables or files: distributions, nulls, cardinality, date coverage, and suspicious columns. Use when the user wants a serious read on data quality or table readiness.",
+        """
+        # Deep Profile
+
+        ## Workflow
+
+        1. Select the priority tables or files for profiling.
+        2. For each, record:
+           - row estimate
+           - primary or candidate key
+           - null rates
+           - distinct counts
+           - min/max dates
+           - suspicious free-text or JSON columns
+        3. Save the result to `working/runs/<timestamp>_<slug>/deep-profile.md`.
+        4. Highlight anything that blocks trustworthy analysis.
+        """,
+    )
+
+    templates["data-quality-check"] = skill_template(
+        "data-quality-check",
+        "Audit data quality before analysis: nulls, duplicates, freshness, key integrity, date coverage, and implausible values. Use when the user wants validation or when analysis quality is at risk.",
+        """
+        # Data Quality Check
+
+        ## Workflow
+
+        1. Check for:
+           - missing critical fields
+           - duplicate primary keys
+           - invalid dates or negative counts
+           - stale data
+           - mismatched join keys
+        2. Classify findings as:
+           - blocker
+           - warning
+           - note
+        3. Save a concise report in the current run directory.
+        4. If blockers exist, stop and explain what is unsafe to conclude.
+        """,
+    )
+
+    templates["define-metric"] = skill_template(
+        "define-metric",
+        "Define a metric rigorously with formula, grain, filters, numerator, denominator, caveats, and validation checks. Use when the user asks what a metric means or before calculating a metric repeatedly.",
+        """
+        # Define Metric
+
+        ## Workflow
+
+        1. Write a metric spec with:
+           - metric name
+           - business meaning
+           - formula
+           - grain
+           - inclusion and exclusion rules
+           - required tables or fields
+           - known caveats
+        2. Save it to `.knowledge/datasets/<dataset-id>/metrics/<metric>.yaml` when appropriate.
+        3. Update the metric index.
+        4. Add one quick validation check the analyst should run before trusting the metric.
+        """,
+    )
+
+    templates["compare-datasets"] = skill_template(
+        "compare-datasets",
+        "Compare metrics, schema assumptions, and findings across two or more connected datasets. Use when the user wants to know whether a pattern is shared, unique, or inconsistently defined across datasets.",
+        """
+        # Compare Datasets
+
+        ## Workflow
+
+        1. Identify the datasets to compare.
+        2. Load shared metric definitions and schema notes.
+        3. Compare:
+           - metric definitions
+           - baseline ranges
+           - recurring findings
+           - obvious divergences
+        4. Save a cross-dataset note under `.knowledge/analyses/` or the active run.
+        5. End with concrete recommendations:
+           - align definitions
+           - investigate divergence
+           - segment by product or market
+        """,
+    )
+
+    templates["switch-dataset"] = skill_template(
+        "switch-dataset",
+        "Change the active dataset in the analytics workspace and confirm what schema and metric context is now in scope. Use when the user wants to work on another dataset.",
+        """
+        # Switch Dataset
+
+        ## Workflow
+
+        1. Confirm the target dataset exists.
+        2. Update `.knowledge/active.yaml`.
+        3. Show the active dataset summary:
+           - name
+           - source type
+           - top tables
+           - key metrics if known
+        4. Suggest the next likely analytical step.
+        """,
+    )
+
+    templates["analysis-design-spec"] = skill_template(
+        "analysis-design-spec",
+        "Design the analytical plan before querying: hypotheses, cuts, validations, and deliverables. Use when the question is consequential enough to warrant an explicit analysis spec.",
+        """
+        # Analysis Design Spec
+
+        ## Workflow
+
+        1. Convert the question brief into a structured design spec.
+        2. Include:
+           - hypotheses
+           - required data sources
+           - proposed cuts and segments
+           - validation checks
+           - deliverables
+        3. Save the spec in the run directory before heavy analysis starts.
+        4. Use it as the contract for `run-analysis`.
+        """,
+    )
+
+    templates["run-analysis"] = skill_template(
+        "run-analysis",
+        "Run a full analytical pipeline from question brief to validated findings, charts, and stakeholder-ready outputs. Use when the user wants a deep investigation, comprehensive analysis, or a polished readout or deck.",
+        """
+        # Run Analysis
+
+        Read:
+        - `../ai-analyst/references/workspace-layout.md`
+        - `../ai-analyst/references/analysis-levels.md`
+
+        ## Workflow
+
+        1. Start from an `ask-question` brief or create one quickly.
+        2. Create a run directory under `working/runs/`.
+        3. Execute the minimum effective pipeline:
+           - framing
+           - metric definition
+           - data exploration
+           - quality checks
+           - core analysis
+           - validation
+           - charts
+           - stakeholder packaging
+        4. Use:
+           - `chart-storyteller` for chart decisions
+           - `analytics-to-comms` and `stakeholder-comms` for output packaging
+           - `research-analysis-deck` when you need explicit JSON handoffs into a deck
+        5. Save final artifacts under `outputs/` and archive the run.
+
+        ## Deliverables
+
+        At minimum produce:
+        - a findings summary
+        - a caveats section
+        - next actions
+
+        When requested, also produce:
+        - a deck plan
+        - charts
+        - a memo or stakeholder brief
+
+        ## Rules
+
+        - Halt if the data is too unreliable to answer the question honestly.
+        - Keep a durable trail of decisions in the run directory.
+        - Prefer a compact, validated storyline over an oversized chart dump.
+        """,
+    )
+
+    templates["forecast"] = skill_template(
+        "forecast",
+        "Forecast a metric or business outcome with explicit assumptions, uncertainty, and backtesting expectations. Use when the user asks what will happen next or wants a forward-looking estimate.",
+        """
+        # Forecast
+
+        ## Workflow
+
+        1. Define the target metric and forecasting horizon.
+        2. Check whether the history is long and clean enough for forecasting.
+        3. Document:
+           - baseline trend
+           - seasonality assumptions
+           - known interventions or shocks
+           - uncertainty bounds
+        4. Produce a forecast note and state the confidence honestly.
+        5. If the history is weak, recommend scenario ranges instead of a fake precise forecast.
+        """,
+    )
+
+    templates["patterns"] = embedded_alias_template(
+        "patterns",
+        "Compatibility entrypoint for recurring-pattern analysis across segments, cohorts, or time. Use when an old workflow expects the `patterns` skill name.",
+        "run-analysis",
+        "pattern discovery is now part of the validated analysis workflow",
+    )
+
+    templates["size-opportunity"] = skill_template(
+        "size-opportunity",
+        "Quantify the potential business upside or downside associated with a finding. Use when the user wants to know how much a problem or improvement is worth.",
+        """
+        # Size Opportunity
+
+        ## Workflow
+
+        1. State the baseline metric and the improvement scenario.
+        2. Identify the population affected.
+        3. Calculate rough upside, downside, or savings.
+        4. Show the assumptions explicitly.
+        5. Provide best case, base case, and conservative case when precision is weak.
+        """,
+    )
+
+    templates["design-experiment"] = skill_template(
+        "design-experiment",
+        "Design a test or experiment from an analytical finding. Use when the user wants to validate a hypothesis, run an A/B test, or convert a finding into an intervention plan.",
+        """
+        # Design Experiment
+
+        ## Workflow
+
+        1. Define the hypothesis in business terms.
+        2. Specify:
+           - treatment and control
+           - primary success metric
+           - guardrail metrics
+           - sample or exposure logic
+           - decision threshold
+        3. Note dependencies and rollout risks.
+        4. End with a compact experiment brief the team can execute.
+        """,
+    )
+
+    templates["guardrails"] = skill_template(
+        "guardrails",
+        "Apply publishing and interpretation guardrails before sharing analytical findings. Use when the output is high stakes and needs a final quality gate.",
+        """
+        # Guardrails
+
+        ## Checklist
+
+        Confirm:
+        - the metric is clearly defined
+        - the timeframe matches the claim
+        - the denominator is appropriate
+        - caveats are disclosed
+        - segment math ties back to the whole
+        - no visually misleading charts remain
+
+        If any item fails, stop and say what must be fixed before publishing.
+        """,
+    )
+
+    templates["semantic-validation"] = skill_template(
+        "semantic-validation",
+        "Validate that the business meaning of an analysis matches the metric definitions, event semantics, and stakeholder language. Use when a technically correct query may still be conceptually wrong.",
+        """
+        # Semantic Validation
+
+        ## Workflow
+
+        1. Compare the claimed finding to the actual metric and event semantics.
+        2. Check for business-language mismatches such as:
+           - signups vs activated users
+           - revenue booked vs revenue recognized
+           - churned accounts vs churned seats
+        3. Rewrite the finding if the business meaning was overstated.
+        """,
+    )
+
+    templates["triangulation"] = skill_template(
+        "triangulation",
+        "Cross-check a finding through multiple cuts, methods, or source types. Use when the user needs stronger confidence before acting on an analytical conclusion.",
+        """
+        # Triangulation
+
+        ## Workflow
+
+        1. Identify the main finding.
+        2. Re-test it with at least one independent angle:
+           - another segment
+           - another calculation path
+           - another dataset or source
+        3. Report whether the story holds, weakens, or reverses.
+        """,
+    )
+
+    templates["tracking-gaps"] = skill_template(
+        "tracking-gaps",
+        "Identify missing instrumentation, broken event coverage, or schema gaps that block confident analysis. Use when the data cannot support the business question cleanly.",
+        """
+        # Tracking Gaps
+
+        ## Workflow
+
+        1. List the questions the current data cannot answer reliably.
+        2. Map each gap to:
+           - missing field
+           - missing event
+           - inconsistent grain
+           - no durable key
+        3. Prioritize the gaps by business impact.
+        4. End with a concrete instrumentation backlog.
+        """,
+    )
+
+    templates["knowledge-bootstrap"] = embedded_alias_template(
+        "knowledge-bootstrap",
+        "Compatibility entrypoint for loading workspace context and prior analytical knowledge. Use when an old workflow expects the `knowledge-bootstrap` skill name.",
+        "ask-question",
+        "context loading is now part of the default analytics entrypoint",
+    )
+
+    templates["archaeology"] = skill_template(
+        "archaeology",
+        "Recover prior analytical work, query fragments, or reasoning from the workspace before repeating an analysis. Use when the user suspects the question was answered before.",
+        """
+        # Archaeology
+
+        ## Workflow
+
+        1. Search prior run folders, analysis notes, and metric definitions.
+        2. Extract reusable pieces:
+           - questions
+           - SQL or query ideas
+           - charts
+           - caveats
+        3. Summarize what can be reused and what needs fresh work.
+        """,
+    )
+
+    templates["archive-analysis"] = skill_template(
+        "archive-analysis",
+        "Archive a completed analysis run with enough metadata to find and reuse it later. Use when a run is complete and should be preserved cleanly.",
+        """
+        # Archive Analysis
+
+        ## Workflow
+
+        1. Capture:
+           - question
+           - date
+           - dataset
+           - key findings
+           - output artifacts
+           - confidence
+        2. Update `.knowledge/analyses/index.yaml`.
+        3. Mark the run directory as archived or complete.
+        """,
+    )
+
+    templates["log-correction"] = skill_template(
+        "log-correction",
+        "Record a known data caveat, metric correction, or interpretation fix so future analyses do not repeat the same mistake. Use when a data issue is discovered.",
+        """
+        # Log Correction
+
+        ## Workflow
+
+        1. Record the issue, affected metric or table, and corrected interpretation.
+        2. Save it under `.knowledge/corrections/` and update the index.
+        3. Reference the correction in future relevant analyses.
+        """,
+    )
+
+    templates["feedback-capture"] = skill_template(
+        "feedback-capture",
+        "Capture user or stakeholder feedback on an analysis, chart set, or deck so the next iteration gets smarter. Use when someone reacts to a readout or asks for changes.",
+        """
+        # Feedback Capture
+
+        ## Workflow
+
+        1. Log the feedback with:
+           - source
+           - date
+           - requested change
+           - whether it affects metric logic, narrative, or presentation
+        2. Save it in the current run directory and optionally in a durable feedback log.
+        3. Convert feedback into follow-up actions when appropriate.
+        """,
+    )
+
+    templates["first-run-welcome"] = embedded_alias_template(
+        "first-run-welcome",
+        "Compatibility entrypoint for onboarding a new analytics user. Use when an old workflow expects the `first-run-welcome` skill name.",
+        "setup",
+        "onboarding is now handled by the setup flow",
+    )
+
+    templates["manage-runs"] = skill_template(
+        "manage-runs",
+        "Inspect, summarize, and tidy analytical run folders. Use when the user wants to see what is running, what completed, or what artifacts were produced.",
+        """
+        # Manage Runs
+
+        ## Workflow
+
+        1. Enumerate runs under `working/runs/`.
+        2. Show status:
+           - active
+           - blocked
+           - complete
+           - archived
+        3. Summarize outputs and missing pieces.
+        4. Suggest `resume-analysis`, `archive-analysis`, or `close-the-loop` when relevant.
+        """,
+    )
+
+    templates["resume-analysis"] = skill_template(
+        "resume-analysis",
+        "Resume a partially completed analytical run from its saved context and remaining tasks. Use when a previous analysis was interrupted or left incomplete.",
+        """
+        # Resume Analysis
+
+        ## Workflow
+
+        1. Load the selected run directory.
+        2. Inspect what exists:
+           - question brief
+           - spec
+           - findings
+           - charts
+           - packaged outputs
+        3. Identify the first incomplete stage.
+        4. Continue from there instead of restarting the whole analysis.
+        """,
+    )
+
+    templates["close-the-loop"] = skill_template(
+        "close-the-loop",
+        "Wrap an analysis with final recommendations, owners, open questions, and follow-up actions. Use when a run is complete and should end with an operational handoff.",
+        """
+        # Close The Loop
+
+        ## Workflow
+
+        1. Restate the question and answer.
+        2. Summarize the evidence, confidence, and caveats.
+        3. List:
+           - decisions enabled
+           - follow-up actions
+           - owners or stakeholder audiences
+           - unresolved questions
+        4. Save a concise closing note in the run directory.
+        """,
+    )
+
+    templates["view-history"] = skill_template(
+        "view-history",
+        "Browse prior analytical questions, findings, and archived runs. Use when the user wants to recall what has already been analyzed.",
+        """
+        # View History
+
+        ## Workflow
+
+        1. Read the analysis archive or run index.
+        2. List recent analyses with:
+           - date
+           - title or question
+           - dataset
+           - confidence
+           - output types
+        3. Support search by term, dataset, or timeframe.
+        4. Suggest `resume-analysis` if a relevant partial run exists.
+        """,
+    )
+
+    templates["view-metrics"] = skill_template(
+        "view-metrics",
+        "Show the available metric definitions for the active dataset and highlight gaps or inconsistencies. Use when the user wants to browse or inspect defined metrics.",
+        """
+        # View Metrics
+
+        ## Workflow
+
+        1. Load the active dataset's metric index.
+        2. Show metric name, business meaning, and grain.
+        3. Flag metrics missing definitions or validation notes.
+        4. Suggest `define-metric` where the catalog is weak.
+        """,
+    )
+
+    templates["visualization-patterns"] = embedded_alias_template(
+        "visualization-patterns",
+        "Compatibility entrypoint for chart-pattern guidance and SWD-style analytical visuals. Use when an old workflow expects the `visualization-patterns` skill name.",
+        "chart-storyteller",
+        "chart-pattern selection now lives in the chart storytelling workflow",
+    )
+
+    templates["question-router"] = embedded_alias_template(
+        "question-router",
+        "Compatibility entrypoint for analytics question routing. Use when an old workflow expects the `question-router` skill name.",
+        "ask-question",
+        "question classification is now built into the main analytics entrypoint",
+    )
+
+    templates["presentation-themes"] = skill_template(
+        "presentation-themes",
+        "Apply or switch analysis presentation themes and chart/deck styling choices. Use when the user wants the analytical presentation restyled or wants a theme selected explicitly.",
+        """
+        # Presentation Themes
+
+        This is the analytics-facing alias for `presentation-theme`.
+
+        ## Workflow
+
+        1. Inspect the existing deck or HTML presentation.
+        2. Choose a theme that matches the audience and analysis tone.
+        3. Apply the visual change without rewriting the analytical content.
+        4. Keep chart styling and slide styling coherent.
+
+        Prefer the existing `presentation-theme` skill when the work is centered on deck visuals.
+        """,
+    )
+
+    return templates
+
+
+PORT_TEMPLATES.update(build_ai_analyst_templates())
 
 
 def parse_frontmatter(raw_text: str) -> tuple[dict[str, str], str]:
