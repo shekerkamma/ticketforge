@@ -24,6 +24,12 @@ def is_url(source: str) -> bool:
     return parsed.scheme in ("http", "https") and bool(parsed.netloc)
 
 
+def is_youtube_url(source: str) -> bool:
+    parsed = urlparse(source)
+    host = (parsed.netloc or "").lower()
+    return host in {"youtu.be", "www.youtu.be"} or host.endswith("youtube.com")
+
+
 def resolve_local(path: str) -> dict:
     p = Path(path).expanduser().resolve()
     if not p.exists():
@@ -84,6 +90,12 @@ def download_url(url: str, out_dir: Path) -> dict:
         "--",
         url,
     ]
+
+    if is_youtube_url(url):
+        cmd[1:1] = [
+            "--js-runtimes", "node",
+            "--extractor-args", "youtube:player_client=android",
+        ]
 
     # yt-dlp may exit non-zero if a subtitle variant fails (e.g. 429) even when
     # the video itself downloaded fine. Treat "video file present" as success.
