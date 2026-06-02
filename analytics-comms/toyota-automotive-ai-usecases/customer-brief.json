@@ -1,0 +1,42 @@
+{
+  "report_slug": "toyota-automotive-ai-usecases",
+  "created_at": "2026-06-02T22:15:00Z",
+  "customer_scope": "named-customer",
+  "customer_label": "Toyota Motor Corporation",
+  "why_this_customer_matters": "Toyota provides one of the clearest public examples of an OEM treating AI as operating-system infrastructure across software-defined vehicles, engineering productivity, connected services, and real-world mobility experimentation.",
+  "public_signals": [
+    "Arene is debuting in the new RAV4 as Toyota's software-defined vehicle platform backbone.",
+    "GAIA and the Toyota Software Academy show AI capability building as a group-level operating system.",
+    "Connected-car and telematics workflows already link vehicle data to service and claims outcomes.",
+    "Woven City remains a live experimentation environment for cross-system mobility services.",
+    "Toyota's production and vehicle scale make workflow improvements strategically meaningful across programs."
+  ],
+  "executive_priorities": [
+    "software-defined vehicle platform reuse",
+    "engineering and manufacturing productivity",
+    "connected-services monetization and workflow quality",
+    "safety and validation coverage",
+    "disciplined mobility-system experimentation"
+  ],
+  "workflow_owners": [
+    "Vehicle software platform and validation teams",
+    "Manufacturing engineering, vehicle engineering, and software academy leads",
+    "Connected services, data platform, and customer operations teams",
+    "Safety validation, simulation, and ADAS software teams",
+    "Woven City, mobility services, and partner ecosystem teams"
+  ],
+  "best_entry_points": [
+    "Chief software officer or chief technology officer",
+    "Chief production officer or chief engineering officer",
+    "Chief digital officer or head of connected services",
+    "Chief safety officer or head of AD/ADAS",
+    "Chief strategy officer or head of new mobility"
+  ],
+  "best_use_case_angles": [
+    "Software-defined vehicle platform and software reuse",
+    "Manufacturing and vehicle engineering productivity",
+    "Connected vehicle data services and customer workflows",
+    "Safety and validation workflows",
+    "Mobility ecosystem experimentation and live feedback loops"
+  ]
+}

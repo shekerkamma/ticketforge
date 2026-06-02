@@ -1,0 +1,517 @@
+{
+  "report_slug": "toyota-automotive-ai-usecases",
+  "created_at": "2026-06-02T22:15:00Z",
+  "decision_question": "Which AI use cases in the automotive industry look strongest right now, and how does Toyota show what an OEM-grade AI operating model should look like?",
+  "sources": [
+    {
+      "source_id": "src-toyota-20f-2025",
+      "title": "Toyota Motor Corporation Form 20-F (fiscal year ended March 2025)",
+      "source_type": "document",
+      "locator": "https://global.toyota/pages/global_toyota/ir/library/sec/20-F_202503_final.pdf",
+      "captured_at": "2026-06-02T12:00:00Z",
+      "author": "Toyota Motor Corporation",
+      "published_at": "2025-06-18",
+      "summary": "Toyota frames software-defined vehicles and the Arene platform as central to its mobility transformation, with AI and communications infrastructure tied to safety and reliability.",
+      "raw_evidence": [
+        {
+          "evidence_id": "ev-20f-1",
+          "kind": "quote",
+          "text": "The key to these efforts will lie in increasing the potential uses of data and energy through the implementation of the Arene software platform.",
+          "locator": "turn2view1:L828-L833"
+        },
+        {
+          "evidence_id": "ev-20f-2",
+          "kind": "quote",
+          "text": "The leading role will be played by ambitious initiatives to create Software-Defined Vehicles, with safety and reliability as the most important types of value.",
+          "locator": "turn2view1:L833-L836"
+        },
+        {
+          "evidence_id": "ev-20f-3",
+          "kind": "quote",
+          "text": "Toyota intends to build seamless communication and AI infrastructures that enhance the value provided by cars, particularly in relation to safety and reliability.",
+          "locator": "turn2view1:L835-L837"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "cl-20f-1",
+          "statement": "Toyota treats AI as part of the SDV operating system, not as an isolated feature layer.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-20f-1",
+            "ev-20f-2",
+            "ev-20f-3"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "software-defined vehicle platform",
+          "rationale": "Arene and AI infrastructure are positioned as core enablers of SDV value creation."
+        },
+        {
+          "label": "safety and reliability AI",
+          "rationale": "Toyota explicitly anchors AI infrastructure to safety and reliability outcomes."
+        }
+      ],
+      "tags": [
+        "automotive",
+        "sdv",
+        "software",
+        "ai"
+      ]
+    },
+    {
+      "source_id": "src-toyota-gaia-2025",
+      "title": "Five Toyota Group Companies to Accelerate Skill Development and Innovation in AI and Software",
+      "source_type": "web",
+      "locator": "https://global.toyota/en/newsroom/corporate/42805724.html",
+      "captured_at": "2026-06-02T12:00:00Z",
+      "author": "Toyota Motor Corporation",
+      "published_at": "2025-05-22",
+      "summary": "Toyota launched GAIA and the Toyota Software Academy to accelerate AI use across manufacturing, design, customer relations, robotics, vehicle engineering, and office productivity.",
+      "raw_evidence": [
+        {
+          "evidence_id": "ev-gaia-1",
+          "kind": "quote",
+          "text": "GAIA aims to rapidly accelerate the use of AI by significantly boosting investment in research, development, human resource development and implementation of AI systems throughout every part of Toyota.",
+          "locator": "turn2view2:L29-L30"
+        },
+        {
+          "evidence_id": "ev-gaia-2",
+          "kind": "quote",
+          "text": "GAIA will initially focus on 11 categories including manufacturing, vehicle engineering, customer relations, robotics, in-vehicle agents, and office productivity.",
+          "locator": "turn2view2:L29-L30"
+        },
+        {
+          "evidence_id": "ev-gaia-3",
+          "kind": "quote",
+          "text": "Toyota Software Academy offers approximately 100 courses covering AI, programming languages, and data security with practical training using real vehicles.",
+          "locator": "turn2view2:L43-L48"
+        },
+        {
+          "evidence_id": "ev-gaia-4",
+          "kind": "quote",
+          "text": "Gill Pratt said Toyota is leveraging AI to improve speed and efficiency in everything from manufacturing to design to office work, and to create new products that utilize AI.",
+          "locator": "turn2view2:L34-L35"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "cl-gaia-1",
+          "statement": "Toyota is institutionalizing AI as a cross-group capability rather than leaving it in isolated pilot teams.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-gaia-1",
+            "ev-gaia-3",
+            "ev-gaia-4"
+          ]
+        },
+        {
+          "claim_id": "cl-gaia-2",
+          "statement": "Toyota sees manufacturing, engineering, and customer workflows as first-class AI domains, not just future vehicle features.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-gaia-2",
+            "ev-gaia-4"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "manufacturing and engineering productivity",
+          "rationale": "GAIA explicitly names manufacturing and vehicle engineering as early AI focus areas."
+        },
+        {
+          "label": "group-wide AI talent system",
+          "rationale": "Toyota is building institutional AI capacity via shared training and implementation programs."
+        }
+      ],
+      "tags": [
+        "automotive",
+        "manufacturing",
+        "engineering",
+        "talent",
+        "ai"
+      ]
+    },
+    {
+      "source_id": "src-arene-rav4-2025",
+      "title": "Arene Debuts in Toyota's All-New RAV4",
+      "source_type": "web",
+      "locator": "https://www.woven.toyota/en/news/20250521",
+      "captured_at": "2026-06-02T12:00:00Z",
+      "author": "Woven by Toyota",
+      "published_at": "2025-05-21",
+      "summary": "Toyota deployed Arene into a production RAV4, showing how SDK, tools, and data packages support reusable software, simulation, and safety validation.",
+      "raw_evidence": [
+        {
+          "evidence_id": "ev-arene-1",
+          "kind": "quote",
+          "text": "The new RAV4 will be the first Toyota vehicle delivered to customers with features developed on, and powered by, Arene.",
+          "locator": "turn2view3:L49-L50"
+        },
+        {
+          "evidence_id": "ev-arene-2",
+          "kind": "quote",
+          "text": "Arene enables the safe, secure, and scalable development of software by applying Toyota manufacturing expertise to modern software engineering.",
+          "locator": "turn2view3:L49-L50"
+        },
+        {
+          "evidence_id": "ev-arene-3",
+          "kind": "quote",
+          "text": "Arene SDK decouples software and hardware dependencies so modular components can be reused across applications and vehicle models.",
+          "locator": "turn2view3:L52-L54"
+        },
+        {
+          "evidence_id": "ev-arene-4",
+          "kind": "quote",
+          "text": "Arene Tools visualize, test, validate, and manage software within virtual environments, reducing reliance on physical prototypes and accelerating development cycles.",
+          "locator": "turn2view3:L55-L57"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "cl-arene-1",
+          "statement": "Toyota has moved beyond theory and now has a production-vehicle example of its SDV software platform.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-arene-1",
+            "ev-arene-2"
+          ]
+        },
+        {
+          "claim_id": "cl-arene-2",
+          "statement": "Reusable vehicle software and virtual validation are major near-term AI-enabling workflows in automotive OEM operations.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-arene-3",
+            "ev-arene-4"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "software reuse across vehicle lines",
+          "rationale": "Arene SDK is designed to decouple applications from hardware and reuse modules."
+        },
+        {
+          "label": "simulation-led safety validation",
+          "rationale": "Arene Tools use virtual environments to test and validate software faster."
+        }
+      ],
+      "tags": [
+        "automotive",
+        "sdv",
+        "software platform",
+        "validation"
+      ]
+    },
+    {
+      "source_id": "src-woven-city-ai-2026",
+      "title": "Toyota and Woven by Toyota Unveil New AI Technologies to Drive Kakezan",
+      "source_type": "web",
+      "locator": "https://global.toyota/en/newsroom/corporate/44256155.html",
+      "captured_at": "2026-06-02T12:00:00Z",
+      "author": "Toyota Motor Corporation",
+      "published_at": "2026-04-22",
+      "summary": "Toyota and Woven by Toyota introduced AI Vision Engine and related systems at Woven City, extending AI from vehicle software into city-scale mobility operations and experimentation.",
+      "raw_evidence": [
+        {
+          "evidence_id": "ev-wovenai-1",
+          "kind": "quote",
+          "text": "Toyota and Woven by Toyota unveiled technologies designed to accelerate innovation and drive Kakezan at Woven City, which officially launched in September 2025.",
+          "locator": "turn2view4:L18-L18"
+        },
+        {
+          "evidence_id": "ev-wovenai-2",
+          "kind": "quote",
+          "text": "The Woven City AI Vision Engine uses visual, behavioral and environmental data to identify patterns, detect potential risks and enable coordinated action across connected systems to improve safety.",
+          "locator": "turn2view4:L23-L26"
+        },
+        {
+          "evidence_id": "ev-wovenai-3",
+          "kind": "quote",
+          "text": "Four new inventors brought the total number of Woven City inventors to 24, including Toyota Financial Services for new sales and financing models based on verified mobility usage data.",
+          "locator": "turn2view4:L53-L58"
+        },
+        {
+          "evidence_id": "ev-wovenai-4",
+          "kind": "quote",
+          "text": "Akio Toyoda AI was designed to promote AI adoption and empower purpose-driven collaboration across the Toyota Group.",
+          "locator": "turn2view4:L62-L63"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "cl-wovenai-1",
+          "statement": "Toyota is using Woven City as a real-world AI experimentation environment that connects vehicles, infrastructure, and service models.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-wovenai-1",
+            "ev-wovenai-2",
+            "ev-wovenai-3"
+          ]
+        },
+        {
+          "claim_id": "cl-wovenai-2",
+          "statement": "Toyota is pushing AI beyond the vehicle into mobility ecosystems and financial/service workflows.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-wovenai-2",
+            "ev-wovenai-3",
+            "ev-wovenai-4"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "mobility ecosystem experimentation",
+          "rationale": "Woven City combines infrastructure, mobility systems, and partner workflows in one live environment."
+        },
+        {
+          "label": "cross-industry AI service models",
+          "rationale": "Toyota is testing AI-enabled business and financing models alongside mobility services."
+        }
+      ],
+      "tags": [
+        "woven city",
+        "mobility",
+        "ecosystem",
+        "ai"
+      ]
+    },
+    {
+      "source_id": "src-woven-city-launch-2025",
+      "title": "Toyota Woven City Officially Launches as a Test Course for the Future of Mobility",
+      "source_type": "web",
+      "locator": "https://global.toyota/en/newsroom/corporate/43347785.html",
+      "captured_at": "2026-06-02T12:00:00Z",
+      "author": "Toyota Motor Corporation",
+      "published_at": "2025-09-25",
+      "summary": "Toyota positioned Woven City as a live test course for mobility with residents, visitors, startups, and partners contributing feedback loops for new products and services.",
+      "raw_evidence": [
+        {
+          "evidence_id": "ev-launch-1",
+          "kind": "quote",
+          "text": "Residents and visitors known as Weavers will experience products and services first hand and provide feedback that shapes new innovations.",
+          "locator": "turn2view5:L22-L23"
+        },
+        {
+          "evidence_id": "ev-launch-2",
+          "kind": "quote",
+          "text": "Phase 1 is expected to accommodate about 300 residents and general visitors are planned beginning in fiscal year 2026.",
+          "locator": "turn2view5:L22-L22"
+        },
+        {
+          "evidence_id": "ev-launch-3",
+          "kind": "quote",
+          "text": "Toyota aims to develop products and services that extend beyond the city to empower lives in Japan and around the world.",
+          "locator": "turn2view5:L27-L29"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "cl-launch-1",
+          "statement": "Toyota is building a live user-feedback loop for mobility products instead of limiting validation to lab environments.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-launch-1",
+            "ev-launch-2",
+            "ev-launch-3"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "real-world pilot environment",
+          "rationale": "Woven City lets Toyota test services with residents and partner companies in live conditions."
+        }
+      ],
+      "tags": [
+        "woven city",
+        "testbed",
+        "feedback loop"
+      ]
+    },
+    {
+      "source_id": "src-connected-services-2021",
+      "title": "Toyota's Discerning Approach to Car-making and Challenges for the Future",
+      "source_type": "web",
+      "locator": "https://global.toyota/en/newsroom/corporate/35891478.html",
+      "captured_at": "2026-06-02T12:00:00Z",
+      "author": "Toyota Motor Corporation",
+      "published_at": "2021-10-13",
+      "summary": "Toyota described its connected-car data, fleet management, and software development structure as part of a broader mobility-company transformation.",
+      "raw_evidence": [
+        {
+          "evidence_id": "ev-connected-1",
+          "kind": "quote",
+          "text": "Toyota has made 10 million Lexus and Toyota vehicles that are connected cars, mainly in Japan, the United States, Europe, and China.",
+          "locator": "turn2view7:L54-L54"
+        },
+        {
+          "evidence_id": "ev-connected-2",
+          "kind": "quote",
+          "text": "Toyota built the Toyota Smart Center, the Toyota Big Data Center, and the Mobility Services Platform to provide services and promote collaboration with service providers.",
+          "locator": "turn2view7:L56-L58"
+        },
+        {
+          "evidence_id": "ev-connected-3",
+          "kind": "quote",
+          "text": "Toyota operated e-Palette vehicles with a fleet management system based on Toyota Production System principles and coordinated them just-in-time according to environment and passenger conditions.",
+          "locator": "turn2view7:L57-L59"
+        },
+        {
+          "evidence_id": "ev-connected-4",
+          "kind": "quote",
+          "text": "Toyota planned a software development structure with 3,000 employees globally and said Arene would improve quality and shorten development lead time.",
+          "locator": "turn2view7:L93-L100"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "cl-connected-1",
+          "statement": "Toyota already has a large connected-fleet data base and operating stack that supports AI-enabled services beyond the vehicle cabin.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-connected-1",
+            "ev-connected-2"
+          ]
+        },
+        {
+          "claim_id": "cl-connected-2",
+          "statement": "Toyota sees software and fleet operations as part of industrial car-making, not a separate digital side project.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-connected-3",
+            "ev-connected-4"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "connected services and fleet operations",
+          "rationale": "Toyota links connected-car data, fleet management, and service platforms into one operating model."
+        },
+        {
+          "label": "software development productivity",
+          "rationale": "Toyota ties software scale directly to quality and lead-time improvement."
+        }
+      ],
+      "tags": [
+        "connected car",
+        "fleet",
+        "software",
+        "platform"
+      ]
+    },
+    {
+      "source_id": "src-telematics-insurance-2019",
+      "title": "Aioi Nissay Dowa Insurance and Toyota Develop Telematics Damage Service System",
+      "source_type": "web",
+      "locator": "https://global.toyota/en/newsroom/corporate/31088545.html",
+      "captured_at": "2026-06-02T12:00:00Z",
+      "author": "Toyota Motor Corporation",
+      "published_at": "2019-12-23",
+      "summary": "Toyota used connected-car data and AI to support accident detection, insurance workflows, and faster accident settlement.",
+      "raw_evidence": [
+        {
+          "evidence_id": "ev-telematics-1",
+          "kind": "quote",
+          "text": "Toyota and Aioi Nissay Dowa jointly developed a telematics damage service system that uses driving data from connected cars and AI to achieve advance accident detection.",
+          "locator": "turn5view0:L13-L15"
+        },
+        {
+          "evidence_id": "ev-telematics-2",
+          "kind": "quote",
+          "text": "As of November 2019, more than 25,000 customers had enrolled in the connected-car insurance product and accident rates were about 30 percent lower than comparison insurance customers.",
+          "locator": "turn5view0:L23-L24"
+        },
+        {
+          "evidence_id": "ev-telematics-3",
+          "kind": "quote",
+          "text": "Driving-route mapping and visualization of driving behavior can reduce customer burden and support prompt accident settlement.",
+          "locator": "turn5view0:L48-L50"
+        },
+        {
+          "evidence_id": "ev-telematics-4",
+          "kind": "quote",
+          "text": "The AI accident-detection function uses machine learning on accident and crash-test data to recognize accidents and location and respond promptly.",
+          "locator": "turn5view0:L58-L60"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "cl-telematics-1",
+          "statement": "Toyota already has evidence that connected-car AI can create customer-service and insurance workflow value, not just vehicle feature value.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-telematics-1",
+            "ev-telematics-2",
+            "ev-telematics-3",
+            "ev-telematics-4"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "connected-car claims and insurance workflows",
+          "rationale": "Toyota uses connected-vehicle data and AI to improve accident detection and settlement workflows."
+        }
+      ],
+      "tags": [
+        "insurance",
+        "telematics",
+        "connected data",
+        "customer service"
+      ]
+    },
+    {
+      "source_id": "src-toyota-production-2024",
+      "title": "Production Volume in 2024",
+      "source_type": "document",
+      "locator": "https://global.toyota/pages/fact-data/fact-data_001_05_en.pdf",
+      "captured_at": "2026-06-02T12:00:00Z",
+      "author": "Toyota Motor Corporation",
+      "published_at": "2026-05-12",
+      "summary": "Toyota disclosed 2024 production scale across regions, underscoring why software reuse and AI-enabled process gains matter economically.",
+      "raw_evidence": [
+        {
+          "evidence_id": "ev-prod-1",
+          "kind": "stat",
+          "text": "2024 Toyota and Lexus production reached 9.52 million units.",
+          "locator": "turn6view1:L19-L23"
+        },
+        {
+          "evidence_id": "ev-prod-2",
+          "kind": "stat",
+          "text": "Overseas production in 2024 was 6.89 million units, including 3.03 million in Asia, 2.05 million in North America, and 830,000 in Europe.",
+          "locator": "turn6view1:L23-L27"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "cl-prod-1",
+          "statement": "Toyota operates at enough scale that AI gains in reuse, quality, and workflow speed compound materially across the global manufacturing footprint.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-prod-1",
+            "ev-prod-2"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "global-scale software and process reuse",
+          "rationale": "Toyota production scale amplifies the payoff from modular software, validation, and manufacturing productivity."
+        }
+      ],
+      "tags": [
+        "scale",
+        "manufacturing",
+        "global footprint"
+      ]
+    }
+  ]
+}

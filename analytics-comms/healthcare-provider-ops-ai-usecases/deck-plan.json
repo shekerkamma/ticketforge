@@ -1,0 +1,515 @@
+{
+  "report_slug": "healthcare-provider-ops-ai-usecases",
+  "created_at": "2026-06-02T22:00:00Z",
+  "audience": "executive",
+  "deck_goal": "Produce a research-backed executive deck on healthcare provider operations AI use cases with clear prioritization and operating implications.",
+  "theme_reference": "Use the branded executive slide system already established in this repo.",
+  "story_arc": [
+    "Why provider-ops AI is moving now",
+    "Which workflow families have the clearest proof",
+    "How to prioritize the top use cases",
+    "What healthcare executives should fund next"
+  ],
+  "slides": [
+    {
+      "slide_id": "s1",
+      "section": "Opening",
+      "slide_type": "hero",
+      "title": "AI Use Cases in Healthcare Provider Operations",
+      "objective": "Lead with the main conclusion.",
+      "audience": "executive",
+      "layout": "hero",
+      "content_blocks": [
+        {
+          "kind": "summary",
+          "label": "Subtitle",
+          "body": "Research-backed executive example"
+        },
+        {
+          "kind": "summary",
+          "label": "Strapline",
+          "body": "The strongest provider-operations AI use cases are workflow-embedded administrative domains where the system can cut manual coordination, reclaim clinician time, or accelerate revenue capture."
+        }
+      ],
+      "source_ids": [
+        "src-mckinsey-2026",
+        "src-ama-2025",
+        "src-abridge-uchealth",
+        "src-qventus-stlukes",
+        "src-notable-fort",
+        "src-akasa-rcm",
+        "src-codametrix"
+      ]
+    },
+    {
+      "slide_id": "s2",
+      "section": "Agenda",
+      "slide_type": "agenda",
+      "title": "What This Deck Covers",
+      "objective": "Set the readout sequence.",
+      "audience": "executive",
+      "layout": "list",
+      "content_blocks": [
+        {
+          "kind": "agenda-item",
+          "label": "Why now",
+          "body": "How healthcare AI adoption has shifted from pilots to operational deployment."
+        },
+        {
+          "kind": "agenda-item",
+          "label": "Where value is strongest",
+          "body": "The workflows with the clearest near-term operational and financial proof."
+        },
+        {
+          "kind": "agenda-item",
+          "label": "Real examples",
+          "body": "Documentation, access, revenue cycle, coding, and perioperative operations."
+        },
+        {
+          "kind": "agenda-item",
+          "label": "What to do",
+          "body": "How a provider organization should prioritize pilots and governance."
+        }
+      ],
+      "source_ids": [
+        "src-mckinsey-2026"
+      ]
+    },
+    {
+      "slide_id": "s3",
+      "section": "Market Signal",
+      "slide_type": "section-divider",
+      "title": "Healthcare AI Has Entered The Operational Phase",
+      "objective": "Create the first narrative turn in the deck.",
+      "audience": "executive",
+      "layout": "section",
+      "content_blocks": [
+        {
+          "kind": "callout",
+          "label": "Section note",
+          "body": "The important question is no longer whether AI belongs in provider operations. It is which workflow should go first and how tightly it should be embedded into existing operating systems."
+        }
+      ],
+      "source_ids": [
+        "src-mckinsey-2026",
+        "src-ama-2025"
+      ]
+    },
+    {
+      "slide_id": "s4",
+      "section": "Executive Summary",
+      "slide_type": "summary-cards",
+      "title": "Four Executive Conclusions",
+      "objective": "Summarize the main takeaways.",
+      "audience": "executive",
+      "layout": "2x2-card-grid",
+      "content_blocks": [
+        {
+          "kind": "summary",
+          "label": "Operational AI is real now",
+          "body": "Half of surveyed healthcare organizations report implemented gen AI and most have already shipped use cases."
+        },
+        {
+          "kind": "summary",
+          "label": "Workflow fit matters more than generic capability",
+          "body": "The best use cases are embedded in access, documentation, revenue cycle, coding, and capacity workflows."
+        },
+        {
+          "kind": "summary",
+          "label": "Administrative domains are the cleanest first bets",
+          "body": "They are repetitive, measurable, and less ambiguous than open-ended enterprise copilots."
+        },
+        {
+          "kind": "summary",
+          "label": "Governance should follow workflow economics",
+          "body": "Each pilot should have a domain owner, a baseline metric, and a clear operational scorecard."
+        }
+      ],
+      "source_ids": [
+        "src-mckinsey-2026",
+        "src-ama-2025",
+        "src-abridge-uchealth",
+        "src-qventus-stlukes",
+        "src-notable-fort",
+        "src-akasa-rcm",
+        "src-codametrix"
+      ]
+    },
+    {
+      "slide_id": "s5",
+      "section": "Core Metrics",
+      "slide_type": "kpi-grid",
+      "title": "Why The Market Is Moving",
+      "objective": "Compress the core macro signals into one page.",
+      "audience": "executive",
+      "layout": "four-metric-grid",
+      "content_blocks": [
+        {
+          "kind": "metric",
+          "label": "Organizations implemented",
+          "body": "50%|McKinsey 2026 survey"
+        },
+        {
+          "kind": "metric",
+          "label": "Organizations with end-user use cases",
+          "body": "80%+|McKinsey 2026 survey"
+        },
+        {
+          "kind": "metric",
+          "label": "Physicians using AI",
+          "body": "66%|AMA 2025 survey"
+        },
+        {
+          "kind": "metric",
+          "label": "Care orgs implementing AI for clinical productivity",
+          "body": "54%|McKinsey 2026 survey"
+        },
+        {
+          "kind": "callout",
+          "label": "Takeaway",
+          "body": "Healthcare AI is now a workflow deployment problem, not just a future-technology debate."
+        }
+      ],
+      "source_ids": [
+        "src-mckinsey-2026",
+        "src-ama-2025"
+      ]
+    },
+    {
+      "slide_id": "s6",
+      "section": "Priority Ranking",
+      "slide_type": "bar-chart",
+      "title": "Highest-Value Provider-Ops AI Domains",
+      "objective": "Rank near-term operational value by workflow domain.",
+      "audience": "executive",
+      "layout": "ranked-bars",
+      "content_blocks": [
+        {
+          "kind": "chart-brief",
+          "label": "Patient access + prior auth",
+          "body": "9.4"
+        },
+        {
+          "kind": "chart-brief",
+          "label": "Revenue cycle status work",
+          "body": "9.0"
+        },
+        {
+          "kind": "chart-brief",
+          "label": "Coding automation",
+          "body": "8.8"
+        },
+        {
+          "kind": "chart-brief",
+          "label": "Ambient documentation",
+          "body": "8.4"
+        },
+        {
+          "kind": "chart-brief",
+          "label": "Perioperative + capacity orchestration",
+          "body": "8.2"
+        }
+      ],
+      "source_ids": [
+        "src-abridge-uchealth",
+        "src-qventus-stlukes",
+        "src-notable-fort",
+        "src-akasa-rcm",
+        "src-codametrix"
+      ]
+    },
+    {
+      "slide_id": "s7",
+      "section": "Interpretation",
+      "slide_type": "comparison",
+      "title": "What Tends To Win Versus What Tends To Stall",
+      "objective": "Differentiate high-fit workflows from vague AI ambitions.",
+      "audience": "executive",
+      "layout": "two-column-comparison",
+      "content_blocks": [
+        {
+          "kind": "comparison-column",
+          "label": "What tends to win",
+          "body": "EHR-embedded workflow steps|Clear operational owner|Direct cost, cash, or capacity metric|Repetitive high-volume tasks"
+        },
+        {
+          "kind": "comparison-column",
+          "label": "What tends to stall",
+          "body": "Generic enterprise copilots with unclear owners|No baseline metric for value|Workflows that are mostly governance theater|Point tools detached from daily operations"
+        }
+      ],
+      "source_ids": [
+        "src-mckinsey-2026",
+        "src-akasa-rcm",
+        "src-abridge-uchealth",
+        "src-notable-fort"
+      ]
+    },
+    {
+      "slide_id": "s8",
+      "section": "Workflow Map",
+      "slide_type": "use-case-card-grid",
+      "title": "Five High-Value Workflows",
+      "objective": "Translate the market evidence into a prioritized operating map.",
+      "audience": "executive",
+      "layout": "table",
+      "content_blocks": [
+        {
+          "kind": "table",
+          "label": "Ambient documentation",
+          "body": "Reduce note burden, improve patient interaction, and tighten downstream documentation quality."
+        },
+        {
+          "kind": "table",
+          "label": "Patient access + prior auth",
+          "body": "Relieve queue pressure, reduce cancellations, and accelerate access to care."
+        },
+        {
+          "kind": "table",
+          "label": "Revenue cycle status work",
+          "body": "Automate claim, auth, and document research to improve cash conversion."
+        },
+        {
+          "kind": "table",
+          "label": "Coding automation",
+          "body": "Lower manual coding cost, reduce denials, and improve turnaround time."
+        },
+        {
+          "kind": "table",
+          "label": "Perioperative + capacity",
+          "body": "Recover block time, improve scheduling precision, and grow cases without proportional staffing growth."
+        }
+      ],
+      "source_ids": [
+        "src-abridge-uchealth",
+        "src-qventus-stlukes",
+        "src-notable-fort",
+        "src-akasa-rcm",
+        "src-codametrix"
+      ]
+    },
+    {
+      "slide_id": "s9",
+      "section": "Case Study",
+      "slide_type": "use-case-deep-dive",
+      "title": "Access and Authorization Is A Front-Door ROI Story",
+      "objective": "Show how one workflow family turns pain into measurable outcomes.",
+      "audience": "executive",
+      "layout": "evidence-plus-implication",
+      "content_blocks": [
+        {
+          "kind": "company-card",
+          "label": "Queue pain",
+          "body": "Fort HealthCare faced double the authorization work volume relative to staff capacity."
+        },
+        {
+          "kind": "company-card",
+          "label": "Call leakage",
+          "body": "Thirty-eight percent of calls to a busy clinic were going to voicemail before automation."
+        },
+        {
+          "kind": "company-card",
+          "label": "Operational outcome",
+          "body": "The system reached 91% successful authorizations, 74% digital completion, and over 5% fewer cancellations."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 1",
+          "body": "This is not just a convenience use case; it directly affects delayed care, cancellations, and staff overload."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 2",
+          "body": "Access workflows are strong pilot candidates because they have visible pain and clean operational baselines."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 3",
+          "body": "AI should be measured on queue relief and cancellation avoidance, not only chatbot activity."
+        }
+      ],
+      "source_ids": [
+        "src-notable-fort"
+      ]
+    },
+    {
+      "slide_id": "s10",
+      "section": "Case Study",
+      "slide_type": "use-case-deep-dive",
+      "title": "Revenue Cycle and Coding Create Hard-Dollar Proof",
+      "objective": "Show why finance-facing workflows are some of the easiest ROI cases to defend.",
+      "audience": "executive",
+      "layout": "evidence-plus-implication",
+      "content_blocks": [
+        {
+          "kind": "company-card",
+          "label": "Revenue-cycle automation",
+          "body": "AKASA highlights automated auth status, claim status, and research workflows inside RCM operations."
+        },
+        {
+          "kind": "company-card",
+          "label": "Cash and productivity outcomes",
+          "body": "AKASA cites lower A/R days, staff time savings, gross yield improvement, and better efficiency."
+        },
+        {
+          "kind": "company-card",
+          "label": "Coding proof",
+          "body": "CodaMetrix cites lower coding cost, faster turnaround, lower denials, and 5:1 ROI economics."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 1",
+          "body": "Finance leaders can govern these pilots against cost-to-collect, A/R days, denial rates, and coding productivity."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 2",
+          "body": "These are enterprise workflows, but they still need narrow initial boundaries to avoid overpromising."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 3",
+          "body": "A good provider strategy treats revenue cycle and coding as operational AI lanes, not just back-office IT projects."
+        }
+      ],
+      "source_ids": [
+        "src-akasa-rcm",
+        "src-codametrix"
+      ]
+    },
+    {
+      "slide_id": "s11",
+      "section": "Case Study",
+      "slide_type": "use-case-deep-dive",
+      "title": "Documentation and Capacity Use Cases Show Different Kinds of Value",
+      "objective": "Contrast clinician-time value with throughput and access value.",
+      "audience": "executive",
+      "layout": "evidence-plus-implication",
+      "content_blocks": [
+        {
+          "kind": "company-card",
+          "label": "Clinician workflow value",
+          "body": "UCHealth scaled Abridge after a pilot and uses ambient documentation to reduce administrative burden and improve patient interaction."
+        },
+        {
+          "kind": "company-card",
+          "label": "Capacity value",
+          "body": "Saint Luke's handled 7% more surgical cases despite 20% fewer ORs by improving perioperative scheduling efficiency."
+        },
+        {
+          "kind": "company-card",
+          "label": "Management lesson",
+          "body": "One class of use case reclaims clinician time; another unlocks constrained system capacity."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 1",
+          "body": "Documentation tools should be judged on clinician experience and downstream documentation quality, not just raw note speed."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 2",
+          "body": "Capacity tools should be judged on throughput, access, and staff-load efficiency."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 3",
+          "body": "A provider AI roadmap should not force every use case into the same ROI frame."
+        }
+      ],
+      "source_ids": [
+        "src-abridge-uchealth",
+        "src-qventus-stlukes"
+      ]
+    },
+    {
+      "slide_id": "s12",
+      "section": "Action Plan",
+      "slide_type": "executive-action",
+      "title": "How A Health System Should Prioritize",
+      "objective": "Give a practical rollout sequence.",
+      "audience": "executive",
+      "layout": "roadmap",
+      "content_blocks": [
+        {
+          "kind": "roadmap-step",
+          "label": "01",
+          "body": "Pick one workflow family|Choose a high-pain domain such as prior auth, coding, or OR scheduling instead of a vague enterprise AI mandate."
+        },
+        {
+          "kind": "roadmap-step",
+          "label": "02",
+          "body": "Define the scorecard|Tie the pilot to one operational owner and 2-3 metrics like cancellations, A/R days, denials, or clinician time."
+        },
+        {
+          "kind": "roadmap-step",
+          "label": "03",
+          "body": "Embed in workflow|Require EHR integration and downstream process ownership before declaring the use case viable."
+        },
+        {
+          "kind": "roadmap-step",
+          "label": "04",
+          "body": "Separate assistive from autonomous|Documentation, coding support, and contact-center workflows have different governance and safety profiles."
+        },
+        {
+          "kind": "roadmap-step",
+          "label": "05",
+          "body": "Scale only after proof|Expand once a workflow has measurable, durable operational gains rather than vendor-driven narrative momentum."
+        }
+      ],
+      "source_ids": [
+        "src-mckinsey-2026",
+        "src-abridge-uchealth",
+        "src-qventus-stlukes",
+        "src-notable-fort",
+        "src-akasa-rcm",
+        "src-codametrix"
+      ]
+    },
+    {
+      "slide_id": "s13",
+      "section": "Methodology",
+      "slide_type": "bullets",
+      "title": "How To Read This Deck",
+      "objective": "State limits and confidence cleanly.",
+      "audience": "executive",
+      "layout": "bullet-list",
+      "content_blocks": [
+        {
+          "kind": "bullet",
+          "label": "This is a research-backed synthesis",
+          "body": "The deck uses current market research plus official company and customer-story evidence, not one normalized benchmark dataset."
+        },
+        {
+          "kind": "bullet",
+          "label": "The evidence is stronger for workflow categories than for vendor ranking",
+          "body": "The purpose is to identify which operational domains are strongest, not to declare one vendor a universal winner."
+        },
+        {
+          "kind": "bullet",
+          "label": "Use this for prioritization, not procurement",
+          "body": "Any production decision still needs local baseline metrics, workflow mapping, compliance review, and total-cost-of-change analysis."
+        },
+        {
+          "kind": "bullet",
+          "label": "Main message",
+          "body": "Start where the workflow is repetitive, measurable, and operationally owned; scale only after hard proof."
+        }
+      ],
+      "source_ids": [
+        "src-mckinsey-2026",
+        "src-ama-2025",
+        "src-abridge-uchealth",
+        "src-qventus-stlukes",
+        "src-notable-fort",
+        "src-akasa-rcm",
+        "src-codametrix"
+      ]
+    }
+  ],
+  "export_targets": [
+    "pptx",
+    "html",
+    "memo"
+  ]
+}

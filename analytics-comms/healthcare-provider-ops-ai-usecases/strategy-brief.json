@@ -1,0 +1,43 @@
+{
+  "report_slug": "healthcare-provider-ops-ai-usecases",
+  "created_at": "2026-06-02T22:00:00Z",
+  "decision": "Prioritize ambient documentation and visit support, patient access and prior authorization, revenue-cycle status and denial prevention, capacity and perioperative orchestration, and coding automation as the first healthcare provider-operations AI programs.",
+  "why_this_matters": "Healthcare provider-operations AI now matters because the clearest value is emerging in workflow-embedded administrative domains where systems can reduce manual coordination, improve cash flow, or reclaim clinician time.",
+  "executive_view": "Health system leaders should read AI as an operating-model prioritization problem inside the EHR, revenue cycle, and access workflows, not as a generic enterprise-assistant rollout.",
+  "strategic_implications": [
+    "Administrative workflows with clear owners and clear economics should lead over broad assistant deployments.",
+    "EHR-adjacent execution matters more than standalone AI experiences because downstream workflow ownership determines whether value compounds.",
+    "Assistive and autonomous workflows should be sequenced differently so governance and operating readiness stay explicit.",
+    "Operational proof from access, RCM, and perioperative workflows gives executives a stronger funding story than abstract innovation narratives."
+  ],
+  "recommended_actions": [
+    {
+      "title": "Prioritize workflow-embedded admin domains before broad enterprise copilots",
+      "why": "The evidence is strongest where AI removes repetitive coordination work and ties to measurable operational metrics.",
+      "priority": "high"
+    },
+    {
+      "title": "Choose one domain owner, one workflow, and one economic scorecard per pilot",
+      "why": "The cleanest examples tie to specific workflows like prior auth, coding, OR scheduling, or documentation burden.",
+      "priority": "high"
+    },
+    {
+      "title": "Demand EHR integration and downstream process ownership from day one",
+      "why": "The winning use cases are embedded into real operating workflows, not isolated chat experiences.",
+      "priority": "high"
+    },
+    {
+      "title": "Separate assistive workflows from more autonomous execution workflows",
+      "why": "Ambient documentation and chart review have different governance profiles from denials, scheduling, or authorization automation.",
+      "priority": "medium"
+    }
+  ],
+  "kpis": [
+    "prior-authorization turnaround time",
+    "denial rate and avoidable rework",
+    "visit documentation time returned",
+    "cash-collection or reimbursement cycle time",
+    "OR block utilization and schedule throughput"
+  ],
+  "bottom_line": "The right provider-operations AI story is workflow relief with hard operating metrics, not broad enterprise assistant deployment."
+}

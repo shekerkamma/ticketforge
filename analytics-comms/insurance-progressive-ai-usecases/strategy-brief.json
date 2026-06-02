@@ -1,0 +1,43 @@
+{
+  "report_slug": "insurance-progressive-ai-usecases",
+  "created_at": "2026-06-02T18:00:00Z",
+  "decision": "Prioritize pricing and telematics, claims orchestration, bundle growth, service automation, and modernization as Progressive's top AI programs.",
+  "why_this_matters": "Insurance AI is now an operating-model question tied to pricing precision, claims speed, service productivity, and product-change velocity.",
+  "executive_view": "Progressive is a strong named customer because it already combines large policy volume, telematics, digital claims, omnichannel service, and explicit growth priorities.",
+  "strategic_implications": [
+    "The best AI opportunities are acceleration opportunities on top of existing workflows, not greenfield experiments.",
+    "Pricing and claims should lead because they are closest to measurable economics and already have digital exhaust and workflow ownership.",
+    "Bundle growth is a real cross-line growth wedge because Progressive has already named it as strategic.",
+    "Modernization is the multiplier because it determines how quickly every other AI program compounds."
+  ],
+  "recommended_actions": [
+    {
+      "title": "Fund pricing and claims first",
+      "why": "These two lanes map most directly to measurable economics and workflow readiness.",
+      "priority": "high"
+    },
+    {
+      "title": "Package bundle growth as a revenue and retention program",
+      "why": "Household expansion is already a named strategic priority.",
+      "priority": "high"
+    },
+    {
+      "title": "Treat service AI as orchestration, not only containment",
+      "why": "Progressive already serves customers across multiple channels, so routing and task execution matter more than generic chat.",
+      "priority": "medium"
+    },
+    {
+      "title": "Tie modernization to release speed, documentation, and test throughput",
+      "why": "Modernization is the enabler that lets the other AI programs scale beyond pilots.",
+      "priority": "medium"
+    }
+  ],
+  "kpis": [
+    "pricing lift and conversion quality",
+    "claims cycle time",
+    "bundle conversion and household retention",
+    "service cost-to-serve",
+    "release and testing throughput"
+  ],
+  "bottom_line": "The right executive story for Progressive is AI that improves the insurance operating system, not AI that sits on top of it."
+}

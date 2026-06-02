@@ -1,0 +1,223 @@
+{
+  "report_slug": "insurance-progressive-ai-usecases",
+  "created_at": "2026-06-02T18:00:00Z",
+  "decision_question": "Which AI use cases are strongest in the insurance industry right now, and how should Progressive prioritize them as a named customer account?",
+  "audience": "executive",
+  "headline": "In insurance, the most valuable AI programs are workflow-led rather than chatbot-led; for Progressive specifically, pricing and telematics, claims orchestration, bundle growth, service automation, and core modernization are the strongest executive priorities.",
+  "source_ids": [
+    "src-mck-future-ai-insurance-2025",
+    "src-mck-agentic-core-modernization-2026",
+    "src-mck-global-insurance-2025",
+    "src-progressive-annual-report-2024",
+    "src-progressive-june-2025-results",
+    "src-progressive-telematics-page",
+    "src-progressive-claims-page"
+  ],
+  "findings": [
+    {
+      "finding_id": "f1",
+      "title": "Insurance AI is becoming a workflow and operating-model decision",
+      "statement": "Industry evidence points to onboarding, claims, underwriting, and modernization as the highest-value AI lanes because they are repeated, document-heavy, and measurable.",
+      "implication": "Executives should fund AI where it improves throughput, loss economics, or service speed rather than only where it creates visible demos.",
+      "confidence": "high",
+      "source_ids": [
+        "src-mck-future-ai-insurance-2025",
+        "src-mck-global-insurance-2025",
+        "src-mck-agentic-core-modernization-2026"
+      ]
+    },
+    {
+      "finding_id": "f2",
+      "title": "Progressive is already operating the raw ingredients for scaled AI",
+      "statement": "Progressive combines model iteration, telematics, app-based service, omnichannel distribution, and large policy volume in a way that makes workflow AI economically meaningful.",
+      "implication": "The right pitch to Progressive is not generic AI transformation; it is targeted operating leverage on top of existing digital flows.",
+      "confidence": "high",
+      "source_ids": [
+        "src-progressive-annual-report-2024",
+        "src-progressive-june-2025-results",
+        "src-progressive-telematics-page",
+        "src-progressive-claims-page"
+      ]
+    },
+    {
+      "finding_id": "f3",
+      "title": "Telematics and product models are the clearest pricing-and-underwriting wedge",
+      "statement": "Progressive's annual report and Snapshot materials show that external data, continuous monitoring, and personalized pricing are already central to the customer proposition.",
+      "implication": "AI that sharpens risk selection, pricing segmentation, or conversion quality is directly aligned with Progressive's current model.",
+      "confidence": "high",
+      "source_ids": [
+        "src-progressive-annual-report-2024",
+        "src-progressive-telematics-page"
+      ]
+    },
+    {
+      "finding_id": "f4",
+      "title": "Claims orchestration is a high-value lane because the claim journey is already digital",
+      "statement": "Progressive already supports account-based claim access, guest flows, app-based accident response, and faster first notice of loss.",
+      "implication": "Claims AI should focus on triage, routing, documentation, next-best action, and cycle-time reduction instead of generic summaries alone.",
+      "confidence": "high",
+      "source_ids": [
+        "src-progressive-annual-report-2024",
+        "src-progressive-claims-page"
+      ]
+    },
+    {
+      "finding_id": "f5",
+      "title": "Bundle growth and customer-lifecycle AI are underappreciated executive opportunities",
+      "statement": "Progressive explicitly calls bundled home-and-auto households its largest under-penetrated property segment and is pushing bundle-first growth motions.",
+      "implication": "Cross-line recommendation, propensity, retention, and service orchestration use cases should be treated as strategic growth levers, not side analytics projects.",
+      "confidence": "high",
+      "source_ids": [
+        "src-progressive-annual-report-2024",
+        "src-progressive-june-2025-results"
+      ]
+    }
+  ],
+  "use_case_clusters": [
+    {
+      "cluster_id": "uc1",
+      "name": "Telematics-led pricing and underwriting",
+      "buyer": "Chief underwriting officer or head of personal auto",
+      "workflow_owner": "Pricing, product, and telematics teams",
+      "business_job": "Use behavioral and external data to price more accurately, improve conversion quality, and sharpen retention.",
+      "value_prop": "Raises underwriting precision while preserving Progressive's direct-to-consumer growth engine.",
+      "why_now": "Progressive already has continuous monitoring at scale and product models that expand external-data use.",
+      "recommendation": "Position AI as an extension of Progressive's existing risk and pricing machine rather than as a new standalone platform.",
+      "evidence_companies": [
+        {
+          "name": "Progressive",
+          "proof_line": "Snapshot continuous monitoring is live across most of Progressive's auto premium footprint and supports personalized pricing.",
+          "source_id": "src-progressive-annual-report-2024"
+        }
+      ]
+    },
+    {
+      "cluster_id": "uc2",
+      "name": "Claims intake, triage, and resolution orchestration",
+      "buyer": "Chief claims officer",
+      "workflow_owner": "Claims operations, first notice of loss, and digital experience teams",
+      "business_job": "Accelerate claim intake, evidence gathering, routing, and customer updates while improving resolution speed.",
+      "value_prop": "Reduces cycle time and service friction in one of the most visible insurance workflows.",
+      "why_now": "Progressive already has digital claim entry, app-triggered accident response, and explicit goals around faster first notice of loss.",
+      "recommendation": "Lead with orchestration and cycle-time outcomes rather than general-purpose assistant messaging.",
+      "evidence_companies": [
+        {
+          "name": "Progressive",
+          "proof_line": "The mobile app can detect major accidents and is intended to accelerate first notice of loss and reduce claims resolution time.",
+          "source_id": "src-progressive-annual-report-2024"
+        }
+      ]
+    },
+    {
+      "cluster_id": "uc3",
+      "name": "Bundle growth and household expansion",
+      "buyer": "Chief growth officer or head of property",
+      "workflow_owner": "Cross-sell, marketing, and household product teams",
+      "business_job": "Grow bundled relationships by identifying the right households, timing, and offer sequences across auto and property.",
+      "value_prop": "Turns a large under-penetrated customer segment into a measurable growth program.",
+      "why_now": "Progressive says bundled home-and-auto customers are its largest under-penetrated property segment and is focusing new business on bundling.",
+      "recommendation": "Treat bundle AI as a revenue and lifetime-value use case, not just a marketing optimization exercise.",
+      "evidence_companies": [
+        {
+          "name": "Progressive",
+          "proof_line": "The annual report explicitly prioritizes bundled home-and-auto growth in many states.",
+          "source_id": "src-progressive-annual-report-2024"
+        }
+      ]
+    },
+    {
+      "cluster_id": "uc4",
+      "name": "Service automation across direct, app, and agent channels",
+      "buyer": "Chief operating officer or head of customer experience",
+      "workflow_owner": "Service operations, digital experience, and contact center teams",
+      "business_job": "Automate routine service interactions, route work intelligently, and keep service quality consistent across channels.",
+      "value_prop": "Improves service cost-to-serve and customer convenience without disrupting channel choice.",
+      "why_now": "Progressive serves customers through web, phone, mobile app, and agents, making consistent orchestration increasingly valuable.",
+      "recommendation": "Frame AI here as channel orchestration and service productivity, not just chatbot containment.",
+      "evidence_companies": [
+        {
+          "name": "Progressive",
+          "proof_line": "Progressive highlights online, phone, mobile-app, and agent access as core parts of the customer model.",
+          "source_id": "src-progressive-june-2025-results"
+        }
+      ]
+    },
+    {
+      "cluster_id": "uc5",
+      "name": "Core technology and product-model modernization",
+      "buyer": "Chief information officer or chief technology officer",
+      "workflow_owner": "Platform engineering, rating, and legacy modernization teams",
+      "business_job": "Use AI and agentic workflows to upgrade product logic, documentation, testing, and release processes without full-stop replacement programs.",
+      "value_prop": "Shortens modernization cycles and makes product iteration more repeatable.",
+      "why_now": "Industry research increasingly treats agentic AI as a modernization tool, and Progressive is already iterating product models quickly.",
+      "recommendation": "Tie modernization AI to concrete release, documentation, testing, and rework metrics so it lands as an executive operating program.",
+      "evidence_companies": [
+        {
+          "name": "Progressive",
+          "proof_line": "Progressive is already running successive product-model versions and expanding external-data use in auto product releases.",
+          "source_id": "src-progressive-annual-report-2024"
+        }
+      ]
+    }
+  ],
+  "risks": [
+    "Public sources are stronger on strategic signals than on internal failure modes or system constraints.",
+    "Insurance AI still faces regulatory, fairness, and model-governance scrutiny, especially in pricing and claims.",
+    "Progressive may already be building internally in some lanes, so external pitches need a differentiated workflow angle rather than generic transformation language."
+  ],
+  "recommendations": [
+    {
+      "title": "Lead with workflow economics, not AI novelty",
+      "why": "The strongest case for insurance AI is cycle time, pricing precision, service productivity, and growth conversion.",
+      "priority": "high"
+    },
+    {
+      "title": "Anchor the account around Progressive's existing digital assets",
+      "why": "Snapshot, product models, app-based claims, and bundling priorities already define where the customer is prepared to act.",
+      "priority": "high"
+    },
+    {
+      "title": "Package claims and service as orchestration programs",
+      "why": "Progressive already has digital entry points, so AI should improve routing, documentation, and next-step execution.",
+      "priority": "high"
+    },
+    {
+      "title": "Treat modernization as a business-use-case enabler",
+      "why": "Core-system and product-model velocity determine how quickly insurance AI can scale beyond pilots.",
+      "priority": "medium"
+    }
+  ],
+  "chart_briefs": [
+    {
+      "title": "Highest-value AI lanes for Progressive",
+      "best_chart_type": "bar",
+      "why_this_fits": "The audience needs a simple ranked view of where the account is most likely to create value.",
+      "narrative_takeaway": "Pricing and telematics, claims orchestration, bundle growth, service automation, and modernization are the strongest lanes.",
+      "encoding_guidance": "Rank the lanes from highest executive value to lower near-term value and highlight the top two.",
+      "annotation_plan": "Annotate each bar with the Progressive proof point: Snapshot scale, FNOL acceleration, bundling priority, omnichannel service, or model iteration."
+    },
+    {
+      "title": "Industry AI hype versus insurance workflow value",
+      "best_chart_type": "comparison",
+      "why_this_fits": "Executives need to see why generic assistants are weaker than workflow-led use cases.",
+      "narrative_takeaway": "Insurance value comes from underwriting, claims, service, and modernization workflows, not generic chatbot rollouts alone.",
+      "encoding_guidance": "Contrast broad assistant narratives with operating-model-led programs tied to measurable economics.",
+      "annotation_plan": "Call out revenue, loss ratio, cycle time, and cost-to-serve as the decisive metrics."
+    },
+    {
+      "title": "Customer fit: Progressive's readiness by use-case cluster",
+      "best_chart_type": "bar",
+      "why_this_fits": "The audience needs a customer-specific fit view rather than a generic industry taxonomy.",
+      "narrative_takeaway": "Progressive is strongest where digital flow, product iteration, and policy scale already exist.",
+      "encoding_guidance": "Show relative readiness across the five clusters using a simple ordinal score.",
+      "annotation_plan": "Use short labels tied to policy scale, digital entry points, or strategic emphasis in public materials."
+    }
+  ],
+  "methodology": {
+    "approach": "Cross-source synthesis using current McKinsey insurance AI research and Progressive official investor, annual-report, claims, and telematics materials, framed as an executive account strategy and use-case prioritization readout.",
+    "limitations": [
+      "This is a public-source strategic account readout, not an internal due-diligence package or live customer interview synthesis.",
+      "The deck prioritizes executive decisions and use-case selection rather than vendor-level product mapping or implementation architecture."
+    ]
+  }
+}

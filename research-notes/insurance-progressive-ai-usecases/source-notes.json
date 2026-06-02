@@ -1,0 +1,377 @@
+{
+  "report_slug": "insurance-progressive-ai-usecases",
+  "created_at": "2026-06-02T18:00:00Z",
+  "decision_question": "Which AI use cases are strongest in the insurance industry right now, and how should Progressive prioritize them as a named customer account?",
+  "sources": [
+    {
+      "source_id": "src-mck-future-ai-insurance-2025",
+      "title": "The future of AI in the insurance industry",
+      "source_type": "web",
+      "locator": "https://www.mckinsey.com/industries/financial-services/our-insights/the-future-of-ai-in-the-insurance-industry",
+      "captured_at": "2026-06-02T18:00:00Z",
+      "author": "McKinsey",
+      "published_at": "2025-07-15",
+      "summary": "McKinsey argues that AI in insurance is moving from experimentation to enterprise rewiring across onboarding, service, and claims.",
+      "raw_evidence": [
+        {
+          "evidence_id": "e1",
+          "kind": "stat",
+          "text": "McKinsey says domain-level AI rewiring has already improved conversion, premium growth, onboarding cost, and claims accuracy for leading insurers.",
+          "locator": "turn4view2:L54"
+        },
+        {
+          "evidence_id": "e2",
+          "kind": "quote",
+          "text": "The report says customer onboarding can increasingly be handled by AI multiagent systems acting as virtual coworkers.",
+          "locator": "turn4view2:L41"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "c1",
+          "statement": "Insurance AI value is strongest where workflows are repeated, document-heavy, and customer-facing.",
+          "confidence": "high",
+          "evidence_ids": [
+            "e1",
+            "e2"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "Customer onboarding automation",
+          "rationale": "The report explicitly highlights intake, document extraction, and service workflows."
+        },
+        {
+          "label": "Claims accuracy improvement",
+          "rationale": "Claims is one of the functions with measured improvement in the report."
+        }
+      ],
+      "tags": [
+        "industry",
+        "ai",
+        "insurance",
+        "claims",
+        "service"
+      ]
+    },
+    {
+      "source_id": "src-mck-agentic-core-modernization-2026",
+      "title": "Can agentic AI (finally) modernize core technologies in insurance?",
+      "source_type": "web",
+      "locator": "https://www.mckinsey.com/middle-east/our-insights/can-agentic-ai-finally-modernize-core-technologies-in-insurance",
+      "captured_at": "2026-06-02T18:00:00Z",
+      "author": "McKinsey",
+      "published_at": "2026-04-29",
+      "summary": "McKinsey frames agentic AI as a practical route for insurer core modernization, especially where legacy complexity blocks faster change.",
+      "raw_evidence": [
+        {
+          "evidence_id": "e3",
+          "kind": "quote",
+          "text": "The article says agentic AI can capture legacy knowledge, compress rework loops, and improve predictability across modernization work.",
+          "locator": "turn4view3:L13-L15"
+        },
+        {
+          "evidence_id": "e4",
+          "kind": "quote",
+          "text": "The article says software agents can interpret legacy artifacts, generate outputs, and coordinate work across the delivery life cycle.",
+          "locator": "turn4view3:L30-L31"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "c2",
+          "statement": "Core modernization is now an AI use case, not just a background IT program.",
+          "confidence": "high",
+          "evidence_ids": [
+            "e3",
+            "e4"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "Core system modernization",
+          "rationale": "The piece directly frames agentic AI as a modernization factory."
+        }
+      ],
+      "tags": [
+        "industry",
+        "agentic-ai",
+        "core-systems",
+        "modernization"
+      ]
+    },
+    {
+      "source_id": "src-mck-global-insurance-2025",
+      "title": "Global Insurance Report 2025: The pursuit of growth",
+      "source_type": "document",
+      "locator": "https://www.mckinsey.com/~/media/mckinsey/industries/financial%20services/our%20insights/global%20insurance%20report%202025/global-insurance-report-2025-the-pursuit-of-growth.pdf",
+      "captured_at": "2026-06-02T18:00:00Z",
+      "author": "McKinsey",
+      "published_at": "2025-01-01",
+      "summary": "McKinsey argues that insurance growth will depend on distinctive operating models, stronger service capability, and AI-enabled relevance.",
+      "raw_evidence": [
+        {
+          "evidence_id": "e5",
+          "kind": "stat",
+          "text": "The report says personal P&C represented about 1.1 trillion dollars of gross written premiums in 2023.",
+          "locator": "turn4view4:L179-L181"
+        },
+        {
+          "evidence_id": "e6",
+          "kind": "quote",
+          "text": "The report says evolving technology, especially AI and gen AI, can be used to spur innovation and profitable growth.",
+          "locator": "turn4view4:L176-L177"
+        },
+        {
+          "evidence_id": "e7",
+          "kind": "quote",
+          "text": "McKinsey says around 60 percent of insurer performance is driven by how the company operates, not just which lines it participates in.",
+          "locator": "turn4view4:L1577-L1582"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "c3",
+          "statement": "In insurance, operating model quality matters more than participation in any single product line.",
+          "confidence": "high",
+          "evidence_ids": [
+            "e6",
+            "e7"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "Operating-model-led AI",
+          "rationale": "The report links growth and profitability to distinctiveness in how insurers operate."
+        }
+      ],
+      "tags": [
+        "industry",
+        "growth",
+        "operations",
+        "p-and-c"
+      ]
+    },
+    {
+      "source_id": "src-progressive-annual-report-2024",
+      "title": "The Progressive Corporation 2024 Annual Report",
+      "source_type": "document",
+      "locator": "https://www.progressive.com/content/pdf/art/2024-annual-report.pdf",
+      "captured_at": "2026-06-02T18:00:00Z",
+      "author": "Progressive",
+      "published_at": "2025-03-03",
+      "summary": "Progressive's annual report shows a fast-growing carrier using pricing models, telematics, bundling, digital claims, and product iteration as core competitive levers.",
+      "raw_evidence": [
+        {
+          "evidence_id": "e8",
+          "kind": "stat",
+          "text": "Progressive ended 2024 with nearly 34 million personal-lines policies in force, up 18 percent year over year.",
+          "locator": "turn3view0:L867-L874"
+        },
+        {
+          "evidence_id": "e9",
+          "kind": "quote",
+          "text": "Progressive says model 8.9 adds expanded use of external data and new coverage features, with favorable conversion results.",
+          "locator": "turn3view0:L907-L920"
+        },
+        {
+          "evidence_id": "e10",
+          "kind": "quote",
+          "text": "Progressive says continuous monitoring in Snapshot was live in states representing about 75 percent of auto net premiums written, excluding California.",
+          "locator": "turn3view1:L925-L930"
+        },
+        {
+          "evidence_id": "e11",
+          "kind": "quote",
+          "text": "Progressive says its mobile app can detect major accidents, connect customers to help, and improve first notice of loss and claims resolution time.",
+          "locator": "turn3view0:L930-L937"
+        },
+        {
+          "evidence_id": "e12",
+          "kind": "quote",
+          "text": "Progressive identifies bundled home-and-auto customers as its largest under-penetrated property segment and says it is focusing on bundling most new business in many states.",
+          "locator": "turn3view0:L974-L979"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "c4",
+          "statement": "Progressive already operates a real AI-ready workflow stack across pricing, telematics, claims intake, and bundle growth.",
+          "confidence": "high",
+          "evidence_ids": [
+            "e8",
+            "e9",
+            "e10",
+            "e11",
+            "e12"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "Personalized pricing and underwriting",
+          "rationale": "The annual report highlights model upgrades, external data, and telematics coverage at scale."
+        },
+        {
+          "label": "Claims intake and orchestration",
+          "rationale": "The report directly links app features to first notice of loss and shorter claims resolution time."
+        },
+        {
+          "label": "Bundle growth and household expansion",
+          "rationale": "The report says bundling is a strategic growth priority."
+        }
+      ],
+      "tags": [
+        "customer",
+        "progressive",
+        "telematics",
+        "claims",
+        "bundling"
+      ]
+    },
+    {
+      "source_id": "src-progressive-june-2025-results",
+      "title": "Progressive Reports June 2025 Results",
+      "source_type": "web",
+      "locator": "https://investors.progressive.com/financials/financial-news-releases/news-details/2025/Progressive-Reports-June-2025-Results/default.aspx",
+      "captured_at": "2026-06-02T18:00:00Z",
+      "author": "Progressive",
+      "published_at": "2025-07-16",
+      "summary": "Progressive's 2025 results show the current scale of the account and confirm that it remains one of the most important customer targets in personal and commercial auto insurance.",
+      "raw_evidence": [
+        {
+          "evidence_id": "e13",
+          "kind": "stat",
+          "text": "At June 30, 2025, Progressive reported 37.3 million companywide policies in force, including 36.1 million personal lines policies.",
+          "locator": "turn5view0:L241-L250"
+        },
+        {
+          "evidence_id": "e14",
+          "kind": "quote",
+          "text": "Progressive says it is the second largest personal auto insurer in the country and a leading seller of commercial auto insurance.",
+          "locator": "turn5view1:L256"
+        },
+        {
+          "evidence_id": "e15",
+          "kind": "quote",
+          "text": "Progressive says customers can buy and use insurance online, by phone, by mobile app, or through agents.",
+          "locator": "turn5view0:L254-L257"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "c5",
+          "statement": "Progressive is a scaled, digitally distributed insurer where workflow improvements can move large policy and claims volumes.",
+          "confidence": "high",
+          "evidence_ids": [
+            "e13",
+            "e14",
+            "e15"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "Omnichannel service automation",
+          "rationale": "The carrier already runs customer acquisition and servicing across multiple channels at large scale."
+        }
+      ],
+      "tags": [
+        "customer",
+        "progressive",
+        "scale",
+        "distribution"
+      ]
+    },
+    {
+      "source_id": "src-progressive-telematics-page",
+      "title": "How does car insurance with telematics work?",
+      "source_type": "web",
+      "locator": "https://www.progressive.com/answers/telematics-devices-car-insurance/",
+      "captured_at": "2026-06-02T18:00:00Z",
+      "author": "Progressive",
+      "published_at": "2026-06-02",
+      "summary": "Progressive presents Snapshot as a price-personalization engine with customer savings tied directly to driving behavior.",
+      "raw_evidence": [
+        {
+          "evidence_id": "e16",
+          "kind": "quote",
+          "text": "Progressive says Snapshot gives an automatic discount in most states, then a personalized rate after the first policy period.",
+          "locator": "turn4view1:L52-L55"
+        },
+        {
+          "evidence_id": "e17",
+          "kind": "stat",
+          "text": "Progressive says drivers who save with Snapshot save an average of 322 dollars per year.",
+          "locator": "turn4view1:L54-L55"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "c6",
+          "statement": "Telematics is not a side product at Progressive; it is part of the pricing and retention operating model.",
+          "confidence": "high",
+          "evidence_ids": [
+            "e16",
+            "e17"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "Telematics-led risk selection",
+          "rationale": "The page ties driving data directly to personalized pricing."
+        }
+      ],
+      "tags": [
+        "customer",
+        "progressive",
+        "snapshot",
+        "pricing"
+      ]
+    },
+    {
+      "source_id": "src-progressive-claims-page",
+      "title": "Progressive claims",
+      "source_type": "web",
+      "locator": "https://www.progressive.com/claims/",
+      "captured_at": "2026-06-02T18:00:00Z",
+      "author": "Progressive",
+      "published_at": "2026-06-02",
+      "summary": "Progressive promotes digital claim reporting, guest claim flows, and trackable account-based claims access as part of its customer experience.",
+      "raw_evidence": [
+        {
+          "evidence_id": "e18",
+          "kind": "quote",
+          "text": "Progressive lets policyholders log in to report or view claims and also offers guest claim reporting.",
+          "locator": "turn4view0:L191-L205"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "c7",
+          "statement": "Progressive already has digital claims access patterns that make claims automation and orchestration good AI candidates.",
+          "confidence": "high",
+          "evidence_ids": [
+            "e18"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "Claims self-service and orchestration",
+          "rationale": "The claim entry points are already digital and operationally structured."
+        }
+      ],
+      "tags": [
+        "customer",
+        "progressive",
+        "claims",
+        "self-service"
+      ]
+    }
+  ]
+}

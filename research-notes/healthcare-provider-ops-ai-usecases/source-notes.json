@@ -1,0 +1,377 @@
+{
+  "report_slug": "healthcare-provider-ops-ai-usecases",
+  "created_at": "2026-06-02T22:00:00Z",
+  "decision_question": "Which AI use cases in healthcare provider operations are strongest right now, and how should a health system prioritize them?",
+  "sources": [
+    {
+      "source_id": "src-mckinsey-2026",
+      "title": "Generative AI in healthcare: Adoption matures as agentic AI emerges",
+      "source_type": "web",
+      "locator": "https://www.mckinsey.com/industries/healthcare/our-insights/generative-ai-in-healthcare-current-trends-and-future-outlook",
+      "captured_at": "2026-06-02T09:30:00Z",
+      "author": "McKinsey",
+      "published_at": "2026-04-16",
+      "summary": "McKinsey's 2026 healthcare survey suggests that healthcare AI adoption has moved past experimentation, with administrative efficiency and workflow integration emerging as the main value pools.",
+      "raw_evidence": [
+        {
+          "evidence_id": "ev-mck-1",
+          "kind": "stat",
+          "text": "Half of surveyed US healthcare organizations report that they have already implemented generative AI.",
+          "locator": "turn5view0:L11-L16, L30-L33"
+        },
+        {
+          "evidence_id": "ev-mck-2",
+          "kind": "stat",
+          "text": "More than 80 percent of respondents have deployed their first use cases to end users.",
+          "locator": "turn5view0:L16-L17"
+        },
+        {
+          "evidence_id": "ev-mck-3",
+          "kind": "stat",
+          "text": "Administrative efficiency is the most frequently cited domain with the greatest potential for both gen AI and multiagent workflows.",
+          "locator": "turn5view0:L39-L43"
+        },
+        {
+          "evidence_id": "ev-mck-4",
+          "kind": "stat",
+          "text": "Fifty-four percent of respondents from care organizations report implementation of gen AI for clinical productivity.",
+          "locator": "turn5view0:L45-L48"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "cl-mck-1",
+          "statement": "Healthcare AI in 2026 is no longer just pilot-stage experimentation; the focus has shifted to integration, ROI, and end-to-end workflows.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-mck-1",
+            "ev-mck-2"
+          ]
+        },
+        {
+          "claim_id": "cl-mck-2",
+          "statement": "Administrative and operational workflows remain the most credible near-term value pool for agentic AI in provider operations.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-mck-3"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "operational workflow automation",
+          "rationale": "Administrative efficiency stands out as the strongest cross-provider value pool."
+        },
+        {
+          "label": "clinical productivity",
+          "rationale": "Clinical productivity is already being implemented by a majority of surveyed care organizations."
+        }
+      ],
+      "tags": [
+        "market",
+        "adoption",
+        "healthcare",
+        "operations"
+      ]
+    },
+    {
+      "source_id": "src-ama-2025",
+      "title": "2 in 3 physicians are using health AI\u2014up 78% from 2023",
+      "source_type": "web",
+      "locator": "https://www.ama-assn.org/practice-management/digital-health/2-3-physicians-are-using-health-ai-78-2023",
+      "captured_at": "2026-06-02T09:30:00Z",
+      "author": "American Medical Association",
+      "published_at": "2025-02-26",
+      "summary": "The AMA's physician survey shows rapid adoption of AI for documentation and administrative tasks, with usage nearly doubling year over year.",
+      "raw_evidence": [
+        {
+          "evidence_id": "ev-ama-1",
+          "kind": "stat",
+          "text": "Sixty-six percent of physicians surveyed reported using health AI in 2024, up 78 percent from 2023.",
+          "locator": "turn3view1:L294-L301"
+        },
+        {
+          "evidence_id": "ev-ama-2",
+          "kind": "stat",
+          "text": "Documentation of billing codes, charts, or visit notes was cited by 21 percent of physicians; discharge instructions, care plans, or progress notes by 20 percent; chart summaries by 12 percent; patient-facing chatbots by 10 percent.",
+          "locator": "turn3view1:L329-L335"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "cl-ama-1",
+          "statement": "Documentation and administrative support remain the most visible frontline physician AI use cases.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-ama-1",
+            "ev-ama-2"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "ambient documentation",
+          "rationale": "Documentation, notes, chart summaries, and administrative drafting already show measurable physician usage."
+        }
+      ],
+      "tags": [
+        "physicians",
+        "documentation",
+        "workflow"
+      ]
+    },
+    {
+      "source_id": "src-abridge-uchealth",
+      "title": "UCHealth Rapidly deploys Abridge systemwide, enhancing patient and provider experience",
+      "source_type": "web",
+      "locator": "https://www.abridge.com/press-release/uchealth-scales-abridge",
+      "captured_at": "2026-06-02T09:30:00Z",
+      "author": "Abridge",
+      "published_at": "2026-02-24",
+      "summary": "UCHealth expanded Abridge after a pilot and is using ambient documentation at scale to reduce administrative burden and improve patient and provider experience.",
+      "raw_evidence": [
+        {
+          "evidence_id": "ev-abridge-1",
+          "kind": "stat",
+          "text": "The deployment followed a nine-month pilot with 250 providers and now covers more than one-third of UCHealth's roughly 6,000 physicians, NPs, and PAs.",
+          "locator": "turn3view6:L30-L31"
+        },
+        {
+          "evidence_id": "ev-abridge-2",
+          "kind": "quote",
+          "text": "Abridge generates draft clinical documentation in the patient chart and lets providers focus their attention entirely on patients.",
+          "locator": "turn3view6:L34-L35"
+        },
+        {
+          "evidence_id": "ev-abridge-3",
+          "kind": "quote",
+          "text": "During the pilot, providers reported stronger interactions with patients and reduced administrative burden.",
+          "locator": "turn3view6:L36-L44"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "cl-abridge-1",
+          "statement": "Ambient documentation has moved from pilot novelty to enterprise-scale workflow infrastructure in provider organizations.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-abridge-1",
+            "ev-abridge-2",
+            "ev-abridge-3"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "ambient documentation",
+          "rationale": "Documentation automation reduces administrative load while preserving clinical focus."
+        }
+      ],
+      "tags": [
+        "documentation",
+        "clinical productivity",
+        "ambient AI"
+      ]
+    },
+    {
+      "source_id": "src-qventus-stlukes",
+      "title": "Saint Luke's Health System perioperative case study",
+      "source_type": "document",
+      "locator": "https://www.qventus.com/wp-content/uploads/2024/11/Qventus_Case-Study_Perioperative_St-Lukes.pdf",
+      "captured_at": "2026-06-02T09:30:00Z",
+      "author": "Qventus",
+      "published_at": "2025-11-01",
+      "summary": "Saint Luke's used AI-enabled perioperative workflow automation to address OR scheduling inefficiencies, staffing constraints, and margin pressure.",
+      "raw_evidence": [
+        {
+          "evidence_id": "ev-qventus-1",
+          "kind": "stat",
+          "text": "Saint Luke's flagship hospital accommodated 7 percent more surgical cases despite having 20 percent fewer ORs due to staffing challenges.",
+          "locator": "turn2search12"
+        },
+        {
+          "evidence_id": "ev-qventus-2",
+          "kind": "stat",
+          "text": "Manual OR processes left usable block time unused and made last-minute case access difficult.",
+          "locator": "turn3view3:L38-L45"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "cl-qventus-1",
+          "statement": "Workflow automation in perioperative operations can create capacity and margin lift without waiting for net-new staffing.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-qventus-1",
+            "ev-qventus-2"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "perioperative throughput",
+          "rationale": "AI-driven OR scheduling and release management directly affects capacity, access, and margin."
+        }
+      ],
+      "tags": [
+        "OR",
+        "throughput",
+        "capacity",
+        "workflow automation"
+      ]
+    },
+    {
+      "source_id": "src-notable-fort",
+      "title": "Fort HealthCare automates prior authorizations with 91% success rate",
+      "source_type": "web",
+      "locator": "https://www.notablehealth.com/customer-stories/fort-healthcare-automates-prior-authorizations-with-91-success-rate",
+      "captured_at": "2026-06-02T09:30:00Z",
+      "author": "Notable",
+      "published_at": "2025-01-01",
+      "summary": "Fort HealthCare used Notable to automate prior authorizations and digital registration, reducing cancellations and easing operational strain on staff.",
+      "raw_evidence": [
+        {
+          "evidence_id": "ev-notable-1",
+          "kind": "stat",
+          "text": "Fort HealthCare faced double the prior-auth work volume versus onsite staff capacity, while 38 percent of calls to a busy clinic were going to voicemail.",
+          "locator": "turn4view1:L137-L139"
+        },
+        {
+          "evidence_id": "ev-notable-2",
+          "kind": "stat",
+          "text": "The system achieved a 74 percent digital completion rate, more than a 5 percent reduction in cancellations, and 91 percent successful authorizations.",
+          "locator": "turn4view1:L158-L167"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "cl-notable-1",
+          "statement": "Patient access and prior-authorization workflows are strong AI candidates because they are repetitive, operationally painful, and directly tied to care delays and cancellations.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-notable-1",
+            "ev-notable-2"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "patient access and prior auth",
+          "rationale": "Automation can relieve staff overload while improving authorizations and reducing cancellations."
+        }
+      ],
+      "tags": [
+        "patient access",
+        "prior authorization",
+        "registration"
+      ]
+    },
+    {
+      "source_id": "src-akasa-rcm",
+      "title": "Generative AI for Healthcare and Revenue Cycle",
+      "source_type": "web",
+      "locator": "https://akasa.com/",
+      "captured_at": "2026-06-02T09:30:00Z",
+      "author": "AKASA",
+      "published_at": "2026-01-01",
+      "summary": "AKASA positions GenAI as a workflow-embedded revenue-cycle platform and cites operational and financial improvements in health system deployments.",
+      "raw_evidence": [
+        {
+          "evidence_id": "ev-akasa-1",
+          "kind": "stat",
+          "text": "AKASA highlights automated authorization status, claim status, and an AI advisor for revenue-cycle teams.",
+          "locator": "turn3view4:L125-L148"
+        },
+        {
+          "evidence_id": "ev-akasa-2",
+          "kind": "stat",
+          "text": "Client examples on the site cite a 13 percent decrease in A/R days and 300+ staff hours saved per month.",
+          "locator": "turn3view4:L196-L203"
+        },
+        {
+          "evidence_id": "ev-akasa-3",
+          "kind": "stat",
+          "text": "Another client example cites a $30 million gross yield increase and an 86 percent efficiency improvement.",
+          "locator": "turn3view4:L217-L235"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "cl-akasa-1",
+          "statement": "Revenue-cycle AI is strongest when it is embedded into status-checking, document research, and workflow execution rather than offered as a standalone chatbot.",
+          "confidence": "medium",
+          "evidence_ids": [
+            "ev-akasa-1",
+            "ev-akasa-2",
+            "ev-akasa-3"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "revenue cycle automation",
+          "rationale": "Claims, authorization, and document-heavy workflows show measurable time and cash-flow impact."
+        }
+      ],
+      "tags": [
+        "revenue cycle",
+        "claims",
+        "authorization",
+        "denials"
+      ]
+    },
+    {
+      "source_id": "src-codametrix",
+      "title": "CodaMetrix contextual coding automation",
+      "source_type": "web",
+      "locator": "https://www.codametrix.com/",
+      "captured_at": "2026-06-02T09:30:00Z",
+      "author": "CodaMetrix",
+      "published_at": "2026-01-01",
+      "summary": "CodaMetrix describes coding automation as an enterprise operational and revenue-integrity platform, with quantified reductions in manual work and coding denials.",
+      "raw_evidence": [
+        {
+          "evidence_id": "ev-coda-1",
+          "kind": "stat",
+          "text": "CodaMetrix says its platform can deliver up to 30 percent lower coding cost and an average 5:1 ROI over five years.",
+          "locator": "turn1search0"
+        },
+        {
+          "evidence_id": "ev-coda-2",
+          "kind": "stat",
+          "text": "The site cites 70 percent reduction in manual coding, 5x faster turnaround time, 60 percent reduction in coding denials, and 30 percent savings in coding costs.",
+          "locator": "turn1search0"
+        },
+        {
+          "evidence_id": "ev-coda-3",
+          "kind": "stat",
+          "text": "The platform applies codes across service lines and is framed as improving coding quality, reimbursement, and workflow efficiency.",
+          "locator": "turn3view5:L67-L83, L203-L208"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "cl-coda-1",
+          "statement": "Coding automation is one of the clearest hard-dollar AI use cases in provider operations because the workflow is repetitive, rules-heavy, and directly tied to denials and reimbursement.",
+          "confidence": "high",
+          "evidence_ids": [
+            "ev-coda-1",
+            "ev-coda-2",
+            "ev-coda-3"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "coding automation and revenue integrity",
+          "rationale": "Coding is rules-heavy, audit-sensitive, and measurable on cost, speed, and denials."
+        }
+      ],
+      "tags": [
+        "coding",
+        "revenue integrity",
+        "denials"
+      ]
+    }
+  ]
+}

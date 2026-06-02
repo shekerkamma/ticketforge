@@ -1,0 +1,43 @@
+{
+  "report_slug": "toyota-automotive-ai-usecases",
+  "created_at": "2026-06-02T22:15:00Z",
+  "decision": "Toyota should keep prioritizing software-defined vehicle platform reuse, manufacturing and engineering productivity, connected vehicle data services, safety and validation workflows, and live mobility ecosystem experimentation over generic in-cabin AI feature narratives.",
+  "why_this_matters": "Automotive AI value is concentrating around platforms, reusable validation systems, data loops, and operating workflows that compound across vehicle programs.",
+  "executive_view": "Toyota is strongest where a workflow owner exists, software or data gets reused across programs, and real-world validation closes the loop.",
+  "strategic_implications": [
+    "Toyota's emerging moat is operational and platform-based, not only manufacturing-based.",
+    "The best AI bets are workflow-led because they directly improve release speed, engineering throughput, service quality, safety, and new service revenue.",
+    "Executives should keep separating reusable platform work from feature theater in the vehicle cabin.",
+    "Toyota's public materials suggest compounding value sits where software reuse, validation, and connected-data services reinforce one another."
+  ],
+  "recommended_actions": [
+    {
+      "title": "Prioritize operating-system AI before novelty feature AI",
+      "why": "Toyota\u2019s strongest signals come from SDV platforms, validation, connected services, and workflow productivity \u2014 not generic in-car assistant marketing.",
+      "priority": "high"
+    },
+    {
+      "title": "Invest where data, software reuse, and real-world validation compound together",
+      "why": "Toyota\u2019s advantage comes from linking platform software, connected data, and live mobility experiments.",
+      "priority": "high"
+    },
+    {
+      "title": "Treat manufacturing and engineering AI as core value pools",
+      "why": "Toyota explicitly names those workflows in GAIA and can spread gains across a massive production footprint.",
+      "priority": "high"
+    },
+    {
+      "title": "Use service and telematics workflows to prove monetizable AI beyond the vehicle cabin",
+      "why": "Toyota already has evidence in insurance, claims, and connected-service operations.",
+      "priority": "medium"
+    }
+  ],
+  "kpis": [
+    "software reuse rate across vehicle programs",
+    "validation cycle time and release confidence",
+    "engineering throughput",
+    "connected-service or claims cycle time",
+    "pilot-to-scale learning velocity"
+  ],
+  "bottom_line": "Toyota's strongest automotive AI strategy is AI in the platform, workflow, validation loop, and mobility system, not just AI in the car."
+}

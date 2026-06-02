@@ -1,0 +1,43 @@
+{
+  "report_slug": "insurance-progressive-ai-usecases",
+  "created_at": "2026-06-02T18:00:00Z",
+  "customer_scope": "named-customer",
+  "customer_label": "The Progressive Corporation",
+  "why_this_customer_matters": "Progressive combines scale, digital distribution, telematics, claims workflow instrumentation, and a clear growth agenda.",
+  "public_signals": [
+    "Second largest personal auto insurer in the United States",
+    "Leading seller of commercial auto insurance",
+    "37.3 million companywide policies in force as of June 30, 2025",
+    "Snapshot telematics and continuous monitoring at scale",
+    "App-based accident response and digital claim access",
+    "Explicit bundle-growth focus in property"
+  ],
+  "executive_priorities": [
+    "pricing precision and conversion quality",
+    "claims experience and cycle time",
+    "growth in bundled households",
+    "cost-to-serve discipline across channels",
+    "faster product and platform iteration"
+  ],
+  "workflow_owners": [
+    "underwriting and product leaders",
+    "claims operations leadership",
+    "growth and household / bundle teams",
+    "digital experience and service operations",
+    "platform and modernization leaders"
+  ],
+  "best_entry_points": [
+    "chief underwriting and product leaders",
+    "claims operations leadership",
+    "growth and household / bundle teams",
+    "digital experience and service operations",
+    "platform and modernization leaders"
+  ],
+  "best_use_case_angles": [
+    "telematics-driven underwriting",
+    "claims orchestration",
+    "bundle propensity and household expansion",
+    "service routing and automation",
+    "modernization factory workflows"
+  ]
+}

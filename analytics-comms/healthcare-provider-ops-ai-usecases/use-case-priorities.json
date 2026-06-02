@@ -1,0 +1,19 @@
+{
+  "report_slug": "healthcare-provider-ops-ai-usecases",
+  "created_at": "2026-06-02T22:00:00Z",
+  "prioritization_basis": "workflow ownership, measurable economics, and EHR-adjacent operating readiness",
+  "tiers": {
+    "tier_1": [
+      "Ambient documentation and visit support",
+      "Patient access, registration, and prior authorization"
+    ],
+    "tier_2": [
+      "Revenue cycle status and denial-prevention workflows",
+      "Coding automation and revenue integrity"
+    ],
+    "tier_3": [
+      "Perioperative and capacity orchestration"
+    ]
+  },
+  "rationale": "The order follows which healthcare workflows already show public proof, have a named operational owner, and can be measured in time, capacity, or revenue-cycle impact."
+}

@@ -1,0 +1,18 @@
+{
+  "report_slug": "insurance-progressive-ai-usecases",
+  "created_at": "2026-06-02T18:00:00Z",
+  "primary_audience": "business executives",
+  "lead_with": [
+    "measurable economics",
+    "workflow ownership",
+    "sequencing",
+    "what to fund now"
+  ],
+  "avoid_leading_with": [
+    "abstract transformation language",
+    "generic copilots",
+    "vendor taxonomy",
+    "speculative moonshots without operating ownership"
+  ],
+  "decision_frame": "Frame the deck as an operating-model and prioritization decision, not as a tour of AI features."
+}

@@ -72,6 +72,13 @@ def bullets_from_text(body: str) -> list[str]:
     return [body.strip()]
 
 
+def compact(text: str, limit: int) -> str:
+    collapsed = " ".join(text.split())
+    if len(collapsed) <= limit:
+        return collapsed
+    return collapsed[:limit].rsplit(" ", 1)[0] + "..."
+
+
 def build_cover(d: Deck, slide: dict, total: int, page: int) -> None:
     b = d.b
     s = d.slide(fill=b.NAVY)
@@ -79,7 +86,7 @@ def build_cover(d: Deck, slide: dict, total: int, page: int) -> None:
     d.rect(s, panel_w, 0, d.W - panel_w, d.H, b.NAVY_2)
     d.rect(s, panel_w, 0, Inches(0.06), d.H, b.TEAL)
     d.text(s, "EXECUTIVE DECK", d.M, Inches(0.95), Inches(6), Inches(0.32), size=15, color=b.TEAL, bold=True)
-    d.text(s, slide["title"], d.M, Inches(1.45), Inches(8.0), Inches(1.45), size=42, color=b.WHITE, bold=True, font=b.FONT_H, shrink=True)
+    d.text(s, slide["title"], d.M, Inches(1.45), Inches(7.7), Inches(1.48), size=36, color=b.WHITE, bold=True, font=b.FONT_H, shrink=True)
     strap = next((cb["body"] for cb in slide["content_blocks"] if cb.get("label") == "Subtitle"), "")
     body = next((cb["body"] for cb in slide["content_blocks"] if cb.get("label") != "Subtitle"), "")
     if strap:
@@ -92,7 +99,7 @@ def build_cover(d: Deck, slide: dict, total: int, page: int) -> None:
     for i, item in enumerate(slide["content_blocks"][:3]):
         y = Inches(2.35) + i * Inches(1.15)
         d.text(s, item.get("label", "").upper(), sx, y, Inches(3.2), Inches(0.2), size=10.5, color=b.TEAL, bold=True)
-        d.text(s, item["body"], sx, y + Inches(0.24), Inches(3.15), Inches(0.7), size=13.5, color=b.WHITE, bold=True, shrink=True)
+        d.text(s, compact(item["body"], 74), sx, y + Inches(0.24), Inches(3.15), Inches(0.7), size=12.2, color=b.WHITE, bold=True, shrink=True)
     d.footer(s, page, total, dark=True)
 
 
@@ -113,7 +120,7 @@ def build_divider(d: Deck, slide: dict, total: int, page: int) -> None:
     s = d.slide(fill=d.b.NAVY)
     d.rect(s, 0, 0, Inches(0.18), d.H, d.b.TEAL)
     d.text(s, slide.get("section", "").upper(), d.M, Inches(2.0), Inches(4), Inches(0.4), size=14, color=d.b.TEAL, bold=True)
-    d.text(s, slide["title"], d.M, Inches(2.55), Inches(11.5), Inches(1.2), size=38, color=d.b.WHITE, bold=True, font=d.b.FONT_H, shrink=True)
+    d.text(s, slide["title"], d.M, Inches(2.55), Inches(11.5), Inches(1.2), size=33, color=d.b.WHITE, bold=True, font=d.b.FONT_H, shrink=True)
     body = slide["content_blocks"][0]["body"] if slide["content_blocks"] else ""
     d.rect(s, d.M, Inches(3.82), Inches(1.5), Inches(0.06), d.b.TEAL)
     d.text(s, body, d.M, Inches(4.1), Inches(10.8), Inches(0.8), size=16.5, color=d.b.LIGHT_TEAL, shrink=True)
@@ -125,7 +132,7 @@ def build_summary_cards(d: Deck, slide: dict, total: int, page: int) -> None:
     d.header(s, slide["title"])
     gap = Inches(0.28)
     cw = (d.CW - gap) / 2
-    ch = Inches(1.48)
+    ch = Inches(1.62)
     top = Inches(1.9)
     for i, block in enumerate(slide["content_blocks"][:4]):
         row, col = divmod(i, 2)
@@ -133,8 +140,8 @@ def build_summary_cards(d: Deck, slide: dict, total: int, page: int) -> None:
         y = top + row * (ch + Inches(0.2))
         d.rect(s, x, y, cw, ch, d.b.SOFT, line=d.b.GRID, radius=0.05, shadow=True)
         d.rect(s, x, y, Inches(0.1), ch, d.b.TEAL)
-        d.text(s, block["label"], x + Inches(0.2), y + Inches(0.12), cw - Inches(0.35), Inches(0.28), size=12.2, color=d.b.ACCENT, bold=True, shrink=True)
-        d.text(s, block["body"], x + Inches(0.2), y + Inches(0.48), cw - Inches(0.36), Inches(0.78), size=11.3, color=d.b.INK, shrink=True)
+        d.text(s, block["label"], x + Inches(0.2), y + Inches(0.12), cw - Inches(0.35), Inches(0.28), size=11.8, color=d.b.ACCENT, bold=True, shrink=True)
+        d.text(s, compact(block["body"], 128), x + Inches(0.2), y + Inches(0.46), cw - Inches(0.36), Inches(0.95), size=10.5, color=d.b.INK, shrink=True)
     d.footer(s, page, total)
 
 
@@ -260,51 +267,53 @@ def build_case_study(d: Deck, slide: dict, total: int, page: int) -> None:
     d.rect(s, panel_w, 0, strip_w, d.H, d.b.NAVY)
     d.rect(s, panel_w, 0, Inches(0.06), d.H, d.b.GOLD)
     cards = [b for b in slide["content_blocks"] if b["kind"] == "company-card"]
-    implications = [b["body"] for b in slide["content_blocks"] if b["kind"] == "bullet-list"]
-    card_map = {b["label"]: b["body"] for b in cards}
-    account_signal = card_map.get("Current account signal", "")
-    executive_logic = card_map.get("Executive logic", "")
-    what_to_sell = card_map.get("What to sell", "")
+    implication_items: list[str] = []
+    for block in slide["content_blocks"]:
+        if block["kind"] == "bullet-list":
+            implication_items.extend(bullets_from_text(block["body"]))
+    account_signal = cards[0]["body"] if len(cards) > 0 else ""
+    what_to_sell = cards[1]["body"] if len(cards) > 1 else ""
+    executive_logic = cards[2]["body"] if len(cards) > 2 else ""
+    card_one_label = cards[0]["label"].upper() if len(cards) > 0 else "CURRENT ACCOUNT SIGNAL"
+    card_two_label = cards[1]["label"].upper() if len(cards) > 1 else "WHAT TO SELL"
+    card_three_label = cards[2]["label"].upper() if len(cards) > 2 else "EXECUTIVE LOGIC"
     title_tail = slide["title"].split(":", 1)[1].strip() if ":" in slide["title"] else slide["title"]
 
     d.text(s, slide["section"].upper(), d.M, Inches(0.28), Inches(3.5), Inches(0.25), size=11.5, color=d.b.NAVY, bold=True)
-    d.text(s, title_tail, d.M, Inches(0.55), panel_w - Inches(1.0), Inches(0.62), size=25, color=d.b.WHITE, bold=True, font=d.b.FONT_H, shrink=True)
+    d.text(s, title_tail, d.M, Inches(0.55), panel_w - Inches(1.0), Inches(0.62), size=22, color=d.b.WHITE, bold=True, font=d.b.FONT_H, shrink=True)
     d.rect(s, d.M, Inches(1.15), Inches(1.55), Inches(0.04), d.b.NAVY)
 
     left_card_w = Inches(3.82)
     lx = d.M
     rx = d.M + left_card_w + Inches(0.22)
     d.rect(s, lx, Inches(1.36), left_card_w, Inches(1.82), d.b.WHITE, radius=0.05, shadow=True)
-    d.text(s, "CURRENT ACCOUNT SIGNAL", lx + Inches(0.2), Inches(1.47), left_card_w - Inches(0.4), Inches(0.22), size=11.2, color=d.b.ACCENT, bold=True)
-    d.text(s, account_signal, lx + Inches(0.2), Inches(1.77), left_card_w - Inches(0.4), Inches(1.26), size=10.9, color=d.b.INK, shrink=True)
+    d.text(s, card_one_label, lx + Inches(0.2), Inches(1.47), left_card_w - Inches(0.4), Inches(0.22), size=10.8, color=d.b.ACCENT, bold=True, shrink=True)
+    d.text(s, compact(account_signal, 165), lx + Inches(0.2), Inches(1.77), left_card_w - Inches(0.4), Inches(1.26), size=10.2, color=d.b.INK, shrink=True)
 
     d.rect(s, rx, Inches(1.36), left_card_w, Inches(1.82), d.b.WHITE, radius=0.05, shadow=True)
-    d.text(s, "WHAT TO SELL", rx + Inches(0.2), Inches(1.47), left_card_w - Inches(0.4), Inches(0.22), size=11.2, color=d.b.ACCENT, bold=True)
-    d.text(s, what_to_sell, rx + Inches(0.2), Inches(1.77), left_card_w - Inches(0.4), Inches(1.26), size=10.9, color=d.b.INK, shrink=True)
+    d.text(s, card_two_label, rx + Inches(0.2), Inches(1.47), left_card_w - Inches(0.4), Inches(0.22), size=10.8, color=d.b.ACCENT, bold=True, shrink=True)
+    d.text(s, compact(what_to_sell, 165), rx + Inches(0.2), Inches(1.77), left_card_w - Inches(0.4), Inches(1.26), size=10.2, color=d.b.INK, shrink=True)
 
     d.rect(s, d.M, Inches(3.42), panel_w - d.M * 2, Inches(0.88), d.b.NAVY, radius=0.05)
-    d.text(s, "EXECUTIVE LOGIC", d.M + Inches(0.2), Inches(3.52), Inches(2.8), Inches(0.2), size=10.8, color=d.b.TEAL, bold=True)
+    d.text(s, card_three_label, d.M + Inches(0.2), Inches(3.52), Inches(3.2), Inches(0.2), size=10.4, color=d.b.TEAL, bold=True, shrink=True)
     d.text(
         s,
-        executive_logic,
+        compact(executive_logic, 215),
         d.M + Inches(0.2),
         Inches(3.78),
         panel_w - d.M * 2 - Inches(0.4),
         Inches(0.38),
-        size=11.2,
+        size=10.4,
         color=d.b.WHITE,
         bold=True,
         shrink=True,
     )
 
     d.rect(s, d.M, Inches(4.5), panel_w - d.M * 2, Inches(1.35), d.b.WHITE, radius=0.05, shadow=True)
-    d.text(s, "HOW TO POSITION THIS", d.M + Inches(0.2), Inches(4.62), Inches(2.8), Inches(0.22), size=11.2, color=d.b.ACCENT, bold=True)
-    implication_items = []
-    for item in implications[:1]:
-        implication_items.extend([chunk.strip() for chunk in item.split("|") if chunk.strip()])
+    d.text(s, "HOW TO POSITION THIS", d.M + Inches(0.2), Inches(4.62), Inches(2.8), Inches(0.22), size=11, color=d.b.ACCENT, bold=True)
     d.text(
         s,
-        [{"text": bullet, "size": 10.7, "color": d.b.INK, "bullet": True, "space_before": 3} for bullet in implication_items],
+        [{"text": compact(bullet, 82), "size": 9.6, "color": d.b.INK, "bullet": True, "space_before": 3} for bullet in implication_items[:2]],
         d.M + Inches(0.2),
         Inches(4.9),
         panel_w - d.M * 2 - Inches(0.4),
@@ -317,12 +326,12 @@ def build_case_study(d: Deck, slide: dict, total: int, page: int) -> None:
     d.rect(s, sx, Inches(0.82), Inches(1.0), Inches(0.04), d.b.GOLD)
     d.text(
         s,
-        "This program matters if Progressive wants measurable gain in economics, service quality, or growth without a broad transformation rewrite.",
+        "This program matters when it improves a real automotive workflow with reusable data, clear ownership, and measurable operating leverage.",
         sx,
         Inches(1.0),
         strip_w - Inches(0.5),
         Inches(0.85),
-        size=12.8,
+        size=12.0,
         color=d.b.WHITE,
         bold=True,
         shrink=True,
@@ -331,7 +340,7 @@ def build_case_study(d: Deck, slide: dict, total: int, page: int) -> None:
     checks = [
         "Named workflow owner",
         "Clear business metric",
-        "Uses existing Progressive data and flow",
+        "Uses existing data and system flow",
         "Can scale without a full replatform first",
     ]
     d.text(
@@ -398,8 +407,8 @@ def build_bullets(d: Deck, slide: dict, total: int, page: int) -> None:
         text = block["body"]
         if block.get("label"):
             text = f'{block["label"]}: {text}'
-        bullets.append({"text": text, "size": 12, "color": d.b.INK, "bullet": True, "space_before": 10})
-    d.text(s, bullets, d.M, Inches(1.9), d.CW, Inches(4.8), shrink=True)
+        bullets.append({"text": compact(text, 120), "size": 10.6, "color": d.b.INK, "bullet": True, "space_before": 7})
+    d.text(s, bullets, d.M, Inches(1.9), d.CW, Inches(5.05), shrink=True)
     d.footer(s, page, total)
 
 

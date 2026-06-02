@@ -48,6 +48,13 @@ findings = analysis["findings"]
 recommendations = analysis["recommendations"]
 
 
+def compact(text: str, limit: int) -> str:
+    collapsed = " ".join(text.split())
+    if len(collapsed) <= limit:
+        return collapsed
+    return collapsed[:limit].rsplit(" ", 1)[0] + "..."
+
+
 def divider(num: str, title: str, sub: str, page: int) -> None:
     s = d.slide(fill=b.NAVY)
     d.rect(s, 0, 0, Inches(0.18), d.H, b.TEAL)
@@ -78,61 +85,83 @@ def exec_summary_slide(page: int) -> None:
     d.text(s, "BOTTOM LINE", d.M + Inches(0.35), Inches(1.7), Inches(2.2), Inches(0.24), size=11, color=b.TEAL, bold=True)
     d.text(
         s,
-        analysis["headline"],
+        "Healthcare provider-ops AI is strongest where the system reduces manual coordination, accelerates revenue, or returns clinician time inside existing workflows.",
         d.M + Inches(0.35),
         Inches(1.97),
         d.CW - Inches(0.7),
-        Inches(0.5),
-        size=15.5,
+        Inches(0.54),
+        size=13.4,
         color=b.WHITE,
         bold=True,
         shrink=True,
     )
-    cols = [
-        ("MARKET SHIFT", b.TEAL, [
-            findings[0]["statement"],
-            findings[1]["statement"],
-        ]),
-        ("WHERE VALUE IS CLEAREST", b.GOLD, [
-            findings[2]["statement"],
-            "Administrative and workflow-heavy domains are stronger than vague enterprise copilots.",
-        ]),
-        ("WHAT TO DO", b.ACCENT, [
-            recommendations[0]["title"],
-            recommendations[1]["title"],
-            recommendations[2]["title"],
-        ]),
+    cards = [
+        (
+            "MARKET SHIFT",
+            b.TEAL,
+            [
+                "Provider AI has moved beyond experimentation and into operating workflows.",
+                "The strongest value is showing up in admin-heavy, measurable domains.",
+            ],
+        ),
+        (
+            "WHERE VALUE IS CLEAREST",
+            b.GOLD,
+            [
+                "Documentation, access, coding, RCM, and perioperative flow now have public proof.",
+                "Workflow economics are clearer than broad enterprise-copilot narratives.",
+            ],
+        ),
+        (
+            "HOW TO START",
+            b.ACCENT,
+            [
+                "Pick one workflow, one owner, and one hard operating scorecard.",
+                "Require EHR-adjacent execution before expanding beyond pilot mode.",
+            ],
+        ),
+        (
+            "GOVERNANCE NOTE",
+            CORAL,
+            [
+                "Assistive and more autonomous workflows should not use the same control model.",
+                "Sequence proof first; scale only after quality and exception handling are stable.",
+            ],
+        ),
     ]
-    gap = Inches(0.3)
-    cw = (d.CW - gap * 2) / 3
-    top = Inches(2.78)
-    h = Inches(2.58)
-    for i, (title, accent, items) in enumerate(cols):
-        x = d.M + i * (cw + gap)
-        d.rect(s, x, top, cw, h, b.SOFT, line=b.GRID, radius=0.05)
-        d.rect(s, x, top, cw, Inches(0.5), b.NAVY, radius=0.05)
-        d.rect(s, x, top, Inches(0.1), Inches(0.5), accent)
-        d.text(s, title, x + Inches(0.24), top + Inches(0.1), cw - Inches(0.4), Inches(0.3), size=12.5, color=accent, bold=True)
+    gap_x = Inches(0.28)
+    gap_y = Inches(0.22)
+    cw = (d.CW - gap_x) / 2
+    ch = Inches(1.46)
+    top = Inches(2.75)
+    for idx, (title, accent, items) in enumerate(cards):
+        row, col = divmod(idx, 2)
+        x = d.M + col * (cw + gap_x)
+        y = top + row * (ch + gap_y)
+        d.rect(s, x, y, cw, ch, b.SOFT, line=b.GRID, radius=0.05)
+        d.rect(s, x, y, cw, Inches(0.48), b.NAVY, radius=0.05)
+        d.rect(s, x, y, Inches(0.1), Inches(0.48), accent)
+        d.text(s, title, x + Inches(0.22), y + Inches(0.1), cw - Inches(0.34), Inches(0.26), size=12, color=accent, bold=True)
         d.text(
             s,
-            [{"text": item, "size": 11.2, "color": b.INK, "bullet": True, "space_before": 9} for item in items],
-            x + Inches(0.27),
-            top + Inches(0.68),
-            cw - Inches(0.54),
-            h - Inches(0.85),
+            [{"text": item, "size": 9.7, "color": b.INK, "bullet": True, "space_before": 4} for item in items],
+            x + Inches(0.24),
+            y + Inches(0.58),
+            cw - Inches(0.46),
+            ch - Inches(0.72),
             shrink=True,
-            ls=1.03,
+            ls=0.98,
         )
-    d.rect(s, d.M, Inches(5.62), d.CW, Inches(0.85), b.TEAL, radius=0.06)
-    d.text(s, "THE ASK", d.M + Inches(0.4), Inches(5.62), Inches(2.0), Inches(0.85), size=14, color=b.NAVY, bold=True, anchor=MSO_ANCHOR.MIDDLE)
+    d.rect(s, d.M, Inches(6.03), d.CW, Inches(0.62), b.TEAL, radius=0.06)
+    d.text(s, "THE ASK", d.M + Inches(0.4), Inches(6.03), Inches(2.0), Inches(0.62), size=13.2, color=b.NAVY, bold=True, anchor=MSO_ANCHOR.MIDDLE)
     d.text(
         s,
         "Approve one workflow-led pilot with a named owner and a hard operating scorecard before expanding into broader AI initiatives.",
         d.M + Inches(1.95),
-        Inches(5.62),
+        Inches(6.03),
         d.CW - Inches(2.35),
-        Inches(0.85),
-        size=14,
+        Inches(0.62),
+        size=13.2,
         color=b.NAVY,
         bold=True,
         anchor=MSO_ANCHOR.MIDDLE,
@@ -497,21 +526,21 @@ def workflow_card(
     org_label: str,
 ) -> None:
     s = d.slide(fill=b.WHITE)
-    pw = Inches(4.85)
+    pw = Inches(4.6)
     d.rect(s, 0, 0, pw, d.H, b.NAVY)
     d.rect(s, pw, 0, Inches(0.06), d.H, b.TEAL)
     d.text(s, "USE CASE", Inches(0.45), Inches(0.52), Inches(4), Inches(0.28), size=11, color=b.TEAL, bold=True)
-    d.text(s, display_title, Inches(0.45), Inches(0.82), Inches(4.05), Inches(0.88), size=23, color=b.WHITE, bold=True, font=b.FONT_H, shrink=True)
+    d.text(s, display_title, Inches(0.45), Inches(0.82), Inches(3.85), Inches(0.88), size=20.5, color=b.WHITE, bold=True, font=b.FONT_H, shrink=True)
     d.rect(s, Inches(0.45), Inches(1.75), Inches(1.25), Inches(0.04), b.TEAL)
 
-    d.rect(s, Inches(0.35), Inches(2.05), Inches(4.1), Inches(1.22), NAVY_2, radius=0.06)
-    d.rect(s, Inches(0.35), Inches(2.05), Inches(0.08), Inches(1.22), CORAL)
+    d.rect(s, Inches(0.35), Inches(2.05), Inches(3.9), Inches(1.14), NAVY_2, radius=0.06)
+    d.rect(s, Inches(0.35), Inches(2.05), Inches(0.08), Inches(1.14), CORAL)
     d.text(s, "BUSINESS JOB", Inches(0.6), Inches(2.18), Inches(3.7), Inches(0.22), size=10, color=CORAL, bold=True)
-    d.text(s, cluster["business_job"], Inches(0.6), Inches(2.45), Inches(3.7), Inches(0.72), size=11.5, color=LIGHT_TEAL, shrink=True, ls=1.06)
+    d.text(s, compact(cluster["business_job"], 96), Inches(0.6), Inches(2.43), Inches(3.45), Inches(0.62), size=9.7, color=LIGHT_TEAL, shrink=True, ls=1.0)
 
     d.rect(s, Inches(0.35), Inches(3.48), Inches(1.95), Inches(1.12), NAVY_2, radius=0.06)
     d.text(s, stat, Inches(0.35), Inches(3.6), Inches(1.95), Inches(0.45), size=28, color=b.GOLD, bold=True, align=PP_ALIGN.CENTER)
-    d.text(s, stat_label, Inches(0.45), Inches(4.1), Inches(1.75), Inches(0.34), size=9.5, color=b.WHITE, align=PP_ALIGN.CENTER, shrink=True)
+    d.text(s, compact(stat_label, 28), Inches(0.45), Inches(4.1), Inches(1.75), Inches(0.34), size=8.7, color=b.WHITE, align=PP_ALIGN.CENTER, shrink=True)
 
     d.rect(s, Inches(2.52), Inches(3.48), Inches(1.93), Inches(1.12), NAVY_2, radius=0.06)
     d.text(s, "WHO OWNS IT", Inches(2.66), Inches(3.6), Inches(1.6), Inches(0.2), size=9, color=b.TEAL, bold=True)
@@ -522,34 +551,34 @@ def workflow_card(
         Inches(3.88),
         Inches(1.6),
         Inches(0.54),
-        size=10,
+        size=9.0,
         color=LIGHT_TEAL,
         shrink=True,
     )
 
-    d.text(s, cluster["value_prop"], Inches(0.45), Inches(4.95), Inches(4.0), Inches(0.52), size=10.8, color=b.MUTED, italic=True, shrink=True)
+    d.text(s, compact(cluster["value_prop"], 90), Inches(0.45), Inches(4.95), Inches(3.9), Inches(0.48), size=9.2, color=b.MUTED, italic=True, shrink=True)
 
     rx = pw + Inches(0.5)
     rw = d.W - pw - Inches(1.1)
     d.rect(s, rx, Inches(0.2), rw, Inches(0.16), b.TEAL)
     d.text(s, "HOW THE WORKFLOW GETS REALIZED", rx, Inches(0.55), rw, Inches(0.35), size=13, color=b.NAVY, bold=True)
-    d.text(s, cluster["recommendation"], rx, Inches(0.88), rw, Inches(0.32), size=10.8, color=b.MUTED, shrink=True)
-    step_top = Inches(1.42)
-    step_h = Inches(0.78)
-    step_gap = Inches(0.1)
+    d.text(s, compact(cluster["recommendation"], 118), rx, Inches(0.88), rw, Inches(0.3), size=9.7, color=b.MUTED, shrink=True)
+    step_top = Inches(1.33)
+    step_h = Inches(0.68)
+    step_gap = Inches(0.08)
     for i, (step_title, step_desc) in enumerate(workflow_steps):
         y = step_top + i * (step_h + step_gap)
         d.rect(s, rx, y, Inches(0.5), Inches(0.5), b.TEAL, radius=0.18)
         d.text(s, str(i + 1), rx, y + Inches(0.06), Inches(0.5), Inches(0.36), size=16, color=b.NAVY, bold=True, align=PP_ALIGN.CENTER)
-        d.text(s, step_title, rx + Inches(0.65), y + Inches(0.02), rw - Inches(0.72), Inches(0.24), size=12.6, color=b.NAVY, bold=True, shrink=True)
-        d.text(s, step_desc, rx + Inches(0.65), y + Inches(0.3), rw - Inches(0.72), Inches(0.42), size=10.7, color=b.INK, shrink=True)
+        d.text(s, step_title, rx + Inches(0.65), y + Inches(0.01), rw - Inches(0.72), Inches(0.22), size=11.4, color=b.NAVY, bold=True, shrink=True)
+        d.text(s, compact(step_desc, 92), rx + Inches(0.65), y + Inches(0.25), rw - Inches(0.72), Inches(0.34), size=9.7, color=b.INK, shrink=True)
         if i < len(workflow_steps) - 1:
             d.text(s, "↓", rx + Inches(0.15), y + step_h - Inches(0.06), Inches(0.5), Inches(0.24), size=13, color=b.ACCENT, bold=True, align=PP_ALIGN.CENTER)
 
     evidence = cluster["evidence_companies"][0]
     d.rect(s, rx, Inches(5.7), rw, Inches(0.68), b.SOFT, line=b.GRID, radius=0.04)
     d.text(s, org_label, rx + Inches(0.2), Inches(5.82), Inches(1.8), Inches(0.2), size=10, color=b.ACCENT, bold=True)
-    d.text(s, evidence["proof_line"], rx + Inches(1.75), Inches(5.78), rw - Inches(1.95), Inches(0.26), size=10, color=b.INK, shrink=True)
+    d.text(s, compact(evidence["proof_line"], 96), rx + Inches(1.75), Inches(5.78), rw - Inches(1.95), Inches(0.26), size=8.4, color=b.INK, shrink=True)
     d.rect(s, rx, Inches(6.48), rw, Inches(0.34), b.NAVY, radius=0.04)
     d.text(
         s,
@@ -558,7 +587,7 @@ def workflow_card(
         Inches(6.48),
         rw - Inches(0.36),
         Inches(0.34),
-        size=8.6,
+        size=8.0,
         color=b.WHITE,
         bold=True,
         anchor=MSO_ANCHOR.MIDDLE,
@@ -643,16 +672,16 @@ def roadmap_slide(page: int) -> None:
         ("01", "Choose one workflow family", "Pick a high-pain domain such as prior auth, coding, or OR scheduling — not a vague enterprise AI mandate."),
         ("02", "Name the operating owner", "Give one leader the workflow, baseline, and escalation path before vendor configuration begins."),
         ("03", "Set 2–3 operating metrics", "Use cancellations, A/R days, denials, coding turnaround, or clinician-time recovery — not vanity metrics."),
-        ("04", "Require system-of-record integration", "If the workflow is not embedded in the EHR or downstream process, it is not ready to scale."),
+        ("04", "Require EHR / system integration", "If the workflow is not embedded in the EHR or downstream process, it is not ready to scale."),
         ("05", "Scale only after durable proof", "Move from pilot to expansion only after the operating scorecard improves and exception handling is stable."),
     ]
     top = Inches(1.95)
     for idx, (num, title, body) in enumerate(steps):
-        y = top + idx * Inches(0.92)
+        y = top + idx * Inches(0.87)
         d.rect(s, d.M, y, Inches(0.68), Inches(0.68), b.TEAL, radius=0.18)
         d.text(s, num, d.M, y + Inches(0.11), Inches(0.68), Inches(0.42), size=20, color=b.NAVY, bold=True, align=PP_ALIGN.CENTER)
-        d.text(s, title, d.M + Inches(0.95), y + Inches(0.02), Inches(3.5), Inches(0.24), size=13, color=b.NAVY, bold=True)
-        d.text(s, body, d.M + Inches(0.95), y + Inches(0.28), d.CW - Inches(1.1), Inches(0.42), size=10.8, color=b.INK, shrink=True)
+        d.text(s, title, d.M + Inches(0.95), y + Inches(0.02), Inches(3.5), Inches(0.24), size=12.2, color=b.NAVY, bold=True)
+        d.text(s, body, d.M + Inches(0.95), y + Inches(0.26), d.CW - Inches(1.1), Inches(0.38), size=9.8, color=b.INK, shrink=True)
         if idx < len(steps) - 1:
             d.text(s, "↓", d.M + Inches(0.15), y + Inches(0.66), Inches(0.4), Inches(0.26), size=13, color=b.ACCENT, bold=True, align=PP_ALIGN.CENTER)
     d.rect(s, d.M, Inches(6.45), d.CW, Inches(0.4), b.NAVY, radius=0.04)
@@ -670,9 +699,9 @@ def decision_slide(page: int) -> None:
         "Pick The First\nWorkflow",
         d.M,
         Inches(1.45),
-        Inches(7.0),
-        Inches(1.25),
-        size=40,
+        Inches(6.7),
+        Inches(1.1),
+        size=34,
         color=b.WHITE,
         bold=True,
         font=b.FONT_H,
@@ -681,12 +710,12 @@ def decision_slide(page: int) -> None:
     d.rect(s, d.M, Inches(3.2), Inches(1.5), Inches(0.06), b.TEAL)
     d.text(
         s,
-        "The strongest provider-ops AI opportunities are already visible. The decision is whether to force-fit a broad platform narrative or to own one operational workflow with measurable proof.",
+        "The strongest provider-ops AI opportunities are already visible. The decision is whether to own one operational workflow with measurable proof before widening the platform narrative.",
         d.M,
         Inches(3.52),
-        Inches(7.8),
-        Inches(0.9),
-        size=16,
+        Inches(7.3),
+        Inches(0.78),
+        size=13.2,
         color=b.WHITE,
         shrink=True,
     )
@@ -716,7 +745,7 @@ def decision_slide(page: int) -> None:
     y = Inches(2.35)
     for chip in chips:
         d.rect(s, sx, y, Inches(2.9), Inches(0.5), b.ACCENT, radius=0.5)
-        d.text(s, chip, sx, y + Inches(0.08), Inches(2.9), Inches(0.3), size=11.2, color=b.WHITE, bold=True, align=PP_ALIGN.CENTER)
+        d.text(s, chip, sx, y + Inches(0.08), Inches(2.9), Inches(0.3), size=10.6, color=b.WHITE, bold=True, align=PP_ALIGN.CENTER)
         y += Inches(0.68)
     d.footer(s, page, TOTAL, dark=True)
 
@@ -769,8 +798,8 @@ def cover_slide() -> None:
     d.rect(s, panel_w, 0, d.W - panel_w, d.H, NAVY_2)
     d.rect(s, panel_w, 0, Inches(0.06), d.H, b.TEAL)
     d.text(s, "EXECUTIVE DECK", d.M, Inches(0.95), Inches(6), Inches(0.32), size=15, color=b.TEAL, bold=True)
-    d.text(s, "AI Use Cases In\nHealthcare Operations", d.M, Inches(1.45), Inches(8.0), Inches(1.4), size=44, color=b.WHITE, bold=True, font=b.FONT_H, shrink=True)
-    d.text(s, "Where Operational Value Is Strongest Right Now", d.M, Inches(3.15), Inches(7.8), Inches(0.65), size=24, color=b.TEAL, bold=True, font=b.FONT_H, shrink=True)
+    d.text(s, "Healthcare Provider-Ops\nAI Use Cases", d.M, Inches(1.45), Inches(7.6), Inches(1.26), size=36, color=b.WHITE, bold=True, font=b.FONT_H, shrink=True)
+    d.text(s, "Where Provider-Ops Value Is Strongest", d.M, Inches(3.15), Inches(7.4), Inches(0.58), size=21.5, color=b.TEAL, bold=True, font=b.FONT_H, shrink=True)
     d.rect(s, d.M, Inches(3.98), Inches(1.5), Inches(0.06), b.TEAL)
     d.text(
         s,
@@ -792,7 +821,7 @@ def cover_slide() -> None:
     ]):
         y = Inches(2.34) + i * Inches(1.2)
         d.text(s, head.upper(), sx, y, Inches(3.2), Inches(0.22), size=10.5, color=b.TEAL, bold=True)
-        d.text(s, detail, sx, y + Inches(0.26), Inches(3.2), Inches(0.64), size=14.5, color=b.WHITE, bold=True, shrink=True)
+        d.text(s, detail, sx, y + Inches(0.26), Inches(3.15), Inches(0.64), size=12.0, color=b.WHITE, bold=True, shrink=True)
     d.text(s, FOOTER_TEXT, d.M, Inches(6.7), Inches(9), Inches(0.3), size=11, color=hx("6B7C8C"))
 
 
@@ -814,7 +843,7 @@ workflow_card(
     clusters[0],
     "Ambient\ndocumentation",
     "1/3+",
-    "of UCHealth providers on the platform",
+    "UCHealth providers on platform",
     ["EHR", "Ambient note engine", "Clinical chart", "Audit trail"],
     [
         ("Capture encounter context", "Listen to the visit and produce draft documentation in the chart."),
@@ -829,7 +858,7 @@ workflow_card(
     clusters[1],
     "Access,\nregistration,\nand prior auth",
     "91%",
-    "successful authorizations in the case evidence",
+    "authorization success in case",
     ["Scheduling", "Registration", "Auth workflow", "Call / queue system"],
     [
         ("Surface queue pain", "Start where staff capacity is already failing against intake or auth demand."),
@@ -842,9 +871,9 @@ workflow_card(
 workflow_card(
     16,
     clusters[2],
-    "Revenue cycle\nstatus work",
+    "RCM status\nwork",
     "A/R↓",
-    "faster cash conversion is the scorecard",
+    "cash conversion focus",
     ["Payer portals", "Claim systems", "Auth status", "RCM queue"],
     [
         ("Target status-heavy tasks", "Start with claim, auth, and documentation research that consumes analyst time."),
@@ -859,7 +888,7 @@ workflow_card(
     clusters[3],
     "Coding\nautomation",
     "5:1",
-    "ROI profile cited in coding automation proof",
+    "ROI signal in case proof",
     ["Coding queue", "Revenue integrity", "Claim edits", "Audit trail"],
     [
         ("Choose a narrow coding lane", "Pilot on a service line with coding delay or denial pain."),

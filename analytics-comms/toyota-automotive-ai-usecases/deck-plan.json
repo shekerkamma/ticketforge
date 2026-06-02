@@ -1,0 +1,1013 @@
+{
+  "report_slug": "toyota-automotive-ai-usecases",
+  "created_at": "2026-06-02T22:15:00Z",
+  "audience": "executive",
+  "deck_goal": "Produce a research-backed executive deck on automotive AI priorities using Toyota as the named customer lens.",
+  "theme_reference": "Use the branded executive slide system already established in this repo.",
+  "story_arc": [
+    "Why automotive AI is shifting toward platform and workflow value",
+    "Why Toyota is the strongest named-customer lens",
+    "Which AI workflow families matter most",
+    "What automotive executives should sequence next"
+  ],
+  "slides": [
+    {
+      "slide_id": "s1",
+      "section": "Opening",
+      "slide_type": "hero",
+      "title": "Toyota Automotive AI Operating Model",
+      "objective": "Lead with the main thesis.",
+      "audience": "executive",
+      "layout": "hero",
+      "content_blocks": [
+        {
+          "kind": "summary",
+          "label": "Subtitle",
+          "body": "Research-backed executive example"
+        },
+        {
+          "kind": "summary",
+          "label": "Strapline",
+          "body": "Toyota\u2019s strongest automotive AI opportunities are the operating-system layers around software-defined vehicles, engineering productivity, connected vehicle data services, and real-world mobility experimentation."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-20f-2025",
+        "src-toyota-gaia-2025",
+        "src-arene-rav4-2025",
+        "src-woven-city-ai-2026",
+        "src-woven-city-launch-2025",
+        "src-connected-services-2021",
+        "src-telematics-insurance-2019",
+        "src-toyota-production-2024"
+      ]
+    },
+    {
+      "slide_id": "s2",
+      "section": "Agenda",
+      "slide_type": "agenda",
+      "title": "What This Deck Covers",
+      "objective": "Set the readout sequence.",
+      "audience": "executive",
+      "layout": "list",
+      "content_blocks": [
+        {
+          "kind": "agenda-item",
+          "label": "Why the market has shifted",
+          "body": "How Toyota shows that automotive AI is moving from isolated features to operating systems."
+        },
+        {
+          "kind": "agenda-item",
+          "label": "Where value is strongest",
+          "body": "The highest-value AI domains in automotive OEM operations."
+        },
+        {
+          "kind": "agenda-item",
+          "label": "Toyota proof points",
+          "body": "Arene, GAIA, connected services, telematics, and Woven City."
+        },
+        {
+          "kind": "agenda-item",
+          "label": "What to do next",
+          "body": "How an automotive executive team should prioritize AI bets."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-20f-2025",
+        "src-toyota-gaia-2025"
+      ]
+    },
+    {
+      "slide_id": "s3",
+      "section": "Market Shift",
+      "slide_type": "section-divider",
+      "title": "Automotive AI Is The Operating System",
+      "objective": "Create the first narrative turn.",
+      "audience": "executive",
+      "layout": "section",
+      "content_blocks": [
+        {
+          "kind": "callout",
+          "label": "Section note",
+          "body": "Toyota\u2019s public strategy is no longer about adding AI on top of the car. It is about software platforms, data loops, validation systems, and live mobility environments."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-20f-2025",
+        "src-arene-rav4-2025",
+        "src-connected-services-2021"
+      ]
+    },
+    {
+      "slide_id": "s4",
+      "section": "Executive Summary",
+      "slide_type": "summary-cards",
+      "title": "Four Executive Conclusions",
+      "objective": "Summarize the main takeaways.",
+      "audience": "executive",
+      "layout": "2x2-card-grid",
+      "content_blocks": [
+        {
+          "kind": "summary",
+          "label": "Toyota is treating AI as infrastructure",
+          "body": "Its filings and platform work connect AI to SDVs, safety, reliability, and mobility operating systems."
+        },
+        {
+          "kind": "summary",
+          "label": "The strongest AI value sits in workflows",
+          "body": "Software reuse, validation, manufacturing productivity, connected services, and live feedback loops all outperform generic feature talk."
+        },
+        {
+          "kind": "summary",
+          "label": "Toyota is industrializing AI talent",
+          "body": "GAIA and the Toyota Software Academy show group-wide investment beyond one central lab."
+        },
+        {
+          "kind": "summary",
+          "label": "Live testbeds matter",
+          "body": "Woven City and connected-service operations give Toyota unusual real-world feedback and service experimentation capability."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-20f-2025",
+        "src-toyota-gaia-2025",
+        "src-arene-rav4-2025",
+        "src-woven-city-ai-2026",
+        "src-woven-city-launch-2025",
+        "src-connected-services-2021",
+        "src-telematics-insurance-2019",
+        "src-toyota-production-2024"
+      ]
+    },
+    {
+      "slide_id": "s5",
+      "section": "Core Metrics",
+      "slide_type": "kpi-grid",
+      "title": "Why Toyota Matters As A Test Case",
+      "objective": "Compress scale and capability signals into one page.",
+      "audience": "executive",
+      "layout": "four-metric-grid",
+      "content_blocks": [
+        {
+          "kind": "metric",
+          "label": "Toyota and Lexus production in 2024",
+          "body": "9.52M|Toyota fact-data"
+        },
+        {
+          "kind": "metric",
+          "label": "Connected Toyota and Lexus vehicles",
+          "body": "10M|Toyota connected-car speech"
+        },
+        {
+          "kind": "metric",
+          "label": "Woven City inventors",
+          "body": "24|Toyota and Woven by Toyota 2026"
+        },
+        {
+          "kind": "metric",
+          "label": "Toyota Software Academy courses",
+          "body": "100|GAIA launch"
+        },
+        {
+          "kind": "callout",
+          "label": "Takeaway",
+          "body": "Toyota combines scale, software-platform work, connected data, and institutional AI training in a way that makes it a strong automotive benchmark."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-production-2024",
+        "src-connected-services-2021",
+        "src-woven-city-ai-2026",
+        "src-toyota-gaia-2025"
+      ]
+    },
+    {
+      "slide_id": "s6",
+      "section": "Interpretation",
+      "slide_type": "comparison",
+      "title": "What Has Changed In Automotive AI",
+      "objective": "Contrast the old lens with the new lens.",
+      "audience": "executive",
+      "layout": "two-column-comparison",
+      "content_blocks": [
+        {
+          "kind": "comparison-column",
+          "label": "Old lens",
+          "body": "AI as a feature add-on|Cockpit assistant demos|One-model experiments|Separate software and hardware teams"
+        },
+        {
+          "kind": "comparison-column",
+          "label": "New lens",
+          "body": "AI as operating infrastructure|Reusable software and validation loops|Connected-service data workflows|Real-world experimentation across vehicles and mobility services"
+        }
+      ],
+      "source_ids": [
+        "src-toyota-20f-2025",
+        "src-arene-rav4-2025",
+        "src-connected-services-2021"
+      ]
+    },
+    {
+      "slide_id": "s7",
+      "section": "Point Of View",
+      "slide_type": "bullets",
+      "title": "Toyota's AI Story Is Bigger Than In-Car Assistants",
+      "objective": "Frame the strategic thesis.",
+      "audience": "executive",
+      "layout": "bullet-list",
+      "content_blocks": [
+        {
+          "kind": "bullet",
+          "label": "Platform",
+          "body": "Arene turns software reuse, deployment, and validation into a product platform issue."
+        },
+        {
+          "kind": "bullet",
+          "label": "Enterprise",
+          "body": "GAIA treats AI as a group-wide capability across manufacturing, engineering, and customer workflows."
+        },
+        {
+          "kind": "bullet",
+          "label": "Service layer",
+          "body": "Connected-car data, claims workflows, and mobility services create monetizable AI outside the vehicle cabin."
+        },
+        {
+          "kind": "bullet",
+          "label": "Testbed",
+          "body": "Woven City gives Toyota a live environment to test cross-system AI products and services."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-gaia-2025",
+        "src-arene-rav4-2025",
+        "src-woven-city-ai-2026",
+        "src-telematics-insurance-2019"
+      ]
+    },
+    {
+      "slide_id": "s8",
+      "section": "Priority Ranking",
+      "slide_type": "section-divider",
+      "title": "Where Toyota Is Building AI Edge",
+      "objective": "Transition into ranked domains.",
+      "audience": "executive",
+      "layout": "section",
+      "content_blocks": [
+        {
+          "kind": "callout",
+          "label": "Section note",
+          "body": "The value is not evenly distributed. Toyota\u2019s strongest lanes cluster where software reuse, data loops, and operational ownership already exist."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-20f-2025",
+        "src-toyota-gaia-2025",
+        "src-arene-rav4-2025",
+        "src-woven-city-ai-2026",
+        "src-woven-city-launch-2025",
+        "src-connected-services-2021",
+        "src-telematics-insurance-2019",
+        "src-toyota-production-2024"
+      ]
+    },
+    {
+      "slide_id": "s9",
+      "section": "Priority Ranking",
+      "slide_type": "bar-chart",
+      "title": "Highest-Value Toyota Automotive AI Domains",
+      "objective": "Rank near-term strategic value by domain.",
+      "audience": "executive",
+      "layout": "ranked-bars",
+      "content_blocks": [
+        {
+          "kind": "chart-brief",
+          "label": "SDV platform + software reuse",
+          "body": "9.6"
+        },
+        {
+          "kind": "chart-brief",
+          "label": "Manufacturing + engineering productivity",
+          "body": "9.2"
+        },
+        {
+          "kind": "chart-brief",
+          "label": "Connected data services + claims workflows",
+          "body": "8.9"
+        },
+        {
+          "kind": "chart-brief",
+          "label": "Safety / validation workflows",
+          "body": "8.7"
+        },
+        {
+          "kind": "chart-brief",
+          "label": "Mobility ecosystem experimentation",
+          "body": "8.4"
+        }
+      ],
+      "source_ids": [
+        "src-toyota-20f-2025",
+        "src-toyota-gaia-2025",
+        "src-arene-rav4-2025",
+        "src-woven-city-ai-2026",
+        "src-woven-city-launch-2025",
+        "src-connected-services-2021",
+        "src-telematics-insurance-2019",
+        "src-toyota-production-2024"
+      ]
+    },
+    {
+      "slide_id": "s10",
+      "section": "Interpretation",
+      "slide_type": "comparison",
+      "title": "What Tends To Win Versus What Tends To Stall",
+      "objective": "Differentiate high-fit workflows from weaker bets.",
+      "audience": "executive",
+      "layout": "two-column-comparison",
+      "content_blocks": [
+        {
+          "kind": "comparison-column",
+          "label": "What tends to win",
+          "body": "Reusable software modules|Validation and safety workflows|Connected service operations|Real-world mobility test loops|Programs with one accountable owner"
+        },
+        {
+          "kind": "comparison-column",
+          "label": "What tends to stall",
+          "body": "Generic assistant narratives|Feature demos detached from fleet data|Programs with no validation scorecard|AI initiatives separated from vehicle or service operations|Pilot work with no platform reuse path"
+        }
+      ],
+      "source_ids": [
+        "src-arene-rav4-2025",
+        "src-connected-services-2021",
+        "src-woven-city-ai-2026"
+      ]
+    },
+    {
+      "slide_id": "s11",
+      "section": "Workflow Map",
+      "slide_type": "use-case-card-grid",
+      "title": "Five High-Value Automotive AI Workflow Families",
+      "objective": "Translate the market evidence into a prioritized operating map.",
+      "audience": "executive",
+      "layout": "table",
+      "content_blocks": [
+        {
+          "kind": "table",
+          "label": "SDV platform + software reuse",
+          "body": "Decouple software from hardware, reuse modules across models, and speed validated releases."
+        },
+        {
+          "kind": "table",
+          "label": "Manufacturing + engineering productivity",
+          "body": "Apply AI to design, manufacturing, and knowledge transfer workflows that slow product development."
+        },
+        {
+          "kind": "table",
+          "label": "Connected data services + claims",
+          "body": "Turn vehicle data into customer, insurance, and mobility operations with direct service outcomes."
+        },
+        {
+          "kind": "table",
+          "label": "Safety + validation",
+          "body": "Use virtual testing, simulation, and AI infrastructure to improve release confidence and reduce prototype burden."
+        },
+        {
+          "kind": "table",
+          "label": "Mobility ecosystem experimentation",
+          "body": "Run real-world pilots that connect vehicles, infrastructure, finance, and partner services."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-20f-2025",
+        "src-toyota-gaia-2025",
+        "src-arene-rav4-2025",
+        "src-woven-city-ai-2026",
+        "src-woven-city-launch-2025",
+        "src-connected-services-2021",
+        "src-telematics-insurance-2019",
+        "src-toyota-production-2024"
+      ]
+    },
+    {
+      "slide_id": "s12",
+      "section": "Structural Advantage",
+      "slide_type": "bullets",
+      "title": "Why Toyota Has A Structural Advantage",
+      "objective": "Explain why Toyota is a strong anchor example.",
+      "audience": "executive",
+      "layout": "bullet-list",
+      "content_blocks": [
+        {
+          "kind": "bullet",
+          "label": "Scale",
+          "body": "Toyota\u2019s 9.52 million-unit production footprint magnifies the payoff from modular software and process gains."
+        },
+        {
+          "kind": "bullet",
+          "label": "Data",
+          "body": "Toyota already operates large connected-fleet, call-center, big-data, and mobility service systems."
+        },
+        {
+          "kind": "bullet",
+          "label": "Talent",
+          "body": "GAIA and the Toyota Software Academy create a formal pipeline for AI and software capability."
+        },
+        {
+          "kind": "bullet",
+          "label": "Validation environment",
+          "body": "Woven City gives Toyota a live test course for mobility products, services, and cross-industry AI workflows."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-production-2024",
+        "src-connected-services-2021",
+        "src-toyota-gaia-2025",
+        "src-woven-city-launch-2025"
+      ]
+    },
+    {
+      "slide_id": "s13",
+      "section": "Deep Dives",
+      "slide_type": "section-divider",
+      "title": "Toyota Proof Points",
+      "objective": "Transition into case evidence.",
+      "audience": "executive",
+      "layout": "section",
+      "content_blocks": [
+        {
+          "kind": "callout",
+          "label": "Section note",
+          "body": "Toyota\u2019s public materials now show enough concrete proof points to map real workflow families, not just vision statements."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-20f-2025",
+        "src-toyota-gaia-2025",
+        "src-arene-rav4-2025",
+        "src-woven-city-ai-2026",
+        "src-woven-city-launch-2025",
+        "src-connected-services-2021",
+        "src-telematics-insurance-2019",
+        "src-toyota-production-2024"
+      ]
+    },
+    {
+      "slide_id": "s14",
+      "section": "Case Study",
+      "slide_type": "use-case-deep-dive",
+      "title": "Case: Arene In Production",
+      "objective": "Show how Toyota made SDV software concrete.",
+      "audience": "executive",
+      "layout": "evidence-plus-implication",
+      "content_blocks": [
+        {
+          "kind": "company-card",
+          "label": "Production proof",
+          "body": "The latest-generation RAV4 is the first Toyota vehicle delivered with features developed on and powered by Arene."
+        },
+        {
+          "kind": "company-card",
+          "label": "Workflow design",
+          "body": "Arene SDK decouples software from hardware so modules can be reused across applications and vehicle models."
+        },
+        {
+          "kind": "company-card",
+          "label": "Validation model",
+          "body": "Arene tools support visualization, testing, validation, and virtual environments to reduce prototype dependence."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 1",
+          "body": "The biggest OEM AI payoff may be in software production systems, not only customer-facing AI features."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 2",
+          "body": "Reusable software and validation workflows create scale economies across product lines."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 3",
+          "body": "An automotive AI roadmap should treat SDKs, tooling, and validation infrastructure as strategic assets."
+        }
+      ],
+      "source_ids": [
+        "src-arene-rav4-2025",
+        "src-toyota-20f-2025"
+      ]
+    },
+    {
+      "slide_id": "s15",
+      "section": "Case Study",
+      "slide_type": "use-case-deep-dive",
+      "title": "GAIA As Toyota's Group AI Operating System",
+      "objective": "Show how Toyota institutionalizes AI.",
+      "audience": "executive",
+      "layout": "evidence-plus-implication",
+      "content_blocks": [
+        {
+          "kind": "company-card",
+          "label": "Scope",
+          "body": "GAIA initially spans 11 categories including manufacturing, vehicle engineering, robotics, in-vehicle agents, and office productivity."
+        },
+        {
+          "kind": "company-card",
+          "label": "Talent system",
+          "body": "Toyota Software Academy offers approximately 100 courses with practical training using real vehicles."
+        },
+        {
+          "kind": "company-card",
+          "label": "Leadership intent",
+          "body": "Toyota\u2019s chief scientist said the company is leveraging AI from manufacturing to design to office work and new products."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 1",
+          "body": "The automotive AI moat is partly organizational: who can train, deploy, and govern AI across the whole value chain."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 2",
+          "body": "Manufacturing and engineering workflows should be treated as first-tier AI value pools, not back-office afterthoughts."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 3",
+          "body": "OEMs need a talent system and workflow map, not just access to models."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-gaia-2025"
+      ]
+    },
+    {
+      "slide_id": "s16",
+      "section": "Case Study",
+      "slide_type": "use-case-deep-dive",
+      "title": "Case: Connected-Car Data In Service And Claims",
+      "objective": "Show AI value outside the vehicle cabin.",
+      "audience": "executive",
+      "layout": "evidence-plus-implication",
+      "content_blocks": [
+        {
+          "kind": "company-card",
+          "label": "Service design",
+          "body": "Toyota and Aioi Nissay Dowa created a telematics damage service that uses connected-car driving data and AI for accident detection."
+        },
+        {
+          "kind": "company-card",
+          "label": "Customer proof",
+          "body": "The connected-car insurance product had over 25,000 customers as of November 2019, with accident rates about 30 percent lower than comparison customers."
+        },
+        {
+          "kind": "company-card",
+          "label": "Workflow impact",
+          "body": "Driving-route mapping and behavior visualization reduce customer burden and support prompt accident settlement."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 1",
+          "body": "Connected-car AI is valuable when it directly changes a claims or service workflow, not when it only produces analytics."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 2",
+          "body": "Automotive OEMs can create monetizable AI lanes in service, claims, finance, and post-sale ecosystems."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 3",
+          "body": "This class of AI use case needs strong data governance and operational ownership, not just telematics infrastructure."
+        }
+      ],
+      "source_ids": [
+        "src-telematics-insurance-2019"
+      ]
+    },
+    {
+      "slide_id": "s17",
+      "section": "Case Study",
+      "slide_type": "use-case-deep-dive",
+      "title": "Case: Woven City As A Mobility AI Testbed",
+      "objective": "Show Toyota\u2019s live mobility experimentation loop.",
+      "audience": "executive",
+      "layout": "evidence-plus-implication",
+      "content_blocks": [
+        {
+          "kind": "company-card",
+          "label": "AI stack",
+          "body": "Woven City AI Vision Engine combines visual, behavioral, and environmental data to detect risks and coordinate action across connected systems."
+        },
+        {
+          "kind": "company-card",
+          "label": "Real environment",
+          "body": "Woven City is live, with residents, visitors, inventors, and general visitor access starting in fiscal year 2026."
+        },
+        {
+          "kind": "company-card",
+          "label": "Business model loop",
+          "body": "Toyota is also using Woven City to explore new services and financing models based on verified mobility usage data."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 1",
+          "body": "Toyota is testing AI where infrastructure, mobility services, and user behavior meet, not only inside vehicles."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 2",
+          "body": "A live test course can accelerate learning across product, software, and service design."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 3",
+          "body": "The future automotive AI moat may include experimentation environments as much as algorithms."
+        }
+      ],
+      "source_ids": [
+        "src-woven-city-ai-2026",
+        "src-woven-city-launch-2025"
+      ]
+    },
+    {
+      "slide_id": "s18",
+      "section": "Case Study",
+      "slide_type": "use-case-deep-dive",
+      "title": "Case: Connected Fleet Operations Close The Loop",
+      "objective": "Show how Toyota connects software, data, and live operations.",
+      "audience": "executive",
+      "layout": "evidence-plus-implication",
+      "content_blocks": [
+        {
+          "kind": "company-card",
+          "label": "Connected base",
+          "body": "Toyota said it had 10 million connected Lexus and Toyota vehicles across major markets."
+        },
+        {
+          "kind": "company-card",
+          "label": "Platform layer",
+          "body": "Toyota linked the Toyota Smart Center, Toyota Big Data Center, and Mobility Services Platform into one connected-services stack."
+        },
+        {
+          "kind": "company-card",
+          "label": "Fleet operations proof",
+          "body": "Toyota operated e-Palette using a TPS-based fleet management system that responded just-in-time to environment and passenger conditions."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 1",
+          "body": "Toyota\u2019s AI story is strongest when vehicles, data platforms, and live operations are treated as one system."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 2",
+          "body": "Fleet and service operations are fertile ground for automotive AI because they create constant feedback loops."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implication 3",
+          "body": "OEMs without a live services layer will struggle to capture the same learning velocity."
+        }
+      ],
+      "source_ids": [
+        "src-connected-services-2021"
+      ]
+    },
+    {
+      "slide_id": "s19",
+      "section": "Implications",
+      "slide_type": "section-divider",
+      "title": "What This Means For OEM Strategy",
+      "objective": "Transition from evidence to action.",
+      "audience": "executive",
+      "layout": "section",
+      "content_blocks": [
+        {
+          "kind": "callout",
+          "label": "Section note",
+          "body": "Toyota shows that automotive AI advantage is built from platform, workflow, and live-system design \u2014 not just model access."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-20f-2025",
+        "src-toyota-gaia-2025",
+        "src-arene-rav4-2025",
+        "src-woven-city-ai-2026",
+        "src-woven-city-launch-2025",
+        "src-connected-services-2021",
+        "src-telematics-insurance-2019",
+        "src-toyota-production-2024"
+      ]
+    },
+    {
+      "slide_id": "s20",
+      "section": "Implications",
+      "slide_type": "summary-cards",
+      "title": "Four Strategic Implications",
+      "objective": "Summarize what other automotive players should learn.",
+      "audience": "executive",
+      "layout": "2x2-card-grid",
+      "content_blocks": [
+        {
+          "kind": "summary",
+          "label": "Software platforms matter more than feature demos",
+          "body": "Arene is a stronger strategic signal than generic in-car assistant marketing."
+        },
+        {
+          "kind": "summary",
+          "label": "Manufacturing and engineering are real AI battlegrounds",
+          "body": "Toyota explicitly treats them as group-wide AI categories, not secondary use cases."
+        },
+        {
+          "kind": "summary",
+          "label": "Connected data is a business model layer",
+          "body": "Claims, insurance, and mobility services show value beyond the sale of the vehicle itself."
+        },
+        {
+          "kind": "summary",
+          "label": "Live testbeds accelerate learning",
+          "body": "Woven City reduces the gap between concept, pilot, and real-world feedback."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-20f-2025",
+        "src-toyota-gaia-2025",
+        "src-arene-rav4-2025",
+        "src-woven-city-ai-2026",
+        "src-woven-city-launch-2025",
+        "src-connected-services-2021",
+        "src-telematics-insurance-2019",
+        "src-toyota-production-2024"
+      ]
+    },
+    {
+      "slide_id": "s21",
+      "section": "Where To Play",
+      "slide_type": "bullets",
+      "title": "Where Toyota Should Bet Next",
+      "objective": "Turn the evidence into forward-looking opportunity areas.",
+      "audience": "executive",
+      "layout": "bullet-list",
+      "content_blocks": [
+        {
+          "kind": "bullet",
+          "label": "Double down on Arene reuse",
+          "body": "Expand platform reuse and validation leverage across more production programs after the RAV4 milestone."
+        },
+        {
+          "kind": "bullet",
+          "label": "Attack factory and engineering bottlenecks",
+          "body": "Use GAIA to remove friction from design, manufacturing, and knowledge-transfer workflows."
+        },
+        {
+          "kind": "bullet",
+          "label": "Expand connected-service monetization",
+          "body": "Use vehicle data to support insurance, claims, maintenance, and other post-sale service workflows."
+        },
+        {
+          "kind": "bullet",
+          "label": "Use Woven City to incubate cross-system mobility services",
+          "body": "Test products that depend on infrastructure, partner services, finance, and live usage patterns."
+        }
+      ],
+      "source_ids": [
+        "src-arene-rav4-2025",
+        "src-toyota-gaia-2025",
+        "src-telematics-insurance-2019",
+        "src-woven-city-ai-2026"
+      ]
+    },
+    {
+      "slide_id": "s22",
+      "section": "Action Plan",
+      "slide_type": "executive-action",
+      "title": "A 90-Day Automotive AI Prioritization Plan",
+      "objective": "Give a practical rollout sequence.",
+      "audience": "executive",
+      "layout": "roadmap",
+      "content_blocks": [
+        {
+          "kind": "roadmap-step",
+          "label": "01",
+          "body": "Pick one workflow family|Choose SDV reuse, manufacturing productivity, connected services, validation, or mobility experimentation \u2014 not a generic AI mandate."
+        },
+        {
+          "kind": "roadmap-step",
+          "label": "02",
+          "body": "Name the owner|Assign one accountable leader for the workflow, scorecard, and systems affected."
+        },
+        {
+          "kind": "roadmap-step",
+          "label": "03",
+          "body": "Define the operating metric|Use reuse rate, release speed, validation coverage, claims cycle time, or service attach metrics."
+        },
+        {
+          "kind": "roadmap-step",
+          "label": "04",
+          "body": "Connect to the real system|The AI program must touch the vehicle, data platform, plant, or service workflow directly."
+        },
+        {
+          "kind": "roadmap-step",
+          "label": "05",
+          "body": "Scale only after proof|Expand only once the workflow has durable economic and operational improvement."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-20f-2025",
+        "src-toyota-gaia-2025",
+        "src-arene-rav4-2025",
+        "src-woven-city-ai-2026",
+        "src-woven-city-launch-2025",
+        "src-connected-services-2021",
+        "src-telematics-insurance-2019",
+        "src-toyota-production-2024"
+      ]
+    },
+    {
+      "slide_id": "s23",
+      "section": "Metrics",
+      "slide_type": "bullets",
+      "title": "The Metrics That Actually Matter",
+      "objective": "Ground governance in operating measures.",
+      "audience": "executive",
+      "layout": "bullet-list",
+      "content_blocks": [
+        {
+          "kind": "bullet",
+          "label": "SDV platform",
+          "body": "Reusable software components, validation coverage, issue-detection speed, deployment cycle time."
+        },
+        {
+          "kind": "bullet",
+          "label": "Manufacturing and engineering",
+          "body": "Engineering cycle time, knowledge-transfer speed, issue-resolution throughput, factory workflow productivity."
+        },
+        {
+          "kind": "bullet",
+          "label": "Connected services",
+          "body": "Claims resolution speed, service attach, accident detection quality, customer burden reduction."
+        },
+        {
+          "kind": "bullet",
+          "label": "Mobility experimentation",
+          "body": "Pilot learning velocity, user-feedback loop speed, service iteration count, partner conversion."
+        }
+      ],
+      "source_ids": [
+        "src-arene-rav4-2025",
+        "src-toyota-gaia-2025",
+        "src-telematics-insurance-2019",
+        "src-woven-city-launch-2025"
+      ]
+    },
+    {
+      "slide_id": "s24",
+      "section": "Governance",
+      "slide_type": "bullets",
+      "title": "Governance Rules For Automotive AI",
+      "objective": "State the guardrails clearly.",
+      "audience": "executive",
+      "layout": "bullet-list",
+      "content_blocks": [
+        {
+          "kind": "bullet",
+          "label": "Separate assistive from safety-critical",
+          "body": "Cockpit convenience, internal productivity, and safety-related workflows should not share one approval model."
+        },
+        {
+          "kind": "bullet",
+          "label": "Treat validation as first-class",
+          "body": "Automotive AI programs should be scored as much on testing and reliability as on model capability."
+        },
+        {
+          "kind": "bullet",
+          "label": "Protect data trust",
+          "body": "Connected-vehicle and customer-service use cases require explicit governance for data access and workflow authority."
+        },
+        {
+          "kind": "bullet",
+          "label": "Avoid platform theater",
+          "body": "Broad AI initiatives without one workflow owner or one economic scorecard should not scale."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-20f-2025",
+        "src-connected-services-2021",
+        "src-telematics-insurance-2019"
+      ]
+    },
+    {
+      "slide_id": "s25",
+      "section": "Decision",
+      "slide_type": "section-divider",
+      "title": "The Decision Is Workflow Ownership",
+      "objective": "Set up the final ask.",
+      "audience": "executive",
+      "layout": "section",
+      "content_blocks": [
+        {
+          "kind": "callout",
+          "label": "Section note",
+          "body": "Toyota\u2019s public proof points suggest that AI advantage in automotive comes from owning the workflow and the platform underneath it."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-20f-2025",
+        "src-toyota-gaia-2025",
+        "src-arene-rav4-2025",
+        "src-woven-city-ai-2026",
+        "src-woven-city-launch-2025",
+        "src-connected-services-2021",
+        "src-telematics-insurance-2019",
+        "src-toyota-production-2024"
+      ]
+    },
+    {
+      "slide_id": "s26",
+      "section": "Decision",
+      "slide_type": "summary-cards",
+      "title": "What The Executive Team Should Decide",
+      "objective": "End with explicit choices.",
+      "audience": "executive",
+      "layout": "2x2-card-grid",
+      "content_blocks": [
+        {
+          "kind": "summary",
+          "label": "Pick the first lane",
+          "body": "Choose SDV platform work, manufacturing productivity, connected services, validation, or live mobility experimentation."
+        },
+        {
+          "kind": "summary",
+          "label": "Fund the platform layer",
+          "body": "Do not underinvest in SDKs, validation, data infrastructure, and workflow tooling."
+        },
+        {
+          "kind": "summary",
+          "label": "Instrument the scorecard",
+          "body": "Make the first AI program a measured operating workflow, not a symbolic innovation project."
+        },
+        {
+          "kind": "summary",
+          "label": "Scale only when reuse is real",
+          "body": "The strategic payoff comes when one program becomes repeatable across models, plants, or service lines."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-20f-2025",
+        "src-toyota-gaia-2025",
+        "src-arene-rav4-2025",
+        "src-woven-city-ai-2026",
+        "src-woven-city-launch-2025",
+        "src-connected-services-2021",
+        "src-telematics-insurance-2019",
+        "src-toyota-production-2024"
+      ]
+    },
+    {
+      "slide_id": "s27",
+      "section": "Methodology",
+      "slide_type": "bullets",
+      "title": "Methodology And Source Coverage",
+      "objective": "State limits and confidence cleanly.",
+      "audience": "executive",
+      "layout": "bullet-list",
+      "content_blocks": [
+        {
+          "kind": "bullet",
+          "label": "Source base",
+          "body": "Toyota official filings, Toyota and Woven by Toyota releases, connected-service evidence, and Toyota fact-data."
+        },
+        {
+          "kind": "bullet",
+          "label": "What this deck is for",
+          "body": "Industry prioritization and operating-model judgment, not vendor-neutral procurement scoring."
+        },
+        {
+          "kind": "bullet",
+          "label": "Main limitation",
+          "body": "Toyota public materials emphasize strategy and success cases more than failed experiments or internal constraints."
+        },
+        {
+          "kind": "bullet",
+          "label": "Main conclusion",
+          "body": "Toyota shows that the most credible automotive AI value is platform- and workflow-led, not feature-led."
+        }
+      ],
+      "source_ids": [
+        "src-toyota-20f-2025",
+        "src-toyota-gaia-2025",
+        "src-arene-rav4-2025",
+        "src-woven-city-ai-2026",
+        "src-woven-city-launch-2025",
+        "src-connected-services-2021",
+        "src-telematics-insurance-2019",
+        "src-toyota-production-2024"
+      ]
+    }
+  ],
+  "export_targets": [
+    "pptx",
+    "html",
+    "memo"
+  ]
+}

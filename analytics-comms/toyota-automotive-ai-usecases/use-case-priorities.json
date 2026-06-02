@@ -1,0 +1,19 @@
+{
+  "report_slug": "toyota-automotive-ai-usecases",
+  "created_at": "2026-06-02T22:15:00Z",
+  "prioritization_basis": "workflow ownership, software reuse, validation loop strength, and monetizable operating impact",
+  "tiers": {
+    "tier_1": [
+      "Software-defined vehicle platform and software reuse",
+      "Manufacturing and vehicle engineering productivity"
+    ],
+    "tier_2": [
+      "Connected vehicle data services and customer workflows",
+      "Safety and validation workflows"
+    ],
+    "tier_3": [
+      "Mobility ecosystem experimentation and live feedback loops"
+    ]
+  },
+  "rationale": "The order follows where Toyota already demonstrates a reusable platform layer, a real workflow owner, and closed-loop validation or customer operations value."
+}

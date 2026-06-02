@@ -1,0 +1,19 @@
+{
+  "report_slug": "insurance-progressive-ai-usecases",
+  "created_at": "2026-06-02T18:00:00Z",
+  "prioritization_basis": "account fit, measurable economics, and workflow readiness",
+  "tiers": {
+    "tier_1": [
+      "telematics-led pricing and underwriting",
+      "claims intake and resolution orchestration"
+    ],
+    "tier_2": [
+      "bundle growth and household expansion",
+      "service automation across channels"
+    ],
+    "tier_3": [
+      "modernization factory workflows that accelerate the other tiers"
+    ]
+  },
+  "rationale": "The order follows account fit, measurable economics, and workflow readiness rather than novelty."
+}

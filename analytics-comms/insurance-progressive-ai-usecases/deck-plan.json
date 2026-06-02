@@ -1,0 +1,882 @@
+{
+  "report_slug": "insurance-progressive-ai-usecases",
+  "created_at": "2026-06-02T18:00:00Z",
+  "audience": "executive",
+  "deck_goal": "Produce a research-backed executive deck on AI use cases in insurance, anchored on Progressive as the named customer.",
+  "theme_reference": "Use the branded executive slide system already established in this repo.",
+  "story_arc": [
+    "Why the market has shifted",
+    "Why Progressive is the right customer lens",
+    "Which use cases matter most",
+    "What executives should do next"
+  ],
+  "slides": [
+    {
+      "slide_id": "s1",
+      "section": "Opening",
+      "slide_type": "hero",
+      "title": "Insurance AI Use Cases For Progressive",
+      "objective": "Lead with the main thesis.",
+      "audience": "executive",
+      "layout": "hero",
+      "content_blocks": [
+        {
+          "kind": "summary",
+          "label": "Subtitle",
+          "body": "Industry + customer + executive action"
+        },
+        {
+          "kind": "summary",
+          "label": "Strapline",
+          "body": "For insurance, the most valuable AI programs are workflow-led. For Progressive, the strongest priorities are pricing and telematics, claims orchestration, bundle growth, service automation, and core modernization."
+        }
+      ],
+      "source_ids": [
+        "src-mck-future-ai-insurance-2025",
+        "src-progressive-annual-report-2024",
+        "src-progressive-june-2025-results"
+      ]
+    },
+    {
+      "slide_id": "s2",
+      "section": "Agenda",
+      "slide_type": "agenda",
+      "title": "What This Deck Covers",
+      "objective": "Set the readout sequence.",
+      "audience": "executive",
+      "layout": "list",
+      "content_blocks": [
+        {
+          "kind": "agenda-item",
+          "label": "Market shift",
+          "body": "Why insurance AI has moved from experimentation to workflow and operating-model change."
+        },
+        {
+          "kind": "agenda-item",
+          "label": "Customer lens",
+          "body": "Why Progressive is a strong named-customer target."
+        },
+        {
+          "kind": "agenda-item",
+          "label": "Use-case priorities",
+          "body": "Which AI programs map best to Progressive's economics and workflows."
+        },
+        {
+          "kind": "agenda-item",
+          "label": "Executive action",
+          "body": "What to fund, what to defer, and what to measure."
+        }
+      ],
+      "source_ids": [
+        "src-mck-future-ai-insurance-2025",
+        "src-progressive-june-2025-results"
+      ]
+    },
+    {
+      "slide_id": "s3",
+      "section": "Market Shift",
+      "slide_type": "section-divider",
+      "title": "Insurance AI Is An Operating Model Decision",
+      "objective": "Open the industry section.",
+      "audience": "executive",
+      "layout": "section",
+      "content_blocks": [
+        {
+          "kind": "callout",
+          "label": "Section note",
+          "body": "The strongest insurance AI programs are no longer side pilots. They sit in underwriting, claims, service, growth, and modernization workflows that move real economics."
+        }
+      ],
+      "source_ids": [
+        "src-mck-future-ai-insurance-2025",
+        "src-mck-global-insurance-2025",
+        "src-mck-agentic-core-modernization-2026"
+      ]
+    },
+    {
+      "slide_id": "s4",
+      "section": "Executive Summary",
+      "slide_type": "summary-cards",
+      "title": "Four Executive Conclusions",
+      "objective": "Summarize the top takeaways.",
+      "audience": "executive",
+      "layout": "2x2-card-grid",
+      "content_blocks": [
+        {
+          "kind": "summary",
+          "label": "Workflow AI beats chatbot AI",
+          "body": "Insurance value comes from underwriting, claims, service, and modernization workflows with measurable economics."
+        },
+        {
+          "kind": "summary",
+          "label": "Progressive is already AI-ready",
+          "body": "The account already runs telematics, product-model iteration, digital claims, and omnichannel service at scale."
+        },
+        {
+          "kind": "summary",
+          "label": "Pricing and claims are the top wedges",
+          "body": "These lanes map best to Progressive's current model and to the industry's highest-value patterns."
+        },
+        {
+          "kind": "summary",
+          "label": "Bundle growth is the hidden opportunity",
+          "body": "Progressive explicitly treats bundled home-and-auto households as an under-penetrated strategic segment."
+        }
+      ],
+      "source_ids": [
+        "src-mck-future-ai-insurance-2025",
+        "src-progressive-annual-report-2024",
+        "src-progressive-june-2025-results"
+      ]
+    },
+    {
+      "slide_id": "s5",
+      "section": "Industry Metrics",
+      "slide_type": "kpi-grid",
+      "title": "Why The Insurance Market Supports This Bet",
+      "objective": "Compress the market signal.",
+      "audience": "executive",
+      "layout": "four-metric-grid",
+      "content_blocks": [
+        {
+          "kind": "metric",
+          "label": "Personal P&C premiums",
+          "body": "$1.1T|McKinsey says personal P&C represented about 1.1 trillion dollars of GWP in 2023."
+        },
+        {
+          "kind": "metric",
+          "label": "Claims accuracy uplift",
+          "body": "3-5%|McKinsey cites claims accuracy improvement from domain-level AI rewiring."
+        },
+        {
+          "kind": "metric",
+          "label": "Onboarding cost reduction",
+          "body": "20-40%|McKinsey cites lower onboarding cost in leading AI programs."
+        },
+        {
+          "kind": "metric",
+          "label": "Operations drive performance",
+          "body": "60%|McKinsey says around 60 percent of insurer performance is driven by how the company operates."
+        },
+        {
+          "kind": "callout",
+          "label": "Takeaway",
+          "body": "This is a large market where process quality and operating-model quality dominate outcomes."
+        }
+      ],
+      "source_ids": [
+        "src-mck-global-insurance-2025",
+        "src-mck-future-ai-insurance-2025"
+      ]
+    },
+    {
+      "slide_id": "s6",
+      "section": "Interpretation",
+      "slide_type": "comparison",
+      "title": "Insurance AI: Old Framing Versus Executive Reality",
+      "objective": "Contrast hype with operating reality.",
+      "audience": "executive",
+      "layout": "two-column-comparison",
+      "content_blocks": [
+        {
+          "kind": "comparison-column",
+          "label": "Weak framing",
+          "body": "Generic chatbot launch|Small copilots with no owner|Innovation theater|No tie to pricing, claims, or growth"
+        },
+        {
+          "kind": "comparison-column",
+          "label": "Strong framing",
+          "body": "Workflow automation with owners|AI inside underwriting and claims|Measured economics|Modernization that enables repeated change"
+        }
+      ],
+      "source_ids": [
+        "src-mck-future-ai-insurance-2025",
+        "src-mck-agentic-core-modernization-2026",
+        "src-mck-global-insurance-2025"
+      ]
+    },
+    {
+      "slide_id": "s7",
+      "section": "Industry Thesis",
+      "slide_type": "bullets",
+      "title": "What Actually Creates Value In Insurance",
+      "objective": "State the operating thesis.",
+      "audience": "executive",
+      "layout": "bullet-list",
+      "content_blocks": [
+        {
+          "kind": "bullet",
+          "label": "Repeated workflow",
+          "body": "The best lanes are repeated, high-volume, document-heavy, and already instrumented."
+        },
+        {
+          "kind": "bullet",
+          "label": "Decision quality",
+          "body": "Value comes from better pricing, faster claims, sharper routing, and lower cost-to-serve."
+        },
+        {
+          "kind": "bullet",
+          "label": "Data loop",
+          "body": "The strongest insurers connect customer, policy, claims, and servicing data into one feedback loop."
+        },
+        {
+          "kind": "bullet",
+          "label": "Operating system",
+          "body": "AI becomes durable when it changes how the insurer operates, not just how it communicates."
+        }
+      ],
+      "source_ids": [
+        "src-mck-future-ai-insurance-2025",
+        "src-mck-global-insurance-2025"
+      ]
+    },
+    {
+      "slide_id": "s8",
+      "section": "Customer Lens",
+      "slide_type": "section-divider",
+      "title": "Why Progressive Is The Right Customer To Anchor",
+      "objective": "Transition into the account section.",
+      "audience": "executive",
+      "layout": "section",
+      "content_blocks": [
+        {
+          "kind": "callout",
+          "label": "Section note",
+          "body": "Progressive is not a generic insurance target. It is a scaled, digitally distributed carrier already optimized around pricing, telematics, and workflow speed."
+        }
+      ],
+      "source_ids": [
+        "src-progressive-annual-report-2024",
+        "src-progressive-june-2025-results"
+      ]
+    },
+    {
+      "slide_id": "s9",
+      "section": "Customer Summary",
+      "slide_type": "summary-cards",
+      "title": "Progressive In One Slide",
+      "objective": "Summarize customer context.",
+      "audience": "executive",
+      "layout": "2x2-card-grid",
+      "content_blocks": [
+        {
+          "kind": "summary",
+          "label": "Scaled carrier",
+          "body": "Progressive reported 37.3 million companywide policies in force at June 30, 2025."
+        },
+        {
+          "kind": "summary",
+          "label": "Digital distribution",
+          "body": "Customers buy and use insurance online, by phone, by app, or through agents."
+        },
+        {
+          "kind": "summary",
+          "label": "Usage-based edge",
+          "body": "Snapshot and continuous monitoring are part of the current operating model, not a side experiment."
+        },
+        {
+          "kind": "summary",
+          "label": "Growth agenda",
+          "body": "Progressive is pushing product iteration, new business growth, and bundling in under-penetrated segments."
+        }
+      ],
+      "source_ids": [
+        "src-progressive-june-2025-results",
+        "src-progressive-annual-report-2024",
+        "src-progressive-telematics-page"
+      ]
+    },
+    {
+      "slide_id": "s10",
+      "section": "Customer Metrics",
+      "slide_type": "kpi-grid",
+      "title": "Progressive Signals That Matter",
+      "objective": "Quantify the customer.",
+      "audience": "executive",
+      "layout": "four-metric-grid",
+      "content_blocks": [
+        {
+          "kind": "metric",
+          "label": "Companywide policies in force",
+          "body": "37.3M|June 30, 2025 results"
+        },
+        {
+          "kind": "metric",
+          "label": "Total personal lines PIF",
+          "body": "36.1M|June 30, 2025 results"
+        },
+        {
+          "kind": "metric",
+          "label": "Snapshot average savings",
+          "body": "$322|Progressive telematics page"
+        },
+        {
+          "kind": "metric",
+          "label": "Snapshot continuous monitoring footprint",
+          "body": "75%|Of auto net premiums written, excluding California"
+        },
+        {
+          "kind": "callout",
+          "label": "Takeaway",
+          "body": "Progressive already has the scale and digital instrumentation to justify workflow-led AI investment."
+        }
+      ],
+      "source_ids": [
+        "src-progressive-june-2025-results",
+        "src-progressive-telematics-page",
+        "src-progressive-annual-report-2024"
+      ]
+    },
+    {
+      "slide_id": "s11",
+      "section": "Customer Interpretation",
+      "slide_type": "comparison",
+      "title": "Why Progressive Is Different From A Generic Carrier",
+      "objective": "Clarify account fit.",
+      "audience": "executive",
+      "layout": "two-column-comparison",
+      "content_blocks": [
+        {
+          "kind": "comparison-column",
+          "label": "Generic insurer pitch",
+          "body": "Broad transformation story|High-level service bot demos|No clear account wedge|Weak tie to current workflows"
+        },
+        {
+          "kind": "comparison-column",
+          "label": "Progressive-specific pitch",
+          "body": "Pricing and telematics leverage|Claims orchestration|Bundle growth expansion|Service and modernization tied to scale economics"
+        }
+      ],
+      "source_ids": [
+        "src-progressive-annual-report-2024",
+        "src-progressive-june-2025-results"
+      ]
+    },
+    {
+      "slide_id": "s12",
+      "section": "Use Case Ranking",
+      "slide_type": "section-divider",
+      "title": "Where Progressive Should Prioritize AI",
+      "objective": "Transition into ranked use cases.",
+      "audience": "executive",
+      "layout": "section",
+      "content_blocks": [
+        {
+          "kind": "callout",
+          "label": "Section note",
+          "body": "The right ordering is not based on novelty. It is based on account fit, measurable economics, and readiness of the existing workflow."
+        }
+      ],
+      "source_ids": [
+        "src-progressive-annual-report-2024",
+        "src-progressive-telematics-page",
+        "src-progressive-claims-page"
+      ]
+    },
+    {
+      "slide_id": "s13",
+      "section": "Ranking",
+      "slide_type": "bar-chart",
+      "title": "Highest-Value AI Lanes For Progressive",
+      "objective": "Rank use-case clusters.",
+      "audience": "executive",
+      "layout": "horizontal-bar",
+      "content_blocks": [
+        {
+          "kind": "chart-brief",
+          "label": "Telematics-led pricing and underwriting",
+          "body": "98"
+        },
+        {
+          "kind": "chart-brief",
+          "label": "Claims intake and resolution orchestration",
+          "body": "95"
+        },
+        {
+          "kind": "chart-brief",
+          "label": "Bundle growth and household expansion",
+          "body": "90"
+        },
+        {
+          "kind": "chart-brief",
+          "label": "Service automation across channels",
+          "body": "86"
+        },
+        {
+          "kind": "chart-brief",
+          "label": "Core technology and product-model modernization",
+          "body": "82"
+        }
+      ],
+      "source_ids": [
+        "src-progressive-annual-report-2024",
+        "src-progressive-telematics-page",
+        "src-progressive-claims-page",
+        "src-mck-agentic-core-modernization-2026"
+      ]
+    },
+    {
+      "slide_id": "s14",
+      "section": "Use Cases",
+      "slide_type": "use-case-card-grid",
+      "title": "Business Use Cases That Matter Most",
+      "objective": "Summarize the use cases in one table.",
+      "audience": "executive",
+      "layout": "two-column-table",
+      "content_blocks": [
+        {
+          "kind": "table-row",
+          "label": "Telematics pricing and underwriting",
+          "body": "Use behavioral and external data to improve risk selection, conversion quality, and retention."
+        },
+        {
+          "kind": "table-row",
+          "label": "Claims orchestration",
+          "body": "Automate intake, evidence routing, next-best action, and customer updates to cut cycle time."
+        },
+        {
+          "kind": "table-row",
+          "label": "Bundle growth",
+          "body": "Identify the right households and moments for home-plus-auto expansion and retention."
+        },
+        {
+          "kind": "table-row",
+          "label": "Service automation",
+          "body": "Improve routing and routine issue handling across web, app, phone, and agent channels."
+        },
+        {
+          "kind": "table-row",
+          "label": "Modernization factory",
+          "body": "Use agentic workflows to accelerate product logic, testing, documentation, and release work."
+        }
+      ],
+      "source_ids": [
+        "src-progressive-annual-report-2024",
+        "src-progressive-june-2025-results",
+        "src-mck-future-ai-insurance-2025",
+        "src-mck-agentic-core-modernization-2026"
+      ]
+    },
+    {
+      "slide_id": "s15",
+      "section": "Use Cases",
+      "slide_type": "customer-fit",
+      "title": "Industry Need Versus Progressive Fit",
+      "objective": "Tie general industry need to customer-specific fit.",
+      "audience": "executive",
+      "layout": "two-column-comparison",
+      "content_blocks": [
+        {
+          "kind": "comparison-column",
+          "label": "Industry need",
+          "body": "Better pricing|Faster claims|Cheaper service|Smarter growth|Faster change"
+        },
+        {
+          "kind": "comparison-column",
+          "label": "Progressive fit",
+          "body": "Snapshot and external data|Digital FNOL and accident response|Omnichannel servicing|Bundle-first expansion|Rapid product-model iteration"
+        }
+      ],
+      "source_ids": [
+        "src-mck-future-ai-insurance-2025",
+        "src-progressive-annual-report-2024",
+        "src-progressive-june-2025-results"
+      ]
+    },
+    {
+      "slide_id": "s16",
+      "section": "Deep Dives",
+      "slide_type": "section-divider",
+      "title": "Five Priority Programs",
+      "objective": "Open the deep-dive section.",
+      "audience": "executive",
+      "layout": "section",
+      "content_blocks": [
+        {
+          "kind": "callout",
+          "label": "Section note",
+          "body": "Each of these programs already has an owner, a measurable business job, and evidence that Progressive is ready to act."
+        }
+      ],
+      "source_ids": [
+        "src-progressive-annual-report-2024",
+        "src-progressive-june-2025-results"
+      ]
+    },
+    {
+      "slide_id": "s17",
+      "section": "Deep Dive",
+      "slide_type": "use-case-deep-dive",
+      "title": "Use Case 01: Telematics-Led Pricing",
+      "objective": "Explain the pricing wedge.",
+      "audience": "executive",
+      "layout": "case-study",
+      "content_blocks": [
+        {
+          "kind": "company-card",
+          "label": "Current account signal",
+          "body": "Snapshot provides automatic discounting and personalized pricing, while continuous monitoring covers most of Progressive's auto premium base."
+        },
+        {
+          "kind": "company-card",
+          "label": "Executive logic",
+          "body": "This is already core to Progressive's customer proposition, so incremental AI here maps directly to underwriting and growth economics."
+        },
+        {
+          "kind": "company-card",
+          "label": "What to sell",
+          "body": "Risk segmentation, quote quality, pricing optimization, and retention interventions tied to telematics behavior."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implications",
+          "body": "Lead with measurable lift in risk selection|Tie the program to conversion and retention|Do not pitch this as a generic personalization layer"
+        }
+      ],
+      "source_ids": [
+        "src-progressive-telematics-page",
+        "src-progressive-annual-report-2024"
+      ]
+    },
+    {
+      "slide_id": "s18",
+      "section": "Deep Dive",
+      "slide_type": "use-case-deep-dive",
+      "title": "Use Case 02: Claims Orchestration",
+      "objective": "Explain the claims wedge.",
+      "audience": "executive",
+      "layout": "case-study",
+      "content_blocks": [
+        {
+          "kind": "company-card",
+          "label": "Current account signal",
+          "body": "Progressive already supports digital claim access, guest claim reporting, app-based accident response, and faster FNOL goals."
+        },
+        {
+          "kind": "company-card",
+          "label": "Executive logic",
+          "body": "Claims is a visible customer workflow where cycle time, routing quality, and service quality all matter financially."
+        },
+        {
+          "kind": "company-card",
+          "label": "What to sell",
+          "body": "Triage, document extraction, claim summarization, next-best action, and claimant communication orchestration."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implications",
+          "body": "Anchor on cycle time and service metrics|Stay close to existing digital entry points|Frame AI as workflow execution, not just summarization"
+        }
+      ],
+      "source_ids": [
+        "src-progressive-annual-report-2024",
+        "src-progressive-claims-page"
+      ]
+    },
+    {
+      "slide_id": "s19",
+      "section": "Deep Dive",
+      "slide_type": "use-case-deep-dive",
+      "title": "Use Case 03: Bundle Growth",
+      "objective": "Explain the growth wedge.",
+      "audience": "executive",
+      "layout": "case-study",
+      "content_blocks": [
+        {
+          "kind": "company-card",
+          "label": "Current account signal",
+          "body": "Progressive says bundled home-and-auto households are its largest under-penetrated property segment and is actively prioritizing bundles."
+        },
+        {
+          "kind": "company-card",
+          "label": "Executive logic",
+          "body": "This is a revenue and lifetime-value program, not just a marketing optimization problem."
+        },
+        {
+          "kind": "company-card",
+          "label": "What to sell",
+          "body": "Household propensity models, timing recommendations, agent prompts, and cross-channel offer orchestration."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implications",
+          "body": "Position this as growth infrastructure|Tie the motion to household expansion and retention|Connect service and distribution data"
+        }
+      ],
+      "source_ids": [
+        "src-progressive-annual-report-2024",
+        "src-progressive-june-2025-results"
+      ]
+    },
+    {
+      "slide_id": "s20",
+      "section": "Deep Dive",
+      "slide_type": "use-case-deep-dive",
+      "title": "Use Case 04: Service Automation",
+      "objective": "Explain the service wedge.",
+      "audience": "executive",
+      "layout": "case-study",
+      "content_blocks": [
+        {
+          "kind": "company-card",
+          "label": "Current account signal",
+          "body": "Progressive serves customers online, by app, by phone, and through agents, making orchestration a real operational challenge."
+        },
+        {
+          "kind": "company-card",
+          "label": "Executive logic",
+          "body": "The value is lower cost-to-serve and more consistent issue resolution across channels."
+        },
+        {
+          "kind": "company-card",
+          "label": "What to sell",
+          "body": "Routing, service summarization, task automation, and agent-assist flows that preserve channel choice."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implications",
+          "body": "Do not over-index on chatbot containment|Show how orchestration lowers handling time|Keep human escalation explicit"
+        }
+      ],
+      "source_ids": [
+        "src-progressive-june-2025-results",
+        "src-mck-future-ai-insurance-2025"
+      ]
+    },
+    {
+      "slide_id": "s21",
+      "section": "Deep Dive",
+      "slide_type": "use-case-deep-dive",
+      "title": "Use Case 05: Core Modernization",
+      "objective": "Explain the modernization wedge.",
+      "audience": "executive",
+      "layout": "case-study",
+      "content_blocks": [
+        {
+          "kind": "company-card",
+          "label": "Current account signal",
+          "body": "Progressive is already iterating product models and external-data logic, which makes faster documentation, testing, and release work economically relevant."
+        },
+        {
+          "kind": "company-card",
+          "label": "Executive logic",
+          "body": "Modernization is a business enabler because it determines how quickly the carrier can scale other AI programs."
+        },
+        {
+          "kind": "company-card",
+          "label": "What to sell",
+          "body": "Agentic documentation, legacy knowledge capture, test generation, and release orchestration."
+        },
+        {
+          "kind": "bullet-list",
+          "label": "Implications",
+          "body": "Tie this to throughput and rework|Frame it as a modernization factory|Keep controls and auditability explicit"
+        }
+      ],
+      "source_ids": [
+        "src-mck-agentic-core-modernization-2026",
+        "src-progressive-annual-report-2024"
+      ]
+    },
+    {
+      "slide_id": "s22",
+      "section": "Executive Action",
+      "slide_type": "section-divider",
+      "title": "What Executives Should Do Now",
+      "objective": "Open the action section.",
+      "audience": "executive",
+      "layout": "section",
+      "content_blocks": [
+        {
+          "kind": "callout",
+          "label": "Section note",
+          "body": "The main executive job is sequencing: invest where Progressive already has data, workflow ownership, and measurable value pools."
+        }
+      ],
+      "source_ids": [
+        "src-progressive-annual-report-2024",
+        "src-mck-global-insurance-2025"
+      ]
+    },
+    {
+      "slide_id": "s23",
+      "section": "Recommendations",
+      "slide_type": "summary-cards",
+      "title": "Four Executive Moves",
+      "objective": "Condense the recommended actions.",
+      "audience": "executive",
+      "layout": "2x2-card-grid",
+      "content_blocks": [
+        {
+          "kind": "summary",
+          "label": "Fund pricing and telematics first",
+          "body": "This is the cleanest fit with Progressive's current model and strongest economics."
+        },
+        {
+          "kind": "summary",
+          "label": "Package claims as orchestration",
+          "body": "Lead with FNOL, routing, documentation, and service quality, not generic AI claims summaries."
+        },
+        {
+          "kind": "summary",
+          "label": "Treat bundle AI as a growth program",
+          "body": "Use household and cross-line orchestration to attack a segment Progressive has already named as strategic."
+        },
+        {
+          "kind": "summary",
+          "label": "Use modernization to unlock scale",
+          "body": "Support all other AI programs with faster product, testing, and documentation cycles."
+        }
+      ],
+      "source_ids": [
+        "src-progressive-annual-report-2024",
+        "src-progressive-telematics-page",
+        "src-progressive-claims-page",
+        "src-mck-agentic-core-modernization-2026"
+      ]
+    },
+    {
+      "slide_id": "s24",
+      "section": "Roadmap",
+      "slide_type": "executive-action",
+      "title": "Suggested Sequencing",
+      "objective": "Show an execution order.",
+      "audience": "executive",
+      "layout": "roadmap",
+      "content_blocks": [
+        {
+          "kind": "roadmap-step",
+          "label": "1",
+          "body": "Land pricing and claims pilots|Start with the two workflows that already have strong digital exhaust and obvious financial metrics."
+        },
+        {
+          "kind": "roadmap-step",
+          "label": "2",
+          "body": "Expand into bundle growth and service orchestration|Use the first wave to unify household and service data across channels."
+        },
+        {
+          "kind": "roadmap-step",
+          "label": "3",
+          "body": "Stand up modernization factory capabilities|Use agentic delivery patterns to accelerate the product and platform layer underneath the business use cases."
+        },
+        {
+          "kind": "roadmap-step",
+          "label": "4",
+          "body": "Institutionalize governance and KPI review|Track lift in pricing quality, claims cycle time, bundle conversion, and service cost-to-serve."
+        }
+      ],
+      "source_ids": [
+        "src-progressive-annual-report-2024",
+        "src-mck-agentic-core-modernization-2026",
+        "src-mck-future-ai-insurance-2025"
+      ]
+    },
+    {
+      "slide_id": "s25",
+      "section": "Risks",
+      "slide_type": "bar-chart",
+      "title": "Where Execution Can Fail",
+      "objective": "Rank the main risks.",
+      "audience": "executive",
+      "layout": "horizontal-bar",
+      "content_blocks": [
+        {
+          "kind": "chart-brief",
+          "label": "Pitching generic AI instead of workflow AI",
+          "body": "95"
+        },
+        {
+          "kind": "chart-brief",
+          "label": "Ignoring regulatory and model-governance needs",
+          "body": "90"
+        },
+        {
+          "kind": "chart-brief",
+          "label": "Treating modernization as separate from use cases",
+          "body": "84"
+        },
+        {
+          "kind": "chart-brief",
+          "label": "Overpromising without account-specific differentiation",
+          "body": "80"
+        }
+      ],
+      "source_ids": [
+        "src-mck-future-ai-insurance-2025",
+        "src-mck-agentic-core-modernization-2026",
+        "src-progressive-annual-report-2024"
+      ]
+    },
+    {
+      "slide_id": "s26",
+      "section": "Caveats",
+      "slide_type": "comparison",
+      "title": "What To Fund Versus What To Defer",
+      "objective": "Clarify prioritization discipline.",
+      "audience": "executive",
+      "layout": "two-column-comparison",
+      "content_blocks": [
+        {
+          "kind": "comparison-column",
+          "label": "Fund now",
+          "body": "Pricing and telematics|Claims orchestration|Bundle growth|Service workflow automation"
+        },
+        {
+          "kind": "comparison-column",
+          "label": "Defer or narrow",
+          "body": "Generic enterprise chatbots|Unowned copilots|Broad transformation programs with no workflow metrics|Standalone innovation pilots"
+        }
+      ],
+      "source_ids": [
+        "src-mck-future-ai-insurance-2025",
+        "src-progressive-annual-report-2024",
+        "src-progressive-june-2025-results"
+      ]
+    },
+    {
+      "slide_id": "s27",
+      "section": "Methodology",
+      "slide_type": "bullets",
+      "title": "Methodology And Source Coverage",
+      "objective": "Close with evidence and limits.",
+      "audience": "executive",
+      "layout": "bullet-list",
+      "content_blocks": [
+        {
+          "kind": "bullet",
+          "label": "Industry sources",
+          "body": "McKinsey insurance AI and insurance growth research from July 2025, January 2025, and April 2026."
+        },
+        {
+          "kind": "bullet",
+          "label": "Customer sources",
+          "body": "Progressive annual report, June 2025 results, telematics page, and claims page."
+        },
+        {
+          "kind": "bullet",
+          "label": "What this is",
+          "body": "A public-source executive account and use-case prioritization readout."
+        },
+        {
+          "kind": "bullet",
+          "label": "What this is not",
+          "body": "It is not a vendor bake-off, implementation plan, or internal systems assessment."
+        }
+      ],
+      "source_ids": [
+        "src-mck-future-ai-insurance-2025",
+        "src-mck-global-insurance-2025",
+        "src-mck-agentic-core-modernization-2026",
+        "src-progressive-annual-report-2024",
+        "src-progressive-june-2025-results",
+        "src-progressive-telematics-page",
+        "src-progressive-claims-page"
+      ]
+    }
+  ],
+  "export_targets": [
+    "pptx",
+    "html",
+    "memo"
+  ]
+}

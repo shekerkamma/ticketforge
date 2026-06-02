@@ -130,9 +130,19 @@ Use these references before building or reviewing the deck:
 - `references/industry-customer-executive-frame.md`
 - `references/presentation-template.md`
 
-## Worked example
+## Worked examples
 
-The current repo includes a healthcare provider operations example:
+The current repo includes multiple contract-model examples across segments:
 
-- slug: `healthcare-provider-ops-ai-usecases`
-- custom builder: `scripts/build_healthcare_provider_ops_branded_pptx.py`
+- healthcare provider operations
+  - slug: `healthcare-provider-ops-ai-usecases`
+  - contract generator: `scripts/build_healthcare_provider_ops_analysis_pack.py`
+  - custom builder: `scripts/build_healthcare_provider_ops_branded_pptx.py`
+- insurance / Progressive
+  - slug: `insurance-progressive-ai-usecases`
+  - contract generator: `scripts/build_insurance_progressive_analysis_pack.py`
+  - render path: generic branded builder through this skill
+- automotive / Toyota
+  - slug: `toyota-automotive-ai-usecases`
+  - contract generator: `scripts/build_toyota_automotive_analysis_pack.py`
+  - render path: generic branded builder through this skill

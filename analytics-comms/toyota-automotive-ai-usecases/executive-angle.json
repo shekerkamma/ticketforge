@@ -1,0 +1,18 @@
+{
+  "report_slug": "toyota-automotive-ai-usecases",
+  "created_at": "2026-06-02T22:15:00Z",
+  "primary_audience": "automotive business and operating executives",
+  "lead_with": [
+    "platform reuse and compounding economics",
+    "workflow ownership across engineering, manufacturing, and service",
+    "validation and safety confidence",
+    "which AI lanes create monetizable or operational leverage first"
+  ],
+  "avoid_leading_with": [
+    "generic in-cabin assistant hype",
+    "feature demos without workflow ownership",
+    "AI taxonomies detached from OEM operating systems",
+    "weak tables where platform-vs-feature choices should be explicit"
+  ],
+  "decision_frame": "Frame the deck as an automotive operating-model and sequencing decision, using Toyota as the proof that platform and workflow AI create the durable moat."
+}

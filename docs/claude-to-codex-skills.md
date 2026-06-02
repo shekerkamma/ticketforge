@@ -233,15 +233,27 @@ It is:
 - validate the optional executive/customer JSON sidecars when they exist
 - generate a PPTX QA preview bundle after render
 
-Worked example in this repo:
+Worked examples in this repo:
 
-- slug: `healthcare-provider-ops-ai-usecases`
-- custom builder: `scripts/build_healthcare_provider_ops_branded_pptx.py`
-- generic wrapper skill: `starter/claude-to-codex-skills/skills/industry-research-analysis-branded-deck/`
+- healthcare provider operations
+  - slug: `healthcare-provider-ops-ai-usecases`
+  - contract generator: `scripts/build_healthcare_provider_ops_analysis_pack.py`
+  - custom builder: `scripts/build_healthcare_provider_ops_branded_pptx.py`
+- insurance / Progressive
+  - slug: `insurance-progressive-ai-usecases`
+  - contract generator: `scripts/build_insurance_progressive_analysis_pack.py`
+  - render path: generic branded builder through the wrapper skill
+- automotive / Toyota
+  - slug: `toyota-automotive-ai-usecases`
+  - contract generator: `scripts/build_toyota_automotive_analysis_pack.py`
+  - render path: generic branded builder through the wrapper skill
 
-Toyota automotive example now also includes a strategy-layer artifact:
+The point of the example set is to show that the same contract model works across:
 
-- `analytics-comms/toyota-automotive-ai-usecases/strategy-brief.md`
+- industry-only decks
+- named-customer executive decks
+- use-case prioritization decks
+- industry-plus-customer strategy decks
 
 The same wrapper is intended to work for:
 

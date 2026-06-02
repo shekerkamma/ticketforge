@@ -1,0 +1,43 @@
+{
+  "report_slug": "healthcare-provider-ops-ai-usecases",
+  "created_at": "2026-06-02T22:00:00Z",
+  "customer_scope": "industry-only",
+  "customer_label": "Health system and provider-operations executive teams",
+  "why_this_customer_matters": "Provider organizations already have visible administrative pain, growing AI adoption, and concrete public proof points across documentation, access, prior authorization, perioperative orchestration, and coding.",
+  "public_signals": [
+    "McKinsey's 2026 healthcare survey shows implementation has moved beyond experimentation.",
+    "The AMA reported two in three physicians were already using health AI in 2025.",
+    "UCHealth scaled ambient documentation with Abridge systemwide.",
+    "Qventus published perioperative throughput proof at Saint Luke's.",
+    "Notable published automation proof for prior authorizations at Fort HealthCare.",
+    "AKASA and CodaMetrix show durable revenue-cycle and coding workflow demand."
+  ],
+  "executive_priorities": [
+    "reduce administrative burden without breaking clinical flow",
+    "improve cash acceleration and denial prevention",
+    "reclaim clinician time inside the EHR",
+    "increase capacity utilization in constrained workflows",
+    "sequence assistive and executional AI with clear accountability"
+  ],
+  "workflow_owners": [
+    "Physician informatics or clinic operations",
+    "Access operations or clinic operations manager",
+    "RCM operations manager",
+    "HIM, coding, or revenue integrity leader",
+    "Perioperative operations or throughput leader"
+  ],
+  "best_entry_points": [
+    "CMIO or ambulatory operations leader",
+    "Chief operating officer or patient access leader",
+    "CFO or revenue cycle leader",
+    "CFO or chief revenue officer",
+    "COO or service line leader"
+  ],
+  "best_use_case_angles": [
+    "Ambient documentation and visit support",
+    "Patient access, registration, and prior authorization",
+    "Revenue cycle status and denial-prevention workflows",
+    "Coding automation and revenue integrity",
+    "Perioperative and capacity orchestration"
+  ]
+}

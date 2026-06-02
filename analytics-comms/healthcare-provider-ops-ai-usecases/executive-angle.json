@@ -1,0 +1,18 @@
+{
+  "report_slug": "healthcare-provider-ops-ai-usecases",
+  "created_at": "2026-06-02T22:00:00Z",
+  "primary_audience": "healthcare provider executives",
+  "lead_with": [
+    "operating friction and time recovery",
+    "cash-flow and denial economics",
+    "workflow ownership inside the EHR and RCM stack",
+    "what to sequence first versus later"
+  ],
+  "avoid_leading_with": [
+    "generic clinical AI hype",
+    "broad assistant narratives without workflow owners",
+    "tool demos detached from downstream process change",
+    "shrinking text-dense tables instead of surfacing operating choices"
+  ],
+  "decision_frame": "Frame the deck as a provider-operations investment and sequencing decision rather than as a general AI-awareness presentation."
+}
