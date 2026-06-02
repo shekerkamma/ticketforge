@@ -57,6 +57,7 @@ These skills are staged and ready to install into `~/.codex/skills`:
 - `presentation-speaker-notes`
 - `presentation-theme`
 - `proposal-generator`
+- `research-analysis-deck`
 - `review-draft`
 - `research-to-strategy`
 - `second-brain-capture`
@@ -94,6 +95,7 @@ These skills are not blind copies of the Claude originals. They were rewritten a
 - `content-topic-queue`
 - `content-weekly-report`
 - `crm-hygiene-enforcer`
+- `research-analysis-deck`
 - `research-to-strategy`
 - `url-dossier`
 - `llm-council`
@@ -157,6 +159,36 @@ The browser / desktop-adjacent wave is narrower:
 - `agent-browser` is worth keeping as a direct Codex skill because it wraps a real browser CLI
 - `ss` is worth keeping as a fast screenshot-ingest workflow
 - `open-gstack-browser` and `setup-browser-cookies` are not worth porting directly; they are mostly gstack runtime glue and consent/preamble machinery
+
+The structured chaining wave adds an explicit contract layer:
+
+- `research-analysis-deck` is the orchestrator for `research -> analysis -> deck`
+- it introduces three JSON checkpoints instead of relying on markdown-only handoffs:
+  - `source-notes.json`
+  - `analysis-pack.json`
+  - `deck-plan.json`
+- it pairs naturally with:
+  - `content-research`
+  - `analytics-to-comms`
+  - `chart-storyteller`
+  - `stakeholder-comms`
+  - `presentation-content-writer`
+  - `presentation`
+
+Recommended structured chain:
+
+1. `research-analysis-deck` to scaffold the report slug and file contract
+2. `content-research` to gather evidence into `source-notes.json`
+3. `analytics-to-comms` to turn that evidence into `analysis-pack.json`
+4. `chart-storyteller` to define the chart layer cleanly
+5. `stakeholder-comms` to tune the framing for the actual audience
+6. `presentation-content-writer` to turn the findings into a slide-ready `deck-plan.json`
+7. `presentation` only after the deck plan is structurally valid
+
+The bundled helpers live at:
+
+- `starter/claude-to-codex-skills/skills/research-analysis-deck/scripts/scaffold_chain.py`
+- `starter/claude-to-codex-skills/skills/research-analysis-deck/scripts/validate_chain.py`
 
 The first `Claude Cowork` wave is intentionally selective:
 

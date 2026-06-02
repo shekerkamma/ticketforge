@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Source Notes",
+  "type": "object",
+  "required": [
+    "report_slug",
+    "created_at",
+    "decision_question",
+    "sources"
+  ],
+  "properties": {
+    "report_slug": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_question": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "source_id",
+          "title",
+          "source_type",
+          "locator",
+          "captured_at",
+          "summary",
+          "raw_evidence",
+          "claims",
+          "use_case_hints"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "source_type": {
+            "type": "string",
+            "enum": [
+              "web",
+              "video",
+              "repo",
+              "document",
+              "dataset",
+              "other"
+            ]
+          },
+          "locator": {
+            "type": "string"
+          },
+          "captured_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "author": {
+            "type": "string"
+          },
+          "published_at": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "raw_evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "evidence_id",
+                "kind",
+                "text"
+              ],
+              "properties": {
+                "evidence_id": {
+                  "type": "string"
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "quote",
+                    "stat",
+                    "transcript",
+                    "table",
+                    "screenshot-note",
+                    "other"
+                  ]
+                },
+                "text": {
+                  "type": "string"
+                },
+                "locator": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "claims": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "claim_id",
+                "statement",
+                "confidence",
+                "evidence_ids"
+              ],
+              "properties": {
+                "claim_id": {
+                  "type": "string"
+                },
+                "statement": {
+                  "type": "string"
+                },
+                "confidence": {
+                  "type": "string",
+                  "enum": [
+                    "high",
+                    "medium",
+                    "low"
+                  ]
+                },
+                "evidence_ids": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "use_case_hints": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "label",
+                "rationale"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "rationale": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

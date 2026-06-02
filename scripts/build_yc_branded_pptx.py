@@ -28,6 +28,7 @@ SLIDE_W = Emu(12192000)
 SLIDE_H = Emu(6858000)
 
 TEMPLATE_PATH = Path("/mnt/c/Users/sheke/OneDrive/Desktop/Prasad_Agentic_AI_Use_Cases_Across_Industries.pptx")
+DECK_PLAN_PATH = Path("analytics-comms/yc-agent-companies-spring-2025/deck-plan.json")
 ANALYSIS_PATH = Path("analytics-comms/yc-agent-companies-spring-2025/analysis.json")
 OUTPUT_PATH = Path("docs/reports/yc-agent-companies-spring-2025-branded.pptx")
 TITLE_IMAGE_SLIDE_INDEX = 0
@@ -65,14 +66,19 @@ def add_text(
     color,
     bold=False,
     align=PP_ALIGN.LEFT,
-    font_name="Aptos",
+    font_name="Calibri",
     vertical=MSO_ANCHOR.TOP,
+    fit=True,
 ):
     box = slide.shapes.add_textbox(left, top, width, height)
     frame = box.text_frame
     frame.clear()
     frame.word_wrap = True
     frame.vertical_anchor = vertical
+    frame.margin_left = Emu(35000)
+    frame.margin_right = Emu(35000)
+    frame.margin_top = Emu(20000)
+    frame.margin_bottom = Emu(20000)
     para = frame.paragraphs[0]
     para.alignment = align
     run = para.add_run()
@@ -82,6 +88,11 @@ def add_text(
     font.size = Pt(size)
     font.bold = bold
     font.color.rgb = color
+    if fit:
+        try:
+            frame.fit_text(font_family=font_name, max_size=size, bold=bold)
+        except Exception:
+            pass
     return box
 
 
@@ -234,6 +245,23 @@ def add_bar_chart_slide(prs: Presentation, page_num: int, spec: dict[str, Any]) 
     add_footer(slide, page_num)
 
 
+def add_team_distribution_slide(prs: Presentation, page_num: int, spec: dict[str, Any]) -> None:
+    slide = prs.slides.add_slide(prs.slide_layouts[BLANK_LAYOUT_INDEX])
+    add_rect(slide, 0, 0, SLIDE_W, SLIDE_H, WHITE)
+    add_rect(slide, 0, 0, SLIDE_W, Emu(70000), TEAL_DARK)
+    add_text(slide, spec["title"], Emu(365760), Emu(274320), Emu(8000000), Emu(457200), size=26, color=NAVY, bold=True)
+    add_text(slide, spec["subtitle"], Emu(365760), Emu(700000), Emu(7600000), Emu(240000), size=12, color=MUTED)
+    max_value = max(item["count"] for item in spec["series"]) or 1
+    lefts = [Emu(900000), Emu(3000000), Emu(5100000), Emu(7200000), Emu(9300000)]
+    for item, left in zip(spec["series"], lefts):
+        height = int(1900000 * (item["count"] / max_value))
+        add_rect(slide, left, Emu(3900000) - Emu(height), Emu(1200000), Emu(height), TEAL if item["count"] >= max_value else NAVY, radius=True)
+        add_text(slide, str(item["count"]), left, Emu(3950000) - Emu(height), Emu(1200000), Emu(260000), size=18, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
+        add_text(slide, item["label"], left, Emu(4100000), Emu(1200000), Emu(220000), size=15, color=NAVY, bold=True, align=PP_ALIGN.CENTER)
+    add_text(slide, spec["takeaway"], Emu(900000), Emu(5000000), Emu(9800000), Emu(500000), size=18, color=INK, bold=True, align=PP_ALIGN.CENTER)
+    add_footer(slide, page_num)
+
+
 def add_comparison_slide(prs: Presentation, page_num: int, spec: dict[str, Any]) -> None:
     slide = prs.slides.add_slide(prs.slide_layouts[BLANK_LAYOUT_INDEX])
     add_rect(slide, 0, 0, SLIDE_W, SLIDE_H, WHITE)
@@ -283,6 +311,34 @@ def add_structured_table_slide(prs: Presentation, page_num: int, spec: dict[str,
     add_footer(slide, page_num)
 
 
+def add_cluster_spotlight_slide(prs: Presentation, page_num: int, spec: dict[str, Any]) -> None:
+    slide = prs.slides.add_slide(prs.slide_layouts[BLANK_LAYOUT_INDEX])
+    add_rect(slide, 0, 0, SLIDE_W, SLIDE_H, CREAM)
+    add_text(slide, spec["title"], Emu(731520), Emu(420000), Emu(8000000), Emu(500000), size=28, color=NAVY, bold=True)
+    add_rect(slide, Emu(731520), Emu(930000), Emu(1371600), Emu(36576), TEAL)
+    add_text(slide, f"Buyer: {spec['buyer']}", Emu(731520), Emu(1180000), Emu(4600000), Emu(240000), size=13, color=MUTED)
+    add_text(slide, f"Workflow owner: {spec['workflow_owner']}", Emu(731520), Emu(1450000), Emu(4600000), Emu(260000), size=13, color=MUTED)
+    add_rect(slide, Emu(731520), Emu(1850000), Emu(4900000), Emu(1500000), WHITE, line=GRID, radius=True)
+    add_text(slide, "Business job", Emu(900000), Emu(2010000), Emu(1600000), Emu(220000), size=15, color=NAVY, bold=True)
+    add_text(slide, spec["business_job"], Emu(900000), Emu(2310000), Emu(4500000), Emu(360000), size=14, color=INK)
+    add_text(slide, "Value proposition", Emu(900000), Emu(2740000), Emu(1800000), Emu(220000), size=15, color=NAVY, bold=True)
+    add_text(slide, spec["value_prop"], Emu(900000), Emu(3040000), Emu(4500000), Emu(300000), size=13, color=INK)
+    add_text(slide, "Why now", Emu(731520), Emu(3550000), Emu(1200000), Emu(220000), size=15, color=NAVY, bold=True)
+    add_text(slide, spec["why_now"], Emu(900000), Emu(3850000), Emu(4800000), Emu(300000), size=13, color=INK)
+    add_text(slide, "Recommendation", Emu(731520), Emu(4300000), Emu(1500000), Emu(220000), size=15, color=NAVY, bold=True)
+    add_text(slide, spec["recommendation"], Emu(900000), Emu(4600000), Emu(4800000), Emu(300000), size=13, color=INK)
+
+    add_rect(slide, Emu(6100000), Emu(1450000), Emu(4700000), Emu(4000000), NAVY, radius=True)
+    add_text(slide, "Source-backed examples", Emu(6350000), Emu(1650000), Emu(2500000), Emu(220000), size=16, color=WHITE, bold=True)
+    top = Emu(2050000)
+    for example in spec["examples"][:4]:
+        add_rect(slide, Emu(6350000), top, Emu(4200000), Emu(700000), WHITE, line=WHITE, radius=True)
+        add_text(slide, example["name"], Emu(6550000), top + Emu(70000), Emu(1500000), Emu(220000), size=14, color=NAVY, bold=True)
+        add_text(slide, example["proof_line"], Emu(6550000), top + Emu(280000), Emu(3800000), Emu(320000), size=11, color=INK)
+        top += Emu(850000)
+    add_footer(slide, page_num)
+
+
 def add_vertical_table_slide(prs: Presentation, page_num: int, spec: dict[str, Any]) -> None:
     slide = prs.slides.add_slide(prs.slide_layouts[BLANK_LAYOUT_INDEX])
     add_rect(slide, 0, 0, SLIDE_W, SLIDE_H, WHITE)
@@ -322,6 +378,27 @@ def add_vertical_table_slide(prs: Presentation, page_num: int, spec: dict[str, A
     add_footer(slide, page_num)
 
 
+def add_company_grid_slide(prs: Presentation, page_num: int, spec: dict[str, Any]) -> None:
+    slide = prs.slides.add_slide(prs.slide_layouts[BLANK_LAYOUT_INDEX])
+    add_rect(slide, 0, 0, SLIDE_W, SLIDE_H, WHITE)
+    add_rect(slide, 0, 0, SLIDE_W, Emu(70000), TEAL_DARK)
+    add_text(slide, spec["title"], Emu(365760), Emu(274320), Emu(7800000), Emu(457200), size=26, color=NAVY, bold=True)
+    add_text(slide, spec["subtitle"], Emu(365760), Emu(700000), Emu(7600000), Emu(220000), size=12, color=MUTED)
+    positions = [
+        (Emu(365760), Emu(1300000)),
+        (Emu(6200000), Emu(1300000)),
+        (Emu(365760), Emu(3600000)),
+        (Emu(6200000), Emu(3600000)),
+    ]
+    for company, (left, top) in zip(spec["companies"], positions):
+        add_rect(slide, left, top, Emu(5000000), Emu(1800000), CREAM, line=GRID, radius=True)
+        add_rect(slide, left + Emu(170000), top + Emu(150000), Emu(1100000), Emu(220000), TEAL_DARK, radius=True)
+        add_text(slide, company["cluster"].title(), left + Emu(170000), top + Emu(165000), Emu(1100000), Emu(150000), size=11, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
+        add_text(slide, company["name"], left + Emu(170000), top + Emu(470000), Emu(3000000), Emu(240000), size=18, color=NAVY, bold=True)
+        add_text(slide, company["proof_line"], left + Emu(170000), top + Emu(820000), Emu(4500000), Emu(700000), size=12, color=INK)
+    add_footer(slide, page_num)
+
+
 def add_case_study_slide(prs: Presentation, page_num: int, spec: dict[str, Any]) -> None:
     slide = prs.slides.add_slide(prs.slide_layouts[BLANK_LAYOUT_INDEX])
     add_rect(slide, 0, 0, SLIDE_W, SLIDE_H, TEAL)
@@ -356,6 +433,22 @@ def add_case_study_slide(prs: Presentation, page_num: int, spec: dict[str, Any])
     add_footer(slide, page_num)
 
 
+def add_implication_bullets_slide(prs: Presentation, page_num: int, spec: dict[str, Any]) -> None:
+    slide = prs.slides.add_slide(prs.slide_layouts[BLANK_LAYOUT_INDEX])
+    add_rect(slide, 0, 0, SLIDE_W, SLIDE_H, WHITE)
+    add_rect(slide, 0, 0, SLIDE_W, Emu(70000), TEAL_DARK)
+    add_text(slide, spec["title"], Emu(365760), Emu(274320), Emu(7600000), Emu(457200), size=26, color=NAVY, bold=True)
+    add_text(slide, spec["subtitle"], Emu(365760), Emu(700000), Emu(8200000), Emu(260000), size=13, color=MUTED)
+    top = Emu(1350000)
+    for idx, bullet in enumerate(spec["bullets"], start=1):
+        add_rect(slide, Emu(500000), top, Emu(520000), Emu(520000), NAVY, radius=True)
+        add_text(slide, f"{idx:02d}", Emu(500000), top + Emu(120000), Emu(520000), Emu(180000), size=18, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
+        add_rect(slide, Emu(1200000), top, Emu(9300000), Emu(620000), RGBColor(0xF3, 0xF6, 0xF8), line=GRID, radius=True)
+        add_text(slide, bullet, Emu(1450000), top + Emu(140000), Emu(8800000), Emu(340000), size=15, color=INK)
+        top += Emu(760000)
+    add_footer(slide, page_num)
+
+
 def add_recommendation_grid_slide(prs: Presentation, page_num: int, spec: dict[str, Any]) -> None:
     slide = prs.slides.add_slide(prs.slide_layouts[BLANK_LAYOUT_INDEX])
     add_rect(slide, 0, 0, SLIDE_W, SLIDE_H, CREAM)
@@ -374,6 +467,24 @@ def add_recommendation_grid_slide(prs: Presentation, page_num: int, spec: dict[s
         add_text(slide, f"{idx:02d}", left + Emu(180000), top + Emu(220000), Emu(520000), Emu(220000), size=17, color=NAVY, bold=True, align=PP_ALIGN.CENTER)
         add_text(slide, rec["title"], left + Emu(900000), top + Emu(180000), Emu(3400000), Emu(260000), size=18, color=NAVY, bold=True)
         add_text(slide, rec["why"], left + Emu(900000), top + Emu(560000), Emu(3400000), Emu(520000), size=14, color=INK)
+    add_footer(slide, page_num)
+
+
+def add_opportunity_ladder_slide(prs: Presentation, page_num: int, spec: dict[str, Any]) -> None:
+    slide = prs.slides.add_slide(prs.slide_layouts[BLANK_LAYOUT_INDEX])
+    add_rect(slide, 0, 0, SLIDE_W, SLIDE_H, CREAM)
+    add_text(slide, spec["title"], Emu(731520), Emu(500000), Emu(8000000), Emu(500000), size=30, color=NAVY, bold=True)
+    add_text(slide, spec["subtitle"], Emu(731520), Emu(980000), Emu(9000000), Emu(240000), size=13, color=MUTED)
+    top = Emu(1650000)
+    widths = [Emu(1500000), Emu(3000000), Emu(4700000)]
+    for idx, item in enumerate(spec["items"]):
+        add_rect(slide, Emu(900000), top, Emu(1200000), Emu(520000), TEAL if idx < 3 else NAVY, radius=True)
+        add_text(slide, item["label"], Emu(900000), top + Emu(140000), Emu(1200000), Emu(180000), size=14, color=WHITE, bold=True, align=PP_ALIGN.CENTER)
+        add_rect(slide, Emu(2400000), top, Emu(3400000), Emu(520000), WHITE, line=GRID, radius=True)
+        add_text(slide, item["value"], Emu(2580000), top + Emu(120000), Emu(3000000), Emu(220000), size=16, color=NAVY, bold=True)
+        add_rect(slide, Emu(6100000), top, Emu(4300000), Emu(520000), WHITE, line=GRID, radius=True)
+        add_text(slide, item["detail"], Emu(6280000), top + Emu(120000), Emu(3900000), Emu(220000), size=12, color=INK)
+        top += Emu(760000)
     add_footer(slide, page_num)
 
 
@@ -400,44 +511,82 @@ def add_methodology_slide(prs: Presentation, page_num: int, spec: dict[str, Any]
     add_footer(slide, page_num)
 
 
+def add_appendix_sources_slide(prs: Presentation, page_num: int, spec: dict[str, Any]) -> None:
+    slide = prs.slides.add_slide(prs.slide_layouts[BLANK_LAYOUT_INDEX])
+    add_rect(slide, 0, 0, SLIDE_W, SLIDE_H, WHITE)
+    add_rect(slide, 0, 0, SLIDE_W, Emu(70000), TEAL_DARK)
+    add_text(slide, spec["title"], Emu(365760), Emu(274320), Emu(7600000), Emu(457200), size=26, color=NAVY, bold=True)
+    add_text(slide, spec["subtitle"], Emu(365760), Emu(700000), Emu(7600000), Emu(220000), size=12, color=MUTED)
+    top = Emu(1300000)
+    for company in spec["companies"][:8]:
+        add_rect(slide, Emu(365760), top, Emu(10600000), Emu(460000), RGBColor(0xF7, 0xF9, 0xFB), line=GRID)
+        add_text(slide, company["name"], Emu(520000), top + Emu(100000), Emu(1900000), Emu(180000), size=13, color=NAVY, bold=True)
+        add_text(slide, company["proof_line"], Emu(2400000), top + Emu(90000), Emu(8200000), Emu(220000), size=11, color=INK)
+        top += Emu(520000)
+    add_footer(slide, page_num)
+
+
 SLIDE_BUILDERS = {
     "agenda": add_agenda_slide,
     "section_divider": add_section_divider_slide,
     "summary_cards": add_summary_cards_slide,
     "kpi_grid": add_kpi_grid_slide,
+    "team_distribution": add_team_distribution_slide,
     "bar_chart": add_bar_chart_slide,
     "comparison": add_comparison_slide,
     "structured_table": add_structured_table_slide,
+    "cluster_spotlight": add_cluster_spotlight_slide,
     "vertical_table": add_vertical_table_slide,
+    "company_grid": add_company_grid_slide,
     "case_study": add_case_study_slide,
+    "implication_bullets": add_implication_bullets_slide,
     "recommendation_grid": add_recommendation_grid_slide,
+    "opportunity_ladder": add_opportunity_ladder_slide,
     "methodology": add_methodology_slide,
+    "appendix_sources": add_appendix_sources_slide,
 }
 
 
-def load_analysis() -> dict[str, Any]:
-    return json.loads(ANALYSIS_PATH.read_text(encoding="utf-8"))
+def render_spec_from_slide(slide: dict[str, Any]) -> dict[str, Any]:
+    if "render_spec" in slide:
+        return slide["render_spec"]
+    spec = {
+        "type": slide.get("layout", slide.get("slide_type", "custom")).replace("-", "_"),
+        "title": slide.get("title", ""),
+    }
+    if slide.get("content_blocks"):
+        spec["content_blocks"] = slide["content_blocks"]
+    return spec
+
+
+def load_slide_specs() -> list[dict[str, Any]]:
+    if DECK_PLAN_PATH.exists():
+        deck_plan = json.loads(DECK_PLAN_PATH.read_text(encoding="utf-8"))
+        return [render_spec_from_slide(slide) for slide in deck_plan["slides"]]
+    if ANALYSIS_PATH.exists():
+        analysis = json.loads(ANALYSIS_PATH.read_text(encoding="utf-8"))
+        return analysis["deck_plan"]
+    raise SystemExit(f"Missing deck inputs: {DECK_PLAN_PATH} or {ANALYSIS_PATH}")
 
 
 def main() -> None:
-    if not ANALYSIS_PATH.exists():
-        raise SystemExit(f"Missing analysis pack: {ANALYSIS_PATH}")
+    slide_specs = load_slide_specs()
 
-    analysis = load_analysis()
     prs = Presentation(str(TEMPLATE_PATH))
     prs.slide_width = SLIDE_W
     prs.slide_height = SLIDE_H
     title_image = prs.slides[TITLE_IMAGE_SLIDE_INDEX].shapes[TITLE_IMAGE_SHAPE_INDEX].image.blob
     remove_all_slides(prs)
 
-    deck_plan = analysis["deck_plan"]
-    add_title_slide(prs, title_image, deck_plan[0])
-    for page_num, spec in enumerate(deck_plan[1:], start=2):
+    add_title_slide(prs, title_image, slide_specs[0])
+    for page_num, spec in enumerate(slide_specs[1:], start=2):
         builder = SLIDE_BUILDERS[spec["type"]]
         builder(prs, page_num, spec)
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    prs.save(str(OUTPUT_PATH))
+    temp_path = OUTPUT_PATH.with_suffix(".tmp.pptx")
+    prs.save(str(temp_path))
+    temp_path.replace(OUTPUT_PATH)
 
 
 if __name__ == "__main__":

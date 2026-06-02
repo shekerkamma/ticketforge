@@ -1,0 +1,1024 @@
+{
+  "report_slug": "yc-agent-companies-spring-2025",
+  "created_at": "2026-06-02T08:11:33.326630+00:00",
+  "decision_question": "Which YC small-team agent companies show the clearest commercially viable use cases?",
+  "sources": [
+    {
+      "source_id": "src-yc-companies-directory",
+      "entity_name": "YC Directory",
+      "title": "Y Combinator Companies Directory",
+      "source_type": "web",
+      "locator": "https://www.ycombinator.com/companies",
+      "captured_at": "2026-06-02T08:11:33.326630+00:00",
+      "summary": "Public YC directory used as the baseline source for the filtered company cohort.",
+      "raw_evidence": [
+        {
+          "evidence_id": "dir-1",
+          "kind": "quote",
+          "text": "Queried https://www.ycombinator.com/companies for batch Spring 2025 with query 'agent' and team size <= 10; current YC website batch is Spring 2026.",
+          "locator": "https://www.ycombinator.com/companies"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "dir-claim-1",
+          "statement": "The filtered cohort is derived from the live public YC companies directory.",
+          "confidence": "high",
+          "evidence_ids": [
+            "dir-1"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "workflow automation",
+          "rationale": "The directory is the shared baseline for use-case clustering across the cohort."
+        }
+      ],
+      "tags": [
+        "yc",
+        "directory",
+        "Spring 2025",
+        "agent"
+      ]
+    },
+    {
+      "source_id": "src-company-alpha-research",
+      "entity_name": "Alpha Research",
+      "title": "Alpha Research: Open source knowledge bases for all humanity",
+      "source_type": "web",
+      "locator": "https://alpharesearch.nyc/",
+      "captured_at": "2026-06-02T08:11:33.326630+00:00",
+      "author": "Alpha Research",
+      "published_at": "",
+      "summary": "Open source knowledge bases for all humanity.",
+      "raw_evidence": [
+        {
+          "evidence_id": "alpha-research-ev-1",
+          "kind": "other",
+          "text": "Alpha Research: Open source knowledge bases for all humanity",
+          "locator": "https://alpharesearch.nyc/"
+        },
+        {
+          "evidence_id": "alpha-research-ev-2",
+          "kind": "quote",
+          "text": "Open source knowledge bases for all humanity.",
+          "locator": "https://alpharesearch.nyc/"
+        },
+        {
+          "evidence_id": "alpha-research-ev-3",
+          "kind": "quote",
+          "text": "Open source knowledge bases for all humanity.",
+          "locator": "https://alpharesearch.nyc/"
+        },
+        {
+          "evidence_id": "alpha-research-ev-6",
+          "kind": "quote",
+          "text": "Open source, agentic knowledge bases for all of humanity's knowledge.",
+          "locator": "https://alpharesearch.nyc/"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "alpha-research-claim-1",
+          "statement": "Open source knowledge bases for all humanity.",
+          "confidence": "high",
+          "evidence_ids": [
+            "alpha-research-ev-1",
+            "alpha-research-ev-2",
+            "alpha-research-ev-3",
+            "alpha-research-ev-6"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "analytics and reporting",
+          "rationale": "Open source knowledge bases for all humanity."
+        },
+        {
+          "label": "developer tools and testing",
+          "rationale": "Open source knowledge bases for all humanity."
+        },
+        {
+          "label": "sales and customer ops",
+          "rationale": "Open source knowledge bases for all humanity."
+        }
+      ],
+      "tags": [
+        "Spring 2025",
+        "B2B -> Engineering, Product and Design",
+        "agent"
+      ]
+    },
+    {
+      "source_id": "src-company-anana",
+      "entity_name": "Anana",
+      "title": "Anana \u2014 AI Workspace for Hospitality Commercial Teams",
+      "source_type": "web",
+      "locator": "https://getanana.com",
+      "captured_at": "2026-06-02T08:11:33.326630+00:00",
+      "author": "Anana",
+      "published_at": "",
+      "summary": "One place for Revenue, Sales, and Operations to work together with AI \u2014 investigating pickup, triaging RFPs, and acting in the tools your team already uses.",
+      "raw_evidence": [
+        {
+          "evidence_id": "anana-ev-1",
+          "kind": "other",
+          "text": "Anana \u2014 AI Workspace for Hospitality Commercial Teams",
+          "locator": "https://getanana.com"
+        },
+        {
+          "evidence_id": "anana-ev-2",
+          "kind": "quote",
+          "text": "One place for Revenue, Sales, and Operations to work together with AI \u2014 investigating pickup, triaging RFPs, and acting in the tools your team already uses.",
+          "locator": "https://getanana.com"
+        },
+        {
+          "evidence_id": "anana-ev-3",
+          "kind": "quote",
+          "text": "One place for Revenue, Sales, and Operations to work together with AI \u2014 investigating pickup, triaging RFPs, and acting in the tools your team already uses.",
+          "locator": "https://getanana.com"
+        },
+        {
+          "evidence_id": "anana-ev-4",
+          "kind": "quote",
+          "text": "The workspace for hospitality commercial teams.",
+          "locator": "https://getanana.com"
+        },
+        {
+          "evidence_id": "anana-ev-5",
+          "kind": "quote",
+          "text": "Where the commercial function works together .",
+          "locator": "https://getanana.com"
+        },
+        {
+          "evidence_id": "anana-ev-6",
+          "kind": "quote",
+          "text": "The agentic system of action for hotel groups and management companies",
+          "locator": "https://getanana.com"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "anana-claim-1",
+          "statement": "One place for Revenue, Sales, and Operations to work together with AI \u2014 investigating pickup, triaging RFPs, and acting in the tools your team already uses.",
+          "confidence": "high",
+          "evidence_ids": [
+            "anana-ev-1",
+            "anana-ev-2",
+            "anana-ev-3",
+            "anana-ev-4",
+            "anana-ev-5",
+            "anana-ev-6"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "workflow automation",
+          "rationale": "One place for Revenue, Sales, and Operations to work together with AI \u2014 investigating pickup, triaging RFPs, and acting in the tools your team already uses."
+        },
+        {
+          "label": "sales and customer ops",
+          "rationale": "One place for Revenue, Sales, and Operations to work together with AI \u2014 investigating pickup, triaging RFPs, and acting in the tools your team already uses."
+        }
+      ],
+      "tags": [
+        "Spring 2025",
+        "B2B",
+        "agent"
+      ]
+    },
+    {
+      "source_id": "src-company-bitboard",
+      "entity_name": "BitBoard",
+      "title": "Build dashboards and reports with AI",
+      "source_type": "web",
+      "locator": "https://bitboard.work",
+      "captured_at": "2026-06-02T08:11:33.326630+00:00",
+      "author": "BitBoard",
+      "published_at": "",
+      "summary": "Connect your data, build with your agent, share with your team.",
+      "raw_evidence": [
+        {
+          "evidence_id": "bitboard-ev-1",
+          "kind": "other",
+          "text": "Build dashboards and reports with AI",
+          "locator": "https://bitboard.work"
+        },
+        {
+          "evidence_id": "bitboard-ev-2",
+          "kind": "quote",
+          "text": "Connect your data, build with your agent, share with your team.",
+          "locator": "https://bitboard.work"
+        },
+        {
+          "evidence_id": "bitboard-ev-3",
+          "kind": "quote",
+          "text": "Connect your data, build with your agent, share with your team.",
+          "locator": "https://bitboard.work"
+        },
+        {
+          "evidence_id": "bitboard-ev-5",
+          "kind": "quote",
+          "text": "Build dashboards and reports with your favorite AI tools.",
+          "locator": "https://bitboard.work"
+        },
+        {
+          "evidence_id": "bitboard-ev-6",
+          "kind": "quote",
+          "text": "Let your agent build dashboards and reporting.",
+          "locator": "https://bitboard.work"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "bitboard-claim-1",
+          "statement": "Connect your data, build with your agent, share with your team.",
+          "confidence": "high",
+          "evidence_ids": [
+            "bitboard-ev-1",
+            "bitboard-ev-2",
+            "bitboard-ev-3",
+            "bitboard-ev-5",
+            "bitboard-ev-6"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "analytics and reporting",
+          "rationale": "Connect your data, build with your agent, share with your team."
+        }
+      ],
+      "tags": [
+        "Spring 2025",
+        "B2B -> Analytics",
+        "agent"
+      ]
+    },
+    {
+      "source_id": "src-company-capacitive",
+      "entity_name": "Capacitive",
+      "title": "Capacitive, Corp.",
+      "source_type": "web",
+      "locator": "https://capacitive.ai/",
+      "captured_at": "2026-06-02T08:11:33.326630+00:00",
+      "author": "Capacitive",
+      "published_at": "",
+      "summary": "As of January 2026, Capacitive has ceased all operations and discontinued support for its Commons platform.",
+      "raw_evidence": [
+        {
+          "evidence_id": "capacitive-ev-1",
+          "kind": "other",
+          "text": "Capacitive, Corp.",
+          "locator": "https://capacitive.ai/"
+        },
+        {
+          "evidence_id": "capacitive-ev-2",
+          "kind": "quote",
+          "text": "As of January 2026, Capacitive has ceased all operations and discontinued support for its Commons platform.",
+          "locator": "https://capacitive.ai/"
+        },
+        {
+          "evidence_id": "capacitive-ev-3",
+          "kind": "quote",
+          "text": "As of January 2026, Capacitive has ceased all operations and discontinued support for its Commons platform.",
+          "locator": "https://capacitive.ai/"
+        },
+        {
+          "evidence_id": "capacitive-ev-6",
+          "kind": "quote",
+          "text": "The data gateway for agents.",
+          "locator": "https://capacitive.ai/"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "capacitive-claim-1",
+          "statement": "As of January 2026, Capacitive has ceased all operations and discontinued support for its Commons platform.",
+          "confidence": "high",
+          "evidence_ids": [
+            "capacitive-ev-1",
+            "capacitive-ev-2",
+            "capacitive-ev-3",
+            "capacitive-ev-6"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "security and governance",
+          "rationale": "As of January 2026, Capacitive has ceased all operations and discontinued support for its Commons platform."
+        },
+        {
+          "label": "developer tools and testing",
+          "rationale": "As of January 2026, Capacitive has ceased all operations and discontinued support for its Commons platform."
+        },
+        {
+          "label": "data and agent infrastructure",
+          "rationale": "As of January 2026, Capacitive has ceased all operations and discontinued support for its Commons platform."
+        }
+      ],
+      "tags": [
+        "Spring 2025",
+        "B2B -> Engineering, Product and Design",
+        "agent"
+      ]
+    },
+    {
+      "source_id": "src-company-contour",
+      "entity_name": "Contour",
+      "title": "Contour website note",
+      "source_type": "web",
+      "locator": "https://www.ycombinator.com/companies",
+      "captured_at": "2026-06-02T08:11:33.326630+00:00",
+      "author": "Contour",
+      "published_at": "",
+      "summary": "AI voice agents for healthcare operational calls",
+      "raw_evidence": [
+        {
+          "evidence_id": "contour-ev-2",
+          "kind": "quote",
+          "text": "AI voice agents for healthcare operational calls",
+          "locator": "Contour"
+        },
+        {
+          "evidence_id": "contour-ev-6",
+          "kind": "quote",
+          "text": "AI voice agents for healthcare operational calls",
+          "locator": "Contour"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "contour-claim-1",
+          "statement": "AI voice agents for healthcare operational calls",
+          "confidence": "high",
+          "evidence_ids": [
+            "contour-ev-2",
+            "contour-ev-6"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "general AI applications",
+          "rationale": "AI voice agents for healthcare operational calls"
+        }
+      ],
+      "tags": [
+        "agent"
+      ]
+    },
+    {
+      "source_id": "src-company-golf",
+      "entity_name": "Golf",
+      "title": "Golf",
+      "source_type": "web",
+      "locator": "https://golf.dev/",
+      "captured_at": "2026-06-02T08:11:33.326630+00:00",
+      "author": "Golf",
+      "published_at": "",
+      "summary": "Agentic AI Security and Governance",
+      "raw_evidence": [
+        {
+          "evidence_id": "golf-ev-1",
+          "kind": "other",
+          "text": "Golf",
+          "locator": "https://golf.dev/"
+        },
+        {
+          "evidence_id": "golf-ev-2",
+          "kind": "quote",
+          "text": "Your agents connect to your data & you can\u2019t see it",
+          "locator": "https://golf.dev/"
+        },
+        {
+          "evidence_id": "golf-ev-4",
+          "kind": "quote",
+          "text": "Your agents connect to your data & you can\u2019t see it",
+          "locator": "https://golf.dev/"
+        },
+        {
+          "evidence_id": "golf-ev-5",
+          "kind": "quote",
+          "text": "This is already happening inside your organization",
+          "locator": "https://golf.dev/"
+        },
+        {
+          "evidence_id": "golf-ev-6",
+          "kind": "quote",
+          "text": "Agentic AI Security and Governance",
+          "locator": "https://golf.dev/"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "golf-claim-1",
+          "statement": "Your agents connect to your data & you can\u2019t see it",
+          "confidence": "high",
+          "evidence_ids": [
+            "golf-ev-1",
+            "golf-ev-2",
+            "golf-ev-4",
+            "golf-ev-5",
+            "golf-ev-6"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "security and governance",
+          "rationale": "Your agents connect to your data & you can\u2019t see it"
+        },
+        {
+          "label": "developer tools and testing",
+          "rationale": "Your agents connect to your data & you can\u2019t see it"
+        },
+        {
+          "label": "data and agent infrastructure",
+          "rationale": "Your agents connect to your data & you can\u2019t see it"
+        }
+      ],
+      "tags": [
+        "Spring 2025",
+        "B2B -> Security",
+        "agent"
+      ]
+    },
+    {
+      "source_id": "src-company-lua-global-inc",
+      "entity_name": "Lua Global Inc",
+      "title": "Lua AI - The Agent OS",
+      "source_type": "web",
+      "locator": "https://heylua.ai/",
+      "captured_at": "2026-06-02T08:11:33.326630+00:00",
+      "author": "Lua Global Inc",
+      "published_at": "",
+      "summary": "Build, deploy, and scale enterprise-grade AI agents. Ship your first agent without touching infrastructure.",
+      "raw_evidence": [
+        {
+          "evidence_id": "lua-global-inc-ev-1",
+          "kind": "other",
+          "text": "Lua AI - The Agent OS",
+          "locator": "https://heylua.ai/"
+        },
+        {
+          "evidence_id": "lua-global-inc-ev-2",
+          "kind": "quote",
+          "text": "Build, deploy, and scale enterprise-grade AI agents. Ship your first agent without touching infrastructure.",
+          "locator": "https://heylua.ai/"
+        },
+        {
+          "evidence_id": "lua-global-inc-ev-3",
+          "kind": "quote",
+          "text": "Build, deploy, and scale enterprise-grade AI agents. Ship your first agent without touching infrastructure.",
+          "locator": "https://heylua.ai/"
+        },
+        {
+          "evidence_id": "lua-global-inc-ev-4",
+          "kind": "quote",
+          "text": "Build AI agents that solve real problems",
+          "locator": "https://heylua.ai/"
+        },
+        {
+          "evidence_id": "lua-global-inc-ev-5",
+          "kind": "quote",
+          "text": "Everything you need to build production-ready agents",
+          "locator": "https://heylua.ai/"
+        },
+        {
+          "evidence_id": "lua-global-inc-ev-6",
+          "kind": "quote",
+          "text": "The mid-market agent platform",
+          "locator": "https://heylua.ai/"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "lua-global-inc-claim-1",
+          "statement": "Build, deploy, and scale enterprise-grade AI agents. Ship your first agent without touching infrastructure.",
+          "confidence": "high",
+          "evidence_ids": [
+            "lua-global-inc-ev-1",
+            "lua-global-inc-ev-2",
+            "lua-global-inc-ev-3",
+            "lua-global-inc-ev-4",
+            "lua-global-inc-ev-5",
+            "lua-global-inc-ev-6"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "general AI applications",
+          "rationale": "Build, deploy, and scale enterprise-grade AI agents. Ship your first agent without touching infrastructure."
+        }
+      ],
+      "tags": [
+        "agent"
+      ]
+    },
+    {
+      "source_id": "src-company-pelica",
+      "entity_name": "Pelica",
+      "title": "Pelica Health \u00b7 AI copilots for value-based care",
+      "source_type": "web",
+      "locator": "https://www.pelica.com/",
+      "captured_at": "2026-06-02T08:11:33.326630+00:00",
+      "author": "Pelica",
+      "published_at": "",
+      "summary": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes.",
+      "raw_evidence": [
+        {
+          "evidence_id": "pelica-ev-1",
+          "kind": "other",
+          "text": "Pelica Health \u00b7 AI copilots for value-based care",
+          "locator": "https://www.pelica.com/"
+        },
+        {
+          "evidence_id": "pelica-ev-2",
+          "kind": "quote",
+          "text": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes.",
+          "locator": "https://www.pelica.com/"
+        },
+        {
+          "evidence_id": "pelica-ev-3",
+          "kind": "quote",
+          "text": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes.",
+          "locator": "https://www.pelica.com/"
+        },
+        {
+          "evidence_id": "pelica-ev-4",
+          "kind": "quote",
+          "text": "The operating system for value-based care.",
+          "locator": "https://www.pelica.com/"
+        },
+        {
+          "evidence_id": "pelica-ev-5",
+          "kind": "quote",
+          "text": "One canonical record. Every workflow. Real-time.",
+          "locator": "https://www.pelica.com/"
+        },
+        {
+          "evidence_id": "pelica-ev-6",
+          "kind": "quote",
+          "text": "Transforming healthcare operations with AI agents",
+          "locator": "https://www.pelica.com/"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "pelica-claim-1",
+          "statement": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes.",
+          "confidence": "high",
+          "evidence_ids": [
+            "pelica-ev-1",
+            "pelica-ev-2",
+            "pelica-ev-3",
+            "pelica-ev-4",
+            "pelica-ev-5",
+            "pelica-ev-6"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "healthcare operations",
+          "rationale": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes."
+        },
+        {
+          "label": "workflow automation",
+          "rationale": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes."
+        },
+        {
+          "label": "finance and trading",
+          "rationale": "Pelica Health builds AI co-pilots for value-based care quality teams, unifying EHR, claims, pharmacy, and lab data to close care gaps and improve outcomes."
+        }
+      ],
+      "tags": [
+        "Spring 2025",
+        "Healthcare -> Healthcare IT",
+        "agent"
+      ]
+    },
+    {
+      "source_id": "src-company-prosper",
+      "entity_name": "Prosper",
+      "title": "Prosper AI: Voice Agents for Patient Access & Prior Auth Automation",
+      "source_type": "web",
+      "locator": "https://www.getprosper.ai?utm_source=yc&utm_medium=directory&utm_campaign=yc_directory",
+      "captured_at": "2026-06-02T08:11:33.326630+00:00",
+      "author": "Prosper",
+      "published_at": "",
+      "summary": "AI Phone Agents for Healthcare Operations",
+      "raw_evidence": [
+        {
+          "evidence_id": "prosper-ev-1",
+          "kind": "other",
+          "text": "Prosper AI: Voice Agents for Patient Access & Prior Auth Automation",
+          "locator": "https://www.getprosper.ai?utm_source=yc&utm_medium=directory&utm_campaign=yc_directory"
+        },
+        {
+          "evidence_id": "prosper-ev-2",
+          "kind": "quote",
+          "text": "AI Voice Agents \u200d for Patient Access and RCM",
+          "locator": "https://www.getprosper.ai?utm_source=yc&utm_medium=directory&utm_campaign=yc_directory"
+        },
+        {
+          "evidence_id": "prosper-ev-4",
+          "kind": "quote",
+          "text": "AI Voice Agents \u200d for Patient Access and RCM",
+          "locator": "https://www.getprosper.ai?utm_source=yc&utm_medium=directory&utm_campaign=yc_directory"
+        },
+        {
+          "evidence_id": "prosper-ev-5",
+          "kind": "quote",
+          "text": "See Prosper Agents in Action",
+          "locator": "https://www.getprosper.ai?utm_source=yc&utm_medium=directory&utm_campaign=yc_directory"
+        },
+        {
+          "evidence_id": "prosper-ev-6",
+          "kind": "quote",
+          "text": "AI Phone Agents for Healthcare Operations",
+          "locator": "https://www.getprosper.ai?utm_source=yc&utm_medium=directory&utm_campaign=yc_directory"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "prosper-claim-1",
+          "statement": "AI Voice Agents \u200d for Patient Access and RCM",
+          "confidence": "high",
+          "evidence_ids": [
+            "prosper-ev-1",
+            "prosper-ev-2",
+            "prosper-ev-4",
+            "prosper-ev-5",
+            "prosper-ev-6"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "general AI applications",
+          "rationale": "AI Voice Agents \u200d for Patient Access and RCM"
+        }
+      ],
+      "tags": [
+        "agent"
+      ]
+    },
+    {
+      "source_id": "src-company-simbie-ai",
+      "entity_name": "Simbie AI",
+      "title": "AI Medical Staff | 24/7 Patient Support & Cost Savings | Simbie AI",
+      "source_type": "web",
+      "locator": "http://www.simbie.ai",
+      "captured_at": "2026-06-02T08:11:33.326630+00:00",
+      "author": "Simbie AI",
+      "published_at": "",
+      "summary": "Simbie AI\u2019s clinically-trained voice agents act as your 24/7 AI medical receptionist\u2014handling scheduling, refills & intake with 60% cost savings. Loved by doctors & patients.",
+      "raw_evidence": [
+        {
+          "evidence_id": "simbie-ai-ev-1",
+          "kind": "other",
+          "text": "AI Medical Staff | 24/7 Patient Support & Cost Savings | Simbie AI",
+          "locator": "http://www.simbie.ai"
+        },
+        {
+          "evidence_id": "simbie-ai-ev-2",
+          "kind": "quote",
+          "text": "Simbie AI\u2019s clinically-trained voice agents act as your 24/7 AI medical receptionist\u2014handling scheduling, refills & intake with 60% cost savings. Loved by doctors & patients.",
+          "locator": "http://www.simbie.ai"
+        },
+        {
+          "evidence_id": "simbie-ai-ev-3",
+          "kind": "quote",
+          "text": "Simbie AI\u2019s clinically-trained voice agents act as your 24/7 AI medical receptionist\u2014handling scheduling, refills & intake with 60% cost savings. Loved by doctors & patients.",
+          "locator": "http://www.simbie.ai"
+        },
+        {
+          "evidence_id": "simbie-ai-ev-4",
+          "kind": "quote",
+          "text": "with AI staff",
+          "locator": "http://www.simbie.ai"
+        },
+        {
+          "evidence_id": "simbie-ai-ev-5",
+          "kind": "quote",
+          "text": "AI AGENT",
+          "locator": "http://www.simbie.ai"
+        },
+        {
+          "evidence_id": "simbie-ai-ev-6",
+          "kind": "quote",
+          "text": "We get patients to their next appointment",
+          "locator": "http://www.simbie.ai"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "simbie-ai-claim-1",
+          "statement": "Simbie AI\u2019s clinically-trained voice agents act as your 24/7 AI medical receptionist\u2014handling scheduling, refills & intake with 60% cost savings. Loved by doctors & patients.",
+          "confidence": "high",
+          "evidence_ids": [
+            "simbie-ai-ev-1",
+            "simbie-ai-ev-2",
+            "simbie-ai-ev-3",
+            "simbie-ai-ev-4",
+            "simbie-ai-ev-5",
+            "simbie-ai-ev-6"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "general AI applications",
+          "rationale": "Simbie AI\u2019s clinically-trained voice agents act as your 24/7 AI medical receptionist\u2014handling scheduling, refills & intake with 60% cost savings. Loved by doctors & patients."
+        }
+      ],
+      "tags": [
+        "agent"
+      ]
+    },
+    {
+      "source_id": "src-company-toothy-ai",
+      "entity_name": "Toothy AI",
+      "title": "Toothy AI - AI-Powered Dental Insurance Verification & Billing",
+      "source_type": "web",
+      "locator": "https://www.toothy.ai/",
+      "captured_at": "2026-06-02T08:11:33.326630+00:00",
+      "author": "Toothy AI",
+      "published_at": "",
+      "summary": "Toothy takes insurance off your team",
+      "raw_evidence": [
+        {
+          "evidence_id": "toothy-ai-ev-1",
+          "kind": "other",
+          "text": "Toothy AI - AI-Powered Dental Insurance Verification & Billing",
+          "locator": "https://www.toothy.ai/"
+        },
+        {
+          "evidence_id": "toothy-ai-ev-2",
+          "kind": "quote",
+          "text": "Toothy takes insurance off your team",
+          "locator": "https://www.toothy.ai/"
+        },
+        {
+          "evidence_id": "toothy-ai-ev-3",
+          "kind": "quote",
+          "text": "Toothy takes insurance off your team",
+          "locator": "https://www.toothy.ai/"
+        },
+        {
+          "evidence_id": "toothy-ai-ev-6",
+          "kind": "quote",
+          "text": "AI for insurance verification & billing at dental clinics",
+          "locator": "https://www.toothy.ai/"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "toothy-ai-claim-1",
+          "statement": "Toothy takes insurance off your team",
+          "confidence": "high",
+          "evidence_ids": [
+            "toothy-ai-ev-1",
+            "toothy-ai-ev-2",
+            "toothy-ai-ev-3",
+            "toothy-ai-ev-6"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "general AI applications",
+          "rationale": "Toothy takes insurance off your team"
+        }
+      ],
+      "tags": [
+        "agent"
+      ]
+    },
+    {
+      "source_id": "src-company-unisson",
+      "entity_name": "Unisson",
+      "title": "Unisson | AI agents for your customer-facing teams",
+      "source_type": "web",
+      "locator": "https://www.unisson.ai",
+      "captured_at": "2026-06-02T08:11:33.326630+00:00",
+      "author": "Unisson",
+      "published_at": "",
+      "summary": "AI agents that learn to use your product and run directly inside it to execute any task your customers need, accelerating their time to value.",
+      "raw_evidence": [
+        {
+          "evidence_id": "unisson-ev-1",
+          "kind": "other",
+          "text": "Unisson | AI agents for your customer-facing teams",
+          "locator": "https://www.unisson.ai"
+        },
+        {
+          "evidence_id": "unisson-ev-2",
+          "kind": "quote",
+          "text": "AI agents that learn to use your product and run directly inside it to execute any task your customers need, accelerating their time to value.",
+          "locator": "https://www.unisson.ai"
+        },
+        {
+          "evidence_id": "unisson-ev-3",
+          "kind": "quote",
+          "text": "AI agents that learn to use your product and run directly inside it to execute any task your customers need, accelerating their time to value.",
+          "locator": "https://www.unisson.ai"
+        },
+        {
+          "evidence_id": "unisson-ev-4",
+          "kind": "quote",
+          "text": "Our agents run directly in your product executing tasks for your customers. Save your customer-facing teams thousands of hours.",
+          "locator": "https://www.unisson.ai"
+        },
+        {
+          "evidence_id": "unisson-ev-5",
+          "kind": "quote",
+          "text": "The AI product specialist for your",
+          "locator": "https://www.unisson.ai"
+        },
+        {
+          "evidence_id": "unisson-ev-6",
+          "kind": "quote",
+          "text": "AI agents that automate B2B software implementation",
+          "locator": "https://www.unisson.ai"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "unisson-claim-1",
+          "statement": "AI agents that learn to use your product and run directly inside it to execute any task your customers need, accelerating their time to value.",
+          "confidence": "high",
+          "evidence_ids": [
+            "unisson-ev-1",
+            "unisson-ev-2",
+            "unisson-ev-3",
+            "unisson-ev-4",
+            "unisson-ev-5",
+            "unisson-ev-6"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "general AI applications",
+          "rationale": "AI agents that learn to use your product and run directly inside it to execute any task your customers need, accelerating their time to value."
+        }
+      ],
+      "tags": [
+        "agent"
+      ]
+    },
+    {
+      "source_id": "src-company-flowscope",
+      "entity_name": "flowscope",
+      "title": "flowscope \u00b7 AI, delivered.",
+      "source_type": "web",
+      "locator": "https://flowscope.com",
+      "captured_at": "2026-06-02T08:11:33.326630+00:00",
+      "author": "flowscope",
+      "published_at": "",
+      "summary": "Agents that learn how your business actually runs, then redesign and automate the work on top of existing systems. The AI team for businesses that don't have one.",
+      "raw_evidence": [
+        {
+          "evidence_id": "flowscope-ev-1",
+          "kind": "other",
+          "text": "flowscope \u00b7 AI, delivered.",
+          "locator": "https://flowscope.com"
+        },
+        {
+          "evidence_id": "flowscope-ev-2",
+          "kind": "quote",
+          "text": "Agents that learn how your business actually runs, then redesign and automate the work on top of existing systems. The AI team for businesses that don't have one.",
+          "locator": "https://flowscope.com"
+        },
+        {
+          "evidence_id": "flowscope-ev-3",
+          "kind": "quote",
+          "text": "Agents that learn how your business actually runs, then redesign and automate the work on top of existing systems. The AI team for businesses that don't have one.",
+          "locator": "https://flowscope.com"
+        },
+        {
+          "evidence_id": "flowscope-ev-4",
+          "kind": "quote",
+          "text": "Our agents learn your business. Then automate it.",
+          "locator": "https://flowscope.com"
+        },
+        {
+          "evidence_id": "flowscope-ev-6",
+          "kind": "quote",
+          "text": "AI-native consulting to map and automate business processes",
+          "locator": "https://flowscope.com"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "flowscope-claim-1",
+          "statement": "Agents that learn how your business actually runs, then redesign and automate the work on top of existing systems. The AI team for businesses that don't have one.",
+          "confidence": "high",
+          "evidence_ids": [
+            "flowscope-ev-1",
+            "flowscope-ev-2",
+            "flowscope-ev-3",
+            "flowscope-ev-4",
+            "flowscope-ev-6"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "general AI applications",
+          "rationale": "Agents that learn how your business actually runs, then redesign and automate the work on top of existing systems. The AI team for businesses that don't have one."
+        }
+      ],
+      "tags": [
+        "agent"
+      ]
+    },
+    {
+      "source_id": "src-company-stratify",
+      "entity_name": "stratify",
+      "title": "Stratify AI | The AI-Powered User Research Platform",
+      "source_type": "web",
+      "locator": "https://www.trystratify.com",
+      "captured_at": "2026-06-02T08:11:33.326630+00:00",
+      "author": "stratify",
+      "published_at": "",
+      "summary": "Automate your user research with AI-powered insights. Get deeper customer understanding without the manual work.",
+      "raw_evidence": [
+        {
+          "evidence_id": "stratify-ev-1",
+          "kind": "other",
+          "text": "Stratify AI | The AI-Powered User Research Platform",
+          "locator": "https://www.trystratify.com"
+        },
+        {
+          "evidence_id": "stratify-ev-2",
+          "kind": "quote",
+          "text": "Automate your user research with AI-powered insights. Get deeper customer understanding without the manual work.",
+          "locator": "https://www.trystratify.com"
+        },
+        {
+          "evidence_id": "stratify-ev-3",
+          "kind": "quote",
+          "text": "Automate your user research with AI-powered insights. Get deeper customer understanding without the manual work.",
+          "locator": "https://www.trystratify.com"
+        },
+        {
+          "evidence_id": "stratify-ev-4",
+          "kind": "quote",
+          "text": "AI-powered user research on autopilot",
+          "locator": "https://www.trystratify.com"
+        },
+        {
+          "evidence_id": "stratify-ev-5",
+          "kind": "quote",
+          "text": "Everything you need for user research",
+          "locator": "https://www.trystratify.com"
+        },
+        {
+          "evidence_id": "stratify-ev-6",
+          "kind": "quote",
+          "text": "AI agents that help you understand your customers' needs",
+          "locator": "https://www.trystratify.com"
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "stratify-claim-1",
+          "statement": "Automate your user research with AI-powered insights. Get deeper customer understanding without the manual work.",
+          "confidence": "high",
+          "evidence_ids": [
+            "stratify-ev-1",
+            "stratify-ev-2",
+            "stratify-ev-3",
+            "stratify-ev-4",
+            "stratify-ev-5",
+            "stratify-ev-6"
+          ]
+        }
+      ],
+      "use_case_hints": [
+        {
+          "label": "workflow automation",
+          "rationale": "Automate your user research with AI-powered insights. Get deeper customer understanding without the manual work."
+        },
+        {
+          "label": "sales and customer ops",
+          "rationale": "Automate your user research with AI-powered insights. Get deeper customer understanding without the manual work."
+        }
+      ],
+      "tags": [
+        "Spring 2025",
+        "B2B",
+        "agent"
+      ]
+    }
+  ]
+}
