@@ -848,7 +848,7 @@ def main() -> None:
             "Healthcare ops and finance sit top-right: deep workflow ownership and strong willingness to pay.",
             img_w=Inches(9.2))
     # 18 company evidence grid
-    feat = ["Anana", "Golf", "Pelica", "stratify", "BitBoard", "Capacitive", "Aegis", "Cotool", "MindFort"]
+    feat = ["Anana", "Golf", "Pelica", "stratify", "BitBoard", "Airweave", "Aegis", "Cotool", "MindFort"]
     cmap = {c["name"]: c for c in companies}
     grid = [cmap[n] for n in feat if n in cmap]
     if len(grid) < 9:
