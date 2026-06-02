@@ -232,7 +232,7 @@ def s_title(prs, total):
         x += w + Inches(0.14)
     # org names ticker on the navy strip
     text(s, "ORGANIZATIONS REFERENCED", PANEL_W + Inches(0.5), Inches(2.0), Inches(3.6), Inches(0.3), size=11, color=TEAL, bold=True)
-    orgs = ["Anana", "stratify", "Cohesive", "BitBoard", "nao Labs", "Golf", "Capacitive",
+    orgs = ["Anana", "stratify", "Cohesive", "BitBoard", "nao Labs", "Golf",
             "Airweave", "Aegis", "Pelica", "Cotool", "MindFort", "Docket",
             "Propolis", "Galen AI", "Vesence"]
     text(s, [{"text": o, "size": 11.5, "color": LIGHT_TEAL, "bold": True, "space_before": 1.5} for o in orgs],
@@ -351,7 +351,7 @@ def s_stack(prs, page, total):
     layers = [
         ("EXPERIENCE & DECISION", "Inboxes, dashboards, review queues, approvals — where operators stay in control.", "Anana · BitBoard · Vesence"),
         ("ORCHESTRATION & REASONING", "Planning, tool selection, multi-step execution, evals and retries.", "stratify · Docket · Propolis"),
-        ("CONTEXT & RETRIEVAL", "Permissioned access to data, memory, and policy — the layer agents fail without.", "Airweave · Kaelio · Capacitive"),
+        ("CONTEXT & RETRIEVAL", "Permissioned access to data, memory, and policy — the layer agents fail without.", "Airweave · Kaelio · Scalar Field"),
         ("ACTUATION & INTEGRATION", "Writes back into CRM, EHR, repos, ledgers and ticketing systems of record.", "Cohesive · Aegis · Cua"),
         ("GOVERNANCE & SECURITY", "Identity, scoping, audit, and guardrails on what agents may touch.", "Golf · MindFort · Cotool"),
     ]
@@ -470,7 +470,7 @@ def s_strategic(prs, page, total, title, matches, realization, controls, questio
     lx, rx = MARGIN, SLIDE_W - MARGIN - col_w
     # left: organizations realizing it
     rect(s, lx, Inches(1.35), col_w, Inches(3.75), WHITE, radius=0.05, shadow=True)
-    text(s, "ORGANIZATIONS REALIZING THIS", lx + Inches(0.3), Inches(1.5), col_w - Inches(0.6), Inches(0.3), size=13, color=ACCENT, bold=True)
+    text(s, "ORGANIZATIONS REALIZING THIS  ·  ADJACENCY — YC BATCHES VARY", lx + Inches(0.3), Inches(1.5), col_w - Inches(0.6), Inches(0.3), size=12, color=ACCENT, bold=True, shrink=True)
     paras = []
     for m in matches[:5]:
         paras.append({"text": m["name"], "size": 14, "color": NAVY, "bold": True, "space_before": 7})
@@ -513,6 +513,8 @@ def s_risks(prs, page, total):
         text(s, wrong, MARGIN + Inches(3.0), y, Inches(5.1), rh, size=12, color=INK, anchor=MSO_ANCHOR.MIDDLE, shrink=True)
         text(s, ctrl, MARGIN + Inches(8.4), y, Inches(3.5), rh, size=12, color=ACCENT, bold=True, anchor=MSO_ANCHOR.MIDDLE, shrink=True)
         y += rh
+    text(s, "Evidence note: counts tie out to 27 filtered companies; organization names are from the live YC listing, with deep-research notes confirming a 14-company subset. Adjacency examples span multiple YC batches.",
+         MARGIN, Inches(6.55), CONTENT_W, Inches(0.42), size=10.5, color=MUTED, italic=True, shrink=True)
     footer(s, page, total)
 
 
@@ -641,7 +643,7 @@ USE_CASES = [
         "orgs": [("Docket", "AI agents for web testing."),
                  ("Propolis", "Hands-off QA via intelligent browser agents."),
                  ("Golf", "Agentic AI security and governance for engineering."),
-                 ("Capacitive", "The data gateway for agents in test pipelines.")],
+                 ("Alpha Research", "Open-source agentic knowledge bases used across engineering.")],
     },
     {
         "kicker": "USE CASE 05  ·  PLATFORM", "title": "Data & Agent Infrastructure",
@@ -653,7 +655,7 @@ USE_CASES = [
         "systems": ["Data sources", "Vector stores", "IdP", "Connectors"], "users": "Platform eng · CTO staff",
         "orgs": [("Airweave", "The open-source context retrieval layer for agents."),
                  ("Kaelio", "The open-source context layer for data agents."),
-                 ("Capacitive", "The data gateway for agents."),
+                 ("Scalar Field", "An agentic trading desk built on its own data/context layer."),
                  ("Golf", "Agentic AI security and governance.")],
     },
     {
@@ -679,8 +681,7 @@ USE_CASES = [
         "systems": ["SIEM", "IdP", "Cloud APIs", "Ticketing"], "users": "CISO orgs · security eng · compliance",
         "orgs": [("Golf", "Agentic AI security and governance."),
                  ("MindFort", "Autonomous security agents."),
-                 ("Cotool", "AI agents for security operations teams."),
-                 ("Capacitive", "The data gateway controlling agent access.")],
+                 ("Cotool", "AI agents for security operations teams.")],
     },
     {
         "kicker": "USE CASE 08  ·  VERTICAL", "title": "Healthcare Operations",
@@ -774,7 +775,7 @@ def main():
                  "Turn the service motion into owned product before someone else does."],
                 "Can a service motion defend a wedge before software productizes the work?")
     s_chart(prs, nx(), TOTAL, "Where The Realization Payoff Concentrates", "Workflow ownership vs. willingness to pay, by use case", p_matrix,
-            "Healthcare ops and finance sit top-right: deep workflow ownership and strong willingness to pay.",
+            "Healthcare ops and finance sit top-right: deep workflow ownership and strong willingness to pay. (Illustrative positioning, not measured.)",
             img_w=Inches(9.0))
     s_risks(prs, nx(), TOTAL)
     s_roadmap(prs, nx(), TOTAL)

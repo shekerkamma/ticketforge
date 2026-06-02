@@ -351,7 +351,7 @@ def main():
     slides.append(lambda p, t: s_scorecard(prs, p, t))
     slides.append(lambda p, t: uc.s_chart(prs, p, t, "The Payoff Sits Where Ownership Meets Willingness To Pay",
                                           "Workflow ownership vs. willingness to pay, by use case", p_matrix,
-                                          "Healthcare ops and finance occupy the top-right — deep ownership and strong willingness to pay.",
+                                          "Healthcare ops and finance occupy the top-right — deep ownership and strong willingness to pay. (Illustrative positioning, not measured.)",
                                           img_w=Inches(9.0)))
     slides.append(lambda p, t: s_where_how(prs, p, t))
     slides.append(lambda p, t: s_decision(prs, p, t))
