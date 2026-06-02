@@ -6,7 +6,7 @@ This repo stages a large Codex skill pack. Keep this file in sync with `starter/
 
 - Staged pack: `/home/shekerk/ticketforge/starter/claude-to-codex-skills/skills`
 - Typical active install target: `/home/shekerk/snap/codex/34/skills`
-- Current staged skill count: `102`
+- Current staged skill count: `103`
 
 ### How to use
 
@@ -49,6 +49,7 @@ This repo stages a large Codex skill pack. Keep this file in sync with `starter/
 - `forecast`: Forecast a metric or business outcome with explicit assumptions, uncertainty, and backtesting expectations. Use when the user asks what will happen next or wants a forward-looking estimate. Skill file: `/home/shekerk/ticketforge/starter/claude-to-codex-skills/skills/forecast/SKILL.md`
 - `graphify`: any input (code, docs, papers, images, videos) to knowledge graph. Use when user asks any question about a codebase, documents, or project content - especially if graphify-out/ exists, treat the question as a /graphify query. Skill file: `/home/shekerk/ticketforge/starter/claude-to-codex-skills/skills/graphify/SKILL.md`
 - `guardrails`: Apply publishing and interpretation guardrails before sharing analytical findings. Use when the output is high stakes and needs a final quality gate. Skill file: `/home/shekerk/ticketforge/starter/claude-to-codex-skills/skills/guardrails/SKILL.md`
+- `industry-research-analysis-branded-deck`: Build an industry- and customer-aware research-to-strategy-to-branded-PPTX chain using explicit JSON handoffs, bundled Canva-style template assets, and a PowerPoint-native renderer. Use when the user wants an executive deck for a vertical, domain, industry, named customer/account, buyer segment, workflow family, or use-case landscape and the result must address business executives with both strategic implications and concrete use cases. Skill file: `/home/shekerk/ticketforge/starter/claude-to-codex-skills/skills/industry-research-analysis-branded-deck/SKILL.md`
 - `knowledge-bootstrap`: Compatibility entrypoint for loading workspace context and prior analytical knowledge. Use when an old workflow expects the `knowledge-bootstrap` skill name. Skill file: `/home/shekerk/ticketforge/starter/claude-to-codex-skills/skills/knowledge-bootstrap/SKILL.md`
 - `llm-council`: Pressure-test a real decision or tradeoff through multiple advisor perspectives, peer review, and synthesis. Use when the user wants multiple viewpoints on a consequential choice, asks to run a council, or needs a decision stress-tested instead of answered once. Skill file: `/home/shekerk/ticketforge/starter/claude-to-codex-skills/skills/llm-council/SKILL.md`
 - `log-correction`: Record a known data caveat, metric correction, or interpretation fix so future analyses do not repeat the same mistake. Use when a data issue is discovered. Skill file: `/home/shekerk/ticketforge/starter/claude-to-codex-skills/skills/log-correction/SKILL.md`

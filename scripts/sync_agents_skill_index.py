@@ -89,6 +89,7 @@ def categorize(name: str) -> str:
             "export-results",
             "explainer-graphic",
             "graphify",
+            "industry-research-analysis-branded-deck",
             "llm-council",
             "obsidian-github-sync",
             "obsidian-vault-manager",
@@ -150,6 +151,8 @@ def categorize(name: str) -> str:
 def render() -> str:
     skills = []
     for skill_dir in sorted(path for path in SKILLS_DIR.iterdir() if path.is_dir()):
+        if not (skill_dir / "SKILL.md").exists():
+            continue
         name, description = parse_frontmatter(skill_dir)
         skills.append(
             {

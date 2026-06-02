@@ -185,6 +185,69 @@ Recommended structured chain:
 6. `presentation-content-writer` to turn the findings into a slide-ready `deck-plan.json`
 7. `presentation` only after the deck plan is structurally valid
 
+For industry-specific executive decks, there is now a higher-level wrapper:
+
+- `industry-research-analysis-branded-deck`
+- it sits on top of the same contract, but adds the final branded PowerPoint-native render step
+- it uses a custom domain builder when one exists, and otherwise falls back to the generic branded deck builder
+- it now explicitly carries the user's presentation-template system as part of the skill:
+  - `starter/claude-to-codex-skills/skills/industry-research-analysis-branded-deck/assets/Prasad_Agentic_AI_Use_Cases_Across_Industries.pptx`
+  - `starter/claude-to-codex-skills/skills/industry-research-analysis-branded-deck/assets/slide deck-reference.pdf`
+  - the Canva-adapted use-case layout from `scripts/build_yc_usecase_deck.py`
+- it should usually be paired with both the strategy layer and the customer/account layer:
+  - `ai-strategy-researcher`
+  - `ai-strategy-brief`
+  - `ai-strategy-council`
+  - `vertical-scorer`
+  - `account-intelligence-analyst` for named accounts, ICPs, or buyer-specific decks
+  - `precall-briefer` or `presales-deal-prep` when the deck is customer-facing
+
+Recommended industry-deck chain:
+
+1. `research-analysis-deck`
+2. `content-research`
+3. `account-intelligence-analyst` when the user cares about a named customer, ICP, or buyer
+4. `ai-strategy-researcher`
+5. `vertical-scorer` when prioritization matters
+6. `ai-strategy-brief`
+7. `analytics-to-comms`
+8. `chart-storyteller`
+9. `stakeholder-comms`
+10. `presentation-content-writer`
+11. `industry-research-analysis-branded-deck`
+
+The right framing is not just `industry -> use cases -> deck`.
+It is:
+
+- `industry`
+- `customer / buyer`
+- `use-case prioritization`
+- `executive action`
+
+The right rendering rule is not just `turn plan into PPTX`.
+It is:
+
+- use the user's Canva-style reference deck as the visual system
+- use the Canva-adapted use-case layout for use-case-heavy slides
+- vary slide family by content instead of forcing one generic layout
+
+Worked example in this repo:
+
+- slug: `healthcare-provider-ops-ai-usecases`
+- custom builder: `scripts/build_healthcare_provider_ops_branded_pptx.py`
+- generic wrapper skill: `starter/claude-to-codex-skills/skills/industry-research-analysis-branded-deck/`
+
+Toyota automotive example now also includes a strategy-layer artifact:
+
+- `analytics-comms/toyota-automotive-ai-usecases/strategy-brief.md`
+
+The same wrapper is intended to work for:
+
+- industry landscape decks
+- named-customer executive decks
+- ICP / buyer-segment decks
+- vertical use-case prioritization decks
+
 The bundled helpers live at:
 
 - `starter/claude-to-codex-skills/skills/research-analysis-deck/scripts/scaffold_chain.py`

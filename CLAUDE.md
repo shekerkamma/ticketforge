@@ -44,6 +44,10 @@ TicketForge's AI pipeline agents (Content Researcher, CodeAct, Code Reviewer) ar
 - YC agent-companies decks are **generated, not hand-built**, from one analysis pack: `analytics-comms/yc-agent-companies-spring-2025/analysis.json`.
 - Builders in `scripts/` (run from repo root): `build_yc_deck_v2.py` (analyst deck), `build_yc_usecase_deck.py` (use-case/realization deck, Canva-adapted, org-named — exposes reusable helpers + `USE_CASES`), `build_yc_exec_deck.py` (executive briefing; imports the use-case module as a library).
 - QA a deck with `python3 scripts/preview_pptx.py <pptx>` — renders PNGs + contact sheet and flags text overflow.
-- Brand palette (matches the user's Canva-Pro template): navy `#0A1628`, teal `#00C9A7`, accent `#009B82`, gold `#FFB800`, font **Calibri**. The template itself lives in the `hyundai-peopletech-deck` repo, not here.
+- Brand palette (matches the user's Canva-Pro template): navy `#0A1628`, teal `#00C9A7`, accent `#009B82`, gold `#FFB800`, font **Calibri**.
+- The current skill-packaged reference assets now live here:
+  - `starter/claude-to-codex-skills/skills/industry-research-analysis-branded-deck/assets/Prasad_Agentic_AI_Use_Cases_Across_Industries.pptx`
+  - `starter/claude-to-codex-skills/skills/industry-research-analysis-branded-deck/assets/slide deck-reference.pdf`
+- For use-case sections, use the Canva-adapted layout language from `scripts/build_yc_usecase_deck.py` rather than defaulting to plain tables.
 - python-pptx pitfall: never append a second `<a:effectLst>` after `shape.shadow.inherit = False` — two of them under one `spPr` make PowerPoint show the "repair" prompt. Reuse the existing `effectLst`. Validate generated decks by checking no `spPr` has >1 `effectLst`.
 - Build artifacts (`docs/reports/_chart_assets/`, `_preview/`, `.tools/`) are gitignored.
