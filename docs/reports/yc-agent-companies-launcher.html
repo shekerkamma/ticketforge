@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YC Agent Companies Report Launcher</title>
+    <style>
+      :root {
+        --bg: #f4efe6;
+        --panel: #fffaf2;
+        --ink: #243042;
+        --muted: #6b7280;
+        --accent: #c96b1a;
+        --line: #dfd3c3;
+        --shadow: 0 16px 40px rgba(36, 48, 66, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Source Serif 4", Georgia, serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(201, 107, 26, 0.18), transparent 28%),
+          linear-gradient(180deg, #fbf7f0 0%, var(--bg) 100%);
+      }
+
+      main {
+        width: min(1100px, calc(100% - 48px));
+        margin: 40px auto 56px;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, rgba(255, 250, 242, 0.98), rgba(247, 239, 226, 0.94));
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 36px;
+        box-shadow: var(--shadow);
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        font: 700 12px/1.2 "DM Sans", Arial, sans-serif;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(2.2rem, 5vw, 4.3rem);
+        line-height: 0.95;
+      }
+
+      .summary {
+        margin: 0;
+        max-width: 760px;
+        font-size: 1.15rem;
+        line-height: 1.55;
+        color: #334155;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 18px;
+        margin-top: 24px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 22px;
+        box-shadow: 0 10px 24px rgba(36, 48, 66, 0.08);
+      }
+
+      .card h2 {
+        margin: 0 0 10px;
+        font-size: 1.4rem;
+      }
+
+      .card p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 16px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        text-decoration: none;
+        font: 700 14px/1 "DM Sans", Arial, sans-serif;
+        transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .button.primary {
+        background: var(--ink);
+        color: #fff;
+        box-shadow: 0 10px 20px rgba(36, 48, 66, 0.18);
+      }
+
+      .button.secondary {
+        background: transparent;
+        color: var(--ink);
+        border-color: var(--line);
+      }
+
+      .meta {
+        margin-top: 22px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        font: 500 14px/1.5 "DM Sans", Arial, sans-serif;
+        color: var(--muted);
+      }
+
+      .meta code {
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.7);
+        padding: 2px 6px;
+        border-radius: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <p class="eyebrow">YC Report Launcher</p>
+        <h1>Y Combinator Agent Companies</h1>
+        <p class="summary">
+          One place to open the browser-native slide deck, download the PowerPoint file,
+          or jump into PowerPoint Web / Google Slides for manual upload and editing.
+        </p>
+
+        <div class="grid">
+          <article class="card">
+            <h2>Browser Slides</h2>
+            <p>Open the HTML slide deck. Fastest path for review in any browser.</p>
+            <div class="actions">
+              <a class="button primary" href="./yc-agent-companies-spring-2025.html">Open HTML Deck</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h2>PowerPoint File</h2>
+            <p>Download the branded `.pptx` rebuilt from the Prasad agentic AI reference presentation.</p>
+            <div class="actions">
+              <a class="button primary" href="./yc-agent-companies-spring-2025-branded.pptx">Download Branded PPTX</a>
+              <a class="button secondary" href="./yc-agent-companies-spring-2025.pptx">Download Marp PPTX</a>
+              <a class="button secondary" href="./yc-agent-companies-spring-2025.marp.md">View Marp Source</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h2>Web Editors</h2>
+            <p>Open PowerPoint Web or Google Slides. These will require account login and a manual upload step.</p>
+            <div class="actions">
+              <a class="button primary" href="https://www.microsoft365.com/launch/powerpoint">PowerPoint Web</a>
+              <a class="button secondary" href="https://slides.google.com/">Google Slides</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="meta">
+          Served locally from <code>http://127.0.0.1:8765/</code><br>
+          Primary report files: <code>yc-agent-companies-spring-2025.html</code> and <code>yc-agent-companies-spring-2025-branded.pptx</code>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

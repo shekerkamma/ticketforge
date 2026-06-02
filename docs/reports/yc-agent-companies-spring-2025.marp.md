@@ -7,221 +7,167 @@ html: true
 footer: "TicketForge | YC Agent Companies | June 2026"
 ---
 
-<!-- _class: title -->
+# YC Agent Companies Are Job-Shaped
 
-# Y Combinator Agent Companies
+## Spring 2025 YC companies under 10 people
 
-**What Spring 2025 small-team YC companies are building, and which use cases they are actually focused on**
-June 2026
-
-<div class="accent-bar"></div>
-
----
-
-<!-- _class: section-opener -->
-
-## Scope
-
-- Live source tested on **June 2, 2026**
-- Website entry point: `https://www.ycombinator.com/companies`
-- Backend discovered from the page: YC's public company search index
-- Cohort analyzed for comparability with the demo: **Spring 2025**
-- Screen used in this report:
-  - query anchored on **agent / agentic**
-  - **team size <= 10**
-  - **27-company** full cohort after filtering
+- Source tested live on June 2, 2026
+- Website entry: `https://www.ycombinator.com/companies`
+- Cohort used: 27 YC companies matching the "agent / agentic" pattern with team size `<= 10`
 
 ---
 
-<!-- _class: kpi -->
+# Three Conclusions Matter Most
 
-## Cohort snapshot
-
-<div class="kpi-row">
-  <div class="kpi-card">
-    <div class="kpi-value accent">27</div>
-    <div class="kpi-label">Agent-related companies</div>
-    <div class="kpi-delta flat">Spring 2025 · team size <= 10</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-value">2</div>
-    <div class="kpi-label">Median team size</div>
-    <div class="kpi-delta flat">very early-stage cohort</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-value">13</div>
-    <div class="kpi-label">Teams with 1-2 people</div>
-    <div class="kpi-delta up">48% of the cohort</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-value positive">8</div>
-    <div class="kpi-label">Workflow automation names</div>
-    <div class="kpi-delta up">largest focus area</div>
-  </div>
-</div>
+1. **Workflow automation leads.** YC founders are not mostly building generic assistants. They are wrapping agents around concrete operational jobs.
+2. **Customer ops and tooling are next.** Sales ops, analytics, QA, testing, context, and infrastructure show up more often than broad "agent platform" claims.
+3. **Vertical healthcare is real.** Clinic operations, claims, and patient workflow automation show enough density to treat healthcare ops as a serious lane.
 
 ---
 
-<!-- _class: takeaway -->
+# This Cohort Is Tiny But Focused
 
-## The cohort is more practical than abstract
+| Metric | What it says |
+| --- | --- |
+| 27 companies | Enough signal to see patterns, still early |
+| Median team size: 2 | Very young companies, still choosing where to narrow |
+| 13 teams with 1-2 people | Nearly half the cohort is extremely small |
+| 8 teams at 5-8 people | A smaller group is already pushing beyond prototype stage |
 
-<div class="so-what">The center of gravity is not “general agents.” It is operational software: workflow automation, customer-facing ops, analytics, developer tooling, and narrow vertical execution.</div>
-
-<div class="finding">
-  <div class="finding-headline">The YC small-team agent cohort is deployment-focused</div>
-  <div class="finding-detail">Top cluster counts: workflow automation (8), sales/customer ops (7), analytics/reporting (6), developer tools/testing (6), and data/agent infrastructure (5).</div>
-  <div class="finding-impact">Interpretation: founders are packaging agents around jobs, not around generic AI claims.</div>
-</div>
-
----
-
-<!-- _class: recommendation -->
-
-## Highest-density use-case clusters
-
-<div class="rec-row">
-  <div class="rec-number">1</div>
-  <div class="rec-content">
-    <div class="rec-action">Workflow automation</div>
-    <div class="rec-rationale">Examples: Anana, Third Chair, MindFort, Cotool, Sim. These companies wrap agents around concrete operational flows instead of open-ended chat.</div>
-  </div>
-  <div class="rec-confidence high">8</div>
-</div>
-
-<div class="rec-row">
-  <div class="rec-number">2</div>
-  <div class="rec-content">
-    <div class="rec-action">Sales / customer-facing operations</div>
-    <div class="rec-rationale">Examples: stratify, Cohesive, Anana, Galen AI. The recurring pattern is “use agents where human teams already have repetitive customer-facing work.”</div>
-  </div>
-  <div class="rec-confidence high">7</div>
-</div>
-
-<div class="rec-row">
-  <div class="rec-number">3</div>
-  <div class="rec-content">
-    <div class="rec-action">Analytics, reporting, and knowledge work</div>
-    <div class="rec-rationale">Examples: Alpha Research, BitBoard, nao Labs. These are tools that let agents summarize, monitor, report, or structure information for operators.</div>
-  </div>
-  <div class="rec-confidence medium">6</div>
-</div>
-
-<div class="rec-row">
-  <div class="rec-number">4</div>
-  <div class="rec-content">
-    <div class="rec-action">Developer tooling, testing, and agent infrastructure</div>
-    <div class="rec-rationale">Examples: Propolis, Docket, Kaelio, Airweave, Capacitive. This is the “make agents usable” layer: QA, testing, context, retrieval, and data access.</div>
-  </div>
-  <div class="rec-confidence medium">5-6</div>
-</div>
+**Interpretation:** the winners are likely being defined by use-case choice and workflow ownership, not by model novelty.
 
 ---
 
-<!-- _class: insight -->
+# Workflow Beats General Agents
 
-## Representative companies: what they are actually doing
+| Highest-density use-case clusters | Count |
+| --- | ---: |
+| Workflow automation | 8 |
+| Sales and customer ops | 7 |
+| Analytics and reporting | 6 |
+| Developer tools and testing | 6 |
+| Data and agent infrastructure | 5 |
 
-- **Anana**: agentic operating layer for hospitality revenue, sales, and ops teams.
-- **Third Chair**: IP-enforcement workflow agent for legal/compliance work.
-- **Propolis**: browser-agent QA and web testing automation.
-- **Kaelio**: open-source context layer for data agents.
-- **Pelica**: healthcare operations OS with copilots for care and provider workflows.
-- **MindFort**: autonomous security agents for security teams.
+**What this means**
 
-<div class="finding">
-  <div class="finding-headline">The pattern is “job-specific agent software”</div>
-  <div class="finding-detail">Even when companies use the word agent, the product is usually a focused application layer: testing, compliance, support, analytics, scheduling, or internal operations.</div>
-</div>
-
----
-
-<!-- _class: takeaway -->
-
-## Sync2-style adjacency: clinic and patient operations are real
-
-<div class="so-what">The medical front-office / clinic-ops lane is active. The overlap is strongest around scheduling, healthcare operations, patient communication, and admin-heavy workflows.</div>
-
-<div class="finding">
-  <div class="finding-headline">Closest live YC matches for the Sync2 prompt</div>
-  <div class="finding-detail">Pelica (healthcare operations with AI agents), Simbie AI (patients to next appointment), Prosper (AI phone agents for healthcare ops), Toothy AI (clinic billing / verification), Sully.ai (hospital operations).</div>
-  <div class="finding-impact">Takeaway: the opportunity is real, but the market is drifting toward deeper operational ownership, not just thin front-desk wrappers.</div>
-</div>
+- The center of gravity is operational software.
+- Founders are packaging agents around repetitive work, not around open-ended chat.
+- The sharper the job boundary, the more credible the product.
 
 ---
 
-<!-- _class: takeaway -->
+# The Winning Pattern Is Narrow Ownership
 
-## ReprisesAI-style adjacency: the risk is verticalized implementation
+**Representative examples**
 
-<div class="so-what">There are fewer direct “AI agency” analogues. The stronger signal is companies turning implementation and process automation into productized software.</div>
+- **Anana**: hotel revenue, sales, and ops workflow automation
+- **Third Chair**: IP enforcement workflow agent
+- **Propolis**: browser-agent QA and testing
+- **BitBoard**: dashboards and reporting built by agents
+- **Kaelio**: context layer for data agents
+- **Pelica**: healthcare operations agents
 
-<div class="finding">
-  <div class="finding-headline">Closest live YC matches for the ReprisesAI prompt</div>
-  <div class="finding-detail">flowscope (AI-native process consulting), Unisson (B2B software implementation agents), Lua Global (mid-market agent platform), Contour (voice-driven operational automation).</div>
-  <div class="finding-impact">Takeaway: the competitive risk is not another generic agency. It is vertical tools and implementation platforms absorbing repeatable delivery work.</div>
-</div>
-
----
-
-<!-- _class: recommendation -->
-
-## If you need to choose use cases, start here
-
-<div class="rec-row">
-  <div class="rec-number">1</div>
-  <div class="rec-content">
-    <div class="rec-action">Pick workflow automation where a team already exists</div>
-    <div class="rec-rationale">This is the densest YC pattern. The winning posture is to remove repetitive work for an existing ops team, not to invent a new abstract AI category.</div>
-  </div>
-  <div class="rec-confidence high">HIGH</div>
-</div>
-
-<div class="rec-row">
-  <div class="rec-number">2</div>
-  <div class="rec-content">
-    <div class="rec-action">Prefer strong data or context moats</div>
-    <div class="rec-rationale">The more durable names are not just “agent wrappers.” They own context, infra, retrieval, compliance, or embedded workflow position.</div>
-  </div>
-  <div class="rec-confidence high">HIGH</div>
-</div>
-
-<div class="rec-row">
-  <div class="rec-number">3</div>
-  <div class="rec-content">
-    <div class="rec-action">Treat vertical healthcare and implementation as serious lanes</div>
-    <div class="rec-rationale">Healthcare ops is recurring. Productized implementation is recurring. Both point to high-friction workflows with strong willingness to pay.</div>
-  </div>
-  <div class="rec-confidence medium">MEDIUM</div>
-</div>
-
-<div class="rec-row">
-  <div class="rec-number">4</div>
-  <div class="rec-content">
-    <div class="rec-action">Be cautious with generic “agent platform” positioning</div>
-    <div class="rec-rationale">The live YC cohort shows better traction in job-shaped products than in broad agent claims with weak functional ownership.</div>
-  </div>
-  <div class="rec-confidence low">LOW</div>
-</div>
+**Takeaway:** even when the word "agent" appears, the product is usually a focused application layer with a clear owner and workflow.
 
 ---
 
-<!-- _class: appendix -->
+# Tooling And Infra Are Real Wedges
 
-## Appendix: Methodology & Commands
+| Company | Wedge |
+| --- | --- |
+| Propolis | QA via browser agents |
+| Docket | Web testing agents |
+| Capacitive | Data gateway for agents |
+| Airweave | Context retrieval layer |
+| Kaelio | Context layer for data agents |
+| Golf | Agentic security and governance |
 
-- **Website tested:** `https://www.ycombinator.com/companies`
-- **Backend discovered live from page:** public Algolia config embedded by YC
-- **Current website batch on June 2, 2026:** `Spring 2026`
-- **Analyzed cohort:** `Spring 2025` to mirror the original demo
-- **Key commands:**
-  - `./yc-companies discover`
-  - `./yc-companies prompt --batch "Spring 2025" "Read every company in Y Combinator and show me the AI agent startups under 10 people."`
+**Interpretation:** one durable path is enabling other agent products rather than competing as another broad app-layer assistant.
+
+---
+
+# Healthcare Ops Is A Serious Lane
+
+| Company | Focus |
+| --- | --- |
+| Pelica | Healthcare operations with AI agents |
+| Aegis | Denied claims workflow |
+| Galen AI | Personal healthcare agent |
+| Prosper | AI phone agents for healthcare ops |
+| Toothy AI | Insurance verification and billing for clinics |
+
+**Why it matters**
+
+- The work is repetitive, regulated, and expensive.
+- Buyers already feel the pain.
+- Strong operational ownership creates clearer ROI than generic receptionist AI.
+
+---
+
+# Sync2 Has Real Adjacency
+
+## Closest YC matches to the Sync2 prompt
+
+- **Pelica**: healthcare operations agents
+- **Simbie AI**: getting patients to the next appointment
+- **Prosper**: AI phone agents for healthcare operations
+- **Toothy AI**: insurance verification and billing at clinics
+- **Sully.ai**: hospital operations agents
+
+**Read-through for Sync2**
+
+- The lane is real.
+- The strongest YC pattern is deeper operational ownership, not a thin front-desk wrapper.
+- The best opportunity is where the product can own scheduling, billing, claims, intake, or patient communication end to end.
+
+---
+
+# ReprisesAI Faces Productization Risk
+
+## Closest YC matches to the ReprisesAI prompt
+
+- **flowscope**: AI-native consulting for process automation
+- **Unisson**: agents for B2B software implementation
+- **Lua Global**: mid-market agent platform
+- **Contour**: voice-driven operational automation
+
+**Read-through for ReprisesAI**
+
+- There are fewer direct "AI agency" clones.
+- The bigger risk is productized implementation software absorbing repeatable service work.
+- The safer posture is to specialize around a repeatable wedge, not remain a generic AI services layer.
+
+---
+
+# What To Learn From This Cohort
+
+1. **Start where teams already work.** Ops, support, testing, claims, and reporting are more believable than broad agent positioning.
+2. **Own context or workflow.** Data access, governance, embedded process, and vertical specificity are the moats that recur.
+3. **Avoid vague platform language.** The YC signal favors job-shaped products over generic "agent OS" narratives unless there is a real infra wedge.
+
+---
+
+# Where I Would Focus Next
+
+| Build direction | Why it fits the YC pattern |
+| --- | --- |
+| Healthcare operations | Dense adjacency, clear pain, strong willingness to pay |
+| Workflow automation for existing teams | Largest cluster in the cohort |
+| Tooling / context / infra | Durable enablement layer with repeatable need |
+| Productized implementation | Strong hedge against agency commoditization |
+
+**What I would avoid first:** generic "agent platform" positioning without a clear workflow owner, data moat, or vertical wedge.
+
+---
+
+# Method And Reproducibility
+
+- Website tested: `https://www.ycombinator.com/companies`
+- The local `yc-companies` CLI discovers the live YC backend from the public page each run
+- Main demo command:
+  - `./yc-companies prompt --batch "Spring 2025" --limit 100 --max-team-size 10 "Read every company in Y Combinator and show me the AI agent startups under 10 people."`
+- Follow-up analysis:
   - `./yc-companies analyze --query agent --batch "Spring 2025" --limit 20 --agentish`
-- `./yc-companies use-cases --query agent --batch "Spring 2025" --limit 20 --agentish`
-- **Important caveat:** use-case buckets are heuristic labels derived from live company text, not official YC categories.
+  - `./yc-companies use-cases --query agent --batch "Spring 2025" --limit 30 --agentish`
 
-<div class="finding">
-  <div class="finding-headline">Reproducible from the repo</div>
-  <div class="finding-detail">The local `yc-companies` CLI discovers the live YC backend from the public companies page each run, so the workflow can be rerun without hard-coding a private API.</div>
-</div>
+**Important caveat:** use-case labels are inferred from live company text. They are useful for pattern mapping, not official YC categories.
