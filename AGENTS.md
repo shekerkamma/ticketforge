@@ -5,7 +5,7 @@ This repo stages a large Codex skill pack. Keep this file in sync with `starter/
 ## Skills
 
 - Staged pack: `/home/shekerk/ticketforge/starter/claude-to-codex-skills/skills`
-- Typical active install target: `/home/shekerk/snap/codex/34/skills`
+- Typical active install target: `/home/shekerk/snap/codex/current/skills`
 - Current staged skill count: `103`
 
 ### How to use

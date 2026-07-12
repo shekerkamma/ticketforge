@@ -8,7 +8,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILLS_DIR = REPO_ROOT / "starter" / "claude-to-codex-skills" / "skills"
 AGENTS_PATH = REPO_ROOT / "AGENTS.md"
-ACTIVE_CODEX_HOME = Path("/home/shekerk/snap/codex/34/skills")
+ACTIVE_CODEX_HOME = Path("/home/shekerk/snap/codex/current/skills")
 
 
 CATEGORY_ORDER = [

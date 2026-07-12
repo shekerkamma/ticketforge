@@ -1,53 +1,70 @@
 # TicketForge — Project Instructions
 
-## What this is
-TicketForge: multi-agent AI pipeline that turns GitHub issues into merged PRs. FastAPI backend, Next.js 14 frontend, SQLite for local dev, PostgreSQL for prod.
+## What this repo is (two identities — route your work)
 
-## Local dev setup
-```bash
-# Backend
-cd backend && pip install -e . --break-system-packages && uvicorn app.main:app --port 8000
+1. **TicketForge product** — multi-agent AI pipeline that turns GitHub issues
+   into merged PRs. FastAPI backend, Next.js 14 frontend, SQLite local /
+   PostgreSQL prod. Rules below apply here.
+2. **Deck & analytics workspace** — `analytics-comms/`, `yc-companies/`,
+   `url-dossiers/`, `scripts/build_*.py`, and the staged Codex skill pack in
+   `starter/` (see `AGENTS.md` — generated, never hand-edit; re-run
+   `python3 scripts/sync_agents_skill_index.py` after changing staged skills).
 
-# Frontend
-cd frontend && npm install && npm run dev
-```
+## Commands — what to run when
+
+Prefer Makefile targets; raw commands only when a target doesn't cover it.
+
+| Task | Command |
+| --- | --- |
+| First-time setup | `make bootstrap` (or `make backend-install` / `make frontend-install`) |
+| Run both dev servers | `make dev` (backend `make backend` → :8000, frontend `make frontend` → :3000) |
+| Backend tests | `ENCRYPTION_KEY="test-encryption-key-32-chars!!" DATABASE_URL="sqlite+aiosqlite://" JWT_SECRET="test-secret" python3 -m pytest tests/ -v --tb=short` (run from `backend/`; suites: `test_api`, `test_agents`, `test_pipeline`, `test_services`) |
+| Frontend tests | `cd frontend && npm run test` (Vitest) |
+| Frontend lint/build | `cd frontend && npm run lint && npm run build` |
+| Smoke test | `make smoke-test` |
+| Seed demo data | `make demo-data` |
+| GitHub integration check | `make github-check` / `make github-bootstrap` |
+| Docker (full stack) | `docker compose up` (dev) / `docker-compose.prod.yml` (prod) |
+
+Backend tests fail without those three env vars — they are required, not
+optional.
 
 ## Auth for local testing
-- Use `GET /api/auth/dev-login` to bypass GitHub OAuth — mints a JWT for the first user in the DB
-- Frontend shows a "Dev Login (skip OAuth)" button when `NEXT_PUBLIC_API_URL` is not set
-- JWT secret in `.env` is `dev-secret-change-in-production`
-- Test data must be seeded into `ticketforge.db` (SQLite) — see seed script pattern in session handoff
 
-## Key architecture decisions
-- SQLAlchemy `Uuid` type stores UUIDs as 32-char hex (no dashes) in SQLite
-- CORS allows only `http://localhost:3000` (frontend origin)
-- All API routes under `/api/` or `/api/v1/`
-- Auth via JWT in `Authorization: Bearer` header, decoded in `app/api/deps.py`
-- Rate limiting: 60 req/min via slowapi
+- `GET /api/auth/dev-login` bypasses GitHub OAuth — mints a JWT for the first
+  user in the DB.
+- Frontend shows a "Dev Login (skip OAuth)" button when `NEXT_PUBLIC_API_URL`
+  is not set.
+- JWT secret in `.env` is `dev-secret-change-in-production`.
+- Test data must be seeded into `ticketforge.db` (SQLite) — `make demo-data`.
 
-## Code conventions
-- Backend: FastAPI routers in `app/api/`, models in `app/models/`, services in `app/services/`
-- Frontend: Next.js app router, pages in `src/app/`, shared utils in `src/lib/`
-- API client: `src/lib/api.ts` — all requests go through `apiFetch()` which handles auth
-- No test framework configured yet for frontend (Jest/Vitest TBD)
+## Architecture facts
 
-## Agents
-TicketForge's AI pipeline agents (Content Researcher, CodeAct, Code Reviewer) are defined in `backend/app/services/` as Python services.
+- **Pipeline agents live in `backend/app/agents/`** (`content_researcher.py`,
+  `code_act_agent.py`, `code_reviewer.py`, `pr_creator.py`, `escalation.py`,
+  base class in `base.py`). `backend/app/services/` holds service wrappers
+  (e.g. `claude_service.py`) — do not conflate the two.
+- SQLAlchemy `Uuid` type stores UUIDs as 32-char hex (no dashes) in SQLite.
+- CORS allows only `http://localhost:3000`.
+- All API routes under `/api/` or `/api/v1/`; auth via `Authorization: Bearer`
+  JWT decoded in `app/api/deps.py`; rate limiting 60 req/min via slowapi.
+- Backend: routers in `app/api/`, models in `app/models/`, background work in
+  `app/tasks/` + `worker.py`.
+- Frontend: Next.js app router — pages `src/app/`, utils `src/lib/`; all
+  requests go through `apiFetch()` in `src/lib/api.ts` (handles auth).
 
 ## Don't do
-- Don't modify `.env` files without asking — they contain secrets
-- Don't add `aiosqlite` or `asyncpg` import guards — the db.py module handles SQLite/Postgres switching via URL scheme
-- Don't use `regex=` in FastAPI Query params — deprecated, use `pattern=` instead
 
-## Reports & decks
+- Don't modify `.env` files without asking — they contain secrets.
+- Don't add `aiosqlite`/`asyncpg` import guards — `db.py` switches
+  SQLite/Postgres via URL scheme.
+- Don't use `regex=` in FastAPI Query params — deprecated; use `pattern=`.
+- Don't hand-edit `AGENTS.md` — regenerate it.
 
-- YC agent-companies decks are **generated, not hand-built**, from one analysis pack: `analytics-comms/yc-agent-companies-spring-2025/analysis.json`.
-- Builders in `scripts/` (run from repo root): `build_yc_deck_v2.py` (analyst deck), `build_yc_usecase_deck.py` (use-case/realization deck, Canva-adapted, org-named — exposes reusable helpers + `USE_CASES`), `build_yc_exec_deck.py` (executive briefing; imports the use-case module as a library).
-- QA a deck with `python3 scripts/preview_pptx.py <pptx>` — renders PNGs + contact sheet and flags text overflow.
-- Brand palette (matches the user's Canva-Pro template): navy `#0A1628`, teal `#00C9A7`, accent `#009B82`, gold `#FFB800`, font **Calibri**.
-- The current skill-packaged reference assets now live here:
-  - `starter/claude-to-codex-skills/skills/industry-research-analysis-branded-deck/assets/Prasad_Agentic_AI_Use_Cases_Across_Industries.pptx`
-  - `starter/claude-to-codex-skills/skills/industry-research-analysis-branded-deck/assets/slide deck-reference.pdf`
-- For use-case sections, use the Canva-adapted layout language from `scripts/build_yc_usecase_deck.py` rather than defaulting to plain tables.
-- python-pptx pitfall: never append a second `<a:effectLst>` after `shape.shadow.inherit = False` — two of them under one `spPr` make PowerPoint show the "repair" prompt. Reuse the existing `effectLst`. Validate generated decks by checking no `spPr` has >1 `effectLst`.
-- Build artifacts (`docs/reports/_chart_assets/`, `_preview/`, `.tools/`) are gitignored.
+## Reports & decks (pointer)
+
+Deck building is packaged as the `industry-research-analysis-branded-deck`
+skill (`starter/claude-to-codex-skills/skills/industry-research-analysis-branded-deck/`)
+— brand palette, Canva-adapted layouts, python-pptx pitfalls, and QA live
+there. Quick QA: `python3 scripts/preview_pptx.py <pptx>`. Build artifacts
+(`docs/reports/_chart_assets/`, `_preview/`, `.tools/`) are gitignored.
